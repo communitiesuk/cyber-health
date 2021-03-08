@@ -1,0 +1,7 @@
+deploy:
+  edge: true
+  provider: cloudfoundry
+  username: USERNAME
+  api: API_ENDPOINT
+  organization: ORGNAME
+  space: SPACENAME  
