@@ -2,4 +2,4 @@
 
 ## Travis
 
-We are using [travis](TRAVIS.MD) for deploying our code.
+We are using [travis](TRAVIS.md) for deploying our code.
