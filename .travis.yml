@@ -1,4 +1,4 @@
-language: python
+language: node_js
 
 deploy:
   edge: true
