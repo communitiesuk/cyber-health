@@ -9,3 +9,15 @@ or as the [guide](https://docs.cloud.service.gov.uk/using_ci.html#assess-travis)
 2. I had to run
 `travis login --pro --github-token=<GENERATED_TOKEN_IN_GITLAB>`
 3. I was currently not able to list the `wearesnook` github repo I created
+
+
+# Configuration
+
+## Include only the desired branches
+```
+# safelist
+branches:
+  only:
+  - master
+  - stable
+  ```

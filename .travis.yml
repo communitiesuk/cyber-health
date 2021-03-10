@@ -1,14 +1,20 @@
-language: node_js
-
-node_js:
-  - "stable"
-  
-script: 'true'
-
+language: generic
+os: linux
+dist: xenial
 deploy:
-  edge: true
   provider: cloudfoundry
-  username: USERNAME
-  api: API_ENDPOINT
-  organization: ORGNAME
-  space: SPACENAME  
+  edge: true
+  app_name: Cyber-Health
+  api: https://api.london.cloud.service.gov.uk
+  username: joel.stobart@wearesnook.com
+  organization: mhclg-local-digital
+  space: sandbox
+  on:
+    repo: joel-stobart/cyber-health
+    branch: develop
+  cleanup: false
+  password: 'S220tEq9893Uw44Igsq'
+branches:
+  only:
+  - master
+  - develop

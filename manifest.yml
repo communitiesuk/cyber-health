@@ -1,0 +1,6 @@
+---
+applications:
+- name: APPNAME
+  memory: 64M
+  buildpacks:
+  - staticfile_buildpack
