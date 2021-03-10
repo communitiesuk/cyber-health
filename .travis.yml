@@ -10,7 +10,7 @@ deploy:
   organization: mhclg-local-digital
   space: sandbox
   on:
-    repo: joel-stobart/cyber-health
+    repo: WeAreSnook/cyber-health-frontend
     branch: develop
   cleanup: false
   password: 'S220tEq9893Uw44Igsq'
