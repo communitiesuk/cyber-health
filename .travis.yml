@@ -18,4 +18,3 @@ branches:
   only:
   - master
   - develop
-before_install: cd frontend
