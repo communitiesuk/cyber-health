@@ -1,20 +1,20 @@
 language: generic
 os: linux
 dist: xenial
-install: scripts/install-dependencies.sh
-before_script: scripts/start-services.sh
+install: bash scripts/install-dependencies.sh
+before_script: bash scripts/start-services.sh
 edge: true
 
 deploy:
   # deploy develop to the staging environment
   - provider: script
-    script: scripts/deploy.sh sandbox
+    script: bash scripts/deploy.sh sandbox
     cleanup: false
     on:
       branch: develop
   # deploy master to production
   - provider: script
-    script: scripts/deploy.sh sandbox
+    script: bash scripts/deploy.sh sandbox
     cleanup: false
     on:
       branch: master
