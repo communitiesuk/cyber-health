@@ -24,6 +24,8 @@ driver.get(url).then(() => {
     axe.analyze(async(err, results) => {
         if (err) {
             // Handle error somehow
+            console.error(results);
+            process.exit(1);
         }
         console.log(results);
         await driver.quit();
