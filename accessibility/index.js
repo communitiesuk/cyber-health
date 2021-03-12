@@ -12,12 +12,11 @@ const screen = {
 
 
 chrome.setDefaultService(
-    new chrome.ServiceBuilder(chromedriver.path).build());
+    new chrome.ServiceBuilder('/usr/bin/google-chrome').build());
 
 driver = new WebDriver.Builder()
     .withCapabilities(WebDriver.Capabilities.chrome())
     .setChromeOptions(new chrome.Options()
-        .setChromeBinaryPath('/usr/bin/chromium-browser')
         .headless()
         .windowSize(screen)
         .addArguments("no-sandbox")
