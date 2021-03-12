@@ -1,6 +1,6 @@
 ---
 applications:
-- name: APPNAME
+- name: Cyber-Health
   memory: 64M
   buildpacks:
   - staticfile_buildpack

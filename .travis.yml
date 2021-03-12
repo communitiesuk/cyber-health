@@ -2,19 +2,24 @@ language: generic
 os: linux
 dist: xenial
 deploy:
-  provider: cloudfoundry
-  edge: true
-  app_name: Cyber-Health
-  api: https://api.london.cloud.service.gov.uk
-  username: joel.stobart@wearesnook.com
-  organization: mhclg-local-digital
-  space: sandbox
-  on:
-    repo: WeAreSnook/cyber-health-frontend
-    branch: develop
-  cleanup: false
-  password: 'S220tEq9893Uw44Igsq'
+  # deploy develop to the staging environment
+  - provider: script
+    script: bash scripts/deploy.sh sandbox
+    skip_cleanup: true
+    on:
+      branch: develop
+  # deploy master to production
+  - provider: script
+    script: bash scripts/deploy.sh production sandbox
+    skip_cleanup: true
+    on:
+      branch: master
+
 branches:
-  only:
+  only: 
   - master
   - develop
+env:
+  global: 
+    - CLOUDFOUNDRY_PASSWORD=S220tEq9893Uw44Igsq
+    - CLOUDFOUNDRY_USERNAME=joel.stobart@wearesnook.com
