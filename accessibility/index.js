@@ -8,7 +8,7 @@ const screen = {
 };
 
 driver = new WebDriver.Builder()
-    .withCapabilities(WebDriver.Capabilities.chrome())
+    .withCapabilities(WebDriver.Capabilities.firefox())
     .setFirefoxOptions(new firefox.Options()
         .headless()
         .windowSize(screen)
