@@ -16,7 +16,16 @@ chrome.setDefaultService(
 
 driver = new WebDriver.Builder()
     .withCapabilities(WebDriver.Capabilities.chrome())
-    .setChromeOptions(new chrome.Options().headless().windowSize(screen).addArguments("no-sandbox"))
+    .setChromeOptions(new chrome.Options()
+        .setChromeBinaryPath('/usr/bin/chromium-browser')
+        .headless()
+        .windowSize(screen)
+        .addArguments("no-sandbox")
+        .addArguments("--no-default-browser-check")
+        .addArguments("--no-first-run")
+        .addArguments("--disable-default-apps")
+
+    )
     .build();
 
 
