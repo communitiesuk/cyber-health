@@ -1,8 +1,6 @@
 const AxeBuilder = require('@axe-core/webdriverjs');
 const WebDriver = require('selenium-webdriver');
-const chrome = require('selenium-webdriver/chrome');
-const chromedriver = require('chromedriver');
-
+const firefox = require('selenium-webdriver/firefox');
 
 const screen = {
     width: 1024,
@@ -11,19 +9,14 @@ const screen = {
 
 
 
-chrome.setDefaultService(
-    new chrome.ServiceBuilder('/usr/bin/google-chrome').build());
+firefox.setDefaultService(
+    new firefox.ServiceBuilder('/usr/bin/google-chrome').build());
 
 driver = new WebDriver.Builder()
     .withCapabilities(WebDriver.Capabilities.chrome())
-    .setChromeOptions(new chrome.Options()
+    .setChromeOptions(new firefox.Options()
         .headless()
         .windowSize(screen)
-        .addArguments("no-sandbox")
-        .addArguments("--no-default-browser-check")
-        .addArguments("--no-first-run")
-        .addArguments("--disable-default-apps")
-
     )
     .build();
 

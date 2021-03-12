@@ -5,7 +5,7 @@ install: bash scripts/install-dependencies.sh
 before_script: bash scripts/start-services.sh
 before_install: bash scripts/before-install.sh
 addons:
-  chrome: beta
+  firefox: latest
 deploy:
   # deploy develop to the staging environment
   - provider: script
@@ -33,4 +33,4 @@ env:
     - FRONTEND_PORT=8081
     - FRONTEND_HOST=localhost
     - FRONTEND_PROTO=http
-    
+    - MOZ_HEADLESS=1
