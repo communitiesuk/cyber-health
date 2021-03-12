@@ -20,6 +20,9 @@ deploy:
     on:
       branch: master
 
+
+script: bash scripts/run-tests.sh
+
 branches:
   only: 
   - master
