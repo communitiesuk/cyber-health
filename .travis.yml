@@ -3,6 +3,7 @@ os: linux
 dist: xenial
 install: scripts/install-dependencies.sh
 before_script: scripts/start-services.sh
+edge: true
 
 deploy:
   # deploy develop to the staging environment
