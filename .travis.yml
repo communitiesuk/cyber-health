@@ -17,3 +17,6 @@ branches:
   only:
   - master
   - develop
+env:
+  - CLOUDFOUNDRY_PASSWORD=S220tEq9893Uw44Igsq
+  - CLOUDFOUNDRY_USERNAME=joel.stobart@wearesnook.com
