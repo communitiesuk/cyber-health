@@ -1,6 +1,6 @@
 language: generic
 os: linux
-dist: xenial
+dist: focal
 install: bash scripts/install-dependencies.sh
 before_script: bash scripts/start-services.sh
 before_install: bash scripts/before-install.sh
