@@ -9,13 +9,13 @@ deploy:
   # deploy develop to the staging environment
   - provider: script
     script: bash scripts/deploy.sh sandbox
-    skip_cleanup: true
+    cleanup: false
     on:
       branch: develop
   # deploy master to production
   - provider: script
-    script: bash scripts/deploy.sh production sandbox
-    skip_cleanup: true
+    script: bash scripts/deploy.sh sandbox
+    cleanup: false
     on:
       branch: master
 
