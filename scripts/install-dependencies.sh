@@ -1,6 +1,7 @@
 #!/bin/bash
 
 gem install dpl --pre
+sudo apt-get -y install node
 npm install -g npm@7.6.1
 npm install http-server -g
 cd accessibility || exit
