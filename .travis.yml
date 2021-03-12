@@ -18,14 +18,14 @@ deploy:
     skip_cleanup: true
     script: bash scripts/deploy.sh sandbox
     on:
-      branch: master
+      branch: main
 
 
 script: bash scripts/run-tests.sh
 
 branches:
   only: 
-  - master
+  - main
   - develop
 env:
   global: 
