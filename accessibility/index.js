@@ -5,8 +5,8 @@ const chromedriver = require('chromedriver');
 
 
 const screen = {
-    width: 640,
-    height: 480
+    width: 1024,
+    height: 768
 };
 
 
@@ -16,7 +16,7 @@ chrome.setDefaultService(
 
 driver = new WebDriver.Builder()
     .withCapabilities(WebDriver.Capabilities.chrome())
-    .setChromeOptions(new chrome.Options().headless().windowSize(screen))
+    .setChromeOptions(new chrome.Options().headless().windowSize(screen).addArguments("no-sandbox"))
     .build();
 
 
