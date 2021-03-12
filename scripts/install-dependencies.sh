@@ -1,8 +1,7 @@
 #!/bin/bash
 
 gem install dpl --pre
-echo "updating node"
-sudo apt-get -y install nodejs  
+nvm install node
 node -v
 npm install -g npm@7.6.1
 npm install http-server -g
