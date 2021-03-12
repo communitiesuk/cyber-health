@@ -7,11 +7,6 @@ const screen = {
     height: 768
 };
 
-
-
-firefox.setDefaultService(
-    new firefox.ServiceBuilder('/usr/bin/google-chrome').build());
-
 driver = new WebDriver.Builder()
     .withCapabilities(WebDriver.Capabilities.chrome())
     .setChromeOptions(new firefox.Options()
@@ -19,7 +14,6 @@ driver = new WebDriver.Builder()
         .windowSize(screen)
     )
     .build();
-
 
 let url = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`
 
