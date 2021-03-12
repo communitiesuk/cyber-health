@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@axe-core/webdriverjs": "^4.1.1"
+  },
+  "devDependencies": {
+    "chromedriver": "^89.0.0"
+  }
+}

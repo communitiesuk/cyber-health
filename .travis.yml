@@ -1,6 +1,10 @@
 language: generic
 os: linux
 dist: xenial
+install: scripts/install-dependencies.sh
+before_script:
+  - bash scripts/start-service.sh
+
 deploy:
   # deploy develop to the staging environment
   - provider: script
@@ -23,3 +27,7 @@ env:
   global: 
     - CLOUDFOUNDRY_PASSWORD=S220tEq9893Uw44Igsq
     - CLOUDFOUNDRY_USERNAME=joel.stobart@wearesnook.com
+    - FRONTEND_PORT=8081
+    - FRONTEND_HOST=localhost
+    - FRONTEND_PROTO=http
+    
