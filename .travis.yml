@@ -21,10 +21,7 @@ deploy:
     script: bash scripts/deploy.sh sandbox
     on:
       branch: main
-
-
 script: bash scripts/run-tests.sh
-
 branches:
   only: 
   - main
