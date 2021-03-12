@@ -3,7 +3,9 @@ os: linux
 dist: xenial
 install: bash scripts/install-dependencies.sh
 before_script: bash scripts/start-services.sh
-
+before_install: bash scripts/before-install.sh
+addons:
+  chrome: stable
 deploy:
   # deploy develop to the staging environment
   - provider: script
