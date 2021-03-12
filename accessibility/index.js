@@ -1,7 +1,7 @@
-import AxeBuilder from '@axe-core/webdriverjs';
-import { Builder, Capabilities } from 'selenium-webdriver';
-import { setDefaultService, ServiceBuilder, Options } from 'selenium-webdriver/chrome';
-import { path } from 'chromedriver';
+const AxeBuilder = require('@axe-core/webdriverjs');
+const WebDriver = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
+const chromedriver = require('chromedriver');
 
 
 const screen = {
@@ -9,15 +9,21 @@ const screen = {
     height: 480
 };
 
-setDefaultService(new ServiceBuilder(path).build());
 
-var driver = new Builder()
-    .withCapabilities(Capabilities.chrome())
-    .setChromeOptions(new Options().headless().windowSize(screen))
+
+chrome.setDefaultService(
+    new chrome.ServiceBuilder(chromedriver.path).build());
+
+driver = new WebDriver.Builder()
+    .withCapabilities(WebDriver.Capabilities.chrome())
+    .setChromeOptions(new chrome.Options().headless().windowSize(screen))
     .build();
 
 
-let url = `{process.env.FRONTEND_PROTO}://{process.env.FRONTEND_HOST}:process.env.FRONTEND_PORT/`
+let url = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`
+
+console.log(url);
+console.log(process);
 
 driver.get(url).then(() => {
     const axe = new AxeBuilder(driver, null, { noSandbox: true });
