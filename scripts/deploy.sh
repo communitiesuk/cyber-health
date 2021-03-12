@@ -13,8 +13,6 @@ SCRIPT_CLOUDFOUNDRY_ORG="${CLOUDFOUNDRY_SPACE:=$DEFAULT_CLOUDFOUNDRY_ORG}"
 # Structure 
 # The index is the name of each folder containing an application
 
-gem install dpl --pre
-
 APPLICATIONS=("frontend")
 
 for application in "${APPLICATIONS[@]}"
