@@ -14,9 +14,10 @@ deploy:
       branch: master
 
 branches:
-  only:
+  only: 
   - master
   - develop
 env:
-  - CLOUDFOUNDRY_PASSWORD=S220tEq9893Uw44Igsq
-  - CLOUDFOUNDRY_USERNAME=joel.stobart@wearesnook.com
+  global: 
+    - CLOUDFOUNDRY_PASSWORD=S220tEq9893Uw44Igsq
+    - CLOUDFOUNDRY_USERNAME=joel.stobart@wearesnook.com
