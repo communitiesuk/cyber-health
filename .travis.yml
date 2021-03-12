@@ -3,17 +3,18 @@ os: linux
 dist: xenial
 install: bash scripts/install-dependencies.sh
 before_script: bash scripts/start-services.sh
-edge: true
 
 deploy:
   # deploy develop to the staging environment
   - provider: script
+    edge: true
     skip_cleanup: true
     script: bash scripts/deploy.sh sandbox
     on:
       branch: develop
   # deploy master to production
   - provider: script
+    edge: true  
     skip_cleanup: true
     script: bash scripts/deploy.sh sandbox
     on:
