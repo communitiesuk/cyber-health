@@ -1,16 +1,8 @@
 #!/bin/bash
 
+# Run accessibility tests
 node accessibility/index.js
 
-APPLICATIONS=("frontend")
-
-for application in "${APPLICATIONS[@]}"
-do
-    (
-        echo "runnning dependency check on ./$application"
-        dependency-check/bin/dependency-check.sh --project "$application" --scan "./$application" -f JSON 
-        # --failOnCVSS 5
-        echo "Dependency Report"
-        cat dependency-check-report.json
-    )
-done
+# Run Static Analysis with Dependency Check 
+# shellcheck disable=SC1091
+source dependency-check.sh
