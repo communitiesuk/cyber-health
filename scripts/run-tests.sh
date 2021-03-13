@@ -8,6 +8,6 @@ for application in "${APPLICATIONS[@]}"
 do
     (
         echo "runnning dependency check on ./$application"
-        dependency-check/bin/dependency-check.sh --project "$application" --scan "./$application" -f JSON --failOnCVSS 1
+        dependency-check/bin/dependency-check.sh --project "$application" --scan "./$application" -f JSON --failOnCVSS 5
     )
 done
