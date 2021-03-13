@@ -1,9 +1,6 @@
 #!/bin/bash
 
 APPLICATIONS=("frontend")
-
-pwd
-
 for application in "${APPLICATIONS[@]}"
 do
     (
