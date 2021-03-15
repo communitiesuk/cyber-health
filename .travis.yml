@@ -1,25 +1,36 @@
 language: generic
 os: linux
-dist: xenial
+dist: focal
+install: bash scripts/install-dependencies.sh
+before_script: bash scripts/start-services.sh
+before_install: bash scripts/before-install.sh
+addons:
+  firefox: latest
 deploy:
   # deploy develop to the staging environment
   - provider: script
-    script: bash scripts/deploy.sh sandbox
+    edge: true
     skip_cleanup: true
+    script: bash scripts/deploy.sh sandbox
     on:
       branch: develop
   # deploy master to production
   - provider: script
-    script: bash scripts/deploy.sh production sandbox
+    edge: true  
     skip_cleanup: true
+    script: bash scripts/deploy.sh sandbox
     on:
-      branch: master
-
+      branch: main
+script: bash scripts/run-tests.sh
 branches:
   only: 
-  - master
+  - main
   - develop
 env:
   global: 
     - CLOUDFOUNDRY_PASSWORD=S220tEq9893Uw44Igsq
     - CLOUDFOUNDRY_USERNAME=joel.stobart@wearesnook.com
+    - FRONTEND_PORT=8081
+    - FRONTEND_HOST=localhost
+    - FRONTEND_PROTO=http
+    - MOZ_HEADLESS=1
