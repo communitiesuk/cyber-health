@@ -13,4 +13,4 @@ done
 
 # Run Static Analysis with Dependency Check 
 # shellcheck disable=SC1091
-# source scripts/dependency-check.sh 
+ source scripts/dependency-check.sh 
