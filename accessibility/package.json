@@ -2,5 +2,8 @@
     "dependencies": {
         "@axe-core/webdriverjs": "^4.1.1",
         "selenium-webdriver": "^3.6.0"
+    },
+    "scripts": {
+        "test": "node test.js"
     }
 }
