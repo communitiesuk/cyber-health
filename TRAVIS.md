@@ -13,6 +13,9 @@ or as the [guide](https://docs.cloud.service.gov.uk/using_ci.html#assess-travis)
 
 # Configuration
 
+We have created several scripts to interoperate with Travis. 
+These scripts are located in the scripts found.
+
 ## Include only the desired branches
 ```
 # safelist
