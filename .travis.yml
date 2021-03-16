@@ -13,14 +13,14 @@ deploy:
   - provider: script
     edge: true
     skip_cleanup: true
-    script: bash scripts/deploy.sh sandbox
+    script: bash scripts/deploy.sh $DEFAULT_CLOUDFOUNDRY_SPACE
     on:
       branch: develop
   # deploy master to production
   - provider: script
     edge: true  
     skip_cleanup: true
-    script: bash scripts/deploy.sh sandbox
+    script: bash scripts/deploy.sh $DEFAULT_CLOUDFOUNDRY_SPACE
     on:
       branch: main
 script: bash scripts/run-tests.sh
@@ -29,10 +29,10 @@ branches:
   - main
   - develop
 env:
-  global: 
-    - CLOUDFOUNDRY_PASSWORD=S220tEq9893Uw44Igsq
-    - CLOUDFOUNDRY_USERNAME=joel.stobart@wearesnook.com
-    - FRONTEND_PORT=8081
-    - FRONTEND_HOST=localhost
-    - FRONTEND_PROTO=http
-    - MOZ_HEADLESS=1
+  global:
+    - secure: CyWSHaWJqiwVrXZTEbUPDSVCPy5GcQaPLY5oibPboEXUvEsyTK+EM5mVkPj4t9AocAKq3lML8qGVyptCCf6CDxjG3g4tsHlvZ1IAOzvHcO55r9uJs9ZI8ECUiPyZN4LpGrrYOAm+LjG4YKwC1Ozwv16k1/Im22M4N4c/ukBn1zG7j3KgEwy+qfnDsAuZeWtksvkTkDY95VCsvM1YFTLYAx62+rTMHCSAvVcAvhO0ELRPuJgjggFX1adXq2M/FczLIuq3BXnoEjzhlbP0cNjzGc82Eur3xhE9hXtKri05s/Qc8LBGKDDnAc6JVou2pXpnzn1dktvOznyn0M36JPl4ZMojnyq+ohnGL1dEQutrDg8Gv1H3rG/Znh3uPpEDyAhhuk3KvS9xQ2BZxporl3blk21C+zylrAdSbb145L8fvI8I7+7iCkfHPWNHYDaPLu9cQSQ98y4bwQaA2+CUUy9tF5Yjb+1/zbp1fC5motk6sP+L770OcRQsZUlUnrweeqjBatIyy9a2bQcKGRjcfinNlHjcSQ/TKtUJOw5/mVmkgWNuJ3SvBp0Uu5cxTjlBpm/ECt00LbGpnVpu+koqEupBRLkS/M/k4KXltPNQKF9JK0OVEHzQRYiBt2jMzopEPECbxMtY9NZf1fB6ZfYsOYnjvH0FbYDRSuKO6ODN7ZDqUJs=
+    - secure: ujvV7H/RPGC6edXa94Rv72oQMAX2Ip/36JGPFi2dzM6g/g3Y0p1YBq+vPvZ5ePPfHR+Wbp3UM1aKDNGJvHhgJ/LKHcFQowmuNukgZphETyDCUbXUtUjrevMEV8VcX1eQgaOBRwaFVx0E0TZXhoSnsa0opgM3sWhDfMnJYRJRmSD3lyU/5ZT9okvgYwEevOV7GIkm/0QgluucZwoi0TtRoWpkG9TbwPiLJ06057ZXNgQeXPocTqyvBGz/da2AazjT7CHeikIOpCH1gtL+BI4F4Gc+qMU258xAjWyTDMjRJS+p0czHGPyoVkM6bjgghmQTL0mUl3kXyy5guL2nEBu1cszMi0UzhfnUDHquyjogW8moWU7hHJir+irmc9AJ5SjBRGNp2RHwsIKFUcH5i4a2AUz+6wxy9Inh33qqJ4Ij0zZMpMNSnd+X1/+LxCSw5NhiEunNkLFEnCrlLqYOXwIAB/p16kjID6Bdx/MdpJCz5GpZqwLUT682S5bzBbUR/DNPEKYCbxKadEQUcUzc/2LQrASFY0qQmLjeTO563sZs6GaFI5qPVMsy/CgUHXZuPioluPZJEZdYg52zzPXTJMt5+utAp2NuOvVtRss5p3mJf/rJ2iXK/5qOigdfvhOXFYbRv0pKvWeo/4/91Md5KS3frccxF2sDUWFntvycjxNoDK4=
+    - FRONTEND_PORT=$FRONTEND_PORT
+    - FRONTEND_HOST=$FRONTEND_HOST
+    - FRONTEND_PROTO=$FRONTEND_PROTO
+    - MOZ_HEADLESS=$MOZ_HEADLESS
