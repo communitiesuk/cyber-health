@@ -8,13 +8,18 @@ SCRIPT_CLOUDFOUNDRY_ORG="${CLOUDFOUNDRY_ORG:=$DEFAULT_CLOUDFOUNDRY_ORG}"
 # Structure 
 # The index is the name of each folder containing an application
 
-APPLICATIONS=("frontend")
+APPLICATIONS=("cyber-health")
 
 for application in "${APPLICATIONS[@]}"
 do
     (
         cd "$application" || exit
+        if [ "$SCRIPT_CLOUDFOUNDRY_SPACE" == "production" ]; then
+            SCRIPT_APP_NAME="$application"
+        else
+            SCRIPT_APP_NAME=$("$application-$SCRIPT_CLOUDFOUNDRY_SPACE" | tr '[:upper:]' '[:lower:]')
+        fi
         # shellcheck disable=SC1091
-        source deploy.sh "$CLOUDFOUNDRY_USERNAME" "$CLOUDFOUNDRY_PASSWORD" "$SCRIPT_CLOUDFOUNDRY_API" "$SCRIPT_CLOUDFOUNDRY_SPACE" "$SCRIPT_CLOUDFOUNDRY_ORG" "$APP_NAME"
+        source script/deploy.sh "$CLOUDFOUNDRY_USERNAME" "$CLOUDFOUNDRY_PASSWORD" "$SCRIPT_CLOUDFOUNDRY_API" "$SCRIPT_CLOUDFOUNDRY_SPACE" "$SCRIPT_CLOUDFOUNDRY_ORG" "$SCRIPT_APP_NAME"
     )
 done
