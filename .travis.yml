@@ -17,7 +17,7 @@ services:
   - postgresql
 deploy:
   # deploy develop to the staging environment
-  - provider: script
+  - provider: script  
     edge: true
     skip_cleanup: true
     script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE
@@ -51,6 +51,5 @@ env:
     - FRONTEND_HOST=$FRONTEND_HOST
     - FRONTEND_PROTO=$FRONTEND_PROTO
     - MOZ_HEADLESS=$MOZ_HEADLESS
-    - DATABASE_USER=travis
-    - DATABASE_PASSWORD=travispass
+    - DATABASE_USER=postgres
     - DATABASE_NAME=cyberhealthci
