@@ -1,8 +1,10 @@
 #!/bin/bash
 
 # Create the database users expected
-psql -c 'create database travis_ci_test;' -U postgres
-psql -c "CREATE USER travis WITH PASSWORD 'travispass'" -U postgres ;
+psql -c "create database $DATABASE_NAME;" -U postgres
+psql -c "CREATE USER $DATABASE_USER WITH PASSWORD '$DATABASE_PASSWORD'" -U postgres ;
+
+pg_isready -d "$DATABASE_NAME" -h "$DATABASE_HOST" -p "$DATABASE_PORT" -U "DATABASE_USER" -t 5
 
 APPLICATIONS=("cyber-health")
 for application in "${APPLICATIONS[@]}"
