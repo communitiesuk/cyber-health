@@ -8,6 +8,9 @@ before_script: bash scripts/travis/before_script.sh
 before_install: bash scripts/travis/before_install.sh
 addons:
   firefox: latest
+  postgresql: "13"
+services:
+  - postgresql
 deploy:
   # deploy develop to the staging environment
   - provider: script
@@ -44,3 +47,7 @@ env:
     - FRONTEND_HOST=$FRONTEND_HOST
     - FRONTEND_PROTO=$FRONTEND_PROTO
     - MOZ_HEADLESS=$MOZ_HEADLESS
+    - DATABASE_USER=travis
+    - DATABASE_HOST=127.0.0.1
+    - DATABASE_PASSWORD=travispass
+    - DATABASE_PORT=5433
