@@ -51,3 +51,4 @@ env:
     - DATABASE_HOST=127.0.0.1
     - DATABASE_PASSWORD=travispass
     - DATABASE_PORT=5433
+    - DATABASE_NAME=cyberhealthci
