@@ -9,6 +9,10 @@ before_install: bash scripts/travis/before_install.sh
 addons:
   firefox: latest
   postgresql: "13"
+  apt:
+    packages:
+    - postgresql-13
+    - postgresql-client-13
 services:
   - postgresql
 deploy:
