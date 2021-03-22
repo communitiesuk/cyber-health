@@ -17,7 +17,7 @@ services:
   - postgresql
 deploy:
   # deploy develop to the staging environment
-  - provider: script  
+  - provider: script
     edge: true
     skip_cleanup: true
     script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE
