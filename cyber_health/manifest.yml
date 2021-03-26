@@ -4,6 +4,6 @@ applications:
     memory: 64M
     buildpacks:
       - python_buildpack
-    command: python manage.py collectstatic --noinput
+    command: python manage.py collectstatic --noinput && gunicorn cyber_health.wsgi:application --workers 2
 #    services:
 #      - cyber_health-postgres
