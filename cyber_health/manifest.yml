@@ -5,7 +5,5 @@ applications:
     buildpacks:
       - python_buildpack
     command: python manage.py collectstatic --noinput && gunicorn cyber_health.wsgi:application
-    env:
-      - $SECRET_KEY
 #    services:
 #      - cyber_health-postgres
