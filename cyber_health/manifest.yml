@@ -4,6 +4,6 @@ applications:
     memory: 64M
     buildpacks:
       - python_buildpack
-    command: python -m pip install --upgrade pip
+    command: pip download -r requirements.txt
 #    services:
 #      - cyber_health-postgres
