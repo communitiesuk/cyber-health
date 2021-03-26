@@ -8,7 +8,7 @@ SCRIPT_CLOUDFOUNDRY_ORG="${CLOUDFOUNDRY_ORG:=$DEFAULT_CLOUDFOUNDRY_ORG}"
 # Structure 
 # The index is the name of each folder containing an application
 
-APPLICATIONS=("cyber-health")
+APPLICATIONS=("cyber_health")
 
 for application in "${APPLICATIONS[@]}"
 do
