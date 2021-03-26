@@ -1,1 +1,1 @@
-web: gunicorn cyber_health.wsgi:application --workers 2
+web: gunicorn --workers=2 cyber_health.wsgi:application
