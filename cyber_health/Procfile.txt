@@ -1,1 +1,1 @@
-web: python3 server.py
+web: gunicorn cyber_health.wsgi:application --workers 2
