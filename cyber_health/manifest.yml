@@ -4,5 +4,5 @@ applications:
     memory: 64M
     buildpacks:
       - python_buildpack
-    services:
-      - cyber_health-postgres
+#    services:
+#      - cyber_health-postgres
