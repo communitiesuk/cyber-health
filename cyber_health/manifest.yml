@@ -1,7 +1,7 @@
 ---
 applications:
   - name: cyber_health
-    memory: 64M
+    memory: 256M
     buildpacks:
       - python_buildpack
 #    command: python manage.py collectstatic --noinput
