@@ -125,3 +125,5 @@ STATIC_ROOT= os.path.join(STATIC_URL, 'root')
 STATICFILES_DIRS = [
     os.path.join(STATIC_URL, 'dist'),
 ]
+
+# This may require an alternative configuration, see: https://docs.cloud.service.gov.uk/deploying_apps.html#deploy-a-django-app

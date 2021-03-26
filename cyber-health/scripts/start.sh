@@ -1,10 +1,21 @@
 #!/bin/bash
 
 # Setup default values
-DEFAULT_FRONTEND_PORT="8081"
+DEFAULT_FRONTEND_PORT="8000"
 
 # Script cloud foundry
 FRONTEND_PORT="${FRONTEND_PORT:=$DEFAULT_FRONTEND_PORT}"
 
-http-server -p 8081 . & # start a Web server, defaults on 0.0.0.0 (all interfaces) 
-sleep 3 # give Web server some time to bind to sockets, etc
+python3 -m venv cyber-health-python
+# shellcheck disable=SC1091
+source ./cyber-health-python/bin/activate 
+
+# Install dependencies
+pip install -r requirements.txt
+
+# NPM install dependencies
+npm install
+npm run frontend:build
+
+# Start python
+python manage.py runserver
