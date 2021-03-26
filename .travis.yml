@@ -5,10 +5,7 @@ arch: arm64-graviton2 # in AWS over Graviton2 CPU
 virt: lxd             # required, routes to an LXD container
 install: bash scripts/travis/install.sh
 before_script: bash scripts/travis/before_script.sh
-before_install:
-  - python -m pip install --upgrade pip
-  - export PYTHONPATH=$PYTHONPATH:$(pwd)
-  - bash scripts/travis/before_install.sh
+before_install: bash scripts/travis/before_install.sh
 addons:
   firefox: latest
 deploy:

@@ -4,5 +4,10 @@ applications:
     memory: 64M
     buildpacks:
       - python_buildpack
+    env:
+      DISABLE_COLLECTSTATIC: 1
+    command:
+      - python -m pip install --upgrade pip
+      - export PYTHONPATH=$PYTHONPATH:$(pwd)
 #    services:
 #      - cyber_health-postgres
