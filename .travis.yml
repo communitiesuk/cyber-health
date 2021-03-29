@@ -40,7 +40,7 @@ deploy:
 script: bash scripts/travis/script.sh
 branches:
   only:
-    - feature/LGCS-322
+    - feature/LGCS-322_1
 #  - main
 #  - staging
 #  - develop
