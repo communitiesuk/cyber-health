@@ -4,6 +4,6 @@ applications:
     memory: 256M
     buildpacks:
       - python_buildpack
-    command: gunicorn --workers=2 cyber_health.wsgi:application
+#    command:
 #    services:
 #      - cyber_health-postgres
