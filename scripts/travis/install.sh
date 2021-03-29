@@ -1,8 +1,8 @@
 #!/bin/bash
 
 sudo apt-get update
-sudo apt-get install -y firefox-geckodriver wget unzip
-sudo -H pip install safety 
+sudo apt-get install -y firefox-geckodriver wget unzip python3-venv
+sudo -H pip install safety
 sudo -H pip install bandit
 
 gem install dpl --pre
