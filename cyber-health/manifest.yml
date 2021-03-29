@@ -1,0 +1,8 @@
+---
+applications:
+  - name: cyber-health
+    memory: 64M
+    buildpacks:
+      - staticfile_buildpack
+    services: 
+      - cyber-health-postgres
