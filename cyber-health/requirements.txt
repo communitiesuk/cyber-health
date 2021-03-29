@@ -1,6 +1,7 @@
 asgiref==3.3.1
 autopep8==1.5.6
 Django==3.1.7
+django-environ==0.4.5
 flake8==3.9.0
 mccabe==0.6.1
 psycopg2-binary==2.8.6
@@ -9,3 +10,5 @@ pyflakes==2.3.0
 pytz==2021.1
 sqlparse==0.4.1
 toml==0.10.2
+waitress==0.8.9 # a pure python WSGI server that is a replacement for gunicorn
+whitenoise==5.2.0  # manages static assets
