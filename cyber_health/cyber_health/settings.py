@@ -29,8 +29,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['cyber_health-sandbox.london.cloudapps.digital']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['london.cloudapps.digital', 'localhost']
 
 # Application definition
 
