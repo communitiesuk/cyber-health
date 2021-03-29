@@ -2,6 +2,9 @@
 
 sudo apt-get update
 sudo apt-get install -y firefox-geckodriver wget unzip
+sudo -H pip install safety 
+sudo -H pip install bandit
+
 gem install dpl --pre
 npm install npm@latest -g
 npm install http-server -g
