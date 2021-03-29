@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 from pathlib import Path
+import environ
+env = environ.Env()
+environ.Env.read_env()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'oirk3)#p9dmiu2g4)2%j6bk)7$%c!#ag0mmdste3$e&p+z0(2!'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,7 +82,7 @@ WSGI_APPLICATION = 'cyberhealth.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'cyber-health-framework'
+        'NAME': env('DB_NAME')
     }
 }
 
@@ -115,6 +118,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+FILE_CHARSET='utf-8'
 
 
 # Static files (CSS, JavaScript, Images)
