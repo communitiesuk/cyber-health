@@ -7,9 +7,11 @@ echo "Activating ./cyber-health-python/bin/activate"
 # shellcheck disable=SC1091
 source ./cyber-health-python/bin/activate
 
+pip3 install wheel
+
 # Install dependencies
 pip3 install -r requirements.txt
 
 # NPM install dependencies
-npm install
-npm run frontend:build
+# npm install
+# npm run frontend:build
