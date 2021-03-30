@@ -4,4 +4,4 @@ applications:
     memory: 512M
     buildpacks:
       - python_buildpack
-    command: python manage.py migrate && python manage.py collectstatic && gunicorn --workers=2 cyber_health.wsgi:application
+
