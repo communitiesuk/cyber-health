@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # shellcheck disable=SC1091
- source scripts/setup-postgres.sh 
+source scripts/setup-postgres.sh 
 
 APPLICATIONS=("cyber_health")
 
@@ -18,6 +18,8 @@ do
         fi
 
         export SECRET_KEY="travis_secret_key_1"
+
+        source setup.sh
 
         # Running the unit tests
         python manage.py test
