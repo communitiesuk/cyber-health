@@ -1,8 +1,8 @@
 ---
 applications:
   - name: cyber-health
-    memory: 64M
+    memory: 512M
     buildpacks:
-      - staticfile_buildpack
+      - python_buildpack
     services: 
       - cyber-health-postgres
