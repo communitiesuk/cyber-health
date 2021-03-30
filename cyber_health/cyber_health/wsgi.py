@@ -16,3 +16,4 @@ from whitenoise import WhiteNoise
 
 application = get_wsgi_application()
 application = WhiteNoise(get_wsgi_application())
+
