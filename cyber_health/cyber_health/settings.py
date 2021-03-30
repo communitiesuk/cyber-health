@@ -29,7 +29,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'api.london.cloud.service.gov.uk']
+ALLOWED_HOSTS = ['127.0.0.1', '10.255.57.231']
 
 # Application definition
 
