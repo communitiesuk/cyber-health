@@ -21,13 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 env = environ.Env(DEBUG=(bool, True))
 environ.Env.read_env()
+
+# This application requires a secret key to be set in the environment to be run
 SECRET_KEY = env('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# This application requires a debug flag to be set
+DEBUG = env('DJANGO_DEBUG', default=True)
 
 # ALLOWED_HOSTS = ['cyber_health-sandbox.london.cloudapps.digital']
 ALLOWED_HOSTS = []
