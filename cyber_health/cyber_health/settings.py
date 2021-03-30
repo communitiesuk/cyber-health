@@ -33,8 +33,7 @@ DEBUG = True
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'api.london.cloud.service.gov.uk']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['10.255.127.42']
 # Application definition
 
 INSTALLED_APPS = [
