@@ -4,4 +4,4 @@ applications:
     memory: 512M
     buildpacks:
       - python_buildpack
-
+    command: python manage.py collectstatic
