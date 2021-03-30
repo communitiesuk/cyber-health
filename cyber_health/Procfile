@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn --workers=2 cyber_health.wsgi:application
+web:
