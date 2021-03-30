@@ -8,7 +8,7 @@ echo "Activating ./cyber-health-python/bin/activate"
 source ./cyber-health-python/bin/activate
 
 # Install dependencies
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 # NPM install dependencies
 npm install
