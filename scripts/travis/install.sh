@@ -2,12 +2,15 @@
 
 export LC_ALL="en_GB.UTF-8"
 export LC_CTYPE="en_GB.UTF-8"
+export SECRET_KEY="travis_secret_key_1"
 sudo dpkg-reconfigure locales
 
 sudo apt-get update
 sudo apt-get install -y firefox-geckodriver wget unzip python3.9-venv python3.8-venv
 sudo -H pip install safety
 sudo -H pip install bandit
+sudo -H pip install wheel
+
 
 gem install dpl --pre
 npm install npm@latest -g
