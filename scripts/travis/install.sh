@@ -8,7 +8,6 @@ sudo apt-get update
 sudo apt-get install -y firefox-geckodriver wget unzip python3.9-venv python3.8-venv 
 sudo -H pip3 install safety
 sudo -H pip3 install bandit
-sudo -H pip3 install wheel
 
 
 gem install dpl --pre
