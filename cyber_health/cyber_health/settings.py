@@ -29,6 +29,10 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Setup support for proxy headers
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 # ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'api.london.cloud.service.gov.uk']
 ALLOWED_HOSTS = ['*']
 # Application definition
