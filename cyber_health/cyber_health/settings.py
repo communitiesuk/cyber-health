@@ -27,9 +27,9 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'cyber_health-sandbox.london.cloudapps.digital']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.london.cloudapps.digital', '.london.cloud.service.gov.uk']
 
 # Application definition
 
