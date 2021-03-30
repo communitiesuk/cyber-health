@@ -7,4 +7,4 @@ class TestViews(SimpleTestCase):
 
     def test_start_page_url_resolves(self):
         url = reverse('dynamic-page')
-        #self.assertEquals(resolve(url).func, start_page)
+        # self.assertEquals(resolve(url).func, start_page)
