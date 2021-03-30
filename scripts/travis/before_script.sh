@@ -17,6 +17,8 @@ do
            bandit -r . -f json
         fi
 
+        export SECRET_KEY="travis_secret_key_1"
+
         # Running the unit tests
         python manage.py test
 
