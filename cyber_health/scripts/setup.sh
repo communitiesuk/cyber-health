@@ -8,6 +8,7 @@ echo "Activating ./cyber-health-python/bin/activate"
 source ./cyber-health-python/bin/activate
 
 pip3 install wheel
+pip3 install whitenoise
 
 # Install dependencies
 pip3 install -r requirements.txt
