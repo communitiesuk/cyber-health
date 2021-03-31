@@ -1,0 +1,5 @@
+name: CyberHealth
+channels:
+  - defaults
+dependencies:
+  - pip=20.*
