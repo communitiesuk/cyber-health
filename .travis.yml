@@ -36,11 +36,11 @@ deploy:
     cleanup: true
     script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE
     on:
-      branch: feature/LGCS-322_1
+      branch: feature/LGCS-322_2
 script: bash scripts/travis/script.sh
 branches:
   only:
-    - feature/LGCS-322_1
+    - feature/LGCS-322_2
 #  - main
 #  - staging
 #  - develop
