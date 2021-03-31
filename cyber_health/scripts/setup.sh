@@ -7,6 +7,9 @@ echo "Activating ./cyber-health-python/bin/activate"
 # shellcheck disable=SC1091
 source ./cyber-health-python/bin/activate
 
+python3 -m pip install -U pip
+python3 -m pip install -U setuptools
+
 pip3 install wheel
 pip3 install whitenoise
 
