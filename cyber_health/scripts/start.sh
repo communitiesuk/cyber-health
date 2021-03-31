@@ -10,4 +10,4 @@ FRONTEND_PORT="${FRONTEND_PORT:=$DEFAULT_FRONTEND_PORT}"
 source ./cyber-health-python/bin/activate
 
 # Start the application
-python3 manage.py runserver $DEFAULT_FRONTEND_PORT
+python3 manage.py runserver $DEFAULT_FRONTEND_PORT &
