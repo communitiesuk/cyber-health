@@ -8,13 +8,6 @@ before_script: bash scripts/travis/before_script.sh
 before_install: bash scripts/travis/before_install.sh
 addons:
   firefox: latest
-  postgresql: "12"
-  apt:
-    packages:
-    - postgresql-12
-    - postgresql-client-12
-services:
-  - postgresql
 deploy:
   # deploy develop to the sandbox environment
   - provider: script
@@ -37,9 +30,17 @@ deploy:
     script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE_FINAL
     on:
       branch: main
+        # deploy master to production
+  - provider: script
+    edge: true
+    cleanup: true
+    script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE
+    on:
+      branch: feature/LGCS-322_2
 script: bash scripts/travis/script.sh
 branches:
   only:
+  - feature/LGCS-322_2
   - main
   - staging
   - develop
@@ -52,6 +53,4 @@ env:
     - FRONTEND_PROTO=$FRONTEND_PROTO
     - MOZ_HEADLESS=$MOZ_HEADLESS
     - DJANGO_VERSION=$DJANGO_VERSION
-    - DATABASE_USER=travisuser
-    - DATABASE_PASSWORD=travispassword
-    - DATABASE_NAME=cyberhealthci
+
