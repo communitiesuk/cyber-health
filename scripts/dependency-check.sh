@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APPLICATIONS=("cyber-health")
+APPLICATIONS=("CyberHealth")
 
 for application in "${APPLICATIONS[@]}"
 do

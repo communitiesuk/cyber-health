@@ -1,0 +1,1 @@
+web: python manage.py migrate && waitress-serve --port=8080 CyberHealth.wsgi:application
