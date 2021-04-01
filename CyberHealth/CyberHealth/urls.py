@@ -21,7 +21,6 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dynamic/', include('dynamicpages.urls')),
-    # path('', include('staticpages.urls')),
-    path('', views.index, name='index'),
+    path('', include('staticpages.urls')),
 
 ]

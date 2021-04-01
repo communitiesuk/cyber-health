@@ -6,5 +6,5 @@ from staticpages.views import start_page
 class TestViews(SimpleTestCase):
 
     def test_start_page_url_resolves(self):
-        url = reverse('static-page')
+        url = reverse('render')
         self.assertEquals(resolve(url).func, start_page)

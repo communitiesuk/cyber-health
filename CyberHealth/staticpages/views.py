@@ -2,4 +2,4 @@ from django.shortcuts import render
 
 
 def start_page(request):
-    return render(request, 'staticpages/staticpage.html')
+    return render(request, 'staticpages/index.html')
