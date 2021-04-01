@@ -66,7 +66,7 @@ ROOT_URLCONF = 'CyberHealth.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,7 +129,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(STATIC_URL, 'root')
+STATICFILES_DIRS = [
+    os.path.join(STATIC_URL, 'dist'),
+]
 
 # Adding in logging
 # If you're following the Twelve-Factor App methodology for your application,
@@ -160,9 +165,3 @@ LOGGING = {
        },
    },
 }
-
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
