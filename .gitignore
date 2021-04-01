@@ -69,7 +69,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-cyber_health/cyber_health/.env
+CyberHealth/CyberHealth/.env
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -114,4 +114,4 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 media
-cyber_health/cyber_health/.env
+CyberHealth/CyberHealth/.env

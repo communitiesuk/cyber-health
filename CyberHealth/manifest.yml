@@ -1,0 +1,8 @@
+---
+applications:
+  - name: CyberHealth
+    memory: 512M
+    buildpacks:
+      - python_buildpack
+    services:
+      - cyber-health-postgres

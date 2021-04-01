@@ -3,7 +3,7 @@
 # shellcheck disable=SC1091
 source scripts/setup-postgres.sh 
 
-APPLICATIONS=("cyber_health")
+APPLICATIONS=("CyberHealth")
 
 for application in "${APPLICATIONS[@]}"
 do
