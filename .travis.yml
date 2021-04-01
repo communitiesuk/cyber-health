@@ -9,30 +9,30 @@ before_install: bash scripts/travis/before_install.sh
 addons:
   firefox: latest
 deploy:
-  # deploy develop to the staging environment
+  # deploy develop to the sandbox environment
   - provider: script
     edge: true
-    skip_cleanup: true
+    cleanup: true
     script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE
     on:
       branch: develop
-  # deploy master to production
+  # deploy master to staging environment
   - provider: script
-    edge: true  
-    skip_cleanup: true
-    script: bash scripts/travis/deploy/script.sh staging
+    edge: true
+    cleanup: true
+    script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE_UAT
     on:
       branch: staging
   # deploy master to production
   - provider: script
-    edge: true  
-    skip_cleanup: true
-    script: bash scripts/travis/deploy/script.sh production
+    edge: true
+    cleanup: true
+    script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE_FINAL
     on:
       branch: main
-script: bash scripts/travis/script.sh 
+script: bash scripts/travis/script.sh
 branches:
-  only: 
+  only:
   - main
   - staging
   - develop
@@ -44,3 +44,5 @@ env:
     - FRONTEND_HOST=$FRONTEND_HOST
     - FRONTEND_PROTO=$FRONTEND_PROTO
     - MOZ_HEADLESS=$MOZ_HEADLESS
+    - DJANGO_VERSION=$DJANGO_VERSION
+

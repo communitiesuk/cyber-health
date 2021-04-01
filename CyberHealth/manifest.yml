@@ -1,0 +1,7 @@
+---
+applications:
+  - name: CyberHealth
+    memory: 512M
+    buildpacks:
+      - python_buildpack
+
