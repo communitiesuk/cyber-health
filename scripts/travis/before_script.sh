@@ -1,6 +1,10 @@
 #!/bin/bash
 
 APPLICATIONS=("CyberHealth")
+
+# shellcheck disable=SC1091
+ source scripts/setup-postgres.sh 
+
 for application in "${APPLICATIONS[@]}"
 do
     (
