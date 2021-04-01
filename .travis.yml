@@ -52,6 +52,4 @@ env:
     - FRONTEND_PROTO=$FRONTEND_PROTO
     - MOZ_HEADLESS=$MOZ_HEADLESS
     - DJANGO_VERSION=$DJANGO_VERSION
-    - DATABASE_USER=travisuser
-    - DATABASE_PASSWORD=travispassword
-    - DATABASE_NAME=cyberhealthci
+
