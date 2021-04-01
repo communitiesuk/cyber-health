@@ -20,7 +20,7 @@ import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+PROJECT_ABS_ROOT = os.path.abspath(os.path.dirname(__name__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -132,8 +132,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(STATIC_URL, 'root')
+STATIC_PATH = os.path.join(os.path.join(PROJECT_ABS_ROOT, STATIC_URL), 'dist')
+print(STATIC_PATH)
 STATICFILES_DIRS = [
-    os.path.join(STATIC_URL, 'dist'),
+    STATIC_PATH
 ]
 
 # Adding in logging
