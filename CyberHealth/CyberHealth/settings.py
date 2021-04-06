@@ -32,7 +32,7 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # This application requires a debug flag to be set
-DEBUG = env('DJANGO_DEBUG', default=False)
+DEBUG = env('DJANGO_DEBUG', default=True)
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'cyberhealth-sandbox.london.cloudapps.digital']
 
@@ -126,14 +126,16 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
+# # Static files (CSS, JavaScript, Images)
+# # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = os.path.join(BASE_DIR, 'static/')
-STATIC_ROOT= os.path.join(STATIC_URL, 'root')
+STATIC_ROOT= os.path.join(BASE_DIR, 'root')
 STATICFILES_DIRS = [
-    os.path.join(STATIC_URL, 'dist'),
+    os.path.join(STATIC_URL, 'dist'), 
 ]
+
+
 
 # Adding in logging
 # If you're following the Twelve-Factor App methodology for your application,
