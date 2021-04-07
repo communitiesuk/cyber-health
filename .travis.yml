@@ -30,9 +30,19 @@ deploy:
     script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE_FINAL
     on:
       branch: main
+  # ------------------------------------------------------------------------
+  # deploy develop to the sandbox environment
+  - provider: script
+    edge: true
+    cleanup: true
+    script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE
+    on:
+      branch: feature/324_add-tests
+  # ------------------------------------------------------------------------
 script: bash scripts/travis/script.sh
 branches:
   only:
+  - feature/324_add-tests
   - main
   - staging
   - develop
