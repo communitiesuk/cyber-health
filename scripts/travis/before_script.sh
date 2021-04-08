@@ -21,9 +21,6 @@ do
 
         source scripts/setup.sh
 
-        # shellcheck disable=SC1091
-        source ./cyber-health-python/bin/activate
-
         # Running the unit tests
         python3 manage.py test
 
