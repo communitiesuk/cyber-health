@@ -12,4 +12,3 @@ source ./cyber-health-python/bin/activate
 # Start the application
 echo "Starting the webserver using the command 'python3 manage.py runserver $FRONTEND_PORT'"
 python3 manage.py runserver $FRONTEND_PORT &
-echo "***************************************4**********************************************"
