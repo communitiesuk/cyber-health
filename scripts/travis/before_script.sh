@@ -21,6 +21,9 @@ do
 
         source scripts/setup.sh
 
+        # shellcheck disable=SC1091
+        pipenv shell
+
         # Running the unit tests
         python3 manage.py test
 
