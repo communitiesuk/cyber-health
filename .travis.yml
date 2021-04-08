@@ -45,7 +45,7 @@ deploy:
     cleanup: true
     script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE
     on:
-      branch: feature/static-combo-2
+      branch: feature/unit_tests
   # ------------------------------------------------------------------------
 env:
   global:
