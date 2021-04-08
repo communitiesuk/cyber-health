@@ -19,10 +19,10 @@ do
 
         export SECRET_KEY="travis_secret_key_1"
 
-#        source scripts/setup.sh
+        source scripts/setup.sh
 
-        # shellcheck disable=SC1091
-        source ./cyber-health-python/bin/activate
+#        # shellcheck disable=SC1091
+#        source ./cyber-health-python/bin/activate
 
         # Running the unit tests
         python3 manage.py test
