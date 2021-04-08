@@ -22,7 +22,7 @@ do
         source scripts/setup.sh
 
         # shellcheck disable=SC1091
-        pipenv shell
+        source ./cyber-health-python/bin/activate
 
         # Running the unit tests
         python3 manage.py test
