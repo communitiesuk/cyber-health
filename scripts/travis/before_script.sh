@@ -26,7 +26,7 @@ do
 
         # Running the unit tests
         python3 manage.py test
-
+        echo "***************************************1**********************************************"
         # shellcheck disable=SC1091
         source scripts/start.sh 
     )

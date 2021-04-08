@@ -32,7 +32,7 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # This application requires a debug flag to be set
-DEBUG = env('DJANGO_DEBUG', default=True)
+DEBUG = env('DJANGO_DEBUG', default=False)
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'cyberhealth-sandbox.london.cloudapps.digital']
 

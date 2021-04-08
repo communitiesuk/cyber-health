@@ -21,3 +21,4 @@ pipenv install
 # NPM install dependencies
 npm install
 npm run frontend:build
+echo "***************************************3**********************************************"

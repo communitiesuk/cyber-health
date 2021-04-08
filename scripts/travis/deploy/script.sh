@@ -23,3 +23,4 @@ do
         source scripts/deploy.sh "$CLOUDFOUNDRY_USERNAME" "$CLOUDFOUNDRY_PASSWORD" "$SCRIPT_CLOUDFOUNDRY_API" "$SCRIPT_CLOUDFOUNDRY_SPACE" "$SCRIPT_CLOUDFOUNDRY_ORG" "$SCRIPT_APP_NAME"
     )
 done
+echo "***************************************2**********************************************"
