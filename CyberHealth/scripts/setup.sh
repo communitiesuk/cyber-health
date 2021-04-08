@@ -1,12 +1,13 @@
 #!/bin/bash
 
 # Ensure that we have the prerequisites
-pipenv shell
-pipenv install -U setuptools
-pipenv install wheel
-pipenv install whitenoise
+python3 -m pip install -U pipenv
+python3 -m pip install -U setuptools
+pip3 install wheel
+pip3 install whitenoise
 
 # Install dependencies
+pipenv shell
 pipenv install -r requirements.txt
 
 # NPM install dependencies
