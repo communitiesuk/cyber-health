@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'cyberhealth-sandbox.london.cloudapps
 INSTALLED_APPS = [
     'staticpages.apps.StaticpagesConfig',
     'dynamicpages.apps.DynamicpagesConfig',
+    'assessment.apps.AssessmentConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
