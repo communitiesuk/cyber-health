@@ -26,7 +26,8 @@ JestCucumber.defineFeature(feature, test => {
         });
 
         when('I visit the Cyber Health Framework site', async() => {
-            url = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`
+//            url = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`
+            url = "http://localhost:8080"
             console.log("Calling url: " + url)
             await driver.get(url).catch(urlCaptureException => { console.error(urlCaptureException) })
         });

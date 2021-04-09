@@ -21,7 +21,7 @@ console.log(process.env.FRONTEND_PORT)
 console.log("****************************************************")
 
 let url2 = process.env.FRONTEND_PROTO + "://" + process.env.FRONTEND_HOST + ":" + process.env.FRONTEND_PORT
-let url = "http://localhost:8081"
+let url = "http://localhost:8080"
 console.log("This is the URL:" + url)
 driver.get(url).then(() => {
     const axe = new AxeBuilder(driver, null, { noSandbox: true });
