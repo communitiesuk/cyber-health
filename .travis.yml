@@ -38,7 +38,7 @@ deploy:
     script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE
     on:
       branch: feature/unit_tests
-# ------------------------------------------------------------------------
+  # ------------------------------------------------------------------------
 script: bash scripts/travis/script.sh
 branches:
   only:
