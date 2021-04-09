@@ -20,8 +20,8 @@ console.log(`${process.env.FRONTEND_HOST}`)
 console.log(`${process.env.FRONTEND_PORT}`)
 console.log("****************************************************")
 
-let url = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`
-
+let url = process.env.FRONTEND_PROTO + "://" + process.env.FRONTEND_HOST + ":" + process.env.FRONTEND_PORT
+console.log("This is the URL:" + url)
 driver.get(url).then(() => {
     const axe = new AxeBuilder(driver, null, { noSandbox: true });
     axe.analyze(async(err, results) => {
