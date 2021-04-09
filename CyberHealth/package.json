@@ -1,0 +1,36 @@
+{
+  "name": "cyber-health-frontend",
+  "version": "1.0.0",
+  "description": "User application for MHCLG Cyber Health framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "frontend:clean": "gulp clean",
+    "frontend:build": "gulp build",
+    "frontend:watch": "gulp watch"
+  },
+  "author": "Snook",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-dart-sass": "^1.0.2",
+    "gulp-postcss": "^9.0.0"
+  },
+  "dependencies": {
+    "govuk-frontend": "^3.11.0",
+    "postcss": "^8.2.8"
+  },
+  "browserslist": [
+    ">0.1%",
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Edge versions",
+    "last 2 Samsung versions",
+    "Safari >= 9",
+    "ie 8-11",
+    "iOS >= 9"
+  ]
+}
