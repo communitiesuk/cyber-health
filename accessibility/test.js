@@ -16,7 +16,11 @@ driver = new WebDriver.Builder()
     .build();
 
 let url = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`
-
+console.log("****************************************************")
+console.log(${process.env.FRONTEND_PROTO})
+console.log(${process.env.FRONTEND_HOST})
+console.log(${process.env.FRONTEND_PORT})
+console.log("****************************************************")
 driver.get(url).then(() => {
     const axe = new AxeBuilder(driver, null, { noSandbox: true });
     axe.analyze(async(err, results) => {
