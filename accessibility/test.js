@@ -19,6 +19,7 @@ console.log(`${process.env.FRONTEND_PROTO}`)
 console.log(`${process.env.FRONTEND_HOST}`)
 console.log(`${process.env.FRONTEND_PORT}`)
 console.log("****************************************************")
+
 let url = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`
 
 driver.get(url).then(() => {
