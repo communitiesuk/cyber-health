@@ -8,11 +8,11 @@ class Question(models.Model):
 
 class Choice(models.Model):
   choice_text = models.CharField(max_length=255)
-  question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
+  question = models.ForeignKey(Question, on_delete=models.CASCADE)
 
   def __str__(self):
         return self.choice_text
 
 class Answer(models.Model):
-  question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
-  choice_id = models.ForeignKey(Choice, on_delete=models.CASCADE)
+  question = models.ForeignKey(Question, on_delete=models.CASCADE)
+  choice = models.ForeignKey(Choice, on_delete=models.CASCADE)

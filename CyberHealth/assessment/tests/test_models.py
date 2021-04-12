@@ -10,12 +10,12 @@ class QuestionTestCase(TestCase):
 
         self.choice1 = Choice.objects.create(
             choice_text="yes",
-            question_id=self.question1
+            question=self.question1
         )
 
         self.answer1 = Answer.objects.create(
-            question_id=self.question1,
-            choice_id=self.choice1
+            question=self.question1,
+            choice=self.choice1
         )
 
     # Question model tests
@@ -28,12 +28,12 @@ class QuestionTestCase(TestCase):
         self.assertEqual(self.choice1.choice_text, "yes")
 
     def test_choice_has_question(self):
-        self.assertEqual(self.choice1.question_id.question_text,
+        self.assertEqual(self.choice1.question.question_text,
                          "Are users who install software or other active code on the Council’s systems without permission subject to disciplinary action?")
 
     # Answer model tests
     def test_answer_has_question(self):
-        self.assertEqual(self.answer1.question_id.question_text, "Are users who install software or other active code on the Council’s systems without permission subject to disciplinary action?")
+        self.assertEqual(self.answer1.question.question_text, "Are users who install software or other active code on the Council’s systems without permission subject to disciplinary action?")
 
     def test_answer_has_choice(self):
-        self.assertEqual(self.answer1.choice_id.choice_text, "yes")    
+        self.assertEqual(self.answer1.choice.choice_text, "yes")    
