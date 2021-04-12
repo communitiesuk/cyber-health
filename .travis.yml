@@ -9,7 +9,7 @@ before_install: bash scripts/travis/before_install.sh
 addons:
   firefox: latest
 deploy:
-   # deploy develop to the sandbox environment
+  # deploy develop to the sandbox environment
   - provider: script
     edge: true
     cleanup: true
