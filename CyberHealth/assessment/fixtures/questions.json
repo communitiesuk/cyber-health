@@ -1,0 +1,23 @@
+[
+  {
+    "model": "assessment.question",
+    "pk": 1,
+    "fields": {
+      "question_text": "Is there a Board/Senior Management-level commitment to manage the risks arising from the cyber threat?"
+    }
+  },
+  {
+    "model": "assessment.question",
+    "pk": 2,
+    "fields": {
+      "question_text": "Are users who install software or other active code on the Council’s systems without permission subject to disciplinary action?"
+    }
+  },
+  {
+    "model": "assessment.question",
+    "pk": 3,
+    "fields": {
+      "question_text": "Is personal data that is processed catalogued, and is the purpose for processing it is defined and described?"
+    }
+  }
+]

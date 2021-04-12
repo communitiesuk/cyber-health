@@ -1,0 +1,18 @@
+[
+  {
+    "model": "assessment.answer",
+    "pk": 1,
+    "fields": {
+      "question": 1,
+      "choice": 1
+    }
+  },
+  {
+    "model": "assessment.answer",
+    "pk": 2,
+    "fields": {
+      "question": 2,
+      "choice": 2
+    }
+  }
+]
