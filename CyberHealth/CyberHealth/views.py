@@ -1,5 +1,5 @@
 from django.shortcuts import render
 
 
-def start_page(request):
+def index(request):
     return render(request, 'staticpages/index.html')

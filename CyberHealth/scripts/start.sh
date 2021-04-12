@@ -1,10 +1,14 @@
 #!/bin/bash
 
 # Setup default values
-DEFAULT_FRONTEND_PORT="8081"
+DEFAULT_FRONTEND_PORT="8080"
 
 # Script cloud foundry
 FRONTEND_PORT="${FRONTEND_PORT:=$DEFAULT_FRONTEND_PORT}"
 
-http-server -p 8081 . & # start a Web server, defaults on 0.0.0.0 (all interfaces) 
-sleep 3 # give Web server some time to bind to sockets, etc
+# shellcheck disable=SC1091
+source ./cyber-health-python/bin/activate
+
+# Start the application
+echo "Starting the webserver using the command 'python3 manage.py runserver $FRONTEND_PORT'"
+python3 manage.py runserver $FRONTEND_PORT &
