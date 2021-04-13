@@ -1,11 +1,9 @@
 #!/bin/bash
 
-export LC_ALL="en_GB.UTF-8"
-export LC_CTYPE="en_GB.UTF-8"
-sudo dpkg-reconfigure locales
+# export LC_ALL="en_GB.UTF-8"
+# export LC_CTYPE="en_GB.UTF-8"
+# sudo dpkg-reconfigure locales
 
-sudo apt-get update
-sudo apt-get install -y firefox-geckodriver wget unzip python3.9-venv python3.8-venv build-essential ninja-build
 sudo -H pip3 install safety
 sudo -H pip3 install bandit
 

@@ -8,11 +8,18 @@ before_script: bash scripts/travis/before_script.sh
 before_install: bash scripts/travis/before_install.sh
 addons:
   firefox: latest
-  postgresql: "13"
+  postgresql: "12"
   apt:
     packages:
-      - postgresql-13
-      - postgresql-client-13
+      - postgresql-12
+      - postgresql-client-12
+      - firefox-geckodriver 
+      - wget 
+      - unzip 
+      - python3.9-venv 
+      - python3.8-venv 
+      - build-essential 
+      - ninja-build
 services:
   - postgresql
 deploy:
