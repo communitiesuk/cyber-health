@@ -8,6 +8,7 @@ before_script: bash scripts/travis/before_script.sh
 before_install: bash scripts/travis/before_install.sh
 addons:
   firefox: latest
+  postgresql: "12"
 services:
   - postgresql
 deploy:
