@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo useradd -U -s /bin/bash postgres
+
 # Create the database users expected along with databases
 sudo -u postgres psql postgres -c "CREATE USER $DATABASE_USER WITH PASSWORD '$DATABASE_PASSWORD' CREATEDB;"
 sudo -u postgres psql postgres -c "CREATE DATABASE $DATABASE_NAME OWNER $DATABASE_USER;"
