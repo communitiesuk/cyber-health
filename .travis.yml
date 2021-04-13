@@ -8,6 +8,8 @@ before_script: bash scripts/travis/before_script.sh
 before_install: bash scripts/travis/before_install.sh
 addons:
   firefox: latest
+services:
+  - postgresql
 deploy:
   # deploy develop to the sandbox environment
   - provider: script
