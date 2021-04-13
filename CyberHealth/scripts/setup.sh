@@ -21,3 +21,6 @@ pipenv install
 # NPM install dependencies
 npm install
 npm run frontend:build
+
+# run any django migrations required
+python3 manage.py migrate

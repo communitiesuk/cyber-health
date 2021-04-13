@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Run Accessibility and Acceptance tests
 # shellcheck disable=SC1091
