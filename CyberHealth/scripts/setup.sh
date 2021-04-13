@@ -11,6 +11,8 @@ source ./cyber-health-python/bin/activate
 python3 -m pip install -U pipenv
 python3 -m pip install -U pip
 python3 -m pip install -U setuptools
+
+pip3 install psycopg2
 pip3 install wheel
 pip3 install whitenoise
 
