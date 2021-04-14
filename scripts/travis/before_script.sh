@@ -18,7 +18,6 @@ do
         # shellcheck disable=SC1091
         source ./cyber-health-python/bin/activate
 
-
         # shellcheck disable=SC1091
         source scripts/start.sh 
     )
