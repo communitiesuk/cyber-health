@@ -16,5 +16,4 @@ def question(request, question_id):
         'question' : question
     }
 
-
     return render(request, 'assessment/question.html', context)
