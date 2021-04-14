@@ -9,7 +9,7 @@
 gem install dpl --pre
 npm install npm@latest -g
 npm install http-server -g
-wget https://github.com/jeremylong/DependencyCheck/releases/download/v6.1.4/dependency-check-6.1.4-release.zip
+wget https://github.com/jeremylong/DependencyCheck/releases/download/v6.1.5/dependency-check-6.1.5-release.zip
 unzip dependency-check-6.1.4-release.zip
 chmod 755 dependency-check/bin/*.sh
 
