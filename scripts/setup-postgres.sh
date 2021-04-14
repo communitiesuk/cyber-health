@@ -9,6 +9,4 @@ sudo -u postgres psql postgres -c "ALTER ROLE $DATABASE_USER SET timezone TO 'UT
 sudo -u postgres psql postgres -c "GRANT ALL PRIVILEGES ON DATABASE $DATABASE_NAME TO $DATABASE_USER;"
 
 echo "Confirm database is running: pg_isready"
-pg_isready -d "$DATABASE_NAME" -U "$DATABASE_USER" -t 5
-echo "url:$DATABASE_URL" 
-echo "pwd:$DATABASE_PASS"
+pg_isready -d "$DATABASE_NAME" -U "$DATABASE_USER" -t 
