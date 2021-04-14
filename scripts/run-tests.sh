@@ -1,9 +1,5 @@
 #!/bin/bash
 
-RED='\033[0;31m'
-GREEN='\033[1;32m'
-NC='\033[0m' # No Color
-
 APPLICATIONS=("CyberHealth")
 for application in "${APPLICATIONS[@]}"
 do
@@ -18,17 +14,17 @@ do
             # shellcheck disable=SC1091
             source ./cyber-health-python/bin/activate
             
-            if safety check -r requirements.txt  --json; then
-                echo "${RED}Failed:${NC} Safety Check for $application"
+            if safety check -r requirements.txt; then
+                echo "Failed: Safety Check for $application"
             else 
                  if ! bandit -r . -f json; then
-                    echo "${RED}Failed:${NC} Bandit for $application"
+                    echo "Failed: Bandit for $application"
                 else 
-                    echo "${RED}Running unit tests"
+                    echo "Running unit tests"
                     if ! python3 manage.py test; then
-                        echo "${RED}Failed:${NC} unit tests for $application"
+                        echo "Failed: unit tests for $application"
                     else 
-                        echo "${GREEN}Passed:${NC} All direct tests for $application passed"
+                        echo "Passed: All direct tests for $application passed"
                     fi
                 fi    
             fi
@@ -44,7 +40,7 @@ do
         echo "Running the tests $test"
         cd "$test" || exit 
         if ! npm run test ; then
-            echo "${RED}Failed:${NC} $test for $application"
+            echo "Failed: $test for $application"
         fi 
     )
 done
