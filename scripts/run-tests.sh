@@ -14,7 +14,7 @@ do
             # shellcheck disable=SC1091
             source ./cyber-health-python/bin/activate
             
-            if safety check -r requirements.txt; then
+            if ! safety check -r requirements.txt; then
                 echo "Failed: Safety Check for $application"
             else 
                  if ! bandit -r . -f json; then
