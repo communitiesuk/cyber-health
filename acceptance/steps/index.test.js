@@ -33,7 +33,7 @@ JestCucumber.defineFeature(feature, test => {
 
         then(/I see the text \"(.*)\"/, async(expected) => {
             // do nothing
-            const pageTitle = await driver.findElement(WebDriver.By.id('local-authority-cyber-health-framework'))
+            const pageTitle = await driver.findElement(WebDriver.By.id('main-content'))
             const actual = await pageTitle.getText()
             expect(actual).toEqual(expected)
             driver.quit();
