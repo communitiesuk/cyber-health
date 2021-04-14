@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 APPLICATIONS=("CyberHealth")
 for application in "${APPLICATIONS[@]}"
@@ -21,7 +20,7 @@ do
 
             echo "Running unit tests"
             python3 manage.py test
-            
+
         fi
 
     )
