@@ -17,7 +17,7 @@ do
             if ! safety check -r requirements.txt; then
                 echo "Failed: Safety Check for $application"
             else 
-                 if ! bandit -r .; then
+                 if ! bandit -r . -x ./cyber-health-python; then
                     echo "Failed: Bandit for $application"
                 else 
                     echo "Running unit tests"
