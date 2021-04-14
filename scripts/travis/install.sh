@@ -4,8 +4,6 @@
 # export LC_CTYPE="en_GB.UTF-8"
 # sudo dpkg-reconfigure locales
 
-sudo -H pip3 install safety
-sudo -H pip3 install bandit
 
 
 gem install dpl --pre
