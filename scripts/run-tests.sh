@@ -11,13 +11,19 @@ do
         # Running safety check and bandit if the folder contains a requirements.txt
         if test -f "requirements.txt"; then
             echo "It is - So running bandit and safety on the codebases"
-           safety check -r requirements.txt  --json
-           bandit -r . -f json
+
+            # shellcheck disable=SC1091
+            source ./cyber-health-python/bin/activate
+            
+            safety check -r requirements.txt  --json
+            
+            bandit -r . -f json
+
+            echo "Running unit tests"
+            python3 manage.py test
+            
         fi
 
-        echo "Running unit tests"
-        # Running the unit tests
-        python3 manage.py test
     )
   done  
 
