@@ -17,6 +17,9 @@ pip3 install psycopg2-binary
 pip3 install psycopg2
 pip3 install whitenoise
 
+pip3 install safety
+pip3 install bandit
+
 # Install dependencies
 pip3 install -r requirements.txt
 pipenv install
