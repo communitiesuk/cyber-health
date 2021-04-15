@@ -46,12 +46,20 @@ deploy:
     script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE_FINAL
     on:
       branch: main
+    # temp: angela wants to see evidence of another build on this branch
+  - provider: script
+    edge: true
+    cleanup: true
+    script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE_FINAL
+    on:
+      branch: feature/411-create-question-model
 script: bash scripts/travis/script.sh
 branches:
   only:
   - main
   - staging
   - develop
+  - feature/411-create-question-model
 env:
   global:
     - secure: CyWSHaWJqiwVrXZTEbUPDSVCPy5GcQaPLY5oibPboEXUvEsyTK+EM5mVkPj4t9AocAKq3lML8qGVyptCCf6CDxjG3g4tsHlvZ1IAOzvHcO55r9uJs9ZI8ECUiPyZN4LpGrrYOAm+LjG4YKwC1Ozwv16k1/Im22M4N4c/ukBn1zG7j3KgEwy+qfnDsAuZeWtksvkTkDY95VCsvM1YFTLYAx62+rTMHCSAvVcAvhO0ELRPuJgjggFX1adXq2M/FczLIuq3BXnoEjzhlbP0cNjzGc82Eur3xhE9hXtKri05s/Qc8LBGKDDnAc6JVou2pXpnzn1dktvOznyn0M36JPl4ZMojnyq+ohnGL1dEQutrDg8Gv1H3rG/Znh3uPpEDyAhhuk3KvS9xQ2BZxporl3blk21C+zylrAdSbb145L8fvI8I7+7iCkfHPWNHYDaPLu9cQSQ98y4bwQaA2+CUUy9tF5Yjb+1/zbp1fC5motk6sP+L770OcRQsZUlUnrweeqjBatIyy9a2bQcKGRjcfinNlHjcSQ/TKtUJOw5/mVmkgWNuJ3SvBp0Uu5cxTjlBpm/ECt00LbGpnVpu+koqEupBRLkS/M/k4KXltPNQKF9JK0OVEHzQRYiBt2jMzopEPECbxMtY9NZf1fB6ZfYsOYnjvH0FbYDRSuKO6ODN7ZDqUJs=
