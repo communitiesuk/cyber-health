@@ -30,10 +30,10 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # This application requires a debug flag to be set
+
 DEBUG = env('DJANGO_DEBUG', default=False)
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'cyberhealth-sandbox.london.cloudapps.digital']
-
 
 # Application definition
 
@@ -82,14 +82,12 @@ WSGI_APPLICATION = 'CyberHealth.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+# https://django-environ.readthedocs.io/en/latest/
+# This relies on DATABASE_URL being available in the environment
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': env.db()
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -128,7 +126,7 @@ USE_TZ = True
 # # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = os.path.join(BASE_DIR, 'static/')
-STATIC_ROOT = os.path.join(BASE_DIR, 'root')
+STATIC_ROOT = os.path.join(STATIC_URL, 'root')
 STATICFILES_DIRS = [
     os.path.join(STATIC_URL, 'dist'), 
 ]

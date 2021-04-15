@@ -27,13 +27,12 @@ JestCucumber.defineFeature(feature, test => {
 
         when('I visit the Cyber Health Framework site', async() => {
             url = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`
-            console.log("Calling url: " + url)
             await driver.get(url).catch(urlCaptureException => { console.error(urlCaptureException) })
         });
 
         then(/I see the text \"(.*)\"/, async(expected) => {
             // do nothing
-            const pageTitle = await driver.findElement(WebDriver.By.id('local-authority-cyber-health-framework'))
+            const pageTitle = await driver.findElement(WebDriver.By.id('main-content'))
             const actual = await pageTitle.getText()
             expect(actual).toEqual(expected)
             driver.quit();
