@@ -11,8 +11,10 @@ source ./cyber-health-python/bin/activate
 python3 -m pip install -U pipenv
 python3 -m pip install -U pip
 python3 -m pip install -U setuptools
+
 pip3 install wheel
-pip3 install whitenoise
+pip3 install safety
+pip3 install bandit
 
 # Install dependencies
 pip3 install -r requirements.txt
@@ -21,3 +23,6 @@ pipenv install
 # NPM install dependencies
 npm install
 npm run frontend:build
+
+# run any django migrations required
+python3 manage.py migrate
