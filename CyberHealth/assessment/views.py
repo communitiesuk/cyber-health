@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
-from assessment.models import Question, Answer
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
+from assessment.models import Question, Answer, Choice
 from .forms import AnswerForm
+
 
 
 def index(request):
@@ -11,28 +13,16 @@ def index(request):
 
 def question(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    choices = question.choice_set.all()
+    form = AnswerForm(question=question)
 
-    # # if this is a POST request we need to process the form data
-    # if request.method == 'POST':
-    #     # create a form instance and populate it with data from the request:
-    #     form = QuestionForm(request.POST)
-    #     # check whether it's valid:
-    #     if form.is_valid():
-    #         # process the data in form.cleaned_data as required
-    #         # ...
-    #         # redirect to a new URL:
-    #         return HttpResponseRedirect('/thanks/')
-    #         # if a GET (or any other method) we'll create a blank form
-    # else:
-    #     form = QuestionForm(question=question, choices=choices)
-    # answer = Answer.objects.get(pk=1)
-    # form = AnswerForm(instance=answer,)
-    form = AnswerForm(question=question, choices=choices)
-
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        choice = get_object_or_404(Choice, pk=request.POST['choice'])
+        answer = Answer(question=question, choice=choice)
+        answer.save()
+        return redirect('/assessment/') 
 
     context = {
-        'question': question,
         'form': form,
     }
 
