@@ -33,7 +33,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = env('DJANGO_DEBUG', default=False)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'cyberhealth-sandbox.london.cloudapps.digital']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.london.cloudapps.digital']
 
 # Application definition
 
