@@ -30,7 +30,7 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # This application requires a debug flag to be set
-DEBUG = env('DJANGO_DEBUG', default=False)
+DEBUG = env('DJANGO_DEBUG', default=True)
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'cyberhealth-sandbox.london.cloudapps.digital']
 
@@ -40,6 +40,8 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'cyberhealth-sandbox.london.cloudapps
 INSTALLED_APPS = [
     'staticpages.apps.StaticpagesConfig',
     'dynamicpages.apps.DynamicpagesConfig',
+    'users.apps.UsersConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -133,6 +135,9 @@ STATICFILES_DIRS = [
     os.path.join(STATIC_URL, 'dist'), 
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL = 'static-page'
+LOGIN_URL = 'login'
 
 # Adding in logging
 # If you're following the Twelve-Factor App methodology for your application,
