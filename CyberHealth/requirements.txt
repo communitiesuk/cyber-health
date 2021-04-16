@@ -15,4 +15,5 @@ psycopg2==2.8.6
 pytz==2021.1
 sqlparse==0.4.1
 waitress==2.0.0
+wheel==0.36.2
 whitenoise==5.2.0
