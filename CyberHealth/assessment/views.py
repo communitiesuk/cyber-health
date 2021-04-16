@@ -3,7 +3,10 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from assessment.models import Question, Answer, Choice
 from .forms import AnswerForm
+import logging
 
+
+logger = logging.getLogger(__name__)
 
 
 def index(request):
@@ -15,12 +18,25 @@ def question(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     form = AnswerForm(question=question)
 
-    # if this is a POST request we need to process the form data
+
     if request.method == 'POST':
-        choice = get_object_or_404(Choice, pk=request.POST['choice'])
-        answer = Answer(question=question, choice=choice)
-        answer.save()
-        return redirect('/assessment/') 
+        # Retrieve choice from submitted form
+        try:
+            selected_choice = Choice.objects.get(pk=request.POST['choice'])
+            logger.info("Retrieved object from form")
+        except:
+            logger.warn("Can't retrieve choice object from form")
+
+        # Create a new answer using retrieved question and choice
+        try:
+            new_answer = Answer(question=question, choice=selected_choice)
+            logger.info("Created new answer")
+        except:
+            logger.warn("Can't create new answer instance")
+
+        new_answer.save()
+        logger.info("Saved answer to database")
+        return redirect('/assessment/')
 
     context = {
         'form': form,
