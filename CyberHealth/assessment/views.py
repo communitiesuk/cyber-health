@@ -18,7 +18,6 @@ def question(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     form = AnswerForm(question=question)
 
-
     if request.method == 'POST':
         # Retrieve choice from submitted form
         try:
@@ -31,11 +30,12 @@ def question(request, question_id):
         try:
             new_answer = Answer(question=question, choice=selected_choice)
             logger.info("Created new answer")
+            new_answer.save()
+            logger.info("Saved answer to database")
         except:
             logger.warn("Can't create new answer instance")
 
-        new_answer.save()
-        logger.info("Saved answer to database")
+        
         return redirect('/assessment/')
 
     context = {

@@ -1,4 +1,54 @@
+{% extends 'base.html' %} 
+{% block title %}Question page{% endblock %} 
+{% block content %}
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper" id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form method="post" novalidate>
+          {% csrf_token %}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">{{ form.choice.label }}</h1>
+              </legend>
+              <div class="govuk-radios">
+                {% for choice in form.choice %}
+                <div class="govuk-radios__item">
+                  <input
+                    type="radio"
+                    name="choice"
+                    class="govuk-radios__input"
+                    id="choice_1"
+                    value="{{choice}}"
+                  />
+                  <label class="govuk-label govuk-radios__label" for="{{choice}}">
+                    {{choice|capfirst}}
+                  </label>
+                </div>
+                {% endfor %}
+              </div>
+            </fieldset>
+          </div>
+
+          <button
+            class="govuk-button"
+            data-module="govuk-button"
+            type="submit"
+            value="Submit"
+          >
+            Continue
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
 <form method="post">
   {% csrf_token %} {{ form }}
   <input type="submit" value="Submit" />
 </form>
+
+{% endblock %}
