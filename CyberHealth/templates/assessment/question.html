@@ -2,7 +2,7 @@
 {% block title %}Question page{% endblock %} 
 {% block content %}
 <div class="govuk-width-container">
-  <a href="#" class="govuk-back-link">Back</a>
+  <a href="/assessment/" class="govuk-back-link">Back</a>
 
   <main class="govuk-main-wrapper" id="main-content" role="main">
     <div class="govuk-grid-row">
@@ -15,16 +15,19 @@
                 <h1 class="govuk-fieldset__heading">{{ form.choice.label }}</h1>
               </legend>
               <div class="govuk-radios">
-                {% for choice in form.choice %}
+                {% for choice in form.choice.field.queryset %}
                 <div class="govuk-radios__item">
                   <input
                     type="radio"
                     name="choice"
                     class="govuk-radios__input"
-                    id="choice_1"
-                    value="{{choice}}"
+                    id="{{choice|slugify}}"
+                    value="{{choice.id}}"
                   />
-                  <label class="govuk-label govuk-radios__label" for="{{choice}}">
+                  <label
+                    class="govuk-label govuk-radios__label"
+                    for="{{choice|slugify}}"
+                  >
                     {{choice|capfirst}}
                   </label>
                 </div>
@@ -46,9 +49,4 @@
     </div>
   </main>
 </div>
-<form method="post">
-  {% csrf_token %} {{ form }}
-  <input type="submit" value="Submit" />
-</form>
-
 {% endblock %}
