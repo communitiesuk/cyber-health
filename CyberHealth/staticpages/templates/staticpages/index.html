@@ -15,6 +15,11 @@
             </span>
           </span>
         </a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'static-page' %}">Static Content</a>
+          <a href="{% url 'dynamic-page' %}">Dynamic Content</a>
+          <a href="{% url 'logout' %}">logout</a>
+        {% endif %}
       </div>
     </div>
   </header>
