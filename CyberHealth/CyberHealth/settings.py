@@ -133,7 +133,7 @@ STATICFILES_DIRS = [
 ]
 
 BASICAUTH_USERS = {'CyberHealth': 'cyber123'}
-BASICAUTH_DISABLE = env('BASICAUTH_DISABLE', default=True)
+BASICAUTH_DISABLE = env('BASICAUTH_DISABLE', default=False)
 
 # Adding in logging
 # If you're following the Twelve-Factor App methodology for your application,
