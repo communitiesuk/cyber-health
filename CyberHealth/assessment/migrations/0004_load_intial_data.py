@@ -25,7 +25,6 @@ def load_fixture(apps, schema_editor):
     try:
         # Call loaddata command
         fixture_files = list(pathlib.Path().glob('*/fixtures/*.json'))
-        # this bit need fixed!!!
         call_command('loaddata', *fixture_files, app_label='assessment')
     finally:
         # Restore old _get_model() function
