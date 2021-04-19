@@ -1,0 +1,74 @@
+[
+  {
+    "model": "assessment.choice",
+    "pk": 1,
+    "fields": {
+      "choice_text": "yes",
+      "question": 1
+    }
+  },
+  {
+    "model": "assessment.choice",
+    "pk": 2,
+    "fields": {
+      "choice_text": "no",
+      "question": 1
+    }
+  },
+  {
+    "model": "assessment.choice",
+    "pk": 3,
+    "fields": {
+      "choice_text": "other",
+      "question": 1
+    }
+  },
+  {
+    "model": "assessment.choice",
+    "pk": 4,
+    "fields": {
+      "choice_text": "yes",
+      "question": 2
+    }
+  },
+  {
+    "model": "assessment.choice",
+    "pk": 5,
+    "fields": {
+      "choice_text": "no",
+      "question": 2
+    }
+  },
+  {
+    "model": "assessment.choice",
+    "pk": 6,
+    "fields": {
+      "choice_text": "other",
+      "question": 2
+    }
+  },
+  {
+    "model": "assessment.choice",
+    "pk": 7,
+    "fields": {
+      "choice_text": "yes",
+      "question": 3
+    }
+  },
+  {
+    "model": "assessment.choice",
+    "pk": 8,
+    "fields": {
+      "choice_text": "no",
+      "question": 3
+    }
+  },
+  {
+    "model": "assessment.choice",
+    "pk": 9,
+    "fields": {
+      "choice_text": "other",
+      "question": 3
+    }
+  }
+]
