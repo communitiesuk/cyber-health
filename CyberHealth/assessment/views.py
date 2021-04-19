@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from basicauth.decorators import basic_auth_required
 
-# Create your views here.
 
+@basic_auth_required
 def assessment_start_page(request):
-  return render(request, 'assessment/index.html')
+    return render(request, 'assessment/index.html')

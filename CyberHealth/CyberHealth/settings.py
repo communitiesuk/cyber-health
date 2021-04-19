@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'basicauth.middleware.BasicAuthMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -131,6 +132,7 @@ STATICFILES_DIRS = [
     os.path.join(STATIC_URL, 'dist'), 
 ]
 
+BASICAUTH_USERS = {'CyberHealth': 'cyber123'}
 
 # Adding in logging
 # If you're following the Twelve-Factor App methodology for your application,
