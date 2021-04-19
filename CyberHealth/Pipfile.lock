@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c875f5c85e613eea589441afe0bae213671a850aa9ee4f631d5c59fd1f1eae57"
+            "sha256": "12f0dbb31aae3b70fb4793794d9369e64dd00a9ae8e9620fe84ba61e291c68da"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -83,6 +83,7 @@
                 "sha256:83a4a90894bf38e243cf052c8b58f381bfe9a7a483f6a9cab140bc7f702ac4da",
                 "sha256:eb10ce3e7736052ed3623d49975ce333bcd712c7bb19a58b9e2089d4057d0798"
             ],
+            "index": "pypi",
             "version": "==2021.1"
         },
         "sqlparse": {
@@ -90,7 +91,7 @@
                 "sha256:017cde379adbd6a1f15a61873f43e8274179378e95ef3fede90b5aa64d304ed0",
                 "sha256:0f91fd2e829c44362cbcfab3e9ae12e22badaa8a29ad5ff599f9ec109f0454e8"
             ],
-            "markers": "python_version >= '3.5'",
+            "index": "pypi",
             "version": "==0.4.1"
         },
         "waitress": {
