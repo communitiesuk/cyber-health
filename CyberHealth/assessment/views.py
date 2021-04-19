@@ -19,7 +19,7 @@ def question(request, question_id):
     form = AnswerForm(question=question)
 
     if request.method == 'POST':
-        
+        logger.info(request.POST)
         if 'choice' in request.POST:
             #  Retrieve choice from objects
             try:

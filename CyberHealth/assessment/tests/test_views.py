@@ -24,9 +24,9 @@ class QuestionsViewTest(TestCase):
             question_text="Are users who install software or other active code on the Council’s systems without permission subject to disciplinary action?"
         )
         self.choice1 = Choice.objects.create(
-            choice_text="yes", 
+            choice_text="yes",
             question=self.question1
-                                             )
+        )
         self.choice2 = Choice.objects.create(
             choice_text="no",
             question=self.question1
@@ -49,26 +49,37 @@ class QuestionsViewTest(TestCase):
         self.assertTemplateUsed(
             response, 'assessment/question.html', 'base.html')
 
-    def test_question_page_displays_question_as_heading(self):
+    def test_question_page_displays_question(self):
         response = self.client.get('/assessment/question/1')
         self.assertContains(
-            response, '<h1 class="govuk-fieldset__heading">Are users who install software or other active code on the Council’s systems without permission subject to disciplinary action?</h1>', html=True)
+            response, self.question1.question_text)
 
     def test_question_page_displays_options_as_radio(self):
         response = self.client.get('/assessment/question/1')
         self.assertContains(
-             response,'<div class="govuk-radios__item"><input type="radio" name="choice" class="govuk-radios__input" id="yes" value="1"><label class="govuk-label govuk-radios__label" for="yes">Yes</label></div>', html=True)
+            response, self.choice1.choice_text)
         self.assertContains(
-             response,'<div class="govuk-radios__item"><input type="radio" name="choice" class="govuk-radios__input" id="no" value="2"><label class="govuk-label govuk-radios__label" for="no">No</label></div>', html=True)
+            response, self.choice2.choice_text)
         self.assertContains(
-             response,'<div class="govuk-radios__item"><input type="radio" name="choice" class="govuk-radios__input" id="other" value="3"><label class="govuk-label govuk-radios__label" for="other">Other</label></div>', html=True)
+            response, self.choice3.choice_text)
 
     def test_question_page_displays_save_button(self):
         response = self.client.get('/assessment/question/1')
         self.assertContains(
             response, '<button class="govuk-button" data-module="govuk-button" type="submit" value="Submit">Save</button>', html=True)
 
-    def test_question_page_displays_back_link(self):    
+    def test_question_page_displays_back_link(self):
         response = self.client.get('/assessment/question/1')
         self.assertContains(
             response, '<a href="/assessment/" class="govuk-back-link">Back</a>', html=True)
+
+    def test_creation_of_answer_model_instance(self):
+        # Post request should create an answer
+        self.client.post(reverse('question', args=[1]), data={'choice': ['1']})
+
+        # Retrieve this question (at this point there an no answers so get the first one)
+        self.new_answer = Answer.objects.get(pk=1)
+
+        # Check if answer has correct content
+        self.assertEqual(self.new_answer.question.question_text, self.question1.question_text)
+        self.assertEqual(self.new_answer.choice.choice_text, self.choice1.choice_text)
