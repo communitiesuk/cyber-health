@@ -19,21 +19,23 @@ def question(request, question_id):
     form = AnswerForm(question=question)
 
     if request.method == 'POST':
-        # Retrieve choice from submitted form
-        try:
-            selected_choice = Choice.objects.get(pk=request.POST['choice'])
-            logger.info("Retrieved object from form")
-        except:
-            logger.warn("Can't retrieve choice object from form")
+        
+        if 'choice' in request.POST:
+            #  Retrieve choice from objects
+            try:
+                selected_choice = Choice.objects.get(pk=request.POST['choice'])
+                logger.info("Retrieved object from form")
+            except:
+                logger.warn("Can't retrieve choice object from form")
 
-        # Create a new answer using retrieved question and choice
-        try:
-            new_answer = Answer(question=question, choice=selected_choice)
-            logger.info("Created new answer")
-            new_answer.save()
-            logger.info("Saved answer to database")
-        except:
-            logger.warn("Can't create new answer instance")
+            # Create a new answer using retrieved question and choice
+            try:
+                new_answer = Answer(question=question, choice=selected_choice)
+                logger.info("Created new answer")
+                new_answer.save()
+                logger.info("Saved answer to database")
+            except:
+                logger.warn("Can't create new answer instance")
 
         
         return redirect('/assessment/')
