@@ -1,7 +1,10 @@
+
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from assessment.models import Question, Answer, Choice
+from basicauth.decorators import basic_auth_required
+from django.shortcuts import render
 from .forms import AnswerForm
 import logging
 
@@ -9,12 +12,14 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def index(request):
+@basic_auth_required
+def assessment_start_page(request):
 
     return render(request, 'assessment/index.html')
 
 
-def question(request, question_id):
+@basic_auth_required
+def question_view(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     form = AnswerForm(question=question)
 

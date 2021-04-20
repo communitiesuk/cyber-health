@@ -20,9 +20,9 @@ class AssessmentIndexViewTest(TestCase):
 class QuestionsViewTest(TestCase):
 
     def setUp(self):
-
         self.question1 = Question.objects.create(
-            question_text="Are users who install software or other active code on the Council’s systems without permission subject to disciplinary action?"
+            question_text="Are users who install software or other active code on the Council’s systems without "
+                          "permission subject to disciplinary action? "
         )
 
         self.choice1 = Choice.objects.create(
@@ -37,11 +37,9 @@ class QuestionsViewTest(TestCase):
             choice_text="other",
             question=self.question1
         )
-    
+
         # Getting the id of question1
         self.question1_id = Question.objects.last().id
-    
-
 
     def test_question_view_url_response_ok(self):
         response = self.client.get('/assessment/question/1')
@@ -73,7 +71,9 @@ class QuestionsViewTest(TestCase):
     def test_question_page_displays_save_button(self):
         response = self.client.get(f'/assessment/question/{self.question1_id}')
         self.assertContains(
-            response, '<button class="govuk-button" data-module="govuk-button" type="submit" value="Submit">Save</button>', html=True)
+            response,
+            '<button class="govuk-button" data-module="govuk-button" type="submit" value="Submit">Save</button>',
+            html=True)
 
     def test_question_page_displays_back_link(self):
         response = self.client.get(f'/assessment/question/{self.question1_id}')
