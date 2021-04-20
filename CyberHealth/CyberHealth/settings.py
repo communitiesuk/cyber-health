@@ -39,7 +39,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.london.cloudapps.digital']
 
 INSTALLED_APPS = [
     'staticpages.apps.StaticpagesConfig',
-    'dynamicpages.apps.DynamicpagesConfig',
+    'assessment.apps.AssessmentConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'basicauth.middleware.BasicAuthMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -126,11 +127,13 @@ USE_TZ = True
 # # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = os.path.join(BASE_DIR, 'static/')
-STATIC_ROOT = os.path.join(STATIC_URL, 'root')
+STATIC_ROOT = os.path.join(STATIC_URL, 'assets')
 STATICFILES_DIRS = [
     os.path.join(STATIC_URL, 'dist'), 
 ]
 
+BASICAUTH_USERS = {'CyberHealth': 'cyber123'}
+BASICAUTH_DISABLE = env('BASICAUTH_DISABLE', default=False)
 
 # Adding in logging
 # If you're following the Twelve-Factor App methodology for your application,

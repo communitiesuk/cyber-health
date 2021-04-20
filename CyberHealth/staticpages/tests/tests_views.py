@@ -11,7 +11,7 @@ class StaticPageViewTest(TestCase):
         response = self.client.get(reverse('static-page'))
         self.assertEqual(200, response.status_code)
 
-    def test_dynamic_page_uses_intended_template(self):
+    def test_static_page_uses_intended_template(self):
         response = self.client.get(reverse('static-page'))
         self.assertTemplateUsed(response, 'staticpages/index.html')
 

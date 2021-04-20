@@ -3,5 +3,5 @@ from django.shortcuts import render
 
 
 @basic_auth_required
-def start_page(request):
-    return render(request, 'staticpages/index.html')
+def assessment_start_page(request):
+    return render(request, 'assessment/index.html')
