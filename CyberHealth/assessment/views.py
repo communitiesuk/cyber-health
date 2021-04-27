@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
@@ -8,14 +7,15 @@ from django.shortcuts import render
 from .forms import AnswerForm
 import logging
 
-
 logger = logging.getLogger(__name__)
 
 
 @basic_auth_required
 def assessment_start_page(request):
-
-    return render(request, 'assessment/index.html')
+    logger.info(request)
+    questions = Question.objects.filter()
+    logger.info(questions)
+    return render(request, 'assessment/index.html', {'questions': questions})
 
 
 @basic_auth_required
@@ -42,7 +42,6 @@ def question_view(request, question_id):
             except:
                 logger.warn("Can't create new answer instance")
 
-        
         return redirect('/assessment/')
 
     context = {
