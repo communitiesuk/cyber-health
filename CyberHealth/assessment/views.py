@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
@@ -8,14 +7,24 @@ from django.shortcuts import render
 from .forms import AnswerForm
 import logging
 
-
 logger = logging.getLogger(__name__)
-
 
 @basic_auth_required
 def assessment_start_page(request):
+    logger.info(request)
+    questions = Question.objects.filter()
+    for question in questions:
+        if question.answer_set.all().last() is None:
+            question.chosen_answer = "None"
+            question.answer_colour = "blue"
+        else:
+            question.chosen_answer = question.answer_set.all().last().choice.choice_text
+            if question.chosen_answer == "yes":
+                question.answer_colour = "green"
+            else:
+                question.answer_colour = "red"
 
-    return render(request, 'assessment/index.html')
+    return render(request, 'assessment/index.html', {'questions': questions})
 
 
 @basic_auth_required
@@ -42,7 +51,6 @@ def question_view(request, question_id):
             except:
                 logger.warn("Can't create new answer instance")
 
-        
         return redirect('/assessment/')
 
     context = {
