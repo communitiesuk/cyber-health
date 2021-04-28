@@ -22,8 +22,8 @@
 
            {% for question in questions %}
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell"><a href="question/{{ question.id }}">{{question}}</a></td>
-              <td class="govuk-table__cell"><strong class='govuk-tag govuk-tag--blue'>Met</strong></td>
+              <td class="govuk-table__cell"><a href="question/{{ question.id }}">{{question.question_text}}</a></td>
+              <td class="govuk-table__cell"><strong class='govuk-tag govuk-tag--{{ question.answer_colour }}'>{{ question.chosen_answer }}</strong></td>
             </tr>
            {% endfor %}
 

@@ -9,12 +9,21 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-
 @basic_auth_required
 def assessment_start_page(request):
     logger.info(request)
     questions = Question.objects.filter()
-    logger.info(questions)
+    for question in questions:
+        if question.answer_set.all().first() is None:
+            question.chosen_answer = "None"
+            question.answer_colour = "blue"
+        else:
+            question.chosen_answer = question.answer_set.all().first().choice.choice_text
+            if question.chosen_answer == "yes":
+                question.answer_colour = "green"
+            else:
+                question.answer_colour = "red"
+
     return render(request, 'assessment/index.html', {'questions': questions})
 
 
