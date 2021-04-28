@@ -14,11 +14,11 @@ def assessment_start_page(request):
     logger.info(request)
     questions = Question.objects.filter()
     for question in questions:
-        if question.answer_set.all().first() is None:
+        if question.answer_set.all().last() is None:
             question.chosen_answer = "None"
             question.answer_colour = "blue"
         else:
-            question.chosen_answer = question.answer_set.all().first().choice.choice_text
+            question.chosen_answer = question.answer_set.all().last().choice.choice_text
             if question.chosen_answer == "yes":
                 question.answer_colour = "green"
             else:
