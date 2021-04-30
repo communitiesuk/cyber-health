@@ -6,7 +6,7 @@ This project uses node in order to run accessibility tests.
 
 ## Before you start
 
-To run this project you need:
+To run this project:
 
 - [Install Gulp, Node.JS and NPM](https://nodejs.org/en/)
 - Run the [CyberHealth](../CyberHealth/README.md) application
