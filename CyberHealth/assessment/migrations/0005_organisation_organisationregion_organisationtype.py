@@ -31,8 +31,10 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255)),
                 ('domain_name', models.CharField(max_length=253)),
-                ('organisation_region', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='assessment.organisationregion')),
-                ('organisation_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='assessment.organisationtype')),
+                ('organisation_region', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                                          to='assessment.organisationregion')),
+                ('organisation_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                                        to='assessment.organisationtype')),
             ],
         ),
     ]
