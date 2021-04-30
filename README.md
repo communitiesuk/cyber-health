@@ -6,7 +6,7 @@ This project uses Django, which is a Python framework for building web applicati
 
 ## Application Components
 
-Please read the readme in the following components of the application, their installation and their use:
+Please read the `README.md` file in the following components of the application to understand how to install and how they are used:
 
 * [CyberHealth Framework](CyberHealth/README.md)
 * [Acceptance Tests](acceptance/README.md)
