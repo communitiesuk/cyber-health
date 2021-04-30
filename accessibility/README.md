@@ -2,7 +2,7 @@
 
 The MHCLG Cyber Health Framework is a self-assessment tool to help Local Authorities understand their cyber resilience. 
 
-This project uses node in order to run accessibility tests
+This project uses node in order to run accessibility tests.
 
 ## Before you start
 
