@@ -24,9 +24,15 @@ class Answer(models.Model):
 class OrganisationType(models.Model):
     type = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.type
+
 
 class OrganisationRegion(models.Model):
     name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 
 
 class Organisation(models.Model):
@@ -41,4 +47,4 @@ class Organisation(models.Model):
     organisation_region = models.ForeignKey(OrganisationRegion, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.choice_text
+        return self.name
