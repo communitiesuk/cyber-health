@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('assessment', '0004_load_intial_data'),
+        ('assessment', '0004_load_initial_data'),
     ]
 
     operations = [
