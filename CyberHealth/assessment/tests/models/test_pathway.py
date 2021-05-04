@@ -1,5 +1,5 @@
 from django.test import TestCase
-from assessment.models import *
+from assessment.models import Pathway
 
 
 class PathwayTestCase(TestCase):
@@ -24,9 +24,14 @@ class PathwayTestCase(TestCase):
         self.assertEqual(self.pathway1.short_name,
                          "PSN")
 
+    def test_pathway_has_intro_text(self):
+        self.assertEqual(self.pathway1.intro_text,
+                         "Walled garden’ approach that enables public sector organisations to work together and share resources in a secure, controlled environment.")
+
+    def test_pathway_prepopulates_slug(self):
+        self.assertEqual(self.pathway1.slug,
+                         "psn")
+
     def test_pathway_prepopulates_short_name(self):
         self.assertEqual(self.pathway2.short_name,
                          "Cyber Essentials")
-
-    # def test_answer_has_choice(self):
-    #     self.assertEqual(self.answer1.choice.choice_text, "yes")
