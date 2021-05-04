@@ -5,7 +5,42 @@
     "fields": {
       "long_name": "Public Sector Network",
       "short_name": "PSN",
-      "intro_text": "Walled garden’ approach that enables public sector organisations to work together and share resources in a secure, controlled environment."
+      "intro_text": "Walled garden’ approach that enables public sector organisations to work together and share resources in a secure, controlled environment.",
+      "slug": "psn",
+      "pathway_group": 1
+    }
+  },
+  {
+    "model": "assessment.pathway",
+    "pk": 2,
+    "fields": {
+      "long_name": "Public Sector Network",
+      "short_name": "PSN",
+      "intro_text": "Walled garden’ approach that enables public sector organisations to work together and share resources in a secure, controlled environment.",
+      "slug": "psn",
+      "pathway_group": 1
+    }
+  },
+  {
+    "model": "assessment.pathway",
+    "pk": 3,
+    "fields": {
+      "long_name": "Ransomware",
+      "short_name": "Ransomware",
+      "intro_text": "10 quick controls, that can be implemented in just 1 hour, that will mitigate the risk of ransomware to your local authority.",
+      "slug": "ransomware",
+      "pathway_group": 2
+    }
+  },
+  {
+    "model": "assessment.pathway",
+    "pk": 4,
+    "fields": {
+      "long_name": "Insider attack",
+      "short_name": "Insider attack",
+      "intro_text": "10 controls that can mitigate the risk of insider attack to your organisation.",
+      "slug": "insider-attack",
+      "pathway_group": 2
     }
   }
 ]
