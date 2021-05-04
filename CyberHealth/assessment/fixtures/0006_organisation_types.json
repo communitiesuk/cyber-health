@@ -1,0 +1,37 @@
+[
+  {
+    "model": "assessment.organisationtype",
+    "pk": 1,
+    "fields": {
+      "type": "Metropolitan districts"
+    }
+  },
+  {
+    "model": "assessment.organisationtype",
+    "pk": 2,
+    "fields": {
+      "type": "London boroughs"
+    }
+  },
+  {
+    "model": "assessment.organisationtype",
+    "pk": 3,
+    "fields": {
+      "type": "Unitary authorities"
+    }
+  },
+  {
+    "model": "assessment.organisationtype",
+    "pk": 4,
+    "fields": {
+      "type": "County councils"
+    }
+  },
+  {
+    "model": "assessment.organisationtype",
+    "pk": 5,
+    "fields": {
+      "type": "District councils"
+    }
+  }
+]
