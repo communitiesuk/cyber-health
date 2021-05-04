@@ -26,11 +26,16 @@ const govukFrontendImagesFolder = path.join(
   "images"
 );
 
+const govukFrontendScriptsFolder = path.join(
+  govukFrontendRoot,
+  "govuk");
+
 // Dist folders
 const distFolder = path.join(repoRoot, "static", "dist");
 const distCssFolder = path.join(distFolder, "css");
 const distFontsFolder = path.join(distFolder, "fonts");
 const distImagesFolder = path.join(distFolder, "images");
+const distScriptFolder = path.join(distFolder, "scripts");
 
 // Src folders
 const srcFolder = path.join(repoRoot, "static", "src");
@@ -55,7 +60,15 @@ gulp.task("clean:images", function () {
   });
 });
 
-gulp.task("clean", gulp.parallel("clean:css", "clean:fonts", "clean:images"));
+
+gulp.task("clean:script", function () {
+  return del(distScriptFolder + "/*").then(function (paths) {
+    console.log("💥  Deleted the following script files:\n", paths.join("\n"));
+  });
+});
+
+
+gulp.task("clean", gulp.parallel("clean:css", "clean:fonts", "clean:images", "clean:script"));
 
 // Sass compiling
 const sassOptions = {
@@ -75,16 +88,23 @@ gulp.task("sass", function () {
 
 
 // Copy assets from GOV UK frontend
-function copyFactory(resourceName, sourceFolder, targetFolder) {
+function copyFactoryWithPattern(resourceName, sourceFolder, targetFolder, pattern) {
   return function () {
     return gulp
-      .src(sourceFolder + "/**/*", { base: sourceFolder })
+      .src(sourceFolder + pattern, { base: sourceFolder })
       .pipe(gulp.dest(targetFolder))
       .on("end", function () {
         console.log("📂  Copied " + resourceName);
       });
   };
 }
+
+
+// Copy assets from GOV UK frontend
+function copyFactory(resourceName, sourceFolder, targetFolder) {
+  return copyFactoryWithPattern(resourceName, sourceFolder, targetFolder, "/**/*");
+}
+
 
 gulp.task(
   "copy:govuk_frontend_assets:fonts",
@@ -95,6 +115,7 @@ gulp.task(
   )
 );
 
+
 gulp.task(
   "copy:govuk_frontend_assets:images",
   copyFactory(
@@ -104,11 +125,24 @@ gulp.task(
   )
 );
 
+
+gulp.task(
+  "copy:govuk_frontend_assets:scripts",
+  copyFactoryWithPattern(
+    "scripts from the GOVUK frontend assets",
+    govukFrontendScriptsFolder,
+    distScriptFolder,
+      "/*.js"
+  )
+);
+
+
 gulp.task(
   "copyAssets",
   gulp.parallel(
     "copy:govuk_frontend_assets:fonts",
-    "copy:govuk_frontend_assets:images"
+    "copy:govuk_frontend_assets:images",
+    "copy:govuk_frontend_assets:scripts"
   )
 );
 
