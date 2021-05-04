@@ -1,0 +1,11 @@
+[
+  {
+    "model": "assessment.pathway",
+    "pk": 1,
+    "fields": {
+      "long_name": "Public Sector Network",
+      "short_name": "PSN",
+      "intro_text": "Walled garden’ approach that enables public sector organisations to work together and share resources in a secure, controlled environment."
+    }
+  }
+]
