@@ -19,3 +19,14 @@ class Choice(models.Model):
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+
+
+class Pathway(models.Model):
+    long_name = models.CharField(max_length=80, unique=True)
+    short_name = models.CharField(max_length=80, unique=True)
+    intro_text = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.short_name)
+        super(Pathway, self).save(*args, **kwargs)
