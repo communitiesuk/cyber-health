@@ -24,7 +24,7 @@ def load_fixture(apps, schema_editor):
     python._get_model = _get_model
     try:
         # Call loaddata command
-        fixture_files = list(pathlib.Path().glob('*/fixtures/*.json'))
+        fixture_files = list(pathlib.Path().glob('*/fixtures/0004*.json'))
         call_command('loaddata', *fixture_files, app_label='assessment')
     finally:
         # Restore old _get_model() function
@@ -32,7 +32,6 @@ def load_fixture(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('assessment', '0003_auto_20210412_1509'),
     ]
