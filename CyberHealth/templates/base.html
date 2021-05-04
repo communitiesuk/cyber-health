@@ -73,19 +73,14 @@
   </head>
 
   <body class="govuk-template__body">
-    <script>
-      document.body.className = document.body.className
-        ? document.body.className + " js-enabled"
-        : "js-enabled";
-    </script>
+
+    {% include "scripts/govuk/_top.html" %}
+    {% include "scripts/_piwik.html" %}
+
     {% include "partials/_header.html" %} 
     {% block content %} {% endblock %} 
     {% include "partials/_footer.html" %}
 
-    <!-- <script src="/govuk-frontend/all.js"></script>
-  <script>
-    window.GOVUKFrontend.initAll()
-
-  </script> -->
+    {% include "scripts/govuk/_bottom.html" %}
   </body>
 </html>
