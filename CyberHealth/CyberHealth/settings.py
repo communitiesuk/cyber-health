@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.london.cloudapps.digital']
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'staticpages.apps.StaticpagesConfig',
     'assessment.apps.AssessmentConfig',
     'django.contrib.admin',
@@ -49,8 +50,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'basicauth.middleware.BasicAuthMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -80,7 +83,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'CyberHealth.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 # https://django-environ.readthedocs.io/en/latest/
@@ -108,7 +110,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -122,14 +123,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # # Static files (CSS, JavaScript, Images)
 # # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = os.path.join(BASE_DIR, 'static/')
 STATIC_ROOT = os.path.join(STATIC_URL, 'assets')
 STATICFILES_DIRS = [
-    os.path.join(STATIC_URL, 'dist'), 
+    os.path.join(STATIC_URL, 'dist'),
 ]
 
 BASICAUTH_USERS = {'CyberHealth': 'cyber123'}
@@ -141,26 +141,58 @@ BASICAUTH_DISABLE = env('BASICAUTH_DISABLE', default=False)
 # https://odwyer.software/blog/logging-to-standard-output-with-django
 
 LOGGING = {
-   'version': 1,
-   'disable_existing_loggers': False,
-   'formatters': {
-       'verbose': {
-           'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
-       },
-   },
-   'handlers': {
-       'console': {
-           'level': 'INFO',
-           'class': 'logging.StreamHandler',
-           'stream': sys.stdout,
-           'formatter': 'verbose'
-       },
-   },
-   'loggers': {
-       '': {
-           'handlers': ['console'],
-           'level': 'INFO',
-           'propagate': True,
-       },
-   },
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'stream': sys.stdout,
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
 }
+
+# Configuration of CORS
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
+
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https:\/\/cyberhealth[^.]*\.london\.cloudapps\.digital$",
+    r"^https?://127\.0\.0\.1:\d{4}$",
+    r"^https?://localhost:\d{4}$",
+    r"^https?:\/\/cyberhealth\.containers\.piwik\.pro$"
+]
