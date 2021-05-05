@@ -8,3 +8,6 @@ def start_page(request):
 
 def privacy_policy(request):
     return render(request, 'staticpages/privacy-policy.html')
+
+def cookie_policy(request):
+    return render(request, 'staticpages/cookie-policy.html')
