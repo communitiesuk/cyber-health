@@ -30,6 +30,17 @@ class PathwayGroup(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+
+        # If a slug is entered ensure it's formatted correctly
+        if self.slug:
+            self.slug = slugify(self.slug)
+
+        # If blank, create slug from name
+        else:
+            self.slug = slugify(self.name)
+        super(PathwayGroup, self).save(*args, **kwargs)
+
 
 class Pathway(models.Model):
     long_name = models.CharField(max_length=80, unique=True)
@@ -44,7 +55,15 @@ class Pathway(models.Model):
     def save(self, *args, **kwargs):
         if not self.short_name:
             self.short_name = self.long_name
-        self.slug = slugify(self.short_name)
+
+        # If a slug is entered ensure it's formatted correctly
+        if self.slug:
+            self.slug = slugify(self.slug)
+
+        # If blank, create slug from short name
+        else:
+            self.slug = slugify(self.short_name)
+
         super(Pathway, self).save(*args, **kwargs)
 
 
