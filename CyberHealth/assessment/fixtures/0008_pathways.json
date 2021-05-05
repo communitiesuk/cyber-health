@@ -1,0 +1,90 @@
+[
+  {
+    "model": "assessment.pathway",
+    "pk": 1,
+    "fields": {
+      "long_name": "Public Sector Network",
+      "short_name": "PSN",
+      "intro_text": "Walled garden’ approach that enables public sector organisations to work together and share resources in a secure, controlled environment.",
+      "slug": "psn",
+      "pathway_group": 1
+    }
+  },
+  {
+    "model": "assessment.pathway",
+    "pk": 2,
+    "fields": {
+      "long_name": "NHS Data Security and Protection Toolkit",
+      "short_name": "NHS DSPT",
+      "intro_text": "Self-assessment tool to provide assurance that organisations using NHS patient data are practising good data security.",
+      "slug": "nhs-dspt",
+      "pathway_group": 1
+    }
+  },
+  {
+    "model": "assessment.pathway",
+    "pk": 3,
+    "fields": {
+      "long_name": "Ransomware",
+      "short_name": "Ransomware",
+      "intro_text": "10 quick controls, that can be implemented in just 1 hour, that will mitigate the risk of ransomware to your local authority.",
+      "slug": "ransomware",
+      "pathway_group": 2
+    }
+  },
+  {
+    "model": "assessment.pathway",
+    "pk": 4,
+    "fields": {
+      "long_name": "Insider attack",
+      "short_name": "Insider attack",
+      "intro_text": "10 controls that can mitigate the risk of insider attack to your organisation.",
+      "slug": "insider-attack",
+      "pathway_group": 2
+    }
+  },
+  {
+    "model": "assessment.pathway",
+    "pk": 5,
+    "fields": {
+      "long_name": "General Data Protection Regulation (GDPR)",
+      "short_name": "GDPR",
+      "intro_text": "Legal framework that determines how personal information from individuals is collected and processed.",
+      "slug": "gdpr",
+      "pathway_group": 3
+    }
+  },
+  {
+    "model": "assessment.pathway",
+    "pk": 6,
+    "fields": {
+      "long_name": "Payment Card Industry (PCI)",
+      "short_name": "PCI",
+      "intro_text": "Information security standard designed to increase controls around cardholder data to reduce credit card fraud.",
+      "slug": "pci",
+      "pathway_group": 3
+    }
+  },
+  {
+    "model": "assessment.pathway",
+    "pk": 7,
+    "fields": {
+      "long_name": "Cyber Essentials",
+      "short_name": "Cyber Essentials",
+      "intro_text": "Government-backed scheme that helps organisations protect themselves against the threat of cyber attacks, providing basic controls organisations should have in place.",
+      "slug": "cyber-essentials",
+      "pathway_group": 3
+    }
+  },
+  {
+    "model": "assessment.pathway",
+    "pk": 8,
+    "fields": {
+      "long_name": "ISO 27001",
+      "short_name": "ISO 27001",
+      "intro_text": "International standard on how to manage information security, with requirements for establishing, implementing, maintaining and continually improving an information security management system (ISMS).",
+      "slug": "iso-27001",
+      "pathway_group": 3
+    }
+  }
+]
