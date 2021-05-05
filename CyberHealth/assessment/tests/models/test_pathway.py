@@ -58,6 +58,6 @@ class PathwayTestCase(TestCase):
     def test_pathway_prepopulates_short_name_and_slug(self):
         self.assertEqual(self.pathway2.slug, "cyber-essentials")
 
-    # Test if slug has been manually entered that's it in a slug format
+    # Test if slug has been manually entered that it's in a slug format
     def test_pathway_formats_slug(self):
         self.assertEqual(self.pathway3.slug, "iso-27001")

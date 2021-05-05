@@ -26,6 +26,6 @@ class PathwayGroupTestCase(TestCase):
     def test_pathway_group_prepopulates_slug(self):
         self.assertEqual(self.pathwaygroup1.slug, "other-common-standards")
 
-    # Test if slug has been manually entered that's it in a slug format
+    # Test if slug has been manually entered that it's in a slug format
     def test_pathway_group_formats_slug(self):
         self.assertEqual(self.pathwaygroup2.slug, "compliance-demands")
