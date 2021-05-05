@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
-from assessment.models import Question, Answer, Choice
+from assessment.models import Question, Answer, Choice, Pathway, PathwayGroup
 from basicauth.decorators import basic_auth_required
 from django.shortcuts import render
 from .forms import AnswerForm
@@ -9,8 +9,23 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 @basic_auth_required
-def assessment_start_page(request):
+def assessment_overview(request):
+    logger.info(request)
+    pathway_groups_dict = PathwayGroup.objects.values()
+
+    pathway_groups = []
+    for group in pathway_groups_dict:
+        current_group = group
+        related_pathways = Pathway.objects.filter(pathway_group=group['id'])
+        current_group['pathways'] = related_pathways
+        pathway_groups.append(current_group)
+    return render(request, 'assessment/assessment-overview.html', {'pathway_groups': pathway_groups})
+
+
+@basic_auth_required
+def assessment_all_questions_page(request):
     logger.info(request)
     questions = Question.objects.filter()
     for question in questions:
@@ -24,7 +39,7 @@ def assessment_start_page(request):
             else:
                 question.answer_colour = "red"
 
-    return render(request, 'assessment/index.html', {'questions': questions})
+    return render(request, 'assessment/all-questions.html', {'questions': questions})
 
 
 @basic_auth_required
