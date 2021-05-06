@@ -3,21 +3,7 @@ from django.urls import reverse
 from assessment.models import Question, Answer, Choice
 
 
-class AssessmentIndexViewTest(TestCase):
-    def test_assessment_index_view_url_response_ok(self):
-        response = self.client.get('/assessment', follow=True)
-        self.assertEqual(200, response.status_code)
-
-    def test_assessment_index_view_url_by_name(self):
-        response = self.client.get(reverse('index'))
-        self.assertEqual(200, response.status_code)
-
-    def test_assessment_index_uses_intended_template(self):
-        response = self.client.get(reverse('index'))
-        self.assertTemplateUsed(response, 'assessment/index.html')
-
-
-class QuestionsViewTest(TestCase):
+class QuestionViewTest(TestCase):
 
     def setUp(self):
         self.question1 = Question.objects.create(
@@ -82,12 +68,15 @@ class QuestionsViewTest(TestCase):
 
     def test_creation_of_answer_model_instance(self):
         # Post request should create an answer
-        self.client.post(reverse('question', args=[self.question1_id]), data={'choice': ['1']})
+        self.client.post(reverse('question', args=[self.question1_id]), data={
+                         'choice': ['1']})
 
         # Retrieve this question just created from the POST request
         self.new_answer_id = Answer.objects.last().id
         self.new_answer = Answer.objects.get(pk=self.new_answer_id)
 
         # Check if answer has correct content
-        self.assertEqual(self.new_answer.question.question_text, self.question1.question_text)
-        self.assertEqual(self.new_answer.choice.choice_text, self.choice1.choice_text)
+        self.assertEqual(self.new_answer.question.question_text,
+                         self.question1.question_text)
+        self.assertEqual(self.new_answer.choice.choice_text,
+                         self.choice1.choice_text)
