@@ -75,10 +75,12 @@ class OverviewViewTest(TestCase):
         self.assertContains(
             response, "Your Council Cyber Health Overview")
 
+    # Continue here - need to get django to ignore linebreaks in html
     def test_overview_page_displays_page_description(self):
         response = self.client.get('/assessment/')
+        print("⭐️", response.content.decode("utf-8"))
         self.assertContains(
-            response, self.description)
+            response.content.decode(), "Welcome to your overview page.")
 
     # def test_question_page_displays_question(self):
     #     response = self.client.get(f'/assessment/question/{self.question1_id}')
