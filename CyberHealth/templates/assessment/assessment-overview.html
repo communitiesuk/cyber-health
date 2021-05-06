@@ -1,63 +1,56 @@
-{% extends 'base.html' %} {% block title %}Assessment overview{% endblock %}
+{% extends 'base.html' %} 
+{% block title %}Assessment overview{% endblock %}
 {%block content %}
-<p>Assessment overview</p>
 
-{% for pathway_group in pathway_groups %}
-<h2>{{pathway_group.name}}</h2>
-
-<ul>
-{% for pathway in pathway_group.pathways %}
-<li>{{pathway.short_name}}</li>
-{% endfor %}
-</ul>
-{% endfor %}
-
-
-
-
-{% endblock %}
-{#
 <div class="govuk-width-container">
-  <a href="/assessment/" class="govuk-back-link">Back</a>
+  <main
+    class="govuk-main-wrapper govuk-main-wrapper--auto-spacing"
+    id="main-content"
+    role="main"
+  >
+    <div class="govuk-grid-row" id="council-overview-layout">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+          Your Council Cyber Health Overview
+        </h1>
+        <p class="govuk-body-l govuk-!-margin-bottom-6">
+          Welcome to your overview page. Use this page to select which parts of
+          the assessment you’d like to complete and to view your progress.
+        </p>
+        
+      </div>
+    </div>
 
-  <main class="govuk-main-wrapper" id="main-content" role="main">
-    <div class="govuk-grid-row">
-      <h1 class="govuk-heading-l">Assessment index page</h1>
-      <p class="govuk-body">
-        But I must explain to you how all this mistaken idea of denouncing
-        pleasure and praising pain was born and I will give you a complete
-        account of the system, and expound the actual teachings of the great
-        explorer of the truth, the master-builder of human happiness. No one
-        rejects, dislikes, or avoids pleasure itself, because it is pleasure,
-        but because those who do not know how to pursue pleasure rationally
-        encounter consequences that are extremely painful. Nor again is
-      </p>
-
-      <table class="govuk-table">
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Question</th>
-            <th scope="col" class="govuk-table__header">Assessment</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          {% for question in questions %}
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-              <a href="question/{{ question.id }}"
-                >{{question.question_text}}</a
-              >
-            </td>
-            <td class="govuk-table__cell">
-              <strong class="govuk-tag govuk-tag--{{ question.answer_colour }}"
-                >{{ question.chosen_answer }}</strong
-              >
-            </td>
-          </tr>
+    {% if pathway_groups|length %}
+    {# Pathway group with pathway #}
+    {% for pathway_group in pathway_groups %}
+     <hr
+          class="govuk-section-break govuk-section-break--l govuk-section-break--visible"
+        />
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-2">{{pathway_group.name}}</h2>
+        <p class="govuk-body">{{pathway_group.intro_text}}</p>
+        {% if pathway_group.pathways|length %}
+        <div class="govuk-o-grid">
+          {% for pathway in pathway_group.pathways %}
+          <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
+            <div
+              class="govuk-card govuk-card--contained govuk-card--selectable"
+            >
+              <a class="govuk-link" href="/sprint-6/prototype/psn"></a>
+              <div class="govuk-card__content">
+                <h3 class="govuk-heading-m"><a class="govuk-link" href="psn">{{pathway.short_name}}</a></h3>
+                <p class="govuk-body">{{pathway.intro_text}}</p>
+              </div>
+            </div>
+          </div>
           {% endfor %}
-        </tbody>
-      </table>
+        </div>
+        {% endif %}
+        {% endfor %}
+      {# end Pathway group with pathway #}
+      {% endif %}
+      </div>
     </div>
   </main>
 </div>
-#} 
+{% endblock %}
