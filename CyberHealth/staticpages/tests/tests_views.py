@@ -15,3 +15,14 @@ class StaticPageViewTest(TestCase):
         response = self.client.get(reverse('static-page'))
         self.assertTemplateUsed(response, 'staticpages/index.html')
 
+    def test_can_render_privacy_policy(self):
+        response = self.client.get('/privacy-policy')
+        self.assertTemplateUsed(response, 'staticpages/privacy-policy.html')
+    
+    def test_can_render_cookie_policy(self):
+        response = self.client.get('/cookie-policy')
+        self.assertTemplateUsed(response, 'staticpages/cookie-policy.html')
+    
+    def test_can_render_accessibility_statement(self):
+        response = self.client.get('/accessibility-statement')
+        self.assertTemplateUsed(response, 'staticpages/accessibility-statement.html')
