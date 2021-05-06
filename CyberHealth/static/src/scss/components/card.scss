@@ -1,106 +1,92 @@
+$card-bg: #f8f8f8;
+
 .govuk-card {
-    margin-bottom: govuk-spacing(4);
-    padding-bottom: govuk-spacing(4);
-    border-bottom: 3px solid govuk-colour('blue');
+  margin-bottom: govuk-spacing(6);
+  padding-bottom: govuk-spacing(4);
+  border-bottom: 3px solid govuk-colour("blue");
+  min-height: auto;
+  box-sizing: border-box;
+
+  @include govuk-media-query($from: tablet) {
     min-height: 310px;
   }
 
-
-.govuk-card--selectable {
+  &--selectable {
     position: relative;
-  }
-  .govuk-card--contained {
-    background-color: #f8f8f8;
-  }
-  @media (min-width: 40.0625em) {
-    .govuk-card {
-      padding-bottom: 30px;
+
+    &:hover {
+      background-color: govuk-colour("blue");
+
+      & > .govuk-card__content > {
+        h3,
+        p,
+        h3 > a,
+        ul > li > a {
+          color: govuk-colour("white") !important;
+        }
+      }
     }
-  }
-  @media (min-width: 40.0625em) {
-    .govuk-card {
-      margin-bottom: 30px;
+
+    & > a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 0;
+      &:focus {
+        background-color: initial !important;
+      }
     }
   }
 
-  .govuk-card--selectable:hover {
-    background-color: govuk-colour('blue');
-  }
-  
-  .govuk-card--selectable > a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 0;
-  }
-  
-  .govuk-card--selectable > a:focus {
-    background-color: initial !important;
-  }
-  
-  a:link:focus {
-    color: govuk-colour('blue');
-  }
-  a:focus {
-    outline: 3px solid govuk-colour('yellow');
-  }
-  
-  .govuk-card--selectable:hover > .govuk-card__content > h3,
-  .govuk-card--selectable:hover > .govuk-card__content > p,
-  .govuk-card--selectable:hover > .govuk-card__content > h3 > a,
-  .govuk-card--selectable:hover > .govuk-card__actions > ul > li > a {
-    color: #ffffff !important;
-  }
-  
-  .govuk-card--selectable > a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 0;
-  }
-  
-  @media (min-width: 40.0625em) {
-    .govuk-card--contained .govuk-card__content {
-      padding-right: govuk-spacing(4);
+  &--contained {
+    background-color: $card-bg;
+
+    & .govuk-card__content {
+      padding-left: govuk-spacing(3);
+      padding-right: govuk-spacing(3);
+      @include govuk-media-query($from: tablet) {
+        padding-left: govuk-spacing(4);
+      }
     }
   }
-  @media (min-width: 40.0625em) {
-    .govuk-card--contained .govuk-card__content {
-      padding-left: govuk-spacing(4);
+
+  &--complete {
+    background-color: govuk-colour("green");
+    border-bottom-color: govuk-colour("green");
+    & > .govuk-card__content {
+      & h3,
+      p,
+      h3 > a {
+        color: govuk-colour("white") !important;
+      }
+    }
+    & > .govuk-card__actions > ul > li > a {
+      color: govuk-colour("white") !important;
     }
   }
-  .govuk-card--contained .govuk-card__content {
-    padding-left: govuk-spacing(3);
-    padding-right: govuk-spacing(3);
-  }
-  @media (min-width: 40.0625em) {
-    .govuk-card__content {
-      padding-top: govuk-spacing(4);
-    }
-  }
+
   .govuk-card__content {
     padding-top: govuk-spacing(3);
     padding-bottom: 0;
+    padding-left: govuk-spacing(4);
+    @include govuk-media-query($from: tablet) {
+      padding-top: govuk-spacing(4);
+    }
   }
-  
-  .govuk-o-grid:after {
-    content: "";
-    display: block;
-    clear: both;
+
+  a:link:focus {
+    color: govuk-colour("blue");
+    box-shadow: none;
   }
-  
-  
-  .govuk-card-complete > .govuk-card__content > h3,
-  .govuk-card-complete > .govuk-card__content > p,
-  .govuk-card-complete > .govuk-card__content > h3 > a,
-  .govuk-card-complete > .govuk-card__actions > ul > li > a {
-    color: govuk-colour('white') !important;
+  a:focus {
+    outline: 3px solid govuk-colour("yellow");
+    outline-offset: 0px;
   }
-  .govuk-o-grid .govuk-card-complete {
-    background-color: govuk-colour('green');
-    border-bottom-color: govuk-colour('green');
+
+  h3 {
+    color: govuk-colour("blue");
+    text-decoration: underline;
   }
+}

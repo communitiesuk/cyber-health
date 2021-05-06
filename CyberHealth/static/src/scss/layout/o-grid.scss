@@ -8,7 +8,7 @@
   margin-right: -#{govuk-spacing(3)};
   margin-left: -#{govuk-spacing(3)};
 
-  &::after {
+  &:after {
     content: "";
     display: block;
     clear: both;
@@ -17,6 +17,7 @@
   .govuk-o-grid__item {
     box-sizing: border-box;
     padding: 0 govuk-spacing(3);
+    
 
     &--one-third {
       width: 100%;
@@ -29,10 +30,3 @@
     }
   }
 }
-
-
-// @media (min-width: 40.0625em) {
-//   .govuk-o-grid__item {
-//     // float: left;
-//   }
-// }
