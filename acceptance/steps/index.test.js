@@ -10,7 +10,7 @@ const screen = {
 const feature = JestCucumber.loadFeature('features/index.feature');
 
 JestCucumber.defineFeature(feature, test => {
-    test('Index page contains expected text', ({ given, when, then }) => {
+    test('Index page contains expected heading', ({ given, when, then }) => {
 
         let url = "";
         let driver;
@@ -30,11 +30,11 @@ JestCucumber.defineFeature(feature, test => {
             await driver.get(url).catch(urlCaptureException => { console.error(urlCaptureException) })
         });
 
-        then(/I see the text \"(.*)\"/, async(expected) => {
+        then(/I see a page with the heading \"(.*)\"/, async(expected) => {
             // do nothing
             const pageTitle = await driver.findElement(WebDriver.By.id('main-content'))
             const actual = await pageTitle.getText()
-            expect(actual).toEqual(expected)
+            expect(actual).toContain(expected)
             driver.quit();
         });
     });
