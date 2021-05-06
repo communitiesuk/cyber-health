@@ -1,4 +1,4 @@
-Feature: Index page loads
+Feature: Static footer
 
 Scenario: Footer contains link to privacy policy
 Given I am a Cyber Capable Person
