@@ -17,10 +17,8 @@ def assessment_overview(request):
 
     pathway_groups = []
     for group in pathway_groups_dict:
-        current_group = group
-        related_pathways = Pathway.objects.filter(pathway_group=group['id'])
-        current_group['pathways'] = related_pathways
-        pathway_groups.append(current_group)
+        group['pathways'] = Pathway.objects.filter(pathway_group=group['id'])
+        pathway_groups.append(group)
     return render(request, 'assessment/assessment-overview.html', {'pathway_groups': pathway_groups})
 
 
