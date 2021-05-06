@@ -15,6 +15,7 @@ django-basicauth = "==0.5.3"
 pytz = "==2021.1"
 sqlparse = "==0.4.1"
 Django = "==3.1.7"
+django-cors-headers = "==3.7.0"
 
 [dev-packages]
 
