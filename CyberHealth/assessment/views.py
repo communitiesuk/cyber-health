@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from assessment.models import Question, Answer, Choice
 from basicauth.decorators import basic_auth_required
