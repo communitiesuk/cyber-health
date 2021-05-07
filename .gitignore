@@ -114,5 +114,6 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 media
-CyberHealth/.DS_Store
 .DS_Store
+CyberHealth/.DS_Store
+CyberHealth/static

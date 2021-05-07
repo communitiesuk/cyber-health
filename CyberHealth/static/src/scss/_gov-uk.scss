@@ -4,8 +4,15 @@ $govuk-images-path: '../images/';
 
 @import "node_modules/govuk-frontend/govuk/core/all";
 @import "node_modules/govuk-frontend/govuk/objects/all";
+
+@import "node_modules/govuk-frontend/govuk/components/back-link/index";
+@import "node_modules/govuk-frontend/govuk/components/fieldset/index";
+@import "node_modules/govuk-frontend/govuk/components/radios/index";
+@import "node_modules/govuk-frontend/govuk/components/button/index";
 @import "node_modules/govuk-frontend/govuk/components/footer/index";
 @import "node_modules/govuk-frontend/govuk/components/header/index";
 @import "node_modules/govuk-frontend/govuk/components/skip-link/index";
+@import "node_modules/govuk-frontend/govuk/components/table/index";
+@import "node_modules/govuk-frontend/govuk/components/tag/index";
 @import "node_modules/govuk-frontend/govuk/utilities/all";
 @import "node_modules/govuk-frontend/govuk/overrides/all";

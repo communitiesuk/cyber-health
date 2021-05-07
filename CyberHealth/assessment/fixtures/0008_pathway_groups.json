@@ -1,0 +1,29 @@
+[
+  {
+    "model": "assessment.pathwaygroup",
+    "pk": 1,
+    "fields": {
+      "name": "Compliance demands",
+      "intro_text": "The compliance requirements that you can achieve through this self assessment:",
+      "slug": "compliance-demands"
+    }
+  },
+  {
+    "model": "assessment.pathwaygroup",
+    "pk": 2,
+    "fields": {
+      "name": "Common council risks",
+      "intro_text": "Specific cyber problem areas that you can address through this self assessment:",
+      "slug": "common-council-risks"
+    }
+  },
+  {
+    "model": "assessment.pathwaygroup",
+    "pk": 3,
+    "fields": {
+      "name": "Other common standards",
+      "intro_text": "Other standards that you can see how you map against based on your self assessment answers.",
+      "slug": "other-common-standards"
+    }
+  }
+]
