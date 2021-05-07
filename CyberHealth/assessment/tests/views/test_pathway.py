@@ -1,14 +1,11 @@
 from django.test import TestCase
-from django.urls import reverse
+
 from assessment.models import Pathway, PathwayGroup
 
 
 class PathwayViewTest(TestCase):
 
     def setUp(self):
-        self.heading = "Hello"
-        self.description = "Welcome to your overview page. Use this page to select which parts of the assessment " \
-                           "you’d like to complete and to view your progress. "
 
         self.pathway_group = PathwayGroup.objects.create(
             name="Pathway group 1",
