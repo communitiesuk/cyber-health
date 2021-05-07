@@ -1,0 +1,13 @@
+
+    <div class="govuk-breadcrumbs">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/assessment">Council Overview</a>
+            </li>
+            {% for breadcrumb in breadcrumb_trail %}
+                <li class="govuk-breadcrumbs__list-item">
+                    <a class="govuk-breadcrumbs__link" href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a>
+                </li>
+            {% endfor %}
+        </ol>
+    </div>

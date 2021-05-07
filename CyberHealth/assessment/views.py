@@ -71,3 +71,14 @@ def question_view(request, question_id):
     }
 
     return render(request, 'assessment/question.html', context)
+
+
+@basic_auth_required
+def pathway_view(request, pathway_slug):
+    pathway = get_object_or_404(Pathway, slug=pathway_slug)
+
+    logger.info("Viewing pathway {}", pathway_slug)
+
+    context = {"pathway": pathway, "breadcrumbs": []}
+
+    return render(request, 'assessment/pathway.html', context)

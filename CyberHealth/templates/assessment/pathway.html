@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+{% block title %}{% endblock %}
+{% block content %}
+<div class="govuk-width-container">
+
+    {% include "partials/_breadcrumbs.html" with breadcrumb_trail=breadcrumbs %}
+
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full-from-desktop">
+                <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">{{  pathway.long_name }}</h1>
+                <p  class="govuk-body-l">{{ pathway.intro_text }}</p>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}
