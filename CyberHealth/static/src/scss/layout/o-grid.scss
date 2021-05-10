@@ -1,0 +1,32 @@
+// mobile:  320px,
+//   tablet:  641px,
+//   desktop: 769px
+
+.govuk-o-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -#{govuk-spacing(3)};
+  margin-left: -#{govuk-spacing(3)};
+
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .govuk-o-grid__item {
+    box-sizing: border-box;
+    padding: 0 govuk-spacing(3);
+    
+
+    &--one-third {
+      width: 100%;
+      @include govuk-media-query($from: tablet) {
+        width: 50%;
+      }
+      @include govuk-media-query($from: desktop) {
+        width: 33.33333%;
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %} 
+{% block title %}Assessment overview{% endblock %}
+{% block content %}
+
+<div class="govuk-width-container">
+  <main
+    class="govuk-main-wrapper govuk-main-wrapper--auto-spacing"
+    id="main-content"
+    role="main"
+  >
+    <div class="govuk-grid-row" id="council-overview-layout">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+          Your Council Cyber Health Overview
+        </h1>
+        <p class="govuk-body-l govuk-!-margin-bottom-6">
+          Welcome to your overview page. Use this page to select which parts of the assessment you’d like to complete and to view your progress.
+        </p>
+        
+      </div>
+    </div>
+
+    {% if pathway_groups|length %}
+    {# Pathway group with pathway #}
+    {% for pathway_group in pathway_groups %}
+     <hr
+          class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-top-9"
+        />
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-2">{{pathway_group.name}}</h2>
+        <p class="govuk-body govuk-!-margin-bottom-5">{{pathway_group.intro_text}}</p>
+        {% if pathway_group.pathways|length %}
+        <div class="govuk-o-grid">
+          {% for pathway in pathway_group.pathways %}
+
+             <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
+            <article
+              class="govuk-card govuk-card--contained govuk-card--selectable"
+            >
+              <div class="govuk-card__content">
+             <a href="{{ pathway.slug }}" aria-label='{{ pathway.long_name|escape }}'><h3 class="govuk-heading-m">{{pathway.short_name}}</h3></a>
+                <p class="govuk-body">{{pathway.intro_text}}</p>
+              </div>
+            </article>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% endfor %}
+      {# end Pathway group with pathway #}
+      {% endif %}
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}
