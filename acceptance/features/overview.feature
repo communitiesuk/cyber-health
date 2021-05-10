@@ -1,6 +1,6 @@
-Feature: Listing page loads
+Feature: Overview page loads
 
-Scenario: Listing page contains expected text
+Scenario: Overview page contains expected text
 Given I am a Cyber Capable Person
-When I visit the Cyber Health Framework listing page
+When I visit the Cyber Health Framework overview page
 Then I see the text "Your Council Cyber Health Overview"
