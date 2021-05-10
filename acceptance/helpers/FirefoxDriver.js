@@ -35,7 +35,7 @@ class FirefoxDriver {
   }
 
   async findElement(cssSelector) {
-    return await this.driver.findElement(WebDriver.By.css('#main-content'));
+    return await this.driver.findElement(WebDriver.By.css(cssSelector));
   }
 
   quit() {
