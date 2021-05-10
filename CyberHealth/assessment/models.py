@@ -1,9 +1,12 @@
 from django.db import models
 from django.utils.text import slugify
 
+from tinymce import models as tinymce_models
+
 
 class Question(models.Model):
     question_text = models.CharField(max_length=255)
+    question_intro = tinymce_models.HTMLField()
 
     def __str__(self):
         return self.question_text

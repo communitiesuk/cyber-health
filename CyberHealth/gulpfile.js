@@ -6,6 +6,8 @@ const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const concat = require("gulp-concat");
 const path = require("path");
+const debug = require('gulp-debug');
+var rename = require("gulp-rename");
 
 // Root path
 const repoRoot = path.join(__dirname);
@@ -13,6 +15,9 @@ const repoRoot = path.join(__dirname);
 // Npm paths
 const npmRoot = path.join(repoRoot, "node_modules");
 const govukFrontendRoot = path.join(npmRoot, "govuk-frontend");
+const tinyMCERoot = path.join(npmRoot, "tinymce");
+
+const tinyMCELangRoot = path.join(npmRoot, "tinymce-i18n", "langs5");
 const govukFrontendFontsFolder = path.join(
   govukFrontendRoot,
   "govuk",
@@ -36,10 +41,15 @@ const distCssFolder = path.join(distFolder, "css");
 const distFontsFolder = path.join(distFolder, "fonts");
 const distImagesFolder = path.join(distFolder, "images");
 const distScriptFolder = path.join(distFolder, "scripts");
+const distTinyMCEFolder = path.join(distFolder, "tinymce");
+const distTinyMCELangFolder = path.join(distFolder, "tinymce", "langs");
 
 // Src folders
 const srcFolder = path.join(repoRoot, "static", "src");
 const srcScssFolder = path.join(srcFolder, "scss");
+const srcTypographyScssFolder = path.join(srcFolder, "typography_scss");
+
+const srcScripts = path.join(srcFolder, "scripts");
 
 // Clean tasks
 gulp.task("clean:css", function () {
@@ -68,7 +78,15 @@ gulp.task("clean:script", function () {
 });
 
 
-gulp.task("clean", gulp.parallel("clean:css", "clean:fonts", "clean:images", "clean:script"));
+
+gulp.task("clean:tinymce", function () {
+  return del(distTinyMCEFolder + "/*").then(function (paths) {
+    console.log("💥  Deleted the following tinymce files:\n", paths.join("\n"));
+  });
+});
+
+
+gulp.task("clean", gulp.parallel("clean:css", "clean:fonts", "clean:images", "clean:script", "clean:tinymce"));
 
 // Sass compiling
 const sassOptions = {
@@ -78,6 +96,13 @@ const sassOptions = {
 
 
 gulp.task("sass", function () {
+  gulp
+    .src(srcTypographyScssFolder + "/**/*.scss")
+    .pipe(concat("typography.scss"))
+    .pipe(sass(sassOptions).on("error", sass.logError))
+    .pipe(postcss([autoprefixer()]))
+    .pipe(gulp.dest(distCssFolder));
+
   return gulp
     .src(srcFolder + "/**/*.scss")
     .pipe(concat("styles.scss"))
@@ -91,11 +116,14 @@ gulp.task("sass", function () {
 function copyFactoryWithPattern(resourceName, sourceFolder, targetFolder, pattern) {
   return function () {
     return gulp
-      .src(sourceFolder + pattern, { base: sourceFolder })
+      .src(sourceFolder + pattern, {base: sourceFolder})
+      .pipe(debug({"title": "Copy with pattern"}))
       .pipe(gulp.dest(targetFolder))
       .on("end", function () {
         console.log("📂  Copied " + resourceName);
+        console.log("📂  Copied from " + sourceFolder + " into " + targetFolder);
       });
+
   };
 }
 
@@ -136,13 +164,53 @@ gulp.task(
   )
 );
 
+gulp.task(
+  "copy:tinymce",
+  copyFactoryWithPattern(
+    "copy tinymce into a static folder",
+    tinyMCERoot,
+    distTinyMCEFolder,
+      "/**/*"
+  )
+);
+
+gulp.task(
+  "copy:tinymce_langs",
+  async function(){
+    return gulp
+      .src(tinyMCELangRoot + "/**/*", {base: tinyMCELangRoot})
+      .pipe(debug({"title": "tinymce_langs"}))
+      .pipe(gulp.dest(distTinyMCELangFolder))
+    .on("end", function () {
+        gulp
+          .src(distTinyMCELangFolder + '/uk.js', { allowEmpty: true })
+          .pipe(debug({"title": "create_uk_lang"}))
+            .pipe(rename('en_GB.js'))
+            .pipe(gulp.dest(distTinyMCELangFolder));
+
+      });
+  }
+);
+
+gulp.task(
+  "copy:scripts_to_tinymce",
+  copyFactoryWithPattern(
+    "copy javascript into a static folder",
+    srcScripts,
+    distTinyMCEFolder,
+      "/**/*"
+  )
+);
 
 gulp.task(
   "copyAssets",
   gulp.parallel(
-    "copy:govuk_frontend_assets:fonts",
-    "copy:govuk_frontend_assets:images",
-    "copy:govuk_frontend_assets:scripts"
+      "copy:govuk_frontend_assets:fonts",
+      "copy:govuk_frontend_assets:images",
+      "copy:govuk_frontend_assets:scripts",
+      "copy:tinymce",
+      "copy:tinymce_langs",
+      "copy:scripts_to_tinymce"
   )
 );
 
@@ -159,5 +227,4 @@ gulp.task(
   "watch",
   gulp.series("build", "watch:css")
 );
-
 

@@ -15,8 +15,12 @@ import os
 from pathlib import Path
 import logging
 import sys
+from django.contrib.staticfiles import finders
+
+logger = logging.getLogger(__name__)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_ABS_ROOT = os.path.abspath(os.path.dirname(__name__))
 
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'staticpages.apps.StaticpagesConfig',
     'assessment.apps.AssessmentConfig',
+    'tinymce',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -196,3 +201,234 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https?://localhost:\d{4}$",
     r"^https?:\/\/cyberhealth\.containers\.piwik\.pro$"
 ]
+
+TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
+TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "tinymce/tinymce.min.js")
+
+TINYMCE_DEFAULT_CONFIG = {
+    "theme": "silver",
+    "height": 500,
+    "menubar": False,
+    "plugins": "code,autolink,lists,link,image,charmap,print,preview,anchor,"
+               "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,"
+               "code,help,wordcount",
+    "toolbar": "undo redo | styleselect | bold italic"
+               " | bullist numlist outdent indent | removeformat | code | help",
+    "content_css": "/Users/joelstobart/cyber-health-frontend/CyberHealth/static/css/typography.css",
+    "style_formats_merge": False,
+    "style_formats":
+        [
+            {
+                        "title": "Paragraph",
+                        "format": "p"
+            },
+            {
+                "title": ".gov.uk Text",
+                "items": [
+                    {
+                        "title": "Lead Paragraph Text",
+                        "format": "p-lead",
+                        "exact": True
+                    },
+                    {
+                        "title": "Small Paragraph Text",
+                        "format": "p-small"
+                    },
+                    {
+                        "title": "Bold Paragraph Text",
+                        "format": "p-bold"
+                    },
+                ]
+            },
+            {
+                "title": ".gov.uk Headings",
+                "items": [
+                    {
+                        "title": "H1", "items": [
+                            {
+                                "title": "H1 eXtra Large",
+                                "format": "govuk-heading1-xl"
+                            },
+                            {
+                                "title": "H1 Large",
+                                "format": "h1"
+                            },
+                            {
+                                "title": "H1 Medium",
+                                "format": "govuk-heading1-m"
+                            },
+                            {
+                                "title": "H1 Small",
+                                "format": "govuk-heading1-s"
+                            },
+                        ]
+                    },
+                    {
+                        "title": "H2", "items":
+                        [
+                            {
+                                "title": "H2 eXtra Large",
+                                "format": "govuk-heading2-xl"
+                            },
+                            {
+                                "title": "H2 Large",
+                                "format": "govuk-heading2-l"
+                            },
+                            {
+                                "title": "H2 Medium",
+                                "format": "h2"
+                            },
+                            {
+                                "title": "H2 Small",
+                                "format": "govuk-heading2-s"
+                            },
+                        ]
+                    },
+                    {
+                        "title": "H3", "items":
+                        [
+                            {
+                                "title": "H3 eXtra Large",
+                                "format": "govuk-heading3-xl"
+                            },
+                            {
+                                "title": "H3 Large",
+                                "format": "govuk-heading3-l"
+                            },
+                            {
+                                "title": "H3 Medium",
+                                "format": "h3"
+                            },
+                            {
+                                "title": "H3 Small",
+                                "format": "govuk-heading3-s"
+                            },
+                        ]
+                    },
+                    {
+                        "title": "H4", "items":
+                        [
+                            {
+                                "title": "H4 eXtra Large",
+                                "format": "govuk-heading4-xl"
+                            },
+                            {
+                                "title": "H4 Large",
+                                "format": "govuk-heading4-l"
+                            },
+                            {
+                                "title": "H4 Medium",
+                                "format": "govuk-heading4-m"
+                            },
+                            {
+                                "title": "H4 Small",
+                                "format": "h4"
+                            },
+                        ]
+                    },
+                    {
+                        "title": "H5", "items":
+                        [
+                            {
+                                "title": "H5 eXtra Large",
+                                "format": "govuk-heading5-xl"
+                            },
+                            {
+                                "title": "H5 Large",
+                                "format": "govuk-heading5-l"
+                            },
+                            {
+                                "title": "H5 Medium",
+                                "format": "govuk-heading5-m"
+                            },
+                            {
+                                "title": "H5 Small",
+                                "format": "h5"
+                            },
+                        ]
+                    },
+                    {
+                        "title": "Captions", "items":
+                        [
+                            {
+                                "title": "Caption Large",
+                                "format": "govuk-caption-l"
+                            },
+                            {
+                                "title": "Caption Medium",
+                                "format": "govuk-caption-m"
+                            },
+                            {
+                                "title": "Caption Small",
+                                "format": "govuk-caption-s"
+                            },
+                        ]
+                    },
+                ]
+            },
+            {
+                "title": ".gov.uk Lists",
+                "items": [
+                    {
+                        "title": "Gov.uk Bullet List",
+                        "format": "ul",
+                        "exact": True
+                    },
+                    {
+                        "title": "Gov.uk Number List",
+                        "format": "ol",
+                        "exact": True
+                    },
+                ]
+            }
+
+        ],
+    "formats":
+        {
+
+            "p": {"block": "p", "classes": "govuk-body"},
+            "p-lead": {"block": "p", "classes": "govuk-body-l"},
+            "p-small": {"block": "p", "classes": "govuk-body-s"},
+            "p-bold": {"block": "p", "classes": "govuk-!-font-weight-bold"},
+
+            "h1": {"block": "h1", "classes": "govuk-heading-l"},
+            "h2": {"block": "h2", "classes": "govuk-heading-m"},
+            "h3": {"block": "h3", "classes": "govuk-heading-m"},
+            "h4": {"block": "h4", "classes": "govuk-heading-s"},
+            "h5": {"block": "h5", "classes": "govuk-heading-s"},
+
+            "govuk-heading1-xl": {"block": "h1", "classes": "govuk-heading-xl"},
+            "govuk-heading1-m": {"block": "h1", "classes": "govuk-heading-m"},
+            "govuk-heading1-s": {"block": "h1", "classes": "govuk-heading-s"},
+
+            "govuk-heading2-xl": {"block": "h2", "classes": "govuk-heading-xl"},
+            "govuk-heading2-l": {"block": "h2", "classes": "govuk-heading-l"},
+            "govuk-heading2-s": {"block": "h2", "classes": "govuk-heading-s"},
+
+            "govuk-heading3-xl": {"block": "h3", "classes": "govuk-heading-xl"},
+            "govuk-heading3-l": {"block": "h3", "classes": "govuk-heading-l"},
+            "govuk-heading3-s": {"block": "h3", "classes": "govuk-heading-s"},
+
+            "govuk-heading4-xl": {"block": "h4", "classes": "govuk-heading-xl"},
+            "govuk-heading4-l": {"block": "h4", "classes": "govuk-heading-l"},
+            "govuk-heading4-m": {"block": "h4", "classes": "govuk-heading-m"},
+
+            "govuk-heading5-xl": {"block": "h5", "classes": "govuk-heading-xl"},
+            "govuk-heading5-l": {"block": "h5", "classes": "govuk-heading-l"},
+            "govuk-heading5-m": {"block": "h5", "classes": "govuk-heading-m"},
+
+            "heading-caption-l": {"inline": "span", "classes": "govuk-caption-l"},
+            "heading-caption-m": {"inline": "span", "classes": "govuk-caption-m"},
+            "heading-caption-s": {"inline": "span", "classes": "govuk-caption-s"},
+
+
+            "bold": {"inline": "strong"},
+            "a": {"inline": "a", "classes": "govuk-link"},
+
+            "ul": {"selector": "ul", "classes": "govuk-list  govuk-list--bullet"},
+
+            "ol": {"selector": "ol", "classes": "govuk-list govuk-list--number"},
+            "li": {"block": "li"}
+        },
+}
+TINYMCE_SPELLCHECKER = True
