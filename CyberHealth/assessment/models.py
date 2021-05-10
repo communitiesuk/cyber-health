@@ -86,8 +86,8 @@ class OrganisationRegion(models.Model):
 
 class Organisation(models.Model):
     name = models.CharField(max_length=255)
-    # Domain name length: The maximum length of each label is 63 characters, and a full
-    # domain name can have a maximum of 253 characters
+    # Domain name length: The maximum length of each label is 63 characters,
+    # and a full domain name can have a maximum of 253 characters
     # https://www.nic.ad.jp/timeline/en/20th/appendix1.html#:~:text=Format%20of%20a%20domain%20name,
     # a%20maximum%20of%20253%20characters.
     domain_name = models.CharField(max_length=253)
