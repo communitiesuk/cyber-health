@@ -8,6 +8,7 @@ const pagesToAnalyze = [
     'accessibility-statement',
     'cookie-policy',
     'privacy-policy',
+    'assessment'
 ]
 
 const screen = {
