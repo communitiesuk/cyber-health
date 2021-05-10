@@ -1,96 +1,65 @@
 const JestCucumber = require('jest-cucumber')
-const WebDriver = require('selenium-webdriver');
-const firefox = require('selenium-webdriver/firefox');
-
-const screen = {
-  width: 1024,
-  height: 768
-};
+const FirefoxDriver = require('../helpers/FirefoxDriver.js');
 
 const feature = JestCucumber.loadFeature('features/footer.feature');
 
 JestCucumber.defineFeature(feature, test => {
+  let driver;
+
+  beforeAll(() => {
+    driver = new FirefoxDriver();
+  });
+
   test('Footer contains link to privacy policy', ({ given, when, then }) => {
-
-    let url = "";
-    let driver;
-
-    given('I am a Cyber Capable Person', () => {
-      driver = new WebDriver.Builder()
-        .withCapabilities(WebDriver.Capabilities.firefox())
-        .setFirefoxOptions(new firefox.Options()
-          .headless()
-          .windowSize(screen)
-        )
-        .build();
-    });
+    given('I am a Cyber Capable Person', () => {});
 
     when('I visit the Cyber Health Framework site', async () => {
-      url = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`
-      await driver.get(url).catch(urlCaptureException => { console.error(urlCaptureException) })
+      // visit home route
+      await driver.visitPage('');
     });
 
     then(/I see a link to \"(.*)\" in the footer/, async (expected) => {
-      const footerElement = await driver.findElement(WebDriver.By.css(`footer a[href="${expected}"]`));
+      const footerElement = await driver.findElement(`footer a[href="${expected}"]`);
       const actualFooterElement = await footerElement.getText();
       expect(actualFooterElement).toEqual('Privacy');
-      driver.quit();
+      // driver.quit();
     });
   });
 
   test('Footer contains link to cookie policy', ({ given, when, then }) => {
-
-    let url = "";
-    let driver;
-
-    given('I am a Cyber Capable Person', () => {
-      driver = new WebDriver.Builder()
-        .withCapabilities(WebDriver.Capabilities.firefox())
-        .setFirefoxOptions(new firefox.Options()
-          .headless()
-          .windowSize(screen)
-        )
-        .build();
-    });
+    given('I am a Cyber Capable Person', () => {});
 
     when('I visit the Cyber Health Framework site', async () => {
-      url = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`
-      await driver.get(url).catch(urlCaptureException => { console.error(urlCaptureException) })
+      // visit home route
+      await driver.visitPage('');
     });
 
     then(/I see a link to \"(.*)\" in the footer/, async (expected) => {
-      const footerElement = await driver.findElement(WebDriver.By.css(`footer a[href="${expected}"]`));
+      const footerElement = await driver.findElement(`footer a[href="${expected}"]`);
       const actualFooterElement = await footerElement.getText();
       expect(actualFooterElement).toEqual('Cookies');
-      driver.quit();
+      // driver.quit();
     });
   });
 
   test('Footer contains link to Accessibility statement', ({ given, when, then }) => {
-
-    let url = "";
-    let driver;
-
-    given('I am a Cyber Capable Person', () => {
-      driver = new WebDriver.Builder()
-        .withCapabilities(WebDriver.Capabilities.firefox())
-        .setFirefoxOptions(new firefox.Options()
-          .headless()
-          .windowSize(screen)
-        )
-        .build();
-    });
+    given('I am a Cyber Capable Person', () => {});
 
     when('I visit the Cyber Health Framework site', async () => {
-      url = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`
-      await driver.get(url).catch(urlCaptureException => { console.error(urlCaptureException) })
+      // visit home route
+      await driver.visitPage('');
     });
 
     then(/I see a link to \"(.*)\" in the footer/, async (expected) => {
-      const footerElement = await driver.findElement(WebDriver.By.css(`footer a[href="${expected}"]`));
+      const footerElement = await driver.findElement(`footer a[href="${expected}"]`);
       const actualFooterElement = await footerElement.getText();
       expect(actualFooterElement).toEqual('Accessibility statement');
-      driver.quit();
+      // driver.quit();
     });
+
+  });
+
+  afterAll(() => {
+    driver.quit();
   });
 });
