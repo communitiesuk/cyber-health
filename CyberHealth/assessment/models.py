@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
 
@@ -93,6 +94,7 @@ class Organisation(models.Model):
         OrganisationType, on_delete=models.CASCADE)
     organisation_region = models.ForeignKey(
         OrganisationRegion, on_delete=models.CASCADE)
+    users = models.ManyToManyField(User, through='OrganisationUser')
 
     def __str__(self):
         return self.name

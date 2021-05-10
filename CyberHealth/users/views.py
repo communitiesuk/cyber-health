@@ -7,7 +7,7 @@ def user_registration(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('admin')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
