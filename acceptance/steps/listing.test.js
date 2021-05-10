@@ -1,38 +1,22 @@
 const JestCucumber = require('jest-cucumber')
-const WebDriver = require('selenium-webdriver');
-const firefox = require('selenium-webdriver/firefox');
-
-const screen = {
-    width: 1024,
-    height: 768
-};
+const FirefoxDriver = require('../helpers/FirefoxDriver.js');
 
 const feature = JestCucumber.loadFeature('features/listing.feature');
 
 JestCucumber.defineFeature(feature, test => {
     test('Listing page contains expected text', ({ given, when, then }) => {
-
-        let url = "";
         let driver;
 
         given('I am a Cyber Capable Person', () => {
-            driver = new WebDriver.Builder()
-                .withCapabilities(WebDriver.Capabilities.firefox())
-                .setFirefoxOptions(new firefox.Options()
-                    .headless()
-                    .windowSize(screen)
-                )
-                .build();
+            driver = new FirefoxDriver();
         });
 
         when('I visit the Cyber Health Framework listing page', async() => {
-            url = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}/assessment`
-            await driver.get(url).catch(urlCaptureException => { console.error(urlCaptureException) })
+            await driver.visitPage('assessment')
         });
 
         then(/I see the text \"(.*)\"/, async(expected) => {
-            // do nothing
-            const pageTitle = await driver.findElement(WebDriver.By.className('govuk-heading-l'))
+            const pageTitle = await driver.findElement('.govuk-heading-l');
             const actual = await pageTitle.getText()
             expect(actual).toEqual(expected)
             driver.quit();
