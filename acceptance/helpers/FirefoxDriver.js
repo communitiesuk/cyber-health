@@ -3,16 +3,12 @@ const firefox = require('selenium-webdriver/firefox');
 
 
 class FirefoxDriver {
-  defaultScreen = {
-    width: 1024,
-    height: 768
-  }
-  defaultBaseUrl = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`;
-
-  constructor(screen = this.defaultScreen, baseUrl=this.defaultBaseUrl) {
-    this.driver = this.buildFirefoxDriver(screen)
-    this.screen = screen;
-    this.baseUrl = baseUrl;
+  constructor() {
+    this.driver = this.buildFirefoxDriver({
+      width: 1024,
+      height: 768
+    })
+    this.baseUrl = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`;
   }
 
   buildFirefoxDriver(screen) {
