@@ -4,14 +4,14 @@ const FirefoxDriver = require('../helpers/FirefoxDriver.js');
 const feature = JestCucumber.loadFeature('features/overview.feature');
 
 JestCucumber.defineFeature(feature, test => {
-    test('Listing page contains expected text', ({ given, when, then }) => {
+    test('Overview page contains expected text', ({ given, when, then }) => {
         let driver;
 
         given('I am a Cyber Capable Person', () => {
             driver = new FirefoxDriver();
         });
 
-        when('I visit the Cyber Health Framework listing page', async() => {
+        when('I visit the Cyber Health Framework overview page', async() => {
             await driver.visitPage('assessment')
         });
 

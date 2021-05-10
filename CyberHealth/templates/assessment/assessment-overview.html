@@ -31,13 +31,13 @@
         {% if pathway_group.pathways|length %}
         <div class="govuk-o-grid">
           {% for pathway in pathway_group.pathways %}
-          <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
+
+             <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
             <article
               class="govuk-card govuk-card--contained govuk-card--selectable"
             >
-              <a class="govuk-link" href="{{ pathway.slug }}" aria-label='{{ pathway.long_name|escape }}'></a>
               <div class="govuk-card__content">
-                <h3 class="govuk-heading-m">{{pathway.short_name}}</h3>
+             <a href="{{ pathway.slug }}" aria-label='{{ pathway.long_name|escape }}'><h3 class="govuk-heading-m">{{pathway.short_name}}</h3></a>
                 <p class="govuk-body">{{pathway.intro_text}}</p>
               </div>
             </article>
