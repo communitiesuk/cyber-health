@@ -1,5 +1,12 @@
+{% comment %}
+The following discusses the reasons for and against "Nav" in this context
+we have broken in favour of the W3 Accessibility standard and AXE.
+https://github.com/alphagov/govuk-frontend/issues/1604#issuecomment-539524177
+https://www.w3.org/TR/wai-aria-practices/examples/breadcrumb/index.html
+https://www.w3.org/TR/wai-aria-practices/#breadcrumb
+{% endcomment %}
 
-    <div class="govuk-breadcrumbs">
+    <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
         <ol class="govuk-breadcrumbs__list">
             <li class="govuk-breadcrumbs__list-item">
                 <a class="govuk-breadcrumbs__link" href="/assessment">Council Overview</a>
@@ -10,4 +17,4 @@
                 </li>
             {% endfor %}
         </ol>
-    </div>
+    </nav>

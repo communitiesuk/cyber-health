@@ -32,14 +32,14 @@ def assessment_all_questions_page(request):
             question.chosen_answer = "None"
             question.answer_colour = "blue"
         else:
-            question.chosen_answer = question.\
+            question.chosen_answer = question. \
                 answer_set.all().last().choice.choice_text
             if question.chosen_answer == "yes":
                 question.answer_colour = "green"
             else:
                 question.answer_colour = "red"
 
-    return render(request, 'assessment/all-questions.html', 
+    return render(request, 'assessment/all-questions.html',
                   {'questions': questions})
 
 
@@ -81,7 +81,7 @@ def question_view(request, question_id):
 def pathway_view(request, pathway_slug):
     pathway = get_object_or_404(Pathway, slug=pathway_slug)
 
-    logger.info("Viewing pathway {}", pathway_slug)
+    logger.info("Viewing pathway: %s", pathway_slug)
 
     context = {"pathway": pathway, "breadcrumbs": []}
 
