@@ -6,6 +6,7 @@ const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const concat = require("gulp-concat");
 const path = require("path");
+const debug = require('gulp-debug');
 
 // Root path
 const repoRoot = path.join(__dirname);
@@ -76,10 +77,14 @@ const sassOptions = {
   lineNumbers: true,
 };
 
+/*
+ What gets included from the gov.uk framework is controlled by the static/src/scss/_gov-uk/_gov-uk.scss file
+*/
 
 gulp.task("sass", function () {
   return gulp
     .src(srcFolder + "/**/*.scss")
+    .pipe(debug())
     .pipe(concat("styles.scss"))
     .pipe(sass(sassOptions).on("error", sass.logError))
     .pipe(postcss([autoprefixer()]))
