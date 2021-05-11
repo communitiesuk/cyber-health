@@ -8,7 +8,8 @@ const pagesToAnalyze = [
     'accessibility-statement',
     'cookie-policy',
     'privacy-policy',
-    'assessment'
+    'assessment',
+    'assessment/psn'
 ]
 
 const screen = {
@@ -18,12 +19,12 @@ const screen = {
 
 const buildDriver = () => {
     return new WebDriver.Builder()
-    .withCapabilities(WebDriver.Capabilities.firefox())
-    .setFirefoxOptions(new firefox.Options()
-        .headless()
-        .windowSize(screen)
-    )
-    .build();
+        .withCapabilities(WebDriver.Capabilities.firefox())
+        .setFirefoxOptions(new firefox.Options()
+            .headless()
+            .windowSize(screen)
+        )
+        .build();
 }
 
 
@@ -32,7 +33,11 @@ function runAccessibilityAnalysis(pages) {
     urls.forEach(url => {
         let driver = buildDriver();
         analyzePage(driver, url).then(result => {
-            console.log(result);
+            if (result.violations.length === 0) {
+                console.log("No Violations:", url.href);
+            } else {
+                console.warn("Violations:", url.href, result.violations);
+            }
         }).catch(err => {
             console.err(err);
         });
@@ -45,8 +50,7 @@ async function analyzePage(driver, url) {
         const axe = new AxeBuilder(driver, null, { noSandbox: true });
         let result = await axe.analyze();
         return Promise.resolve(result);
-    }
-    catch (err) {
+    } catch (err) {
         return Promise.reject(err);
     }
 }
