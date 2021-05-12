@@ -28,4 +28,4 @@ npm run frontend:build
 python3 manage.py migrate
 
 # copy all static files into STATIC_ROOT (static/assets)
-python3 manage.py collectstatic
+python3 manage.py collectstatic --noinput
