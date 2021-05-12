@@ -120,3 +120,7 @@ CyberHealth/.DS_Store
 # collected staticfiles
 CyberHealth/static/assets
 !CyberHealth/static/assets/.gitkeep
+
+# built dist files
+CyberHealth/static/dist
+!CyberHealth/static/dist/.gitkeep
