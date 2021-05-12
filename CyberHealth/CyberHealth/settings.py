@@ -150,7 +150,7 @@ LOGGING = {
     },
     'handlers': {
         'console': {
-            'level': 'INFO',
+            'level': 'WARNING',
             'class': 'logging.StreamHandler',
             'stream': sys.stdout,
             'formatter': 'verbose'
@@ -159,9 +159,14 @@ LOGGING = {
     'loggers': {
         '': {
             'handlers': ['console'],
-            'level': 'INFO',
+            'level': 'WARNING',
             'propagate': True,
         },
+        'django.server': {
+            'handlers': ['console'],
+            'propagate': False,
+            'level': 'WARNING'
+        }
     },
 }
 
