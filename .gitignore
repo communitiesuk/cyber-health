@@ -117,3 +117,6 @@ media
 .DS_Store
 CyberHealth/.DS_Store
 
+# collected staticfiles
+CyberHealth/static/assets
+!CyberHealth/static/assets/.gitkeep
