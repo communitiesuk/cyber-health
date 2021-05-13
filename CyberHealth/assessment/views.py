@@ -32,20 +32,21 @@ def assessment_all_questions_page(request):
             question.chosen_answer = "None"
             question.answer_colour = "blue"
         else:
-            question.chosen_answer = question.\
+            question.chosen_answer = question. \
                 answer_set.all().last().choice.choice_text
             if question.chosen_answer == "yes":
                 question.answer_colour = "green"
             else:
                 question.answer_colour = "red"
 
-    return render(request, 'assessment/all-questions.html', 
+    return render(request, 'assessment/all-questions.html',
                   {'questions': questions})
 
 
 @basic_auth_required
-def question_view(request, question_id):
+def question_view(request, pathway_slug, question_id):
     question = get_object_or_404(Question, pk=question_id)
+    pathway = get_object_or_404(Pathway, slug=pathway_slug)
     form = AnswerForm(question=question)
 
     if request.method == 'POST':
@@ -75,3 +76,14 @@ def question_view(request, question_id):
     }
 
     return render(request, 'assessment/question.html', context)
+
+
+@basic_auth_required
+def pathway_view(request, pathway_slug):
+    pathway = get_object_or_404(Pathway, slug=pathway_slug)
+
+    logger.info("Viewing pathway: %s", pathway_slug)
+
+    context = {"pathway": pathway, "breadcrumbs": []}
+
+    return render(request, 'assessment/pathway.html', context)
