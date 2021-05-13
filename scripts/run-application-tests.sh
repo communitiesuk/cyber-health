@@ -20,7 +20,8 @@ do
                 echo "Failed: Safety Check for $application"
                 return $error_code
             else 
-                 if ! bandit -r . -x ./cyber-health-python; then
+            
+                if ! bandit -r . -x ./cyber-health-python; then
                     echo "Failed: Bandit for $application"
                     return $error_code
                 else 
