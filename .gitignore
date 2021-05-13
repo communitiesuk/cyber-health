@@ -117,10 +117,9 @@ media
 .DS_Store
 CyberHealth/.DS_Store
 
-# collected staticfiles
-CyberHealth/static/assets
-!CyberHealth/static/assets/.gitkeep
 
-# built dist files
-CyberHealth/static/dist
-!CyberHealth/static/dist/.gitkeep
+# deployment files from cloud foundry
+CyberHealth/cf
+CyberHealth/cf7
+CyberHealth/LICENSE
+CyberHealth/NOTICE
