@@ -15,6 +15,8 @@ import os
 from pathlib import Path
 import logging
 import sys
+from notifications_python_client.notifications import NotificationsAPIClient
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,7 +33,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 # This application requires a debug flag to be set
 
-DEBUG = env('DJANGO_DEBUG', default=False)
+DEBUG = env('DJANGO_DEBUG', default=True)
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.london.cloudapps.digital']
 
@@ -136,6 +138,10 @@ STATICFILES_DIRS = [
 
 BASICAUTH_USERS = {'CyberHealth': 'cyber123'}
 BASICAUTH_DISABLE = env('BASICAUTH_DISABLE', default=False)
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+NOTIFICATIONS_CLIENT = NotificationsAPIClient('cyberhealth-4dc9b83a-c7de-4a09-8811-b6a2202c4859-20d0849a-4500-4b6f-b56b-1a1f74e41208')
+USERNAME_FIELD = 'email'
 
 # Adding in logging
 # If you're following the Twelve-Factor App methodology for your application,

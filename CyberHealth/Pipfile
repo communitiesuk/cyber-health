@@ -17,6 +17,7 @@ sqlparse = "==0.4.1"
 Django = "==3.1.7"
 django-cors-headers = "==3.7.0"
 django-crispy-forms = "*"
+notifications-python-client = "*"
 
 [dev-packages]
 

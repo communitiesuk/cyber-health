@@ -1,5 +1,5 @@
 from django.contrib import admin
-from assessment.models import Organisation, OrganisationRegion, OrganisationType, Answer, Question, Choice, PathwayGroup, Pathway
+from assessment.models import Answer, Question, Choice, PathwayGroup, Pathway
 
 
 class PathwayGroupAdmin(admin.ModelAdmin):
@@ -17,8 +17,3 @@ admin.site.register(Choice)
 
 admin.site.register(PathwayGroup, PathwayGroupAdmin)
 admin.site.register(Pathway, PathwayAdmin)
-
-
-admin.site.register(Organisation)
-admin.site.register(OrganisationRegion)
-admin.site.register(OrganisationType)
