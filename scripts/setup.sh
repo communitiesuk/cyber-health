@@ -1,23 +1,25 @@
 #!/bin/bash
 
-# Setup the virtual environment
-python3 -m venv cyber-health-python
+echo "🏓🏓🏓🏓 THIS IS BEING CALLED"
 
-echo "Activating ./cyber-health-python/bin/activate"
-# shellcheck disable=SC1091
-source ./cyber-health-python/bin/activate
+# # Setup the virtual environment
+# python3 -m venv cyber-health-python
 
-# Ensure that we have the prerequisites
-python3 -m pip install -U pipenv
-python3 -m pip install -U pip
-python3 -m pip install -U setuptools
-pip3 install wheel
-pip3 install whitenoise
+# echo "Activating ./cyber-health-python/bin/activate"
+# # shellcheck disable=SC1091
+# source ./cyber-health-python/bin/activate
 
-# Install dependencies
-pip3 install -r requirements.txt
-pipenv install
+# # Ensure that we have the prerequisites
+# python3 -m pip install -U pipenv
+# python3 -m pip install -U pip
+# python3 -m pip install -U setuptools
+# pip3 install wheel
+# pip3 install whitenoise
 
-# NPM install dependencies
-npm install
-npm run frontend:build
+# # Install dependencies
+# pip3 install -r requirements.txt
+# pipenv install
+
+# # NPM install dependencies
+# npm install
+# npm run frontend:build
