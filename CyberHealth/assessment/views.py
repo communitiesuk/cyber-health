@@ -44,8 +44,9 @@ def assessment_all_questions_page(request):
 
 
 @basic_auth_required
-def question_view(request, question_id):
+def question_view(request, pathway_slug, question_id):
     question = get_object_or_404(Question, pk=question_id)
+    pathway = get_object_or_404(Pathway, slug=pathway_slug)
     form = AnswerForm(question=question)
 
     if request.method == 'POST':
