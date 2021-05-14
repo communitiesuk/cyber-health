@@ -43,22 +43,29 @@ def account_activation(request, auth_token):
         if user_profile_details:
             if user_profile_details.is_verified:
                 messages.success(request, 'This account is already verified.')
-                return redirect('/login')
+                return redirect('login')
             activate_user(user_profile_details.user)
             user_profile_details.is_verified = True
             user_profile_details.save()
-            messages.success(request, 'The account has been activated.')
-            return redirect('login')
+            return redirect('success-page')
         else:
             messages.error(request, 'The requested profile does not exist.')
-            return redirect('/register')
+            return redirect('register')
     except Exception as e:
         print(e)
-        return render(request, 'users/error_page.html')
+        return render(request, error_page(request))
 
 
 def error_page(request):
-    return render(request, 'error_page.html')
+    return render(request, 'users/error_page.html')
+
+
+def success_page(request):
+    return render(request, 'users/success.html')
+
+
+def send_token_page(request):
+    return render(request, 'users/send_token.html')
 
 
 def user_registration(request):
@@ -68,7 +75,7 @@ def user_registration(request):
             try:
                 organisation = Organisation.objects.get(domain_name=form.cleaned_data.get('email').split('@')[-1])
                 organisation_user = OrganisationUser.objects.filter(user_organisation=organisation).first()
-                if organisation_user is None:
+                if organisation_user is None and organisation:
                     user_info = form.save(commit=False)
                     auth_token = str(uuid.uuid4())
                     gov_notify_response = send_user_notification(user_info, auth_token)
@@ -80,7 +87,7 @@ def user_registration(request):
                         organisation.organisation_users_info.add(user_info)
                         user_profile = UserProfile.objects.create(user=user_info, auth_token=auth_token)
                         user_profile.save()
-                        return redirect('login')
+                        return redirect('send-token-page')
                 else:
                     messages.info(request, 'There is already a user for your local council.')
             except Exception as e:
