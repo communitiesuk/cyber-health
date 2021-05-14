@@ -2,7 +2,7 @@
 
 echo "Building frontend assets before deployment"
 # Repeat frontend:build in order to populate dist folder on assets
-npm install --silent
+npm install --quiet
 npm run frontend:build
 
 echo "Deploying to Gov.uk PAAS"
