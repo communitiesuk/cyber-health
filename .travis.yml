@@ -28,21 +28,18 @@ deploy:
   # deploy develop to the sandbox environment
   - provider: script
     edge: true
-    cleanup: true
     script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE
     on:
       branch: develop
   # deploy master to staging environment
   - provider: script
     edge: true
-    cleanup: true
     script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE_UAT
     on:
       branch: staging
   # deploy master to production
   - provider: script
     edge: true
-    cleanup: true
     script: bash scripts/travis/deploy/script.sh $DEFAULT_CLOUDFOUNDRY_SPACE_FINAL
     on:
       branch: main
