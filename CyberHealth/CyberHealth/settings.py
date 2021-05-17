@@ -39,6 +39,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.london.cloudapps.digital']
 
 INSTALLED_APPS = [
     'corsheaders',
+    'admintheme.apps.AdminthemeConfig',
     'staticpages.apps.StaticpagesConfig',
     'assessment.apps.AssessmentConfig',
     'admin_interface',
