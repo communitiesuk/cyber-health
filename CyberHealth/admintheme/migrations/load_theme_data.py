@@ -29,7 +29,7 @@ def load_fixture(apps, schema_editor):
     python._get_model = _get_model
     try:
         # Call loaddata command
-        fixture_files = list(pathlib.Path().glob('*/fixtures/themes.json'))
+        fixture_files = list(pathlib.Path().glob('*/fixtures/theme.json'))
 
         logger.info("%s fixture files", fixture_files)
 
