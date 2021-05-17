@@ -99,6 +99,9 @@ DATABASES = {
     'default': env.db()
 }
 
+# Set the default AutoField type for auto-created model primary keys
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -157,7 +160,7 @@ LOGGING = {
     },
     'handlers': {
         'console': {
-            'level': 'INFO',
+            'level': 'WARNING',
             'class': 'logging.StreamHandler',
             'stream': sys.stdout,
             'formatter': 'verbose'
@@ -166,9 +169,14 @@ LOGGING = {
     'loggers': {
         '': {
             'handlers': ['console'],
-            'level': 'INFO',
+            'level': 'WARNING',
             'propagate': True,
         },
+        'django.server': {
+            'handlers': ['console'],
+            'propagate': False,
+            'level': 'WARNING'
+        }
     },
 }
 

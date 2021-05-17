@@ -117,3 +117,9 @@ media
 .DS_Store
 CyberHealth/.DS_Store
 
+
+# deployment files from cloud foundry
+CyberHealth/cf
+CyberHealth/cf7
+CyberHealth/LICENSE
+CyberHealth/NOTICE

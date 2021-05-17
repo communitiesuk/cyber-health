@@ -1,5 +1,7 @@
 #!/bin/bash
 
+error_code=1
+
 APPLICATIONS=("CyberHealth")
 for application in "${APPLICATIONS[@]}"
 do
@@ -16,13 +18,17 @@ do
             
             if ! safety check -r requirements.txt; then
                 echo "Failed: Safety Check for $application"
+                return $error_code
             else 
-                 if ! bandit -r . -x ./cyber-health-python; then
+            
+                if ! bandit -r . -x ./cyber-health-python; then
                     echo "Failed: Bandit for $application"
+                    return $error_code
                 else 
                     echo "Running unit tests"
                     if ! python3 manage.py test; then
                         echo "Failed: unit tests for $application"
+                        return $error_code
                     else 
                         echo "Passed: All direct tests for $application passed"
                     fi
@@ -31,16 +37,7 @@ do
         fi
 
     )
-  done  
-
-TESTS=("accessibility" "acceptance")
-for test in "${TESTS[@]}"
-do
-    (
-        echo "Running the tests $test"
-        cd "$test" || exit 
-        if ! npm run test ; then
-            echo "Failed: $test for $application"
-        fi 
-    )
 done
+
+# return with whatever exit code comes back from tests
+return $?

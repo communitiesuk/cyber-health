@@ -26,3 +26,6 @@ npm run frontend:build
 
 # run any django migrations required
 python3 manage.py migrate
+
+# copy all static files into STATIC_ROOT (static/assets)
+python3 manage.py collectstatic --noinput
