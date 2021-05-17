@@ -33,7 +33,7 @@ def load_fixture(apps, schema_editor):
 
         logger.info("%s fixture files", fixture_files)
 
-        call_command('loaddata', *fixture_files, app_label='CyberHealth')
+        call_command('loaddata', *fixture_files, app_label='admintheme')
     finally:
         # Restore old _get_model() function
         python._get_model = old_get_model
