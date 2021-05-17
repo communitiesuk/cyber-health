@@ -168,7 +168,7 @@ gulp.task("build", gulp.series("clean", "compile"));
 // Watch for changes
 gulp.task("watch:css", function () {
    gulp.watch([srcScssFolder + "/**/*.scss"], gulp.series("sass"));
-   gulp.watch([srcAdminScssFolderScssFolder + "/**/*.scss"], gulp.series("sass"));
+   gulp.watch([srcAdminScssFolder + "/**/*.scss"], gulp.series("sass"));
  })
 
 gulp.task(
