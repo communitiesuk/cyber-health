@@ -1,0 +1,96 @@
+@import "node_modules/govuk-frontend/govuk/helpers/_media-queries";
+
+$card-bg: #f8f8f8;
+
+.govuk-card {
+  margin-bottom: govuk-spacing(6);
+  padding-bottom: govuk-spacing(4);
+  border-bottom: 3px solid govuk-colour("blue");
+  min-height: auto;
+  box-sizing: border-box;
+
+ &:focus-within {
+      outline: 3px solid govuk-colour("yellow");
+  }
+
+  @include govuk-media-query($from: tablet) {
+    min-height: 310px;
+  }
+
+  &--selectable {
+    position: relative;
+
+    &:hover {
+      background-color: govuk-colour("blue");
+
+      & > .govuk-card__content > {
+        h3,
+        p,
+        h3 > a,
+        a > h3,
+        ul > li > a {
+          color: govuk-colour("white") !important;
+        }
+      }
+    }
+  }
+
+  &--contained {
+    background-color: $card-bg;
+
+    & .govuk-card__content {
+      padding-left: govuk-spacing(3);
+      padding-right: govuk-spacing(3);
+      @include govuk-media-query($from: tablet) {
+        padding-left: govuk-spacing(4);
+      }
+    }
+  }
+
+  &--complete {
+    background-color: govuk-colour("green");
+    border-bottom-color: govuk-colour("green");
+    & > .govuk-card__content {
+      & h3,
+      p,
+      h3 > a {
+        color: govuk-colour("white") !important;
+      }
+    }
+    & > .govuk-card__actions > ul > li > a {
+      color: govuk-colour("white") !important;
+    }
+  }
+
+  .govuk-card__content {
+    padding-top: govuk-spacing(3);
+    padding-bottom: 0;
+    padding-left: govuk-spacing(4);
+    @include govuk-media-query($from: tablet) {
+      padding-top: govuk-spacing(4);
+    }
+  }
+
+  a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  a:link:focus {
+    color: govuk-colour("yellow");
+    box-shadow: none;
+  }
+  a:focus {
+    outline: 3px solid govuk-colour("yellow");
+    outline-offset: 0px;
+  }
+
+  h3 {
+    color: govuk-colour("blue");
+    text-decoration: underline;
+  }
+}

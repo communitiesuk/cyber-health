@@ -6,6 +6,7 @@ const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const concat = require("gulp-concat");
 const path = require("path");
+const debug = require('gulp-debug');
 
 // Root path
 const repoRoot = path.join(__dirname);
@@ -40,6 +41,7 @@ const distScriptFolder = path.join(distFolder, "scripts");
 // Src folders
 const srcFolder = path.join(repoRoot, "static", "src");
 const srcScssFolder = path.join(srcFolder, "scss");
+const srcAdminScssFolder = path.join(srcFolder, "admin-scss");
 
 // Clean tasks
 gulp.task("clean:css", function () {
@@ -76,10 +78,23 @@ const sassOptions = {
   lineNumbers: true,
 };
 
+/*
+ What gets included from the gov.uk framework is controlled by the static/src/scss/_gov-uk/_gov-uk.scss file
+*/
 
 gulp.task("sass", function () {
+
+  gulp
+    .src(srcAdminScssFolder + "/**/*.scss")
+    .pipe(debug({"title":"Admin SCSS"}))
+    .pipe(concat("admin.scss"))
+    .pipe(sass(sassOptions).on("error", sass.logError))
+    .pipe(postcss([autoprefixer()]))
+    .pipe(gulp.dest(distCssFolder));
+
   return gulp
-    .src(srcFolder + "/**/*.scss")
+    .src(srcScssFolder + "/**/*.scss")
+    .pipe(debug({"title":"Core SCSS"}))
     .pipe(concat("styles.scss"))
     .pipe(sass(sassOptions).on("error", sass.logError))
     .pipe(postcss([autoprefixer()]))
@@ -153,6 +168,7 @@ gulp.task("build", gulp.series("clean", "compile"));
 // Watch for changes
 gulp.task("watch:css", function () {
    gulp.watch([srcScssFolder + "/**/*.scss"], gulp.series("sass"));
+   gulp.watch([srcAdminScssFolder + "/**/*.scss"], gulp.series("sass"));
  })
 
 gulp.task(

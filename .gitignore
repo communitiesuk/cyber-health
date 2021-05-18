@@ -116,4 +116,10 @@ db.sqlite3-journal
 media
 .DS_Store
 CyberHealth/.DS_Store
-CyberHealth/static
+
+
+# deployment files from cloud foundry
+CyberHealth/cf
+CyberHealth/cf7
+CyberHealth/LICENSE
+CyberHealth/NOTICE
