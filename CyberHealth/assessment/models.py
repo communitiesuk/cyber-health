@@ -38,7 +38,7 @@ class Control(models.Model):
             # slugify title otherwise
             self.slug = slugify(self.title)
         
-        super(PathwayGroup, self).save(*args, **kwargs)
+        super(Control, self).save(*args, **kwargs)
     
 
 
