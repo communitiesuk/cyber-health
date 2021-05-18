@@ -7,7 +7,7 @@ const autoprefixer = require('autoprefixer')
 const concat = require("gulp-concat");
 const path = require("path");
 const debug = require('gulp-debug');
-var rename = require("gulp-rename");
+const rename = require("gulp-rename");
 
 // Root path
 const repoRoot = path.join(__dirname);
