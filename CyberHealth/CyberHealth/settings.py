@@ -39,8 +39,11 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.london.cloudapps.digital']
 
 INSTALLED_APPS = [
     'corsheaders',
+    'admintheme.apps.AdminthemeConfig',
     'staticpages.apps.StaticpagesConfig',
     'assessment.apps.AssessmentConfig',
+    'admin_interface',
+    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -69,13 +72,17 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+            ],
+            'loaders': [
+                'apptemplates.Loader',
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
             ],
         },
     },
@@ -204,3 +211,7 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https?://localhost:\d{4}$",
     r"^https?:\/\/cyberhealth\.containers\.piwik\.pro$"
 ]
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+SILENCED_SYSTEM_CHECKS = ['security.W019']
+

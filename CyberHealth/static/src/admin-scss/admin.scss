@@ -1,0 +1,153 @@
+// styles go in here
+
+.admin-interface {
+  .breadcrumbs {
+    border-bottom: 10px solid #1d70b8;
+  }
+
+  #user-tools {
+    text-transform: capitalize;
+    font-size: 14px;
+  }
+
+  .addlink,
+  .changelink {
+    background: none;
+  }
+
+  .mini.quiet {
+    color: #686868;
+  }
+  .action-counter {
+    color: #686868;
+  }
+  header .govuk-header,
+  .govuk-header__container {
+    border-bottom-color: #0b0b0b;
+  }
+  h1 {
+    @extend h1, .govuk-heading-l;
+  }
+  .admin-interface a:link {
+    @extend a, .govuk-link;
+  }
+  td,
+  th,
+  body {
+    font-size: 16px;
+  }
+  th {
+    font-weight: normal;
+  }
+  input[type="text"] {
+    @extend .govuk-input;
+  }
+
+  .form-row label {
+    @extend .govuk-label--m;
+    @extend .govuk-label;
+  }
+  .govuk-header__link--homepage {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    display: inline-block;
+    font-size: 30px;
+    line-height: 1;
+  }
+
+  .gds_button {
+    width: auto;
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.1875;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    margin: 0 0 32px;
+    padding: 8px 10px 7px;
+    border: 2px solid transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 0 #002d18;
+  }
+
+  ul.object-tools > li > a:link,
+  ul.object-tools > li > a:visited {
+    @extend .gds_button;
+    color: #0b0c0c;
+    background: #f3f2f1 none;
+    -webkit-box-shadow: 0 2px 0 #002d18;
+    box-shadow: 0 2px 0 #002d18;
+    text-align: center;
+    vertical-align: top;
+    cursor: pointer;
+    -webkit-appearance: none;
+    text-transform: capitalize;
+  }
+
+  input[type="submit"][name="_save"] {
+    @extend .gds_button;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    min-height: auto;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #00703c;
+    text-transform: capitalize;
+  }
+  input[type="submit"][name="_continue"],
+  input[type="submit"][name="_addanother"] {
+    @extend .gds_button;
+    color: #0b0c0c;
+    background-color: #f3f2f1;
+    -webkit-box-shadow: 0 2px 0 #929191;
+    box-shadow: 0 2px 0 #929191;
+  }
+
+  a.deletelink {
+    @extend .gds_button;
+    display: inline-block;
+    color: #fff;
+    background-color: #d4351c;
+    -webkit-box-shadow: 0 2px 0 #55150b;
+    box-shadow: 0 2px 0 #55150b;
+    height: 35px;
+    margin-right: 0px;
+  }
+
+  .form-row {
+    padding: 24px 0px;
+  }
+
+  .submit-row {
+    background-color: white;
+    border: none;
+    display: flex;
+    padding-left: 0px;
+    padding-right: 0px;
+
+    .deletelink-box {
+      order: 4;
+    }
+
+    & > input[type="submit"],
+    & > p {
+      margin-left: 6px;
+      margin-right: 6px;
+    }
+
+    input[type="submit"][name="_save"]{
+      margin-left:0px;
+    }
+  }
+}
