@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from sort_order_field import SortOrderField
 
 
 class Question(models.Model):
@@ -39,7 +40,32 @@ class Control(models.Model):
             self.slug = slugify(self.title)
         
         super(Control, self).save(*args, **kwargs)
-    
+
+
+class SubControl(models.Model):
+    title = models.CharField(max_length=255)
+    sort_order = SortOrderField("Sort")
+    control = models.ForeignKey(Control, on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.title} ({self.control})"
+
+    def save(self, *args, **kwargs):
+        if self.slug:
+            # format slug if provided
+            self.slug = slugify(self.slug)
+        else:
+            # slugify title otherwise
+            self.slug = slugify(self.title)
+        
+        super(SubControl, self).save(*args, **kwargs)
+
+    class Meta:
+        order_with_respect_to = 'control'
+        unique_together=['control', 'sort_order']
+
 
 
 class PathwayGroup(models.Model):
