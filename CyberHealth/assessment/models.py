@@ -21,6 +21,26 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
 
+class Control(models.Model):
+    title = models.CharField(max_length=255)
+    intro_text = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if self.slug:
+            # format slug if provided
+            self.slug = slugify(self.slug)
+        else:
+            # slugify title otherwise
+            self.slug = slugify(self.title)
+        
+        super(PathwayGroup, self).save(*args, **kwargs)
+    
+
 
 class PathwayGroup(models.Model):
     name = models.CharField(max_length=80, unique=True)
