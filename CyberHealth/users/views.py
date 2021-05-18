@@ -78,21 +78,22 @@ def user_registration(request):
                 if organisation_user is None and organisation:
                     user_info = form.save(commit=False)
                     auth_token = str(uuid.uuid4())
-                    gov_notify_response = send_user_notification(user_info, auth_token)
-                    email_status = get_message_status(gov_notify_response.get('id'))
-                    if email_status.lower() == "delivered":
-                        user_info.username = form.cleaned_data.get('email')
-                        user_info.save()
-                        deactivate_user(user_info)
-                        organisation.organisation_users_info.add(user_info)
-                        user_profile = UserProfile.objects.create(user=user_info, auth_token=auth_token)
-                        user_profile.save()
-                        return redirect('send-token-page')
+                    send_user_notification(user_info, auth_token)
+                    user_info.username = user_info.email
+                    user_info.save()
+                    deactivate_user(user_info)
+                    organisation.organisation_users_info.add(user_info)
+                    user_profile = UserProfile.objects.create(user=user_info, auth_token=auth_token)
+                    user_profile.save()
+                    return redirect('send-token-page')
                 else:
                     messages.info(request, 'There is already a user for your local council.')
             except Exception as e:
                 print(e)
-                messages.error(request, 'There was an error in the sign up process.')
+                messages.error(request, 'There was an error in the sign up process. '
+                                        'Please check the details provided e.g. the email address.'
+                                        'Please try again.')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
+

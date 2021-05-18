@@ -55,7 +55,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'basicauth.middleware.BasicAuthMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -136,12 +135,13 @@ STATICFILES_DIRS = [
     os.path.join(STATIC_URL, 'dist'),
 ]
 
-BASICAUTH_USERS = {'CyberHealth': 'cyber123'}
-BASICAUTH_DISABLE = env('BASICAUTH_DISABLE', default=False)
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-NOTIFICATIONS_CLIENT = NotificationsAPIClient('cyberhealth-4dc9b83a-c7de-4a09-8811-b6a2202c4859-20d0849a-4500-4b6f-b56b-1a1f74e41208')
-USERNAME_FIELD = 'email'
+NOTIFICATIONS_CLIENT = NotificationsAPIClient(env('CYBERHEALTH_KEY'))
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'login'
+EMAIL_BACKEND = "django_gov_notify.backends.NotifyEmailBackend"
+GOVUK_NOTIFY_API_KEY = env('CYBERHEALTH_KEY')
+GOVUK_NOTIFY_PLAIN_EMAIL_TEMPLATE_ID = 'b5d742c9-39a3-4c9e-82a9-5e79554cbf99'
 
 # Adding in logging
 # If you're following the Twelve-Factor App methodology for your application,

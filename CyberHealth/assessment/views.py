@@ -1,14 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect, render
 from assessment.models import Question, Answer, Choice
-from basicauth.decorators import basic_auth_required
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .forms import AnswerForm
 import logging
 
 logger = logging.getLogger(__name__)
 
-@basic_auth_required
+@login_required
 def assessment_start_page(request):
     logger.info(request)
     questions = Question.objects.filter()
@@ -26,7 +26,7 @@ def assessment_start_page(request):
     return render(request, 'assessment/index.html', {'questions': questions})
 
 
-@basic_auth_required
+@login_required
 def question_view(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     form = AnswerForm(question=question)
