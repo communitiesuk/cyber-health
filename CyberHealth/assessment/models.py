@@ -28,7 +28,7 @@ class Control(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.title
+        return f"{self.id} - {self.title}"
 
     def save(self, *args, **kwargs):
         if self.slug:
@@ -68,6 +68,7 @@ class Pathway(models.Model):
     intro_text = models.CharField(max_length=255)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     pathway_group = models.ForeignKey(PathwayGroup, on_delete=models.CASCADE)
+    controls = models.ManyToManyField(Control)
 
     def __str__(self):
         return self.long_name
@@ -85,6 +86,11 @@ class Pathway(models.Model):
             self.slug = slugify(self.short_name)
 
         super(Pathway, self).save(*args, **kwargs)
+
+
+# class ControlPathway(models.Model):
+#     pathway = models.ForeignKey(Pathway, on_delete=models.CASCADE)
+#     control = models.ForeignKey(Control, on_delete=models.CASCADE)
 
 
 class OrganisationType(models.Model):
