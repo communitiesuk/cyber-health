@@ -1,7 +1,7 @@
-from django.forms import ModelForm
 from django import forms
+from django.forms import ModelForm
 
-from assessment.models import Question, Answer, Choice
+from assessment.models import Answer
 
 
 class AnswerForm(ModelForm):
@@ -15,6 +15,4 @@ class AnswerForm(ModelForm):
     class Meta:
         model = Answer
         fields = ['choice']
-
-
 
