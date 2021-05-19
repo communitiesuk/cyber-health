@@ -1,7 +1,7 @@
 const AxeBuilder = require('@axe-core/webdriverjs');
 const WebDriver = require('selenium-webdriver');
 const firefox = require('selenium-webdriver/firefox');
-const {Builder, By, Key, until} = require('selenium-webdriver');
+const {Builder, By} = require('selenium-webdriver');
 
 const baseUrl = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`
 const pagesToAnalyze = [
