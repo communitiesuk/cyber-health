@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect, render
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
 from assessment.models import Question, Answer, Choice, Pathway, PathwayGroup
 from django.shortcuts import render
 from .forms import AnswerForm
@@ -9,7 +9,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-@login_required
+# @login_required
 def assessment_overview(request):
     logger.info(request)
     pathway_groups_dict = PathwayGroup.objects.values()
@@ -22,7 +22,7 @@ def assessment_overview(request):
                   {'pathway_groups': pathway_groups})
 
 
-@login_required
+# @login_required
 def assessment_all_questions_page(request):
     logger.info(request)
     questions = Question.objects.filter()
@@ -42,7 +42,7 @@ def assessment_all_questions_page(request):
                   {'questions': questions})
 
 
-@login_required
+# @login_required
 def question_view(request, pathway_slug, question_id):
     question = get_object_or_404(Question, pk=question_id)
     pathway = get_object_or_404(Pathway, slug=pathway_slug)
@@ -77,7 +77,7 @@ def question_view(request, pathway_slug, question_id):
     return render(request, 'assessment/question.html', context)
 
 
-@login_required
+# @login_required
 def pathway_view(request, pathway_slug):
     pathway = get_object_or_404(Pathway, slug=pathway_slug)
 
