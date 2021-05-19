@@ -1,0 +1,84 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="govuk-width-container">
+     {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+  <main class="govuk-main-wrapper" id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Log in to the Cyberhealth Framework</h1>
+        <form method="post" novalidate>
+          {% csrf_token %}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+            <div class="govuk-form-group"> 
+                <label for="{{form.username.id_for_label}}" class="govuk-label">Email address</label> 
+                <input type="text" name="{{form.username.name}}" id="{{form.username.id_for_label}}" class="govuk-input" value="" maxlength="22" aria-describedby="user_id-hint" autocomplete="username"> 
+              </div>
+        <div class="govuk-form-group"> <label for="{{form.password.id_for_label}}" class="govuk-label">Password</label> 
+        <input type="password" name="{{form.password.name}}" id="{{form.password.id_for_label}}" class="govuk-input govuk-!-width-three-quarters" autocomplete="current-password"> 
+       {{form.errors}}
+       {% if form.password.errors %}
+       <p>hello there's an error</p>
+       {% endif %}
+       {{form.password.errors}}
+
+       </div>
+       </div>
+            
+              </div>
+            </fieldset>
+          </div>
+          <button
+            class="govuk-button"
+            data-module="govuk-button"
+            type="submit"
+            value="Submit"
+          >
+            Log in
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+    <div class="content-section">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Create an account <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
+            </small>
+            <small class="text-muted">
+                Forgot your password <a class="ml-2" href="{% url 'password_reset' %}">Reset password</a>
+            </small>
+        </div>
+    </div>
+
+{% endblock content %}
+
+        {# <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
+                {{form.username}}
+                {{form.username.id_for_label}}
+                {{form.username.name}}
+
+                {{form.password}}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Login</button>
+            </div>
+        </form> #}
