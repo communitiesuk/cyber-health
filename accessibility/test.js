@@ -1,8 +1,10 @@
 const AxeBuilder = require('@axe-core/webdriverjs');
-const WebDriver = require('selenium-webdriver');
+const WebDriver = require('selenium-webdriver'),
+      By = WebDriver.By;
 const firefox = require('selenium-webdriver/firefox');
-const {Builder, By} = require('selenium-webdriver');
 
+const username = `${process.env.TEST_USERNAME}`
+const password = `${process.env.TEST_PASSWORD}`
 const baseUrl = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`
 const pagesToAnalyze = [
     '/',
@@ -27,9 +29,6 @@ const buildDriver = () => {
         )
         .build();
 }
-
-const username = "CyberHealth"
-const password = "cyber123"
 
 function runAccessibilityAnalysis(pages) {
     const urls = pages.map(page => new URL(page, baseUrl))
