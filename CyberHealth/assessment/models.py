@@ -50,7 +50,7 @@ class SubControl(models.Model):
 
 class Question(models.Model):
     question_text = models.CharField(max_length=255)
-    sub_control = models.ForeignKey(SubControl, on_delete=models.CASCADE, null=True)
+    sub_control = models.ForeignKey(SubControl, on_delete=models.CASCADE, blank=True, null=True, related_name="in_sub_control")
     created_at = models.DateTimeField(auto_now_add=True)
     positive_answer = models.BooleanField(default=True)
     sort_order = SortOrderField("Sort")
