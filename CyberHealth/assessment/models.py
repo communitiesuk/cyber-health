@@ -50,7 +50,7 @@ class SubControl(models.Model):
 
 class Question(models.Model):
     question_text = models.CharField(max_length=255)
-    control = models.ForeignKey(Control, on_delete=models.CASCADE)
+    sub_control = models.ForeignKey(SubControl, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     positive_answer = models.BooleanField(default=True)
     
