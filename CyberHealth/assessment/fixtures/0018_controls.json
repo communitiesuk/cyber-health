@@ -1,0 +1,24 @@
+[
+  {
+    "model": "assessment.control",
+    "pk": 1,
+    "fields": {
+      "id": 1,
+      "title": "Written incident response plan",
+      "intro_text": "You have a written incident response plan that defines the roles of personnel as well as phases on incident handling/management.",
+      "slug": "written-incident-response-plan",
+      "created_at": "2021-05-19T16:16:34.106086+01:00"
+    }
+  },
+  {
+    "model": "assessment.control",
+    "pk": 2,
+    "fields": {
+      "id": 2,
+      "title": "Security event reporting",
+      "intro_text": "Security events are reported through defined procedures known to staff.",
+      "slug": "security-event-reporting",
+      "created_at": "2021-05-19T16:22:29.151504+01:00"
+    }
+  }
+]
