@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='question',
             name='control',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='assessment.control'),
+            field=models.ForeignKey(null=True, blank=True, on_delete=django.db.models.deletion.CASCADE, to='assessment.control'),
             preserve_default=False,
         ),
         migrations.AddField(
