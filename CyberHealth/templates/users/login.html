@@ -32,7 +32,7 @@
              
                 <div class="govuk-form-group {% if form.password.errors%} govuk-form-group--error {% endif %}">
                   <label for="{{form.password.id_for_label}}" class="govuk-label">Password</label> 
-                  {% if form.username.errors %}
+                  {% if form.password.errors %}
                     <span id="" class="govuk-error-message">
                       <span class="govuk-visually-hidden">Error:</span> 
                       Enter password</span>
