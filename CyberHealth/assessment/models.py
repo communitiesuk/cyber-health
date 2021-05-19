@@ -53,6 +53,7 @@ class Question(models.Model):
     sub_control = models.ForeignKey(SubControl, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     positive_answer = models.BooleanField(default=True)
+    sort_order = SortOrderField("Sort")
     
     def __str__(self):
         return self.question_text
