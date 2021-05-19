@@ -61,7 +61,6 @@ class SubControlAdmin(admin.ModelAdmin):
 
 admin.site.register(Answer)
 admin.site.register(Question)
-admin.site.register(Choice)
 
 admin.site.register(Control, ControlAdmin)
 admin.site.register(SubControl, SubControlAdmin)

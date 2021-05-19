@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
 from sort_order_field import SortOrderField
@@ -59,17 +60,15 @@ class Question(models.Model):
         return self.question_text
 
 
-class Choice(models.Model):
-    choice_text = models.CharField(max_length=255)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.choice_text
-
-
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    response = models.BooleanField(
+            null=False,
+            choices=((True, 'Yes'), (False, 'No'))
+        )
+    created_at = models.DateTimeField(auto_now_add=True)
+    # TODO: change user to organisation_user when that data modelling has been done
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
 
 class PathwayGroup(models.Model):
