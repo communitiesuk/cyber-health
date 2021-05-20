@@ -50,12 +50,9 @@ async function analyzePage(driver, url) {
     try {
         await driver.get(url);
         if (url.href.includes("assessment")) {
-            console.log("You are here *******************************")
             await driver.findElement(By.id('id_username')).sendKeys(username);
             await driver.findElement(By.id('id_password')).sendKeys(password);
             await driver.findElement(By.css('button')).click();
-            console.log("You are here *******************************" + username)
-            console.log("You are here *******************************" + password)
         }
         const axe = new AxeBuilder(driver, null, { noSandbox: true });
         let result = await axe.analyze();
