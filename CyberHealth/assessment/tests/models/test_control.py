@@ -10,26 +10,49 @@ class ControlTestCase(TestCase):
             slug="pathway-group-1"
         )
 
-        self.psn_pathway = Pathway.objects.create(
+        self.nsn_pathway = Pathway.objects.create(
             long_name="National Sector Network",
             short_name="NSN",
             intro_text="This is a description for the NSN",
             pathway_group=self.pathwaygroup1
         )
 
+        self.nce_pathway = Pathway.objects.create(
+            long_name="National Cyber Essentials",
+            intro_text="This is a description for the National Cyber Essentials",
+            pathway_group=self.pathwaygroup1
+        )
+
         self.incident_response = Control.objects.create(
-            title="Written incident response plan",
+            title="Incident response plan",
             intro_text="You have a written incident response plan that defines the roles of personnel as well as phases on incident handling/management."
         )
 
         self.security_event_reporting = Control.objects.create(
-            title="Security event reporting",
+            title="Security event reporting process",
             intro_text="Security events are reported through defined procedures known to staff.",
-            slug="security-event-reporting",
+            slug="some-custom-slug",
         )
 
         self.firewall = Control.objects.create(
-            title="Security event reporting",
-            intro_text="Security events are reported through defined procedures known to staff.",
-            slug="security-event-reporting",
+            title="Firewall in place",
+            intro_text="Your organisation has a firewall in place that prevents."
         )
+
+    def test_control_has_title(self):
+        self.assertEqual(self.incident_response.title,
+                         "Incident response plan")
+
+    def test_control_has_intro_text(self):
+        self.assertEqual(self.incident_response.intro_text,
+                         "You have a written incident response plan that defines the roles of personnel as well as phases on incident handling/management.")
+
+    def test_control_has_provided_slug(self):
+        self.assertEqual(self.security_event_reporting.slug,
+                         "some-custom-slug")
+
+    def test_control_creates_slug_when_not_provided(self):
+        self.assertEqual(self.incident_response.slug,
+                         "incident-response-plan")
+
+    
