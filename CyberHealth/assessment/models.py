@@ -117,11 +117,6 @@ class Pathway(models.Model):
         super(Pathway, self).save(*args, **kwargs)
 
 
-# class ControlPathway(models.Model):
-#     pathway = models.ForeignKey(Pathway, on_delete=models.CASCADE)
-#     control = models.ForeignKey(Control, on_delete=models.CASCADE)
-
-
 class OrganisationType(models.Model):
     type = models.CharField(max_length=255)
 
