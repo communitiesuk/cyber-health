@@ -1,11 +1,11 @@
 {% extends 'base.html' %} 
 {% block content %}
 <div class="govuk-width-container">
-
+  <a href="/" class="govuk-back-link">Back</a>
   <main class="govuk-main-wrapper" id="main-content" role="main">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">Log in to the Cyberhealth Framework</h1>
+      <h1 class="govuk-heading-xl">Log in to Assess Your Cyberhealth</h1>
         <form method="post" novalidate>
           {% csrf_token %}
           {% if messages %}
@@ -18,6 +18,9 @@
             <fieldset class="govuk-fieldset">
               <div class="govuk-form-group {% if form.username.errors or form.non_field_errors %} govuk-form-group--error {% endif %}"> 
                   <label for="{{form.username.id_for_label}}" class="govuk-label">Email address</label> 
+                  <div id="email-hint" class="govuk-hint govuk-!-width-three-quarters">
+                    Enter the email address you used to create an account for Assess Your Cyberhealth
+                  </div>
                   {% if form.non_field_errors %}
                   <span id="" class="govuk-error-message">
                     <span class="govuk-visually-hidden">Error:</span> 
@@ -27,7 +30,7 @@
                       <span class="govuk-visually-hidden">Error:</span> 
                       Enter email address</span>
                     {% endif %}
-                  <input type="text" name="{{form.username.name}}" id="{{form.username.id_for_label}}" class="govuk-input {% if form.username.errors or form.non_field_errors %} govuk-input--error {% endif %}" value="" maxlength="48" aria-describedby="user_id-hint" autocomplete="username"> 
+                  <input type="text" name="{{form.username.name}}" value="{% if form.username.value %} {{form.username.value}} {% endif %}" id="{{form.username.id_for_label}}" class="govuk-input govuk-!-width-three-quarters {% if form.username.errors or form.non_field_errors %} govuk-input--error {% endif %}" value="" maxlength="48" aria-describedby="user_id-hint" autocomplete="username" type="email"> 
                 </div>
              
                 <div class="govuk-form-group {% if form.password.errors%} govuk-form-group--error {% endif %}">
@@ -39,6 +42,7 @@
                   {% endif %}
                   <input type="password" name="{{form.password.name}}" id="{{form.password.id_for_label}}" class="govuk-input govuk-!-width-three-quarters {% if form.password.errors %} govuk-input--error {% endif %}" autocomplete="current-password"> 
                 </div>
+               
           
                 {% if form.username.errors %}
        <p>hello there's a username error</p>
@@ -60,54 +64,30 @@
 
           
             
-              </div>
-            </fieldset>
+  </fieldset>
+  <div class="govuk-body govuk-!-margin-bottom-6"">
+    <a class="govuk-link"  href="{% url 'password_reset' %}">Forgot your password</a>
+  </div>
+  <button
+  class="govuk-button"
+  data-module="govuk-button"
+  type="submit"
+  value="Submit"
+  >
+  Log in
+</button>
+<hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-6">
+<h2 class="govuk-heading-s govuk-!-margin-top-6">Don't have an account?</h2>
+<div class="govuk-body">
+<a class="govuk-link govuk-!-margin-bottom-5 " href="{% url 'register' %}">Create an account</a>
+</div>
+</div>
           </div>
-          <button
-            class="govuk-button"
-            data-module="govuk-button"
-            type="submit"
-            value="Submit"
-          >
-            Log in
-          </button>
+
         </form>
       </div>
     </div>
   </main>
 </div>
-    <div class="content-section">
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Create an account <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
-            </small>
-            <small class="text-muted">
-                Forgot your password <a class="ml-2" href="{% url 'password_reset' %}">Reset password</a>
-            </small>
-        </div>
-    </div>
 
 {% endblock content %}
-
-        {# <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Log In</legend>
-                {{form.username}}
-                {{form.username.id_for_label}}
-                {{form.username.name}}
-
-                {{form.password}}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Login</button>
-            </div>
-        </form> #}
