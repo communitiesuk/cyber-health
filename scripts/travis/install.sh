@@ -12,10 +12,6 @@ for test in "${TESTS[@]}"
 do
     (
         cd "$test" || exit
-        export TEST_USERNAME=$TEST_USERNAME
-        export TEST_PASSWORD=$TEST_PASSWORD
-        echo "*************this is the information $TEST_USERNAME"
-        echo "*************this is the information $TEST_PASSWORD"
         npm install
     ) 
 done
