@@ -50,7 +50,8 @@ async function analyzePage(driver, url) {
     try {
         await driver.get(url);
         console.log( await driver.getCurrentUrl() ) ;
-        if (await driver.getCurrentUrl().includes("account")) {
+        let page_url = await driver.getCurrentUrl();
+        if (page_url.includes("account")) {
             await driver.findElement(By.id('id_username')).sendKeys(username);
             await driver.findElement(By.id('id_password')).sendKeys(password);
             await driver.findElement(By.css('button')).click();
