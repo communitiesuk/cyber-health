@@ -49,7 +49,8 @@ function runAccessibilityAnalysis(pages) {
 async function analyzePage(driver, url) {
     try {
         await driver.get(url);
-        if (url.href.includes("assessment")) {
+        console.log( await driver.getCurrentUrl() ) ;
+        if (url.href.includes("account")) {
             await driver.findElement(By.id('id_username')).sendKeys(username);
             await driver.findElement(By.id('id_password')).sendKeys(password);
             await driver.findElement(By.css('button')).click();
