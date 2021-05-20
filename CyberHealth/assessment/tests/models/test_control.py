@@ -73,3 +73,11 @@ class ControlTestCase(TestCase):
         # assert control belongs to two pathways
         self.assertEqual(self.incident_response.pathway_set.count(), 2)
 
+    def test_control_can_have_sub_control(self):
+      self.assertEqual(self.incident_response.subcontrol_set.count(), 0)
+      sub_control = SubControl.objects.create(
+          title = "Org has cyber incident response policies",
+          control = self.incident_response,
+      )
+      self.assertEqual(self.incident_response.subcontrol_set.count(), 1)
+
