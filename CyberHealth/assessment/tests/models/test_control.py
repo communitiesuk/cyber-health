@@ -55,4 +55,21 @@ class ControlTestCase(TestCase):
         self.assertEqual(self.incident_response.slug,
                          "incident-response-plan")
 
-    
+    def test_control_can_be_added_to_pathway(self):
+        # assert pathway has no controls
+        self.assertEqual(self.nsn_pathway.controls.count(), 0)
+        # add control to pathway
+        self.nsn_pathway.controls.add(self.incident_response)
+        # assert pathway has one control
+        self.assertEqual(self.nsn_pathway.controls.count(), 1)
+
+    def test_control_can_belong_to_multiple_pathways(self):
+        # add control to two pathways
+        self.nsn_pathway.controls.add(self.incident_response)
+        self.nce_pathway.controls.add(self.incident_response)
+        # assert each pathway has one control
+        self.assertEqual(self.nsn_pathway.controls.count(), 1)
+        self.assertEqual(self.nce_pathway.controls.count(), 1)
+        # assert control belongs to two pathways
+        self.assertEqual(self.incident_response.pathway_set.count(), 2)
+
