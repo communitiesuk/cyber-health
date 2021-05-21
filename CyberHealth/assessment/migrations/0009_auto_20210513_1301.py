@@ -13,49 +13,41 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='answer',
             name='id',
-            field=models.BigAutoField(
-                auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            field=models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
         ),
         migrations.AlterField(
             model_name='choice',
             name='id',
-            field=models.BigAutoField(
-                auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            field=models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
         ),
         migrations.AlterField(
             model_name='organisation',
             name='id',
-            field=models.BigAutoField(
-                auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            field=models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
         ),
         migrations.AlterField(
             model_name='organisationregion',
             name='id',
-            field=models.BigAutoField(
-                auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            field=models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
         ),
         migrations.AlterField(
             model_name='organisationtype',
             name='id',
-            field=models.BigAutoField(
-                auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            field=models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
         ),
         migrations.AlterField(
             model_name='pathway',
             name='id',
-            field=models.BigAutoField(
-                auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            field=models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
         ),
         migrations.AlterField(
             model_name='pathwaygroup',
             name='id',
-            field=models.BigAutoField(
-                auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            field=models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
         ),
         migrations.AlterField(
             model_name='question',
             name='id',
-            field=models.BigAutoField(
-                auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            field=models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
         ),
     ]
