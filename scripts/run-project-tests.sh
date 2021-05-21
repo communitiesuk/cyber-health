@@ -13,7 +13,7 @@ do
         if ! npm run test ; then
             echo "Failed: $test for $application"
             return $error_code
-        fi 
+        fi
     )
 done
 
