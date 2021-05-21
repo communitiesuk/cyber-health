@@ -1,3 +1,4 @@
+from django.forms import Textarea
 from django.contrib import admin
 from assessment.models import *
 
@@ -11,6 +12,9 @@ class PathwayAdmin(admin.ModelAdmin):
         "short_name",)}
     filter_horizontal = ('controls',)
 
+    def get_form(self, request, obj=None, **kwargs):
+        kwargs['widgets'] = {'intro_text': Textarea}
+        return super().get_form(request, obj, **kwargs)
 
 class SubControlInline(admin.TabularInline):
     model = SubControl
