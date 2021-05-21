@@ -1,5 +1,114 @@
-{% load crispy_forms_tags %}
+{% extends 'base.html' %} 
+{% block title %}{% if form.errors %}Error: {% endif %}Create an account{% endblock %}
 {% block content %}
+<div class="govuk-width-container">
+   <a href="/" class="govuk-back-link">Back</a>
+   <main class="govuk-main-wrapper" id="main-content" role="main">
+      <div class="govuk-grid-row">
+         <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">Create an account</h1>
+            {% if form.errors %}
+            <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+               <h2 class="govuk-error-summary__title" id="error-summary-title">
+                  There is a problem
+               </h2>
+               <div class="govuk-error-summary__body">
+                  <ul class="govuk-list govuk-error-summary__list">
+                     {% if form.non_field_errors %}
+                     {% for error in form.non_field_errors %}
+                     <li>
+                        <a href="#{{form.username.id_for_label}}">{{error}}</a>
+                     </li>
+                     {% endfor %}
+                     {% endif %}
+                     {% for field in form %}
+                     {% if field.errors %}
+                     {% for error in field.errors %}
+                     <li>
+                        <a href="#{{field.id_for_label}}">{{error}}</a>
+                     </li>
+                     {% endfor %}
+                     {% endif %}
+                     {% endfor %}
+                  </ul>
+               </div>
+            </div>
+            {% endif %}
+            <form method="post" novalidate>
+               {% csrf_token %}
+               <fieldset class="govuk-fieldset">
+
+                {% for field in form %}
+                <div class="govuk-form-group {% if field.errors %} govuk-form-group--error {% endif %}">
+                <label for="{{field.id_for_label}}" class="govuk-label">{{field.label}}</label> 
+                
+                <div id="email-hint" class="govuk-hint govuk-!-width-three-quarters">
+                    {{field.help_text}}
+                 </div>
+
+                {% if field.errors %}
+                {% for error in field.errors %}
+                <span id="{{field.name}}-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> 
+                {{error}}</span>
+                {% endfor %}
+                {% endif %}
+                <input type="text" name="{{field.name}}" value="{% if field.value %} {{field.value}} {% endif %}" id="{{field.id_for_label}}" class="govuk-input govuk-!-width-three-quarters {% if field.errors or form.non_field_errors %} govuk-input--error {% endif %}" value="" maxlength="48" aria-describedby="user_id-hint" autocomplete="first_name" type="email"> 
+             </div>
+
+                {% endfor %}
+
+
+                    
+                    <!-- <label for="{{form.first_name.id_for_label}}" class="govuk-label">{{form.first_name.label}}</label> 
+                     {% if form.first_name.errors %}
+                     {% for error in form.first_name.errors %}
+                     <span id="email-error" class="govuk-error-message">
+                     <span class="govuk-visually-hidden">Error:</span> 
+                     {{error}}</span>
+                     {% endfor %}
+                     {% endif %}
+                     <input type="text" name="{{form.first_name.name}}" value="{% if form.first_name.value %} {{form.first_name.value}} {% endif %}" id="{{form.first_name.id_for_label}}" class="govuk-input govuk-!-width-three-quarters {% if form.first_name.errors or form.non_field_errors %} govuk-input--error {% endif %}" value="" maxlength="48" aria-describedby="user_id-hint" autocomplete="first_name" type="email"> 
+                  </div> -->
+
+                  <div class="govuk-form-group {% if form.password.errors%} govuk-form-group--error {% endif %}">
+                     <label for="{{form.password.id_for_label}}" class="govuk-label">Password</label> 
+                     {% if form.password.errors %}
+                     {% for error in form.password.errors %}
+                     <span id="password-error" class="govuk-error-message">
+                     <span class="govuk-visually-hidden">Error:</span> 
+                     {{error}}</span>
+                     {% endfor %}
+                     {% endif %}
+                     <input type="password" name="{{form.password.name}}" id="{{form.password.id_for_label}}" class="govuk-input govuk-!-width-three-quarters {% if form.password.errors %} govuk-input--error {% endif %}" autocomplete="current-password"> 
+                  </div>
+               </fieldset>
+               <div class="govuk-body govuk-!-margin-bottom-6"">
+                  <a class="govuk-link"  href="{% url 'password_reset' %}">Forgot your password</a>
+               </div>
+               <button
+                  class="govuk-button"
+                  data-module="govuk-button"
+                  type="submit"
+                  value="Submit"
+                  >
+               Log in
+               </button>
+               <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-6">
+               <h2 class="govuk-heading-s govuk-!-margin-top-6">Don't have an account?</h2>
+               <div class="govuk-body">
+                  <a class="govuk-link govuk-!-margin-bottom-5 " href="{% url 'register' %}">Create an account</a>
+               </div>
+         </div>
+      </div>
+      </form>
+</div>
+</div>
+</main>
+</div>
+
+
+
     <div class="content-section">
         {% if messages %}
             {% for message in messages %}
@@ -12,7 +121,7 @@
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Register</legend>
-                {{ form|crispy }}
+                {{ form }}
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Sign Up</button>
