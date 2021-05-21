@@ -1,5 +1,9 @@
 from django.contrib import admin
-from assessment.models import *
+from assessment.models import (
+    Organisation, OrganisationRegion, OrganisationType, Answer, Question,
+    PathwayGroup, Pathway, Control, SubControl
+)
+                                
 
 
 class PathwayGroupAdmin(admin.ModelAdmin):
