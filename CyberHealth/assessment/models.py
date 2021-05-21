@@ -67,7 +67,6 @@ class Answer(models.Model):
             choices=((True, 'Yes'), (False, 'No'))
         )
     created_at = models.DateTimeField(auto_now_add=True)
-    # TODO: change user to organisation_user when that data modelling has been done
     user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
 
