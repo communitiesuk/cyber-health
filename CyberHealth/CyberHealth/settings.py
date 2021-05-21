@@ -43,9 +43,12 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.london.cloudapps.digital']
 
 INSTALLED_APPS = [
     'corsheaders',
+    'admintheme.apps.AdminthemeConfig',
     'staticpages.apps.StaticpagesConfig',
     'assessment.apps.AssessmentConfig',
     'tinymce',
+    'admin_interface',
+    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -74,13 +77,17 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+            ],
+            'loaders': [
+                'apptemplates.Loader',
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
             ],
         },
     },
@@ -222,7 +229,7 @@ TINYMCE_DEFAULT_CONFIG = {
                "code,help,wordcount",
     "toolbar": "undo redo | styleselect | bold italic"
                " | bullist numlist outdent indent | removeformat | code | help",
-    "content_css": "/Users/joelstobart/cyber-health-frontend/CyberHealth/static/css/typography.css",
+    "content_css": "/static/css/typography.css",
     "style_formats_merge": False,
     "style_formats":
         [
@@ -440,3 +447,7 @@ TINYMCE_DEFAULT_CONFIG = {
         },
 }
 TINYMCE_SPELLCHECKER = True
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+SILENCED_SYSTEM_CHECKS = ['security.W019']
+
