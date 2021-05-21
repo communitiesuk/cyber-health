@@ -7,7 +7,6 @@
       <div class="govuk-grid-row">
          <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-xl">Create an account</h1>
-           
             {% if form.errors %}
 
             <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
@@ -24,12 +23,15 @@
                      </li>
                      {% endfor %}
                      {% endif %}
+
                      {% for field in form %}
                      {% if field.errors %}
                      {% for error in field.errors %}
+                     {% if field.name != 'password2' or error == 'The two password fields didn’t match.' or error == 'Enter confirm password' %}
                      <li>
                         <a href="#{{field.id_for_label}}">{{error}}</a>
                      </li>
+                     {% endif %}
                      {% endfor %}
                      {% endif %}
                      {% endfor %}
@@ -56,7 +58,10 @@
                 {{error}}</span>
                 {% endfor %}
                 {% endif %}
-                <input type="{% if 'password' in field.name %}password{% else %}text{% endif %}" name="{{field.name}}" value="{% if field.value %} {{field.value}} {% endif %}" id="{{field.id_for_label}}" class="govuk-input govuk-!-width-three-quarters {% if field.errors or form.non_field_errors %} govuk-input--error {% endif %}" value="" maxlength="48" aria-describedby="{{field.label}}" autocomplete="{{field.name}}"> 
+                <input type="{% if 'password' in field.name %}password{% elif 'email' in field.name %}email{% else %}text{% endif %}" 
+                       name="{{field.name}}" value="{% if field.value %}{{field.value | escape}}{% endif %}" id="{{field.id_for_label}}" 
+                       class="govuk-input govuk-!-width-three-quarters {% if field.errors or form.non_field_errors %} govuk-input--error {% endif %}"
+                       maxlength="48" aria-describedby="{{field.label}}" autocomplete="{{field.name}}"> 
              </div>
 
                 {% endfor %}
