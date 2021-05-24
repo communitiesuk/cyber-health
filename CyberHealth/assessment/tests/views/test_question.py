@@ -4,6 +4,12 @@ from assessment.models import Question, Answer, Choice, PathwayGroup, Pathway
 
 
 class QuestionViewTest(TestCase):
+    # Load in sample data for questions, answers, choices
+    fixtures = [
+        'assessment/fixtures/0004_questions.json',
+        'assessment/fixtures/0004_answers.json',
+        'assessment/fixtures/0004_choices.json',
+    ]
 
     def setUp(self):
         self.question1 = Question.objects.create(
