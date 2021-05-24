@@ -20,28 +20,27 @@ class UserRegisterForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super(UserRegisterForm, self).__init__(*args, **kwargs)   
-
+        email = self.data['email']
         for field in self.fields.values():
             field.error_messages = {'required': 'Enter {fieldname}'.format(
                 fieldname=field.label).capitalize()}
 
-    # Ensures password1 has the same validation errors as password2
+    def clean_email(self):
+        email = self.data['email']
+        if not Organisation.objects.filter(domain_name=email.split('@')[-1]).exists():
+            self.add_error('email', 'Must use a .gov.uk email address related to a council')
+
+
     def _post_clean(self):
         super(UserRegisterForm, self)._post_clean()
         password = self.cleaned_data.get('password1')
-        email = self.cleaned_data.get('email')
 
+        # Ensures password1 has the same validation errors as password2
         if password:
             try:
                 password_validation.validate_password(password, self.instance)
             except forms.ValidationError as error:
                 self.add_error('password1', error)
-
-        if email:
-            try:
-                Organisation.objects.get(domain_name=email.split('@')[-1])
-            except ObjectDoesNotExist:
-                self.add_error('email', 'Must use a .gov.uk email address related to a council')
 
 
 

@@ -8,16 +8,7 @@
          <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-xl">Create an account</h1>
 
-            {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-info">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-
-            {% if form.errors %}
-
+            {% if form.errors or messages %}
             <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
                <h2 class="govuk-error-summary__title" id="error-summary-title">
                   There is a problem
@@ -25,6 +16,15 @@
 
                <div class="govuk-error-summary__body">
                   <ul class="govuk-list govuk-error-summary__list">
+                     {% if messages %}
+                     {% for message in messages %}
+                     <li class="text-red govuk-!-font-weight-bold">
+                             {{ message }}
+                     </li>
+                     {% endfor %}
+                 {% endif %}
+
+
                      {% if form.non_field_errors %}
                      {% for error in form.non_field_errors %}
                      <li>
