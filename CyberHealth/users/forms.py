@@ -2,14 +2,16 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import password_validation
+from .models import Organisation
+from django.core.exceptions import ObjectDoesNotExist
 
 
 class UserRegisterForm(UserCreationForm):
     first_name = forms.CharField(required=True, label="First name")
     last_name = forms.CharField(required=True, label="Last name")
     email = forms.EmailField(required=True, label="Email", help_text='Must be a .gov.uk local authority email address')
+    password1 = forms.CharField(required=True, label="Password", error_messages={'password_too_short': 'My error message for too short passwords'})
     password2 = forms.CharField(required=True, label="Confirm password")
 
     class Meta:
@@ -23,17 +25,24 @@ class UserRegisterForm(UserCreationForm):
             field.error_messages = {'required': 'Enter {fieldname}'.format(
                 fieldname=field.label).capitalize()}
 
-    # Ensures password1 has the same validation errors 
+    # Ensures password1 has the same validation errors as password2
     def _post_clean(self):
         super(UserRegisterForm, self)._post_clean()
         password = self.cleaned_data.get('password1')
+        email = self.cleaned_data.get('email')
+
         if password:
             try:
                 password_validation.validate_password(password, self.instance)
             except forms.ValidationError as error:
                 self.add_error('password1', error)
-                
-        print(dict(self.errors))
+
+        if email:
+            try:
+                Organisation.objects.get(domain_name=email.split('@')[-1])
+            except ObjectDoesNotExist:
+                self.add_error('email', 'Must use a .gov.uk email address related to a council')
+
 
 
 class LoginForm(AuthenticationForm):
