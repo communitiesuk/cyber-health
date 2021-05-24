@@ -12,6 +12,11 @@
                 <p  class="govuk-body-l">{{ pathway.intro_text }}</p>
             </div>
         </div>
+        <ul>
+            {% for control in controls %}
+                <li>{{control.title}}</li>
+            {% endfor %}
+        </ul>
     </main>
 </div>
 {% endblock %}

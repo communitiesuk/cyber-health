@@ -84,6 +84,10 @@ def pathway_view(request, pathway_slug):
 
     logger.info("Viewing pathway: %s", pathway_slug)
 
-    context = {"pathway": pathway, "breadcrumbs": []}
+    context = {
+        "pathway": pathway, 
+        "breadcrumbs": [],
+        "controls": pathway.controls.all()
+    }
 
     return render(request, 'assessment/pathway.html', context)
