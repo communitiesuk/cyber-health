@@ -17,7 +17,7 @@ class UserRegisterForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
 
     def __init__(self, *args, **kwargs):
-        super(LoginForm, self).__init__(*args, **kwargs)       
+        super(LoginForm, self).__init__(*args, **kwargs)
         self.error_messages['invalid_login'] = "Enter a valid email \
         and password combination. You will be locked out if you enter \
         the wrong details 5 times."
