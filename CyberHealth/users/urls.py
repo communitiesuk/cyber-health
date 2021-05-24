@@ -8,7 +8,7 @@ urlpatterns = [
     path('account_verification/<auth_token>/',
          views.account_activation, name='account-activation-page'),
     path('error/', views.error_page, name="error-page"),
-    path('verify_account/', views.send_token_page, name="send-token-page"),
+    path('verify_account/<user_email>', views.send_token_page, name="send-token-page"),
     path('account_activated/', views.success_page, name="success-page"),
     path('logout/', auth_views.LogoutView.as_view(
          template_name='users/logout.html'), name='logout'),

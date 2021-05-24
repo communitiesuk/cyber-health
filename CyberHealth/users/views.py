@@ -1,3 +1,5 @@
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.shortcuts import render, redirect
 from .forms import UserRegisterForm
 from django.contrib.auth.models import User
@@ -68,7 +70,10 @@ def success_page(request):
     return render(request, 'users/success.html')
 
 
-def send_token_page(request):
+def send_token_page(request, user_email):
+    # email = request.params.user
+    # email = user_email
+    # print(email)
     return render(request, 'users/send_token.html')
 
 
@@ -93,7 +98,8 @@ def user_registration(request):
                     user_profile = UserProfile.objects.create(
                         user=user_info, auth_token=auth_token)
                     user_profile.save()
-                    return redirect('send-token-page')
+                    redirect_url = reverse('send-token-page', kwargs={'user_email':user_info.email})
+                    return HttpResponseRedirect(redirect_url)
                 else:
                     messages.info(request, 'There is already a user for '
                                   'your local council.')
