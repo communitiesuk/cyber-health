@@ -4,7 +4,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import password_validation
 from .models import Organisation
-from django.core.exceptions import ObjectDoesNotExist
 
 
 class UserRegisterForm(UserCreationForm):
@@ -20,7 +19,6 @@ class UserRegisterForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super(UserRegisterForm, self).__init__(*args, **kwargs)   
-        email = self.data['email']
         for field in self.fields.values():
             field.error_messages = {'required': 'Enter {fieldname}'.format(
                 fieldname=field.label).capitalize()}
@@ -29,6 +27,7 @@ class UserRegisterForm(UserCreationForm):
         email = self.data['email']
         if not Organisation.objects.filter(domain_name=email.split('@')[-1]).exists():
             self.add_error('email', 'Must use a .gov.uk email address related to a council')
+        return email
 
 
     def _post_clean(self):

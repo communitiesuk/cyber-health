@@ -50,7 +50,7 @@ def account_activation(request, auth_token):
             return redirect('success-page')
         else:
             messages.error(request, 'The requested profile does not exist.')
-            return redirect('register')
+            return redirect('create-an-account')
     except Exception as e:
         print(e)
         return render(request, error_page(request))
@@ -73,6 +73,7 @@ def user_registration(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             try:
+                print(form.cleaned_data.get('email'))
                 organisation = Organisation.objects.get(domain_name=form.cleaned_data.get('email').split('@')[-1])
                 organisation_user = OrganisationUser.objects.filter(user_organisation=organisation).first()
                 if organisation_user is None and organisation:
