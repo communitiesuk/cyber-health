@@ -9,8 +9,10 @@ from .models import Organisation
 class UserRegisterForm(UserCreationForm):
     first_name = forms.CharField(required=True, label="First name")
     last_name = forms.CharField(required=True, label="Last name")
-    email = forms.EmailField(required=True, label="Email", help_text='Must be a .gov.uk local authority email address')
-    password1 = forms.CharField(required=True, label="Password", error_messages={'password_too_short': 'My error message for too short passwords'})
+    email = forms.EmailField(required=True, label="Email",
+                             help_text='Must be a .gov.uk local authority '
+                             ' email address')
+    password1 = forms.CharField(required=True, label="Password")
     password2 = forms.CharField(required=True, label="Confirm password")
 
     class Meta:
@@ -18,17 +20,18 @@ class UserRegisterForm(UserCreationForm):
         fields = ['first_name', 'last_name', 'email', 'password1', 'password2']
 
     def __init__(self, *args, **kwargs):
-        super(UserRegisterForm, self).__init__(*args, **kwargs)   
+        super(UserRegisterForm, self).__init__(*args, **kwargs)
         for field in self.fields.values():
             field.error_messages = {'required': 'Enter {fieldname}'.format(
                 fieldname=field.label).capitalize()}
 
     def clean_email(self):
         email = self.data['email']
-        if not Organisation.objects.filter(domain_name=email.split('@')[-1]).exists():
-            self.add_error('email', 'Must use a .gov.uk email address related to a council')
+        if not Organisation.objects.filter(
+                domain_name=email.split('@')[-1]).exists():
+            self.add_error('email', 'Must use a .gov.uk email address related '
+                           ' to a council')
         return email
-
 
     def _post_clean(self):
         super(UserRegisterForm, self)._post_clean()
