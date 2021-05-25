@@ -70,10 +70,7 @@ def success_page(request):
     return render(request, 'users/success.html')
 
 
-def send_token_page(request, user_email):
-    # email = request.params.user
-    # email = user_email
-    # print(email)
+def send_token_page(request):
     return render(request, 'users/send_token.html')
 
 
@@ -98,7 +95,7 @@ def user_registration(request):
                     user_profile = UserProfile.objects.create(
                         user=user_info, auth_token=auth_token)
                     user_profile.save()
-                    redirect_url = reverse('send-token-page', kwargs={'user_email':user_info.email})
+                    redirect_url = reverse('send-token-page')
                     return HttpResponseRedirect(redirect_url)
                 else:
                     messages.info(request, 'There is already a user for '
