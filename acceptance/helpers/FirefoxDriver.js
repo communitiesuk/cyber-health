@@ -28,36 +28,30 @@ class FirefoxDriver {
     }
 
 
-    async visitPage(resource) {
+    async visitPage(resource, automaticLogin = true) {
+
         const url = `${this.baseUrl}/${resource}`
 
         await this.driver.get(url).catch(urlCaptureException => {
             console.error(urlCaptureException)
-        })
+            console.trace()
+        });
+        if (automaticLogin) {
+            this.doLogin();
+        }
+    }
 
 
+    async doLogin() {
         let page_url = await this.driver.getCurrentUrl();
-
         if (page_url.includes("account")) {
-
-            console.log("logging in", page_url);
             await this.driver.findElement(WebDriver.By.id('id_username')).sendKeys(this.username);
             await this.driver.findElement(WebDriver.By.id('id_password')).sendKeys(this.password);
             await this.driver.findElement(WebDriver.By.css('button')).click();
 
-
-            // await this.driver.wait(WebDriver.until.urlIs(url));
             let new_page_url = await this.driver.getCurrentUrl();
-
             console.log("Logged in to this page: ", new_page_url);
         }
-
-
-    }
-    async doLogin() {
-        await this.driver.findElement(WebDriver.By.id('id_username')).sendKeys(this.username);
-        await this.driver.findElement(WebDriver.By.id('id_password')).sendKeys(this.password);
-        await this.driver.findElement(WebDriver.By.css('button')).click();
     }
 
     async findElement(cssSelector) {
@@ -65,11 +59,21 @@ class FirefoxDriver {
     }
 
     async findElementByXPath(xPathSelector) {
-        return await this.driver.findElement(WebDriver.By.xss(xPathSelector));
+        return await this.driver.findElement(WebDriver.By.xpath(xPathSelector));
     }
 
     async findElementById(idSelector) {
         return await this.driver.findElement(WebDriver.By.id(idSelector));
+    }
+
+    async getUrl() {
+        return await this.driver.getCurrentUrl();
+    }
+
+    async clickLinkWithText(link_text) {
+
+        await this.driver.findElement(WebDriver.By.xpath("//a[contains(.,'" + link_text + "')]")).click();
+        this.driver.wait(WebDriver.until.titleIs("", 1000));
     }
 
     quit() {
