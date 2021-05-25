@@ -12,11 +12,30 @@
                 <p  class="govuk-body-l">{{ pathway.intro_text }}</p>
             </div>
         </div>
-        <ul>
+        <ol class="app-task-list">
             {% for control in controls %}
-                <li>{{control.title}}</li>
+                <li>
+                    <h2 class="app-task-list__section">
+                        <p>{{control.control.title}}</p>
+                    </h2>
+                    <ul class="app-task-list__items">
+                        {% for subcontrol in control.subcontrols %}
+                        
+                        <li class="app-task-list__item">
+                            <span class="app-task-list__task-name">
+                                <a href="/">{{subcontrol.title}}</a>
+                            </span>
+
+                            <strong class="govuk-tag app-task-list__tag">
+                                met or not met
+                            </strong>
+                        </li>
+                            
+                        {% endfor %}
+                    </ul>
+                </li>
             {% endfor %}
-        </ul>
+        </ol>
     </main>
 </div>
 {% endblock %}
