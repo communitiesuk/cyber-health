@@ -18,6 +18,7 @@ django-admin-interface = "==0.16.3"
 django-apptemplates = "*"
 django = "==3.2.3"
 asgiref = "==3.3.4"
+django-sort-order-field = "*"
 
 [dev-packages]
 
