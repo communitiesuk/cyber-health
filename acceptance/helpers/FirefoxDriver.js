@@ -54,9 +54,22 @@ class FirefoxDriver {
 
 
     }
+    async doLogin() {
+        await this.driver.findElement(WebDriver.By.id('id_username')).sendKeys(this.username);
+        await this.driver.findElement(WebDriver.By.id('id_password')).sendKeys(this.password);
+        await this.driver.findElement(WebDriver.By.css('button')).click();
+    }
 
     async findElement(cssSelector) {
         return await this.driver.findElement(WebDriver.By.css(cssSelector));
+    }
+
+    async findElementByXPath(xPathSelector) {
+        return await this.driver.findElement(WebDriver.By.xss(xPathSelector));
+    }
+
+    async findElementById(idSelector) {
+        return await this.driver.findElement(WebDriver.By.id(idSelector));
     }
 
     quit() {
