@@ -15,6 +15,8 @@ import os
 from pathlib import Path
 import logging
 import sys
+from notifications_python_client.notifications import NotificationsAPIClient
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,6 +44,8 @@ INSTALLED_APPS = [
     'admintheme.apps.AdminthemeConfig',
     'staticpages.apps.StaticpagesConfig',
     'assessment.apps.AssessmentConfig',
+    'users.apps.UsersConfig',
+    'crispy_forms',
     'admin_interface',
     'colorfield',
     'django.contrib.admin',
@@ -55,7 +59,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'basicauth.middleware.BasicAuthMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -143,8 +146,13 @@ STATICFILES_DIRS = [
     os.path.join(STATIC_URL, 'dist'),
 ]
 
-BASICAUTH_USERS = {'CyberHealth': 'cyber123'}
-BASICAUTH_DISABLE = env('BASICAUTH_DISABLE', default=False)
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+NOTIFICATIONS_CLIENT = NotificationsAPIClient(env('GOVUK_NOTIFY_KEY'))
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'login'
+EMAIL_BACKEND = "django_gov_notify.backends.NotifyEmailBackend"
+GOVUK_NOTIFY_API_KEY = env('GOVUK_NOTIFY_KEY')
+GOVUK_NOTIFY_PLAIN_EMAIL_TEMPLATE_ID = 'b5d742c9-39a3-4c9e-82a9-5e79554cbf99'
 
 # Adding in logging
 # If you're following the Twelve-Factor App methodology for your application,
