@@ -33,7 +33,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 # This application requires a debug flag to be set
 
-DEBUG = env('DJANGO_DEBUG', default=False)
+DEBUG = env('DJANGO_DEBUG', default=True)
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.london.cloudapps.digital']
 
@@ -148,7 +148,7 @@ STATICFILES_DIRS = [
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 NOTIFICATIONS_CLIENT = NotificationsAPIClient(env('GOVUK_NOTIFY_KEY'))
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'assessment-overview'
 LOGIN_URL = 'login'
 EMAIL_BACKEND = "django_gov_notify.backends.NotifyEmailBackend"
 GOVUK_NOTIFY_API_KEY = env('GOVUK_NOTIFY_KEY')
