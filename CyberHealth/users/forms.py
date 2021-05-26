@@ -15,6 +15,9 @@ class UserRegisterForm(UserCreationForm):
 
 
 class LoginForm(AuthenticationForm):
+    # Temp fix until user model field gets changed 
+    # from username to email 
+    username = forms.CharField(required=True, label="Email")
 
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)

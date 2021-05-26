@@ -38,7 +38,7 @@
                {% csrf_token %}
                <fieldset class="govuk-fieldset">
                   <div class="govuk-form-group {% if form.username.errors or form.non_field_errors %} govuk-form-group--error {% endif %}">
-                     <label for="{{form.username.id_for_label}}" class="govuk-label">Email address</label> 
+                     <label for="{{form.username.id_for_label}}" class="govuk-label">{{form.username.label}}</label> 
                      <div id="email-hint" class="govuk-hint govuk-!-width-three-quarters">
                         Enter the email address you used to create an account for Assess Your Cyberhealth
                      </div>
