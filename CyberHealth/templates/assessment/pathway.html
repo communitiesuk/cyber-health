@@ -16,7 +16,8 @@
             {% for control in controls %}
                 <li>
                     <h2 class="app-task-list__section">
-                        <p>{{control.control.title}}</p>
+                        <span class="app-task-list__section-number">{{control.control.id}}</span>
+                        {{control.control.title}}
                     </h2>
                     <ul class="app-task-list__items">
                         {% for subcontrol in control.subcontrols %}
