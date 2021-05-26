@@ -66,6 +66,11 @@ class FirefoxDriver {
         return await this.driver.findElement(WebDriver.By.id(idSelector));
     }
 
+
+    async setIdtoValue(idSelector, value) {
+        return await this.driver.findElement(WebDriver.By.id(idSelector)).sendKeys(value);
+    }
+
     async getUrl() {
         return await this.driver.getCurrentUrl();
     }
@@ -73,6 +78,13 @@ class FirefoxDriver {
     async clickLinkWithText(link_text) {
 
         await this.driver.findElement(WebDriver.By.xpath("//a[contains(.,'" + link_text + "')]")).click();
+        this.driver.wait(WebDriver.until.titleIs("", 1000));
+    }
+
+
+    async clickButtonWithText(link_text) {
+
+        await this.driver.findElement(WebDriver.By.xpath("//button[contains(.,'" + link_text + "')]")).click();
         this.driver.wait(WebDriver.until.titleIs("", 1000));
     }
 
