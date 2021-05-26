@@ -55,7 +55,7 @@
                      {{error}}</span>
                      {% endfor %}
                      {% endif %}
-                     <input type="text" name="{{form.username.name}}" value="{% if form.username.value %} {{form.username.value}} {% endif %}" id="{{form.username.id_for_label}}" class="govuk-input govuk-!-width-three-quarters {% if form.username.errors or form.non_field_errors %} govuk-input--error {% endif %}" value="" maxlength="48" aria-describedby="user_id-hint" autocomplete="username" type="email"> 
+                     <input type="text" name="{{form.username.name}}" value="{% if form.username.value %}{{form.username.value}}{% endif %}" id="{{form.username.id_for_label}}" class="govuk-input govuk-!-width-three-quarters {% if form.username.errors or form.non_field_errors %} govuk-input--error {% endif %}" value="" maxlength="48" aria-describedby="user_id-hint" autocomplete="username" type="email"> 
                   </div>
                   <div class="govuk-form-group {% if form.password.errors%} govuk-form-group--error {% endif %}">
                      <label for="{{form.password.id_for_label}}" class="govuk-label">Password</label> 
