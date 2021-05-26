@@ -1,0 +1,37 @@
+[
+  {
+    "model": "users.organisationtype",
+    "pk": 1,
+    "fields": {
+      "type": "Metropolitan districts"
+    }
+  },
+  {
+    "model": "users.organisationtype",
+    "pk": 2,
+    "fields": {
+      "type": "London boroughs"
+    }
+  },
+  {
+    "model": "users.organisationtype",
+    "pk": 3,
+    "fields": {
+      "type": "Unitary authorities"
+    }
+  },
+  {
+    "model": "users.organisationtype",
+    "pk": 4,
+    "fields": {
+      "type": "County councils"
+    }
+  },
+  {
+    "model": "users.organisationtype",
+    "pk": 5,
+    "fields": {
+      "type": "District councils"
+    }
+  }
+]

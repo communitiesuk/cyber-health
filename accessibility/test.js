@@ -1,7 +1,10 @@
 const AxeBuilder = require('@axe-core/webdriverjs');
-const WebDriver = require('selenium-webdriver');
+const WebDriver = require('selenium-webdriver'),
+      By = WebDriver.By;
 const firefox = require('selenium-webdriver/firefox');
 
+const username = `${process.env.TEST_USERNAME}`
+const password = `${process.env.TEST_PASSWORD}`
 const baseUrl = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${process.env.FRONTEND_PORT}`
 const pagesToAnalyze = [
     '/',
@@ -27,7 +30,6 @@ const buildDriver = () => {
         .build();
 }
 
-
 function runAccessibilityAnalysis(pages) {
     const urls = pages.map(page => new URL(page, baseUrl))
     urls.forEach(url => {
@@ -39,7 +41,7 @@ function runAccessibilityAnalysis(pages) {
                 console.warn("Violations:", url.href, result.violations);
             }
         }).catch(err => {
-            console.err(err);
+            console.error(err);
         });
     });
 }
@@ -47,6 +49,12 @@ function runAccessibilityAnalysis(pages) {
 async function analyzePage(driver, url) {
     try {
         await driver.get(url);
+        let page_url = await driver.getCurrentUrl();
+        if (page_url.includes("account")) {
+            await driver.findElement(By.id('id_username')).sendKeys(username);
+            await driver.findElement(By.id('id_password')).sendKeys(password);
+            await driver.findElement(By.css('button')).click();
+        }
         const axe = new AxeBuilder(driver, null, { noSandbox: true });
         let result = await axe.analyze();
         return Promise.resolve(result);

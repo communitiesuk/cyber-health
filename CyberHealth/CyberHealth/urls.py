@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from users import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('assessment/', include('assessment.urls')),
+    path('register/', user_views.user_registration, name='register'),
+    path('account/', include('users.urls')),
     path('', include('staticpages.urls')),
     path('tinymce/', include('tinymce.urls')),
 ]

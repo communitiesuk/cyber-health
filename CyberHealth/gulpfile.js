@@ -48,8 +48,9 @@ const distTinyMCELangFolder = path.join(distFolder, "tinymce", "langs");
 const srcFolder = path.join(repoRoot, "static", "src");
 const srcScssFolder = path.join(srcFolder, "scss");
 const srcTypographyScssFolder = path.join(srcFolder, "typography_scss");
-
 const srcScripts = path.join(srcFolder, "scripts");
+const srcAdminScssFolder = path.join(srcFolder, "admin-scss");
+
 
 // Clean tasks
 gulp.task("clean:css", function () {
@@ -106,9 +107,17 @@ gulp.task("sass", function () {
     .pipe(postcss([autoprefixer()]))
     .pipe(gulp.dest(distCssFolder));
 
+  gulp
+    .src(srcAdminScssFolder + "/**/*.scss")
+    .pipe(debug({"title":"Admin SCSS"}))
+    .pipe(concat("admin.scss"))
+    .pipe(sass(sassOptions).on("error", sass.logError))
+    .pipe(postcss([autoprefixer()]))
+    .pipe(gulp.dest(distCssFolder));
+
   return gulp
-    .src(srcFolder + "/**/*.scss")
-    .pipe(debug())
+    .src(srcScssFolder + "/**/*.scss")
+    .pipe(debug({"title":"Core SCSS"}))
     .pipe(concat("styles.scss"))
     .pipe(sass(sassOptions).on("error", sass.logError))
     .pipe(postcss([autoprefixer()]))
@@ -225,6 +234,7 @@ gulp.task("build", gulp.series("clean", "compile"));
 // Watch for changes
 gulp.task("watch:css", function () {
    gulp.watch([srcScssFolder + "/**/*.scss"], gulp.series("sass"));
+   gulp.watch([srcAdminScssFolder + "/**/*.scss"], gulp.series("sass"));
  })
 
 gulp.task(

@@ -18,6 +18,8 @@ import sys
 from django.contrib.staticfiles import finders
 
 logger = logging.getLogger(__name__)
+from notifications_python_client.notifications import NotificationsAPIClient
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
@@ -43,20 +45,25 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.london.cloudapps.digital']
 
 INSTALLED_APPS = [
     'corsheaders',
+    'admintheme.apps.AdminthemeConfig',
     'staticpages.apps.StaticpagesConfig',
     'assessment.apps.AssessmentConfig',
     'tinymce',
+    'users.apps.UsersConfig',
+    'crispy_forms',
+    'admin_interface',
+    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sort_order_field',
 ]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'basicauth.middleware.BasicAuthMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -74,13 +81,17 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+            ],
+            'loaders': [
+                'apptemplates.Loader',
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
             ],
         },
     },
@@ -140,8 +151,13 @@ STATICFILES_DIRS = [
     os.path.join(STATIC_URL, 'dist'),
 ]
 
-BASICAUTH_USERS = {'CyberHealth': 'cyber123'}
-BASICAUTH_DISABLE = env('BASICAUTH_DISABLE', default=False)
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+NOTIFICATIONS_CLIENT = NotificationsAPIClient(env('GOVUK_NOTIFY_KEY'))
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'login'
+EMAIL_BACKEND = "django_gov_notify.backends.NotifyEmailBackend"
+GOVUK_NOTIFY_API_KEY = env('GOVUK_NOTIFY_KEY')
+GOVUK_NOTIFY_PLAIN_EMAIL_TEMPLATE_ID = 'b5d742c9-39a3-4c9e-82a9-5e79554cbf99'
 
 # Adding in logging
 # If you're following the Twelve-Factor App methodology for your application,
@@ -227,8 +243,8 @@ TINYMCE_DEFAULT_CONFIG = {
     "style_formats":
         [
             {
-                        "title": "Paragraph",
-                        "format": "p"
+                "title": "Paragraph",
+                "format": "p"
             },
             {
                 "title": ".gov.uk Text",
@@ -440,3 +456,6 @@ TINYMCE_DEFAULT_CONFIG = {
         },
 }
 TINYMCE_SPELLCHECKER = True
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+SILENCED_SYSTEM_CHECKS = ['security.W019']
+
