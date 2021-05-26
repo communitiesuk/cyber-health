@@ -1,0 +1,65 @@
+[
+  {
+    "model": "users.organisationregion",
+    "pk": 1,
+    "fields": {
+      "name": "East Midlands"
+    }
+  },
+  {
+    "model": "users.organisationregion",
+    "pk": 2,
+    "fields": {
+      "name": "East of England"
+    }
+  },
+  {
+    "model": "users.organisationregion",
+    "pk": 3,
+    "fields": {
+      "name": "London"
+    }
+  },
+  {
+    "model": "users.organisationregion",
+    "pk": 4,
+    "fields": {
+      "name": "North East"
+    }
+  },
+  {
+    "model": "users.organisationregion",
+    "pk": 5,
+    "fields": {
+      "name": "North West"
+    }
+  },
+  {
+    "model": "users.organisationregion",
+    "pk": 6,
+    "fields": {
+      "name": "South East"
+    }
+  },
+  {
+    "model": "users.organisationregion",
+    "pk": 7,
+    "fields": {
+      "name": "South West"
+    }
+  },
+  {
+    "model": "users.organisationregion",
+    "pk": 8,
+    "fields": {
+      "name": "West Midlands"
+    }
+  },
+  {
+    "model": "users.organisationregion",
+    "pk": 9,
+    "fields": {
+      "name": "Yorkshire and The Humber"
+    }
+  }
+]

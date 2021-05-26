@@ -1,0 +1,54 @@
+[
+  {
+    "model": "assessment.subcontrol",
+    "pk": 1,
+    "fields": {
+      "id": 1,
+      "title": "The organisation has a detailed incident response plan",
+      "sort_order": 1,
+      "slug": "the-organisation-has-a-detailed-incident-response-plan",
+      "created_at": "2021-05-19T16:16:34.114895+01:00",
+      "control_id": 1,
+      "_order": 0
+    }
+  },
+  {
+    "model": "assessment.subcontrol",
+    "pk": 2,
+    "fields": {
+      "id": 4,
+      "title": "There is an incident response capability and management plan in place for incident management",
+      "sort_order": 3,
+      "slug": "there-is-an-incident-response-capability-and-management-plan-in-place-for-incident-management",
+      "created_at": "2021-05-19T16:22:29.162738+01:00",
+      "control_id": 2,
+      "_order": 2
+    }
+  },
+  {
+    "model": "assessment.subcontrol",
+    "pk": 3,
+    "fields": {
+      "id": 2,
+      "title": "Cyber incident response policies and process are in place",
+      "sort_order": 1,
+      "slug": "cyber-incident-response-policies-and-process-are-in-place",
+      "created_at": "2021-05-19T16:22:29.15649+01:00",
+      "control_id": 2,
+      "_order": 0
+    }
+  },
+  {
+    "model": "assessment.subcontrol",
+    "pk": 4,
+    "fields": {
+      "id": 3,
+      "title": "Cyber incident response policies integrate with central cyber incident reporting, notification and coordination protocols.",
+      "sort_order": 2,
+      "slug": "cyber-incident-response-policies-integrate-with-central-cyber-incident-reporting-notification-and-coordination-protocols",
+      "created_at": "2021-05-19T16:22:29.159692+01:00",
+      "control_id": 2,
+      "_order": 1
+    }
+  }
+]

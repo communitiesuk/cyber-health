@@ -48,9 +48,9 @@ const distTinyMCELangFolder = path.join(distFolder, "tinymce", "langs");
 const srcFolder = path.join(repoRoot, "static", "src");
 const srcScssFolder = path.join(srcFolder, "scss");
 const srcTypographyScssFolder = path.join(srcFolder, "typography_scss");
-
 const srcScripts = path.join(srcFolder, "scripts");
 const srcAdminScssFolder = path.join(srcFolder, "admin-scss");
+
 
 // Clean tasks
 gulp.task("clean:css", function () {

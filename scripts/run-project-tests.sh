@@ -7,11 +7,13 @@ for test in "${TESTS[@]}"
 do
     (
         echo "Running the tests $test"
-        cd "$test" || exit 
+        cd "$test" || exit
+        export TEST_USERNAME=$TEST_USERNAME
+        export TEST_PASSWORD=$TEST_PASSWORD
         if ! npm run test ; then
             echo "Failed: $test for $application"
             return $error_code
-        fi 
+        fi
     )
 done
 
