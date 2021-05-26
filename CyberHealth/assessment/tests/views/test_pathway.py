@@ -1,11 +1,19 @@
 from django.test import TestCase
-
 from assessment.models import Pathway, PathwayGroup
+from django.contrib.auth.models import User
+from django.test import Client
 
 
 class PathwayViewTest(TestCase):
 
     def setUp(self):
+        self.username = 'testuser'
+        self.password = 'TestUser321'
+        self.test_user = User.objects.create_user(username=self.username)
+        self.test_user.set_password(self.password)
+        self.test_user.save()
+        self.client = Client()
+        self.client.login(username=self.username, password=self.password)
 
         self.pathway_group = PathwayGroup.objects.create(
             name="Pathway group 1",

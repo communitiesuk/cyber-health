@@ -1,11 +1,21 @@
 from django.test import TestCase
 from django.urls import reverse
 from assessment.models import Pathway, PathwayGroup
+from django.contrib.auth.models import User
+from django.test import Client
 
 
 class OverviewViewTest(TestCase):
 
     def setUp(self):
+        self.username = 'testuser'
+        self.password = 'TestUser321'
+        self.test_user = User.objects.create_user(username=self.username)
+        self.test_user.set_password(self.password)
+        self.test_user.save()
+        self.client = Client()
+        self.client.login(username=self.username, password=self.password)
+
         self.description = "Welcome to your overview page. Use this page to"
         " select which parts of the assessment you’d like to complete and to"
         " view your progress."
@@ -41,7 +51,7 @@ class OverviewViewTest(TestCase):
         )
 
     def test_overview_view_url_response_ok(self):
-        response = self.client.get('/assessment/')
+        response = self.client.get(reverse('assessment-overview'))
         self.assertEqual(200, response.status_code)
 
     def test_overview_view_url_by_name(self):
@@ -54,30 +64,30 @@ class OverviewViewTest(TestCase):
             response, 'assessment/assessment-overview.html', 'base.html')
 
     def test_overview_page_displays_heading(self):
-        response = self.client.get('/assessment/')
+        self.response = self.client.get(reverse('assessment-overview'))
         self.assertContains(
-            response, "Your Council Cyber Health Overview")
+            self.response, "Your Council Cyber Health Overview")
 
     def test_overview_page_displays_page_description(self):
-        response = self.client.get('/assessment/')
+        response = self.client.get(reverse('assessment-overview'))
         self.assertContains(
             response, self.description)
 
     def test_overview_page_displays_pathway_group(self):
-        response = self.client.get('/assessment/')
+        response = self.client.get(reverse('assessment-overview'))
         self.assertContains(
             response, self.pathwaygroup1.name)
         self.assertContains(
             response, self.pathwaygroup1.intro_text)
 
     def test_overview_page_displays_pathway(self):
-        response = self.client.get('/assessment/')
+        response = self.client.get(reverse('assessment-overview'))
         self.assertContains(
             response, self.pathway1.short_name)
         self.assertContains(
             response, self.pathway1.intro_text)
-    
+
     def test_overview_page_has_pathway_link(self):
-        response = self.client.get('/assessment/')
+        response = self.client.get(reverse('assessment-overview'))
         self.assertContains(
             response, f'href="{self.pathway1.slug}"')

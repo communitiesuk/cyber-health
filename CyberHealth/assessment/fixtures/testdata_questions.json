@@ -1,0 +1,134 @@
+[
+  {
+    "model": "assessment.question",
+    "pk": 1,
+    "fields": {
+      "id": 4,
+      "question_text": "Does the organisation have an incident response plan?",
+      "created_at": "2021-05-19T16:18:53.715711+01:00",
+      "positive_answer": true,
+      "sub_control_id": 1,
+      "sort_order": 1
+    }
+  },
+  {
+    "model": "assessment.question",
+    "pk": 2,
+    "fields": {
+      "id": 5,
+      "question_text": "Is the plan written down?",
+      "created_at": "2021-05-19T16:18:53.71709+01:00",
+      "positive_answer": true,
+      "sub_control_id": 1,
+      "sort_order": 2
+    }
+  },
+  {
+    "model": "assessment.question",
+    "pk": 3,
+    "fields": {
+      "id": 6,
+      "question_text": "Does the plan assign roles for personnel?",
+      "created_at": "2021-05-19T16:18:53.717707+01:00",
+      "positive_answer": true,
+      "sub_control_id": 1,
+      "sort_order": 3
+    }
+  },
+  {
+    "model": "assessment.question",
+    "pk": 4,
+    "fields": {
+      "id": 7,
+      "question_text": "Does that plan define the phases of incident management?",
+      "created_at": "2021-05-19T16:18:53.718194+01:00",
+      "positive_answer": true,
+      "sub_control_id": 1,
+      "sort_order": 4
+    }
+  },
+  {
+    "model": "assessment.question",
+    "pk": 5,
+    "fields": {
+      "id": 8,
+      "question_text": "Is the plan available to all those who need to be able to use that plan?",
+      "created_at": "2021-05-19T16:18:53.718659+01:00",
+      "positive_answer": true,
+      "sub_control_id": 1,
+      "sort_order": 5
+    }
+  },
+  {
+    "model": "assessment.question",
+    "pk": 6,
+    "fields": {
+      "id": 9,
+      "question_text": "Is the plan available in a place where it would be accessible during an incident?",
+      "created_at": "2021-05-19T16:18:53.719152+01:00",
+      "positive_answer": true,
+      "sub_control_id": 1,
+      "sort_order": 6
+    }
+  },
+  {
+    "model": "assessment.question",
+    "pk": 1,
+    "fields": {
+      "id": 10,
+      "question_text": "Has the plan been tested?",
+      "created_at": "2021-05-19T16:18:53.71964+01:00",
+      "positive_answer": true,
+      "sub_control_id": 1,
+      "sort_order": 7
+    }
+  },
+  {
+    "model": "assessment.question",
+    "pk": 1,
+    "fields": {
+      "id": 11,
+      "question_text": "Do you have cyber incident response policies in place?",
+      "created_at": "2021-05-19T16:26:27.478816+01:00",
+      "positive_answer": true,
+      "sub_control_id": 2,
+      "sort_order": 1
+    }
+  },
+  {
+    "model": "assessment.question",
+    "pk": 7,
+    "fields": {
+      "id": 12,
+      "question_text": "Do your cyber incident response policies integrate with centralised cyber incident reporting?",
+      "created_at": "2021-05-19T16:27:56.761472+01:00",
+      "positive_answer": true,
+      "sub_control_id": 3,
+      "sort_order": 1
+    }
+  },
+  {
+    "model": "assessment.question",
+    "pk": 8,
+    "fields": {
+      "id": 13,
+      "question_text": "Do your cyber incident response policies integrate with a notification system?",
+      "created_at": "2021-05-19T16:27:56.762728+01:00",
+      "positive_answer": true,
+      "sub_control_id": 3,
+      "sort_order": 2
+    }
+  },
+  {
+    "model": "assessment.question",
+    "pk": 9,
+    "fields": {
+      "id": 14,
+      "question_text": "Do your cyber incident response policies integrate with coordination protocols?",
+      "created_at": "2021-05-19T16:27:56.763232+01:00",
+      "positive_answer": true,
+      "sub_control_id": 3,
+      "sort_order": 3
+    }
+  }
+]
