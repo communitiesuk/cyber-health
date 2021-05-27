@@ -50,7 +50,6 @@ class FirefoxDriver {
             await this.driver.findElement(WebDriver.By.css('button')).click();
 
             let new_page_url = await this.driver.getCurrentUrl();
-            console.log("Logged in to this page: ", new_page_url);
         }
     }
 
