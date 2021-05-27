@@ -6,7 +6,6 @@ from django.test import Client
 
 
 class QuestionViewTest(TestCase):
-
     def setUp(self):
         self.username = 'testuser'
         self.password = 'TestUser321'
