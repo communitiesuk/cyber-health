@@ -1,8 +1,6 @@
 language: generic
 os: linux
 dist: focal
-arch: arm64-graviton2 # in AWS over Graviton2 CPU
-virt: lxd             # required, routes to an LXD container
 install: bash scripts/travis/install.sh
 before_script: bash scripts/travis/before_script.sh
 before_install: bash scripts/travis/before_install.sh
@@ -62,3 +60,5 @@ env:
     - SECRET_KEY=$SECRET_KEY
     - DEPENDENCY_CHECK_VERSION=$DEPENDENCY_CHECK_VERSION
     - BASICAUTH_DISABLE=$BASICAUTH_DISABLE
+    - TEST_USERNAME=$TEST_USERNAME
+    - TEST_PASSWORD=$TEST_PASSWORD
