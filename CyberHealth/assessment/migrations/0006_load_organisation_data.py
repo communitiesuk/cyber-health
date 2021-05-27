@@ -29,10 +29,10 @@ def load_fixture(apps, schema_editor):
     python._get_model = _get_model
     try:
         # Call loaddata command
-        fixture_files = list(pathlib.Path().glob('*/fixtures/0006*.json'))
+        fixture_files = list(pathlib.Path().glob('assessment/fixtures/0006*.json'))
         logger.info("%s fixture files", fixture_files)
         call_command('loaddata', *fixture_files, app_label='assessment')
-        fixture_files = list(pathlib.Path().glob('*/fixtures/0007*.json'))
+        fixture_files = list(pathlib.Path().glob('assessment/fixtures/0007*.json'))
         logger.info("%s fixture files", fixture_files)
         call_command('loaddata', *fixture_files, app_label='assessment')
     finally:
