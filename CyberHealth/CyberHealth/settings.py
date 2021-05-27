@@ -148,9 +148,9 @@ STATICFILES_DIRS = [
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 NOTIFICATIONS_CLIENT = NotificationsAPIClient(env('GOVUK_NOTIFY_KEY'))
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'assessment-overview'
 LOGIN_URL = 'login'
-EMAIL_BACKEND = "django_gov_notify.backends.NotifyEmailBackend"
+EMAIL_BACKEND = 'django_gov_notify.backends.NotifyEmailBackend'
 GOVUK_NOTIFY_API_KEY = env('GOVUK_NOTIFY_KEY')
 GOVUK_NOTIFY_PLAIN_EMAIL_TEMPLATE_ID = 'b5d742c9-39a3-4c9e-82a9-5e79554cbf99'
 
