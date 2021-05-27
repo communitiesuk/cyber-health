@@ -37,7 +37,7 @@ class FirefoxDriver {
             console.trace()
         });
         if (automaticLogin) {
-            this.doLogin();
+            await this.doLogin();
         }
     }
 
