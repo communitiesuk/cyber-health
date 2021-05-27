@@ -28,10 +28,7 @@ npm run frontend:build
 python3 manage.py migrate
 
 # load testdata
-python3 manage.py loaddata assessment/fixtures/testdata*.json
+python3 manage.py loaddata */fixtures/testdata*.json
 
 # copy all static files into STATIC_ROOT (static/assets)
 python3 manage.py collectstatic --noinput
-
-# load acceptance test data.
-python3 manage.py loaddata acceptance_test
