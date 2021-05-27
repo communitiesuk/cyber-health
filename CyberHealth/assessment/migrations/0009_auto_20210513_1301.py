@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('assessment', '0008_load_pathway_data'),
+        ('assessment', '0007_pathway_pathwaygroup'),
     ]
 
     operations = [
