@@ -53,7 +53,7 @@ async function analyzePage(driver, url) {
         if (page_url.includes("account")) {
             await driver.findElement(By.id('id_username')).sendKeys(username);
             await driver.findElement(By.id('id_password')).sendKeys(password);
-            await driver.findElement(By.css('button')).click();
+            await driver.findElement(By.id('button_login"')).click();
         }
         const axe = new AxeBuilder(driver, null, { noSandbox: true });
         let result = await axe.analyze();

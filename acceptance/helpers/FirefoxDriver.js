@@ -43,7 +43,7 @@ class FirefoxDriver {
             console.log("logging in", page_url);
             await this.driver.findElement(WebDriver.By.id('id_username')).sendKeys(this.username);
             await this.driver.findElement(WebDriver.By.id('id_password')).sendKeys(this.password);
-            await this.driver.findElement(WebDriver.By.css('button')).click();
+            await this.driver.findElement(WebDriver.By.id('button_login')).click();
 
 
             // await this.driver.wait(WebDriver.until.urlIs(url));
