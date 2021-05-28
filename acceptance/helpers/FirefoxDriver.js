@@ -46,7 +46,7 @@ class FirefoxDriver {
         if (page_url.includes("account")) {
             await this.driver.findElement(WebDriver.By.id('id_username')).sendKeys(username);
             await this.driver.findElement(WebDriver.By.id('id_password')).sendKeys(password);
-            await this.driver.findElement(WebDriver.By.css('button')).click();
+            await this.driver.findElement(WebDriver.By.id('button_login')).click();
         }
     }
 
