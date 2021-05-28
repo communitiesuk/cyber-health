@@ -124,3 +124,6 @@ CyberHealth/cf7
 CyberHealth/LICENSE
 CyberHealth/NOTICE
 *.env
+
+# vs code
+.vscode
