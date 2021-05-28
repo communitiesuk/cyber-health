@@ -22,7 +22,6 @@ JestCucumber.defineFeature(feature, test => {
       const footerElement = await driver.findElement(`footer a[href="${expected}"]`);
       const actualFooterElement = await footerElement.getText();
       expect(actualFooterElement).toEqual('Privacy');
-      // driver.quit();
     });
   });
 
@@ -38,7 +37,6 @@ JestCucumber.defineFeature(feature, test => {
       const footerElement = await driver.findElement(`footer a[href="${expected}"]`);
       const actualFooterElement = await footerElement.getText();
       expect(actualFooterElement).toEqual('Cookies');
-      // driver.quit();
     });
   });
 
@@ -54,7 +52,6 @@ JestCucumber.defineFeature(feature, test => {
       const footerElement = await driver.findElement(`footer a[href="${expected}"]`);
       const actualFooterElement = await footerElement.getText();
       expect(actualFooterElement).toEqual('Accessibility statement');
-      // driver.quit();
     });
 
   });
