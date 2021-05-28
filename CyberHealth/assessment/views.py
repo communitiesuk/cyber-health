@@ -90,7 +90,6 @@ def pathway_view(request, pathway_slug):
             "control": control,
             "subcontrols": control.subcontrol_set.all()
         })
-    
 
     context = {
         "pathway": pathway, 
