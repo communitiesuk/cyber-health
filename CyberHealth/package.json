@@ -17,12 +17,15 @@
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-dart-sass": "^1.0.2",
-    "gulp-postcss": "^9.0.0"
+    "gulp-postcss": "^9.0.0",
+    "tinymce-i18n": "^20.12.25"
   },
   "dependencies": {
     "govuk-frontend": "^3.11.0",
     "gulp-debug": "^4.0.0",
-    "postcss": "^8.2.8"
+    "gulp-rename": "^2.0.0",
+    "postcss": "^8.2.8",
+    "tinymce": "^5.8.0"
   },
   "browserslist": [
     ">0.1%",

@@ -1,10 +1,10 @@
 from django.forms import Textarea
 from django.contrib import admin
+
 from assessment.models import (
     Organisation, OrganisationRegion, OrganisationType, Answer, Question,
     PathwayGroup, Pathway, Control, SubControl
 )
-                                
 
 
 class PathwayGroupAdmin(admin.ModelAdmin):
@@ -25,10 +25,11 @@ class SubControlInline(admin.TabularInline):
     fields = ('sort_order', 'title',)
     extra = 0
 
+
 class ControlAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": (
         "title",)}
-    inlines=(SubControlInline,)
+    inlines = (SubControlInline,)
 
 
 class QuestionInline(admin.TabularInline):
@@ -36,13 +37,13 @@ class QuestionInline(admin.TabularInline):
     fields = ('sort_order', 'question_text')
     extra = 0
 
+
 class SubControlAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": (
         "title",)}
     inlines = (QuestionInline,)
 
 
-admin.site.register(Answer)
 admin.site.register(Question)
 
 admin.site.register(Control, ControlAdmin)
