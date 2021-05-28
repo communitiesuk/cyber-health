@@ -23,4 +23,5 @@ urlpatterns = [
     path('register/', user_views.user_registration, name='register'),
     path('account/', include('users.urls')),
     path('', include('staticpages.urls')),
+    path('tinymce/', include('tinymce.urls')),
 ]
