@@ -41,11 +41,6 @@ class FirefoxDriver {
         }
     }
 
-
-    async doLogin() {
-        await performLogin(this.username, this.password);
-    }
-
     async performLogin(username, password) {
         let page_url = await this.driver.getCurrentUrl();
         if (page_url.includes("account")) {
@@ -53,6 +48,10 @@ class FirefoxDriver {
             await this.driver.findElement(WebDriver.By.id('id_password')).sendKeys(password);
             await this.driver.findElement(WebDriver.By.css('button')).click();
         }
+    }
+
+    async doLogin() {
+        await this.performLogin(this.username, this.password);
     }
 
     async findElement(cssSelector) {
