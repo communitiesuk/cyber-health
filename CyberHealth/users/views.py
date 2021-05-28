@@ -102,6 +102,6 @@ def user_registration(request):
                                         'Please try again.')
     else:
         form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+    return render(request, 'users/create-an-account.html', {'form': form})
 
 
