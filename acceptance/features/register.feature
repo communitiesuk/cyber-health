@@ -22,7 +22,7 @@ Then I see a warning that I cannot register "This password is too short. It must
 Scenario: Sad path - Email address previously registered
 Given I am a Cyber Capable Person
 When I visit the Cyber Health Framework site
-And I click the "register" link
+And I click the "Create an account" link
 And I provide an email address using a domain that was previously registered and password and click register
 And I fill in the other details with valid information
 And I click on the "Sign Up" button
