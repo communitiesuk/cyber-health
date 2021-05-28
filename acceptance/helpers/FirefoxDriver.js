@@ -41,16 +41,17 @@ class FirefoxDriver {
         }
     }
 
-
-    async doLogin() {
+    async performLogin(username, password) {
         let page_url = await this.driver.getCurrentUrl();
         if (page_url.includes("account")) {
-            await this.driver.findElement(WebDriver.By.id('id_username')).sendKeys(this.username);
-            await this.driver.findElement(WebDriver.By.id('id_password')).sendKeys(this.password);
+            await this.driver.findElement(WebDriver.By.id('id_username')).sendKeys(username);
+            await this.driver.findElement(WebDriver.By.id('id_password')).sendKeys(password);
             await this.driver.findElement(WebDriver.By.css('button')).click();
-
-            let new_page_url = await this.driver.getCurrentUrl();
         }
+    }
+
+    async doLogin() {
+        await this.performLogin(this.username, this.password);
     }
 
     async findElement(cssSelector) {
