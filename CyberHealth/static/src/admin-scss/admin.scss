@@ -43,6 +43,10 @@
     @extend .govuk-input;
   }
 
+  textarea {
+    @extend .govuk-textarea;
+  }
+
   .form-row label {
     @extend .govuk-label--m;
     @extend .govuk-label;
