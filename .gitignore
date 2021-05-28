@@ -125,5 +125,9 @@ CyberHealth/LICENSE
 CyberHealth/NOTICE
 *.env
 
-# vs code
-.vscode
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
