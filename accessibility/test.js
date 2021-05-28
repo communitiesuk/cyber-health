@@ -12,7 +12,8 @@ const pagesToAnalyze = [
     'cookie-policy',
     'privacy-policy',
     'assessment',
-    'assessment/psn'
+    'assessment/psn',
+    'account/login'
 ]
 
 const screen = {
@@ -50,10 +51,10 @@ async function analyzePage(driver, url) {
     try {
         await driver.get(url);
         let page_url = await driver.getCurrentUrl();
-        if (page_url.includes("account")) {
+        if (page_url.includes("account") || page_url.includes("assessment")) {
             await driver.findElement(By.id('id_username')).sendKeys(username);
             await driver.findElement(By.id('id_password')).sendKeys(password);
-            await driver.findElement(By.id('button_login"')).click();
+            await driver.findElement(By.id('button_login')).click();
         }
         const axe = new AxeBuilder(driver, null, { noSandbox: true });
         let result = await axe.analyze();
