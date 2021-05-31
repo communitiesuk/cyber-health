@@ -145,3 +145,8 @@ class Organisation(models.Model):
 
     def __str__(self):
         return self.name
+
+class UploadEvidence(models.Model):
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    upload = models.FileField()
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
