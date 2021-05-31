@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sort_order_field',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -150,6 +151,18 @@ STATIC_ROOT = os.path.join(STATIC_URL, 'assets')
 STATICFILES_DIRS = [
     os.path.join(STATIC_URL, 'dist'),
 ]
+
+# # S3 Asset Storage
+AWS_ACCESS_KEY_ID = env('S3_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('S3_SECRET')
+AWS_STORAGE_BUCKET_NAME = env('S3_STORAGE_BUCKET_NAME')
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+DEFAULT_FILE_STORAGE = 'CyberHealth.storage_backends.UploadStorage'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 NOTIFICATIONS_CLIENT = NotificationsAPIClient(env('GOVUK_NOTIFY_KEY'))
