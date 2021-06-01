@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from assessment.models import Question, Answer, Pathway, PathwayGroup
+from assessment.models import Question, Answer, Pathway, PathwayGroup, UploadEvidence
 from django.shortcuts import render
-from .forms import AnswerForm
+from .forms import AnswerForm, UploadEvidenceForm
 import logging
 
 logger = logging.getLogger(__name__)
@@ -86,3 +86,29 @@ def pathway_view(request, pathway_slug):
     context = {"pathway": pathway, "breadcrumbs": []}
 
     return render(request, 'assessment/pathway.html', context)
+
+@login_required
+def submit_evidence(request):
+    uploads = UploadEvidence.objects.filter(user=request.user)
+    form = UploadEvidenceForm(user=request.user, uploads=uploads)    
+
+    if request.method == 'POST':
+        logger.info(request.POST)
+        if 'upload' in request.POST:
+            try:
+                new_upload = UploadEvidence(upload=request.POST['upload'], user=request.user)
+                logger.info("Created new upload")
+                new_upload.save()
+                logger.info("Saved upload to database")
+            except Exception as e:
+                logger.warn("Can't create new upload instance", Exception)
+
+        return redirect('/')
+
+    context = {
+        'form': form,
+        'uploads': uploads,
+    }
+    
+    
+    return render(request, 'assessment/submit-evidence.html', context)
