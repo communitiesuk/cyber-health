@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %} Submit evidence {% endblock %}
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button
+            class="govuk-button"
+            data-module="govuk-button"
+            type="submit"
+            value="Submit"
+          >
+            Submit
+          </button>
+  </form>
+
+  {# including a section to visualise submitted evidence from bucket #}
+  <section>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Uploaded at</th>
+          <th>Size</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for upload in uploads %}
+          <tr>
+            <td><a href="{{ upload.upload.url }}">{{ upload.upload.name }}</a></td>
+            <td>{{ upload.uploaded_at }}</td>
+            {# <td>{{ upload.upload.size|filesizeformat }}</td> #}
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="3">Nothing uploaded</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+{% endblock %}
