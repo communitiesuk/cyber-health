@@ -16,7 +16,7 @@ JestCucumber.defineFeature(feature, test => {
 
         when('I visit the Cyber Health Framework site', async() => {
             // visit home route
-            await driver.visitPage('');
+            await driver.visitPage('', false);
         });
 
         and(/^I click the "(.*)" link$/, async(link_text) => {
@@ -61,6 +61,5 @@ JestCucumber.defineFeature(feature, test => {
 
 
     afterAll(() => {
-        driver.quit();
     });
 });
