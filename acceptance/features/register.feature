@@ -31,7 +31,7 @@ Then I see a warning that I cannot register "There is already a user for your lo
 Scenario: Sad path - Email address is not associated to a council
 Given I am a Cyber Capable Person
 When I visit the Cyber Health Framework site
-And I click on the "register" link
+And I click on the "Create an account" link
 And I use an email address not using a domain related to a council in the CyberHealth framework
 And I fill in the other details with valid information
 And I click the "Sign Up" button
