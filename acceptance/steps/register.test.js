@@ -123,6 +123,43 @@ JestCucumber.defineFeature(feature, test => {
         });
     });
 
+    test('Sad Path - Commonly used password', ({ given, when, and, then }) => {
+
+        given('I am a Cyber Capable Person', () => {});
+
+        when('I visit the Cyber Health Framework site', async() => {
+            await driver.visitPage('', false);
+        });
+
+        and(/^I click the "(.*)" link$/, async(link_text) => {
+            await driver.clickLinkWithText(link_text)
+        });
+
+        and('I use an email address using a domain that is a first user related to a council in the CyberHealth framework', async() => {
+            await driver.setIdtoValue("id_email", "test@example.com");
+        });
+
+        and('I provide a commonly used password', async() => {
+            await driver.setIdtoValue("id_password1", "password");
+            await driver.setIdtoValue("id_password2", "password");
+        });
+
+        and('I fill in the other details with valid information', async() => {
+            await driver.setIdtoValue("id_last_name", "test");
+            await driver.setIdtoValue("id_first_name", "test");
+        });
+
+        and(/^I click on the "(.*)" button$/, async(link_text) => {
+            await driver.clickButtonWithText(link_text)
+        });
+
+        then(/^I see a warning that I cannot register "(.*)"$/, async(message) => {
+            expect(new URL(await driver.getUrl()).pathname).toEqual("/register/");
+            const pageTitle = await driver.findElement('.invalid-feedback');
+            const actual = await pageTitle.getText();
+            expect(actual).toEqual(message)
+        });
+    });
 
     afterAll(() => {
         driver.quit();

@@ -27,3 +27,13 @@ And I provide an email address using a domain that was previously registered and
 And I fill in the other details with valid information
 And I click on the "Sign Up" button
 Then I see a warning that I cannot register "There is already a user for your local council."
+
+Scenario: Sad Path - Commonly used password
+Given I am a Cyber Capable Person
+When I visit the Cyber Health Framework site
+And I click the "register" link
+And I use an email address using a domain that is a first user related to a council in the CyberHealth framework
+And I provide a commonly used password
+And I fill in the other details with valid information
+And I click on the "Sign Up" button
+Then I see a warning that I cannot register "This password is too common."
