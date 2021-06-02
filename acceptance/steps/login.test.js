@@ -6,7 +6,7 @@ const feature = JestCucumber.loadFeature('features/login.feature');
 JestCucumber.defineFeature(feature, test => {
     let driver;
 
-    beforeAll(() => {
+    beforeEach(() => {
         driver = new FirefoxDriver();
     });
 
@@ -59,8 +59,65 @@ JestCucumber.defineFeature(feature, test => {
         });
     });
 
+    test('wrong password or username combination', ({ given, when, and, then }) => {
+        given('I am a Cyber Capable Person', () => {});
 
-    afterAll(() => {
+        when('I visit the Cyber Health Framework site', async() => {
+            // visit home route
+            await driver.visitPage('');
+        });
+
+        and(/^I click the "(.*)" link$/, async(link_text) => {
+            await driver.clickLinkWithText(link_text)
+        });
+
+        and('I provide a combination of valid username and an invalid password and click login', async() => {
+            await driver.performLogin(driver.getUsername(), "NOT THE RIGHT PASSWORD");
+        });
+
+        then('I see the login page', async() => {
+            expect(new URL(await driver.getUrl()).pathname).toEqual("/account/");
+
+        });
+
+        and('I see a message explaining that the credentials provided were incorrect', async() => {
+            const pageTitle = await driver.findElement('.alert-danger > ul > li');
+            const actual = await pageTitle.getText()
+            const expected = "Please enter a correct username and password. Note that both fields may be case-sensitive."
+            expect(actual).toEqual(expected)
+        });
+    });
+
+    test('unknown username with password combination', ({ given, when, and, then }) => {
+        given('I am a Cyber Capable Person', () => {});
+
+        when('I visit the Cyber Health Framework site', async() => {
+            // visit home route
+            await driver.visitPage('');
+        });
+
+        and(/^I click the "(.*)" link$/, async(link_text) => {
+            await driver.clickLinkWithText(link_text)
+        });
+
+        and('I provide a combination of an unknown username and any password', async() => {
+            await driver.performLogin("notauser@example.org", "Password123");
+        });
+
+        then('I see the login page', async() => {
+            expect(new URL(await driver.getUrl()).pathname).toEqual("/account/");
+
+        });
+
+        and('I see a message explaining that the credentials provided were incorrect', async() => {
+            const pageTitle = await driver.findElement('.alert-danger > ul > li');
+            const actual = await pageTitle.getText()
+            const expected = "Please enter a correct username and password. Note that both fields may be case-sensitive."
+            expect(actual).toEqual(expected)
+        });
+    });
+
+    afterEach(() => {
         driver.quit();
     });
 });

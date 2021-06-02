@@ -50,8 +50,16 @@ class FirefoxDriver {
         }
     }
 
+    getUsername() {
+        return this.username;
+    }
+
+    async getDriver() {
+        await this.driver;
+    }
+
     async doLogin() {
-        await this.performLogin(this.username, this.password);
+        await this.performLogin(this.getUsername(), this.password);
     }
 
     async findElement(cssSelector) {
@@ -80,7 +88,6 @@ class FirefoxDriver {
         await this.driver.findElement(WebDriver.By.xpath("//a[contains(.,'" + link_text + "')]")).click();
         this.driver.wait(WebDriver.until.titleIs("", 1000));
     }
-
 
     async clickButtonWithText(link_text) {
 
