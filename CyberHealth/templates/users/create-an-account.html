@@ -58,7 +58,7 @@
                 <label for="{{field.id_for_label}}" class="govuk-label">{{field.label}}</label> 
                 
                 <div id=" {{field.name}}-hint" class="govuk-hint govuk-!-width-three-quarters">
-                    {{field.help_text}}
+                    {{field.help_text | safe}}
                  </div>
 
                 {% if field.errors %}

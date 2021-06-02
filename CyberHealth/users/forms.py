@@ -34,6 +34,13 @@ class UserRegisterForm(UserCreationForm):
                     'field_type': 'email'
                     }))
     password1 = forms.CharField(
+        help_text='<ul>'
+                  '<li>Your password must contain at least 8 characters</li>'
+                  '<li>Your password must not be too similiar to your other'
+                  'personal information</li>'
+                  '<li>Your password must not be a commonly used password</li>'
+                  '<li>Your password must not be entirely numeric </li>'
+                  '</ul>',
         required=True,
         label="Password",
         widget=forms.TextInput(
