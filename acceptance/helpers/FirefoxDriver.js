@@ -78,7 +78,6 @@ class FirefoxDriver {
     async clickLinkWithText(link_text) {
 
         await this.driver.findElement(WebDriver.By.xpath("//a[contains(.,'" + link_text + "')]")).click();
-        // this.driver.wait(WebDriver.until.titleIs("", 1000));
     }
 
 
