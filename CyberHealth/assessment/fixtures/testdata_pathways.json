@@ -7,7 +7,8 @@
       "short_name": "PSN",
       "intro_text": "Walled garden’ approach that enables public sector organisations to work together and share resources in a secure, controlled environment.",
       "slug": "psn",
-      "pathway_group": 1
+      "pathway_group": 1,
+      "controls": [1, 2]
     }
   },
   {
@@ -18,7 +19,8 @@
       "short_name": "NHS DSPT",
       "intro_text": "Self-assessment tool to provide assurance that organisations using NHS patient data are practising good data security.",
       "slug": "nhs-dspt",
-      "pathway_group": 1
+      "pathway_group": 1,
+      "controls": [1]
     }
   },
   {
