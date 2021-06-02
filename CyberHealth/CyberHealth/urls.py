@@ -20,7 +20,8 @@ from users import views as user_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('assessment/', include('assessment.urls')),
-    path('static/', include('staticpages.urls')),
-    path('', include('users.urls')),
-
+    path('create-an-account/', user_views.user_registration, name='register'),
+    path('account/', include('users.urls')),
+    path('', include('staticpages.urls')),
+    path('tinymce/', include('tinymce.urls')),
 ]
