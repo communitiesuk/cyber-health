@@ -76,14 +76,14 @@ JestCucumber.defineFeature(feature, test => {
         });
 
         then('I see the login page', async() => {
-            expect(new URL(await driver.getUrl()).pathname).toEqual("/account/");
+            expect(new URL(await driver.getUrl()).pathname).toEqual("/account/login");
 
         });
 
         and('I see a message explaining that the credentials provided were incorrect', async() => {
-            const pageTitle = await driver.findElement('.alert-danger > ul > li');
+            const pageTitle = await driver.findElement('ul.govuk-error-summary__list > li > a');
             const actual = await pageTitle.getText()
-            const expected = "Please enter a correct username and password. Note that both fields may be case-sensitive."
+            const expected = "Enter a valid email and password combination. You will be locked out if you enter the wrong details 5 times."
             expect(actual).toEqual(expected)
         });
     });
@@ -105,23 +105,19 @@ JestCucumber.defineFeature(feature, test => {
         });
 
         then('I see the login page', async() => {
-            expect(new URL(await driver.getUrl()).pathname).toEqual("/account/");
+            expect(new URL(await driver.getUrl()).pathname).toEqual("/account/login");
 
         });
 
         and('I see a message explaining that the credentials provided were incorrect', async() => {
-            const pageTitle = await driver.findElement('.alert-danger > ul > li');
+            const pageTitle = await driver.findElement('ul.govuk-error-summary__list > li > a');
             const actual = await pageTitle.getText()
-            const expected = "Please enter a correct username and password. Note that both fields may be case-sensitive."
+            const expected = "Enter a valid email and password combination. You will be locked out if you enter the wrong details 5 times."
             expect(actual).toEqual(expected)
         });
     });
 
-<<<<<<< HEAD
     afterEach(() => {
         driver.quit();
-=======
-    afterAll(() => {
->>>>>>> develop
     });
 });
