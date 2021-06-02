@@ -90,20 +90,20 @@ def pathway_view(request, pathway_slug):
 @login_required
 def submit_evidence(request):
     uploads = UploadEvidence.objects.filter(user=request.user)
-    form = UploadEvidenceForm(user=request.user, uploads=uploads)    
 
     if request.method == 'POST':
+        form = UploadEvidenceForm(request.POST, request.FILES, user=request.user, uploads=uploads)
         logger.info(request.POST)
-        if 'upload' in request.POST:
-            try:
-                new_upload = UploadEvidence(upload=request.POST['upload'], user=request.user)
-                logger.info("Created new upload")
-                new_upload.save()
+        try:
+            if form.is_valid():
+                form.save()
                 logger.info("Saved upload to database")
-            except Exception as e:
-                logger.warn("Can't create new upload instance", Exception)
+        except Exception as e:
+            logger.warn("Can't create new upload instance", Exception)
 
-        return redirect('/')
+        return redirect('/assessment/test-upload')
+    else:
+        form = UploadEvidenceForm(user=request.user, uploads=uploads)
 
     context = {
         'form': form,

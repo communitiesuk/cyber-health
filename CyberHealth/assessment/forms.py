@@ -26,4 +26,9 @@ class UploadEvidenceForm(ModelForm):
 
     class Meta:
         model = UploadEvidence
-        fields = ['upload']
+        fields = ('upload',)
+
+    def save(self):
+        self.instance.user = self.user
+        upload = super(UploadEvidenceForm, self).save()
+        return upload
