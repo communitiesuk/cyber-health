@@ -41,25 +41,25 @@ JestCucumber.defineFeature(feature, test => {
             expect(actual).toEqual(expected);
         });
     });
-    
+
     test('Pathway page renders subcontrols', ({
         given,
         when,
         then
     }) => {
         given('I am a Cyber Capable Person', () => {});
-        
+
         when('I visit the PSN pathway page', async () => {
             await driver.visitPage('assessment/psn')
         });
-        
+
         then(/^I see a SubControl with the title \"(.*)\"/, async (expected) => {
             const firstSubControlTitle = await driver.findElement('.app-task-list__task-name');
             const actual = await firstSubControlTitle.getText();
             expect(actual).toEqual(expected);
         });
     });
-
+    
     afterAll(() => {
         driver.quit();
     });

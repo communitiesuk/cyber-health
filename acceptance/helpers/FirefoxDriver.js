@@ -46,7 +46,7 @@ class FirefoxDriver {
         if (page_url.includes("account")) {
             await this.driver.findElement(WebDriver.By.id('id_username')).sendKeys(username);
             await this.driver.findElement(WebDriver.By.id('id_password')).sendKeys(password);
-            await this.driver.findElement(WebDriver.By.css('button')).click();
+            await this.driver.findElement(WebDriver.By.id('button_login')).click();
         }
     }
 
@@ -82,7 +82,6 @@ class FirefoxDriver {
     async clickLinkWithText(link_text) {
 
         await this.driver.findElement(WebDriver.By.xpath("//a[contains(.,'" + link_text + "')]")).click();
-        this.driver.wait(WebDriver.until.titleIs("", 1000));
     }
 
     async clickButtonWithText(link_text) {

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'admin_interface',
     'colorfield',
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
