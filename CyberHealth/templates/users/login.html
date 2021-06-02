@@ -38,7 +38,7 @@
                {% csrf_token %}
                <fieldset class="govuk-fieldset">
                   <div class="govuk-form-group {% if form.username.errors or form.non_field_errors %} govuk-form-group--error {% endif %}">
-                     <label for="{{form.username.id_for_label}}" class="govuk-label">Email address</label> 
+                     <label for="{{form.username.id_for_label}}" class="govuk-label">{{form.username.label}}</label> 
                      <div id="email-hint" class="govuk-hint govuk-!-width-three-quarters">
                         Enter the email address you used to create an account for Assess Your Cyberhealth
                      </div>
@@ -55,7 +55,7 @@
                      {{error}}</span>
                      {% endfor %}
                      {% endif %}
-                     <input type="text" name="{{form.username.name}}" value="{% if form.username.value %} {{form.username.value}} {% endif %}" id="{{form.username.id_for_label}}" class="govuk-input govuk-!-width-three-quarters {% if form.username.errors or form.non_field_errors %} govuk-input--error {% endif %}" value="" maxlength="48" aria-describedby="user_id-hint" autocomplete="username" type="email"> 
+                     <input type="text" name="{{form.username.name}}" value="{% if form.username.value %}{{form.username.value}}{% endif %}" id="{{form.username.id_for_label}}" class="govuk-input govuk-!-width-three-quarters {% if form.username.errors or form.non_field_errors %} govuk-input--error {% endif %}" value="" maxlength="48" aria-describedby="user_id-hint" autocomplete="username" type="email"> 
                   </div>
                   <div class="govuk-form-group {% if form.password.errors%} govuk-form-group--error {% endif %}">
                      <label for="{{form.password.id_for_label}}" class="govuk-label">Password</label> 
@@ -77,9 +77,8 @@
                   data-module="govuk-button"
                   type="submit"
                   value="Submit"
-                  >
-               Log in
-               </button>
+                  id="button_login"
+                  >Log in</button>
                <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-6">
                <h2 class="govuk-heading-s govuk-!-margin-top-6">Don't have an account?</h2>
                <div class="govuk-body">

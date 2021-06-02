@@ -9,7 +9,7 @@ from django.conf import settings
 import uuid
 
 
-def send_user_notification(user_details, user_token, 
+def send_user_notification(user_details, user_token,
                            template_id='63d94931-3b5a-42dc-ba0d-06b40902298b'):
     return settings.NOTIFICATIONS_CLIENT.send_email_notification(
         email_address=user_details.email,
@@ -108,5 +108,6 @@ def user_registration(request):
                                         'Please try again.')
     else:
         form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+    return render(request, 'users/create-an-account.html', {'form': form})
+
 
