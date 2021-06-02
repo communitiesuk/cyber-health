@@ -83,6 +83,18 @@ def pathway_view(request, pathway_slug):
 
     logger.info("Viewing pathway: %s", pathway_slug)
 
-    context = {"pathway": pathway, "breadcrumbs": []}
+    controls_with_subcontrols = []
+
+    for control in pathway.controls.all():
+        controls_with_subcontrols.append({
+            "control": control,
+            "subcontrols": control.subcontrol_set.all()
+        })
+
+    context = {
+        "pathway": pathway, 
+        "breadcrumbs": [],
+        "controls": controls_with_subcontrols
+    }
 
     return render(request, 'assessment/pathway.html', context)
