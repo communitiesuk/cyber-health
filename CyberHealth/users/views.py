@@ -96,7 +96,7 @@ def user_registration(request):
                 print(e)
                 messages.error(request, 'There was an error in the sign up'
                                         ' process. Please check the details '
-                                        'provided e.g. the email address.'
+                                        'provided e.g. the email address. '
                                         'Please try again.')
     else:
         form = UserRegisterForm()
