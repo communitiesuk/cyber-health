@@ -54,10 +54,6 @@ class FirefoxDriver {
         return this.username;
     }
 
-    async getDriver() {
-        await this.driver;
-    }
-
     async doLogin() {
         await this.performLogin(this.getUsername(), this.password);
     }
