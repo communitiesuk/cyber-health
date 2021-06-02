@@ -1,6 +1,6 @@
 const AxeBuilder = require('@axe-core/webdriverjs');
 const WebDriver = require('selenium-webdriver'),
-      By = WebDriver.By;
+    By = WebDriver.By;
 const firefox = require('selenium-webdriver/firefox');
 
 const username = `${process.env.TEST_USERNAME}`
@@ -51,7 +51,7 @@ async function analyzePage(driver, url) {
     try {
         await driver.get(url);
         let page_url = await driver.getCurrentUrl();
-        if (page_url.includes("account") || page_url.includes("assessment")) {
+        if (page_url.includes("login") || page_url.includes("assessment")) {
             await driver.findElement(By.id('id_username')).sendKeys(username);
             await driver.findElement(By.id('id_password')).sendKeys(password);
             await driver.findElement(By.id('button_login')).click();
