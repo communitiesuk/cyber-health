@@ -3,17 +3,52 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import password_validation
+from django.forms import widgets
 from .models import Organisation
 
 
 class UserRegisterForm(UserCreationForm):
-    first_name = forms.CharField(required=True, label="First name")
-    last_name = forms.CharField(required=True, label="Last name")
-    email = forms.EmailField(required=True, label="Email",
-                             help_text='Must be a .gov.uk local authority '
-                             ' email address')
-    password1 = forms.CharField(required=True, label="Password")
-    password2 = forms.CharField(required=True, label="Confirm password")
+    first_name = forms.CharField(
+        required=True,
+        label="First name",
+        widget=forms.TextInput(
+            attrs={
+                'autocomplete': 'given-name',
+                'field_type': 'text'
+                }))
+    last_name = forms.CharField(
+        required=True,
+        label="Last name",
+        widget=forms.TextInput(
+            attrs={
+                'autocomplete': 'family-name',
+                'field_type': 'text'
+                }))
+    email = forms.EmailField(
+            help_text='Must be a .gov.uk local authority email address',
+            required=True,
+            label="Email",
+            widget=forms.TextInput(
+                attrs={
+                    'autocomplete': 'email',
+                    'field_type': 'email'
+                    }))
+    password1 = forms.CharField(
+        required=True,
+        label="Password",
+        widget=forms.TextInput(
+            attrs={
+                'autocomplete': 'new-password',
+                'field_type': 'password'
+                }))
+    password2 = forms.CharField(
+        required=True,
+        label="Confirm password",
+        widget=forms.TextInput(
+            attrs={
+                'autocomplete': 'new-password',
+                'field_type': 'password'
+                }))
 
     class Meta:
         model = User

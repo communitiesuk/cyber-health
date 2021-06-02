@@ -1,6 +1,7 @@
 {% extends 'base.html' %} 
 {% block title %}{% if form.errors %}Error: {% endif %}Create an account{% endblock %}
 {% block content %}
+
 <div class="govuk-width-container">
    <main class="govuk-main-wrapper govuk-!-padding-top-0" id="main-content" role="main">
    <a href="/" class="govuk-back-link govuk-!-margin-bottom-8">Back</a>
@@ -67,12 +68,12 @@
                 {{error}}</span>
                 {% endfor %}
                 {% endif %}
-                <input type="{% if 'password' in field.name %}password{% elif 'email' in field.name %}email{% else %}text{% endif %}" 
+                <input type="{{field.field.widget.attrs.field_type}}" 
                        name="{{field.name}}" value="{% if field.value %}{{field.value | escape}}{% endif %}" id="{{field.id_for_label}}" 
                        class="govuk-input govuk-!-width-three-quarters {% if field.errors or form.non_field_errors %} govuk-input--error {% endif %}"
-                       maxlength="48" aria-describedby="{{field.label}}" autocomplete="{{field.name}}"> 
-             </div>
-
+                       maxlength="48" autocomplete="{{field.field.widget.attrs.autocomplete}}"> 
+             
+                     </div>
                 {% endfor %}
 
                <button
