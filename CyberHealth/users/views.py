@@ -9,7 +9,8 @@ from django.conf import settings
 import uuid
 
 
-def send_user_notification(user_details, user_token, template_id='63d94931-3b5a-42dc-ba0d-06b40902298b'):
+def send_user_notification(user_details, user_token,
+                           template_id='63d94931-3b5a-42dc-ba0d-06b40902298b'):
     return settings.NOTIFICATIONS_CLIENT.send_email_notification(
         email_address=user_details.email,
         template_id=template_id,
@@ -102,7 +103,7 @@ def user_registration(request):
                 print(e)
                 messages.error(request, 'There was an error in the sign up'
                                         ' process. Please check the details '
-                                        'provided e.g. the email address. '
+                                        'provided e.g. the email address.'
                                         'Please try again.')
     else:
         form = UserRegisterForm()
