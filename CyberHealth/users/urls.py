@@ -5,7 +5,7 @@ from users.forms import LoginForm
 
 
 urlpatterns = [
-    path('account_verification/<auth_token>/', 
+    path('account_verification/<auth_token>/',
          views.account_activation, name='account-activation-page'),
     path('error/', views.error_page, name="error-page"),
     path('verify_account/', views.send_token_page, name="send-token-page"),
@@ -34,3 +34,4 @@ urlpatterns = [
     path('create-an-account/', views.user_registration,
          name='create-an-account'),
 ]
+
