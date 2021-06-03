@@ -4,4 +4,4 @@ class UploadStorage(S3Boto3Storage):
   location = 'uploads'
   file_overwrite = False
   default_acl = 'private'
-  custom_domain = False
+  custom_domain = True    # defaults to True
