@@ -1,8 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Signed out of Assess Your Cyberhealth{% endblock %}
 {% block content %}
-    <h2>You have been logged out of your account</h2>
-    <div class="border-top pt-3">
-        <small class="text-muted">
-            <a href="{% url 'login' %}">Log In Again</a>
-        </small>
+    <div class="govuk-width-container">
+        <main class="govuk-main-wrapper" id="main-content" role="main">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <h1 class="govuk-heading-xl">You have signed out</h1>
+                    <a class="govuk-button" href="{% url 'login' %}">Return to login</a>
+                 </div>
+              </div>
+           </main>
     </div>
 {% endblock content %}

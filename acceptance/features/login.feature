@@ -7,6 +7,18 @@ And I click the "Start self-assessment" link
 And I provide a valid username and password and click login
 Then I reach the index page
 
+Scenario: Successful from start and logout
+Given I am a Cyber Capable Person
+When I visit the Cyber Health Framework site
+And I click the "Start self-assessment" link
+And I provide a valid username and password and click login
+And I reach the index page
+And I click the "logout" link
+Then I reach the logged out page
+And I see a message "You have signed out"
+And I click the "Return to login" link
+Then I reach the login page
+
 Scenario: Successfully login to access deep content
 Given I am a Cyber Capable Person
 When I visit a page which requires a login
