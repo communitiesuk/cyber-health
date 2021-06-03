@@ -13,7 +13,8 @@ const pagesToAnalyze = [
     'privacy-policy',
     'assessment',
     'assessment/psn',
-    'account/login'
+    'account/login',
+    'account/logout'
 ]
 
 const screen = {
