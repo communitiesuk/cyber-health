@@ -34,8 +34,8 @@ When I visit the Cyber Health Framework site
 And I click on the "Create an account" link
 And I use an email address not using a domain related to a council in the CyberHealth framework
 And I fill in the other details with valid information
-And I click the "Sign Up" button
-Then I see a warning that I cannot be signed up "There was an error in the sign up process. Please check the details provided e.g. the email address. Please try again."
+And I click the "Continue" button
+Then I see a warning that I cannot be signed up "Must use a .gov.uk email address related to a council"
 
 Scenario: Sad Path - Commonly used password
 Given I am a Cyber Capable Person
@@ -44,5 +44,5 @@ And I click the "Create an account" link
 And I use an email address using a domain that is a first user related to a council in the CyberHealth framework
 And I provide a commonly used password
 And I fill in the other details with valid information
-And I click on the "Sign Up" button
+And I click on the "Continue" button
 Then I see a warning that I cannot register "This password is too common."
