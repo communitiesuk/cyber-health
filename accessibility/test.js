@@ -14,7 +14,13 @@ const pagesToAnalyze = [
     'assessment',
     'assessment/psn',
     'account/login',
-    'account/logout'
+    'account/logout',
+    'account/create-an-account'
+]
+
+const pagesRequireLogin = [
+    'assessment',
+    'assessment/psn',
 ]
 
 const screen = {
@@ -52,7 +58,7 @@ async function analyzePage(driver, url) {
     try {
         await driver.get(url);
         let page_url = await driver.getCurrentUrl();
-        if (page_url.includes("login") || page_url.includes("assessment")) {
+        if (pagesRequireLogin.includes(page_url)) {
             await driver.findElement(By.id('id_username')).sendKeys(username);
             await driver.findElement(By.id('id_password')).sendKeys(password);
             await driver.findElement(By.id('button_login')).click();
