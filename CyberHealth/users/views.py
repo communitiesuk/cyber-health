@@ -1,3 +1,5 @@
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.shortcuts import render, redirect
 from .forms import UserRegisterForm
 from django.contrib.auth.models import User
@@ -14,7 +16,8 @@ def send_user_notification(user_details, user_token,
         template_id=template_id,
         personalisation={
             'first_name': user_details.first_name,
-            'account_verification': f'http://127.0.0.1:8000/account_verification/{user_token}',
+            'account_verification':
+            f'http://127.0.0.1:8000/account_verification/{user_token}',
         }
     )
 
@@ -22,7 +25,8 @@ def send_user_notification(user_details, user_token,
 def get_message_status(notification_id):
     message_status = ''
     while message_status.lower() != 'delivered':
-        message_status = settings.NOTIFICATIONS_CLIENT.get_notification_by_id(notification_id).get('status')
+        message_status = settings.NOTIFICATIONS_CLIENT.get_notification_by_id(
+            notification_id).get('status')
     return message_status
 
 
@@ -40,7 +44,8 @@ def activate_user(user_details):
 
 def account_activation(request, auth_token):
     try:
-        user_profile_details = UserProfile.objects.filter(auth_token=auth_token).first()
+        user_profile_details = UserProfile.objects.filter(
+            auth_token=auth_token).first()
         if user_profile_details:
             if user_profile_details.is_verified:
                 messages.success(request, 'This account is already verified.')
@@ -51,7 +56,7 @@ def account_activation(request, auth_token):
             return redirect('success-page')
         else:
             messages.error(request, 'The requested profile does not exist.')
-            return redirect('register')
+            return redirect('create-an-account')
     except Exception as e:
         print(e)
         return render(request, error_page(request))
@@ -89,7 +94,8 @@ def user_registration(request):
                     user_profile = UserProfile.objects.create(
                         user=user_info, auth_token=auth_token)
                     user_profile.save()
-                    return redirect('send-token-page')
+                    redirect_url = reverse('send-token-page')
+                    return HttpResponseRedirect(redirect_url)
                 else:
                     messages.info(request, 'There is already a user for '
                                   'your local council.')

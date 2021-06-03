@@ -42,9 +42,9 @@ JestCucumber.defineFeature(feature, test => {
         then(/^I see a warning that I cannot register "(.*)"$/, async(message) => {
 
             expect(new URL(await driver.getUrl()).pathname).toEqual("/account/create-an-account/");
-            const pageTitle = await driver.findElement('.alert.alert-info');
-            const actual = await pageTitle.getText();
-            expect(actual).toEqual(message)
+            const errorMessage = await driver.findElement(".govuk-error-summary");
+            const actual = await errorMessage.getText()
+            expect(actual).toContain(message)
         });
     });
 
@@ -81,9 +81,10 @@ JestCucumber.defineFeature(feature, test => {
 
         then(/^I see a warning that I cannot register "(.*)"$/, async(message) => {
             expect(new URL(await driver.getUrl()).pathname).toEqual("/account/create-an-account/");
-            const pageTitle = await driver.findElement('.invalid-feedback');
-            const actual = await pageTitle.getText();
-            expect(actual).toEqual(message)
+            // const pageTitle = await driver.findElement('.invalid-feedback');
+            const errorMessage = await driver.findElement(".govuk-error-summary");
+            const actual = await errorMessage.getText();
+            expect(actual).toContain(message)
         });
     });
 
@@ -117,9 +118,9 @@ JestCucumber.defineFeature(feature, test => {
 
         then(/^I see a warning that I cannot register "(.*)"$/, async(message) => {
             expect(new URL(await driver.getUrl()).pathname).toEqual("/account/create-an-account/");
-            const pageTitle = await driver.findElement('.alert.alert-info');
-            const actual = await pageTitle.getText();
-            expect(actual).toEqual(message)
+            const errorMessage = await driver.findElement(".govuk-error-summary");
+            const actual = await errorMessage.getText();
+            expect(actual).toContain(message)
         });
     });
 
