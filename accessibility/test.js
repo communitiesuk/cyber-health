@@ -1,6 +1,6 @@
 const AxeBuilder = require('@axe-core/webdriverjs');
 const WebDriver = require('selenium-webdriver'),
-      By = WebDriver.By;
+    By = WebDriver.By;
 const firefox = require('selenium-webdriver/firefox');
 
 const username = `${process.env.TEST_USERNAME}`
@@ -14,6 +14,7 @@ const pagesToAnalyze = [
     'assessment',
     'assessment/psn',
     'account/login',
+    'account/logout',
     'account/create-an-account'
 ]
 
