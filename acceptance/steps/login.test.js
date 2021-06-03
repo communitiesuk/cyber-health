@@ -36,6 +36,54 @@ JestCucumber.defineFeature(feature, test => {
         });
     });
 
+    test('Successful from start and logout', ({ given, when, and, then }) => {
+
+        given('I am a Cyber Capable Person', () => {});
+
+        when('I visit the Cyber Health Framework site', async() => {
+            // visit home route
+            await driver.visitPage('', false);
+        });
+
+        and(/^I click the "(.*)" link$/, async(link_text) => {
+            await driver.clickLinkWithText(link_text)
+        });
+
+        and('I provide a valid username and password and click login', async() => {
+            await driver.doLogin();
+        });
+
+        then('I reach the index page', async() => {
+            expect(new URL(await driver.getUrl()).pathname).toEqual("/assessment/");
+            const pageTitle = await driver.findElement('h1');
+            const actual = await pageTitle.getText()
+            const expected = "Your Council Cyber Health Overview"
+            expect(actual).toEqual(expected)
+        });
+
+        and(/^I click the "(.*)" link$/, async(link_text) => {
+            await driver.clickLinkWithText(link_text)
+        });
+
+        then('I reach the logged out page', async() => {
+            expect(new URL(await driver.getUrl()).pathname).toEqual(expect.stringContaining("/account/logout"));
+        });
+
+        and(/^I see a message "(.*)"$/, async(message) => {
+            const pageTitle = await driver.findElement('h1');
+            const actual = await pageTitle.getText()
+            expect(actual).toEqual(message)
+        });
+
+        and(/^I click the "(.*)" link$/, async(link_text) => {
+            await driver.clickLinkWithText(link_text)
+        });
+
+        then('I reach the login page', async() => {
+            expect(new URL(await driver.getUrl()).pathname).toEqual(expect.stringContaining("/account/login"));
+        });
+    });
+
 
     test('Successfully login to access deep content', ({ given, when, and, then }) => {
 
