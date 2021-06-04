@@ -19,7 +19,8 @@ class FirefoxDriver {
         const driver = new WebDriver.Builder()
             .withCapabilities(WebDriver.Capabilities.firefox())
             .setFirefoxOptions(new firefox.Options()
-                .headless()
+            .setPreference('accessibility.tabfocus', 7)
+                // .headless()
                 .windowSize(screen)
             )
             .build();
@@ -80,8 +81,13 @@ class FirefoxDriver {
     }
 
     async clickLinkWithText(link_text) {
-
+        // const currentURL = await this.driver.getCurrentUrl();
         await this.driver.findElement(WebDriver.By.xpath("//a[contains(.,'" + link_text + "')]")).click();
+        this.driver.sleep(9000);
+        // this.driver.wait(WebDriver.until.urlIs);
+        // await this.driver.manage().Time
+        // driver.manage().timeouts().implicitlyWait(10);
+
     }
 
     async clickButtonWithText(link_text) {
@@ -89,8 +95,8 @@ class FirefoxDriver {
         await this.driver.findElement(WebDriver.By.xpath("//button[contains(.,'" + link_text + "')]")).click();
     }
 
-    async pressKey(key) {
-        await this.driver.
+    async pressKey(element, key) {
+        await this.driver.findElement(WebDriver.By.css(element)).sendKeys(WebDriver.Key[key]);
     }
 
     quit() {

@@ -34,19 +34,16 @@ JestCucumber.defineFeature(feature, test => {
             await driver.visitPage('');
         });
 
-        and('I hit the tab key', async(link_text) => {
-            await driver.sendKeys(driver.keys.tab)
+        and(/^I hit the "(.*)" key$/, async(key) => {
+            await driver.pressKey('body', key.toUpperCase())
         });
 
         and(/^I click the "(.*)" link$/, async(link_text) => {
             await driver.clickLinkWithText(link_text)
         });
 
-        then(/I see a page with the heading \"(.*)\"/, async(expected) => {
-            const pageTitle = await driver.findElement('#main-content');
-            const actual = await pageTitle.getText()
-            expect(actual).toContain(expected)
-            driver.quit();
+        then('I jump to the main section', async() => {
+            expect(new URL(await driver.getUrl()).pathname).toEqual("/#main-content");
         });
     });
 });
