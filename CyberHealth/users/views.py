@@ -11,6 +11,7 @@ import uuid
 
 def send_user_notification(user_details, user_token, template_id='63d94931-3b5a-42dc-ba0d-06b40902298b'):
     print(f'{settings.CLOUDFOUNDRY_SPACE} is the current environment value.')
+
     if settings.CLOUDFOUNDRY_SPACE in [settings.DEFAULT_CLOUDFOUNDRY_SPACE, settings.DEFAULT_CLOUDFOUNDRY_SPACE_UAT]:
         account_verification_link = f'https://cyberhealth-{settings.CLOUDFOUNDRY_SPACE}.london.cloudapps.digital/account_verification/{user_token}'
     elif settings.CLOUDFOUNDRY_SPACE == settings.DEFAULT_CLOUDFOUNDRY_SPACE_FINAL:
