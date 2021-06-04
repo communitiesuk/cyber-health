@@ -43,7 +43,9 @@ JestCucumber.defineFeature(feature, test => {
         });
 
         then('I jump to the main section', async() => {
-            expect(new URL(await driver.getUrl()).pathname).toEqual("/#main-content");
+            const { pathname, hash } = new URL(await driver.getUrl());
+            const urlBarContent = `${pathname}${hash}`
+            expect(urlBarContent).toEqual("/#main-content");
         });
     });
 });
