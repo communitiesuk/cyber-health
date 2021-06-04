@@ -7,26 +7,11 @@ from .models import Organisation, OrganisationUser, UserProfile
 from django.contrib import messages
 from django.conf import settings
 import uuid
-import json
-import logging
-
-logger = logging.getLogger(__name__)
-
-
-def convert_cloudfoundry_info():
-    logger.info("*******************************************************************************")
-    logger.info(settings.CLOUDFOUNDRY_SPACE)
-    logger.info("*******************************************************************************")
-    if settings.CLOUDFOUNDRY_SPACE:
-        with open(settings.CLOUDFOUNDRY_SPACE) as info:
-            converted_info = json.load(info)
-        return converted_info.get('space_name', 'localhost').lower()
 
 
 def send_user_notification(user_details, user_token, template_id='63d94931-3b5a-42dc-ba0d-06b40902298b'):
     print(f'{settings.CLOUDFOUNDRY_SPACE} is the current json object')
-
-    cloudfoundry_space = convert_cloudfoundry_info()
+    cloudfoundry_space = settings.CLOUDFOUNDRY_SPACE.get('space_name', 'localhost')
     if cloudfoundry_space in ['sandbox', 'staging']:
         account_verification_link = f'https://cyberhealth-{cloudfoundry_space}.london.cloudapps.digital/account/account_verification/{user_token}'
     elif cloudfoundry_space == 'production':
