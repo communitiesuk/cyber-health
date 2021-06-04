@@ -19,6 +19,7 @@ def convert_cloudfoundry_info():
 
 def send_user_notification(user_details, user_token, template_id='63d94931-3b5a-42dc-ba0d-06b40902298b'):
     print(f'{settings.CLOUDFOUNDRY_SPACE} is the current json object')
+
     cloudfoundry_space = convert_cloudfoundry_info()
     if cloudfoundry_space in ['sandbox', 'staging']:
         account_verification_link = f'https://cyberhealth-{cloudfoundry_space}.london.cloudapps.digital/account/account_verification/{user_token}'
