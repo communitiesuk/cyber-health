@@ -8,9 +8,15 @@ from django.contrib import messages
 from django.conf import settings
 import uuid
 import json
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def convert_cloudfoundry_info():
+    logger.info("*******************************************************************************")
+    logger.info(settings.CLOUDFOUNDRY_SPACE)
+    logger.info("*******************************************************************************")
     if settings.CLOUDFOUNDRY_SPACE:
         with open(settings.CLOUDFOUNDRY_SPACE) as info:
             converted_info = json.load(info)
