@@ -153,24 +153,34 @@ STATICFILES_DIRS = [
 ]
 
 # # S3 Asset Storage
+DEFAULT_FILE_STORAGE = 'CyberHealth.storage_backends.UploadStorage'
+MEDIAFILES_LOCATION = 'uploads'
 AWS_ACCESS_KEY_ID = env('S3_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = env('S3_SECRET')
 AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
-# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_ENDPOINT_URL = env('AWS_S3_ENDPOINT_URL')
-AWS_S3_CUSTOM_DOMAIN = '%s/%s' % (AWS_S3_ENDPOINT_URL, AWS_STORAGE_BUCKET_NAME)
-# AWS_S3_SIGNATURE_VERSION = 's3v4'
 AWS_DEFAULT_ACL = None
-# AWS_S3_VERIFY = True
 AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME')
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 
-DEFAULT_FILE_STORAGE = 'CyberHealth.storage_backends.UploadStorage'
-MEDIAFILES_LOCATION = 'uploads'
-# MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+# in dev + travis:
+######## AWS_S3_CUSTOM_DOMAIN = http:localhost:5000/nialls-cool-bucket
+AWS_S3_ENDPOINT_URL = env('AWS_S3_ENDPOINT_URL')  # http://localhost:5000
+AWS_S3_CUSTOM_DOMAIN = '%s/%s' % (AWS_S3_ENDPOINT_URL, AWS_STORAGE_BUCKET_NAME)
 MEDIA_URL = "%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+
+# in deployed instance:
+### this is the default pattern, so we can disregard this 
+###      using a boolean in 'CyberHealth.storage_backends.UploadStorage'
+######## AWS_S3_CUSTOM_DOMAIN = nialls-cool-bucket.s3.amazonaws.com
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+### we don't need to specify the endpoint
+
+# AWS_S3_SIGNATURE_VERSION = 's3v4'
+# AWS_S3_VERIFY = True
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 NOTIFICATIONS_CLIENT = NotificationsAPIClient(env('GOVUK_NOTIFY_KEY'))
