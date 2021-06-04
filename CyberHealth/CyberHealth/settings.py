@@ -15,6 +15,7 @@ import os
 from pathlib import Path
 import logging
 import sys
+import ast
 from django.contrib.staticfiles import finders
 
 logger = logging.getLogger(__name__)
@@ -36,7 +37,7 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # Application environments
-CLOUDFOUNDRY_SPACE = os.getenv('VCAP_APPLICATION')
+CLOUDFOUNDRY_SPACE = ast.literal_eval(os.getenv('VCAP_APPLICATION'))
 
 # This application requires a debug flag to be set
 
