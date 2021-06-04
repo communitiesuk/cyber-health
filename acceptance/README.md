@@ -4,7 +4,7 @@ The MHCLG Cyber Health Framework is a self-assessment tool to help Local Authori
 
 This project uses node in order to run acceptance tests
 
-## Before you start
+# Before you start
 
 To run this project you need:
 
@@ -20,7 +20,14 @@ To run this project you need:
 npm run test
 ```
 
-## Licence
+# Troubleshooting
+
+## To install test data
+e.g. If your tests fail it might be worth testing whether you have installed the test data for acceptance or accessibility tests.
+
+Run `python manage.py loaddata */fixtures/testdata*.json`
+
+# Licence
 
 Unless stated otherwise, the codebase is released under [the MIT License][mit].
 This covers both the codebase and any sample code in the documentation.

@@ -1,6 +1,6 @@
 const AxeBuilder = require('@axe-core/webdriverjs');
 const WebDriver = require('selenium-webdriver'),
-      By = WebDriver.By;
+    By = WebDriver.By;
 const firefox = require('selenium-webdriver/firefox');
 
 const username = `${process.env.TEST_USERNAME}`
@@ -12,7 +12,15 @@ const pagesToAnalyze = [
     'cookie-policy',
     'privacy-policy',
     'assessment',
-    'assessment/psn'
+    'assessment/psn',
+    'account/login',
+    'account/logout',
+    'account/create-an-account'
+]
+
+const pagesRequireLogin = [
+    'assessment',
+    'assessment/psn',
 ]
 
 const screen = {
@@ -50,10 +58,10 @@ async function analyzePage(driver, url) {
     try {
         await driver.get(url);
         let page_url = await driver.getCurrentUrl();
-        if (page_url.includes("account")) {
+        if (pagesRequireLogin.includes(page_url)) {
             await driver.findElement(By.id('id_username')).sendKeys(username);
             await driver.findElement(By.id('id_password')).sendKeys(password);
-            await driver.findElement(By.css('button')).click();
+            await driver.findElement(By.id('button_login')).click();
         }
         const axe = new AxeBuilder(driver, null, { noSandbox: true });
         let result = await axe.analyze();

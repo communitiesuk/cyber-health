@@ -35,7 +35,7 @@ Run `python manage.py test`
 Run `python manage.py migrate` 
 
 ## To install test data
-e.g. for acceptance or accessibility tests.
+e.g., for acceptance or accessibility tests.
 
 Run `python manage.py loaddata */fixtures/testdata*.json`
 
