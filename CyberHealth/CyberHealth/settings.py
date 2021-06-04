@@ -36,16 +36,11 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # Application environments
-CLOUDFOUNDRY_SPACE = os.getenv('space_name',  'localhost')
-# if os.getenv('VCAP_APPLICATION'):
-#     # CLOUDFOUNDRY_SPACE = os.getenv('space_name',  'localhost')
-#     CLOUDFOUNDRY_SPACE = os.getenv('space_name')
-# else:
-#     CLOUDFOUNDRY_SPACE = os.getenv('localhost')
+CLOUDFOUNDRY_SPACE = os.getenv('VCAP_APPLICATION')
 
 # This application requires a debug flag to be set
 
-DEBUG = env('DJANGO_DEBUG', default=False)
+DEBUG = env('DJANGO_DEBUG', default=True)
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.london.cloudapps.digital']
 
