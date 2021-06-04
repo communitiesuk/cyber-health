@@ -20,7 +20,7 @@ class FirefoxDriver {
             .withCapabilities(WebDriver.Capabilities.firefox())
             .setFirefoxOptions(new firefox.Options()
             .setPreference('accessibility.tabfocus', 7)
-                // .headless()
+                .headless()
                 .windowSize(screen)
             )
             .build();
