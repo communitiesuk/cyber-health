@@ -20,4 +20,7 @@ pip3 install -r requirements.txt
 pipenv install
 
 # start the server
+echo "starting moto_server on port 5000..."
 moto_server s3 &
+
+cd "../" || exit
