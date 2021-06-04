@@ -72,6 +72,7 @@ typings/
 CyberHealth/CyberHealth/.env
 .env.test
 .env
+s3_mocks/s3_mocks/
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
