@@ -20,4 +20,4 @@ pip3 install -r requirements.txt
 pipenv install
 
 # start the server
-moto_server s3
+moto_server s3 &
