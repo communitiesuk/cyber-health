@@ -11,11 +11,8 @@ import ast
 
 
 def send_user_notification(user_details, user_token, template_id='63d94931-3b5a-42dc-ba0d-06b40902298b'):
-
-    # if settings.CLOUDFOUNDRY_SPACE:
-    #     extract_space_name = ast.literal_eval(settings.CLOUDFOUNDRY_SPACE)
-
-    cloudfoundry_space = ast.literal_eval(settings.CLOUDFOUNDRY_SPACE).get('space_name', 'INVALID_SPACE') if settings.CLOUDFOUNDRY_SPACE else 'localhost'
+    cloudfoundry_space = ast.literal_eval(settings.CLOUDFOUNDRY_SPACE).get('space_name', 'INVALID_SPACE') \
+        if settings.CLOUDFOUNDRY_SPACE else 'localhost'
     if cloudfoundry_space in ['sandbox', 'staging']:
         account_verification_link = \
             f'https://cyberhealth-{cloudfoundry_space}.london.cloudapps.digital/account/account_verification/{user_token}'
