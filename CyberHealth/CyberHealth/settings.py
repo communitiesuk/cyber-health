@@ -36,9 +36,6 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # Application environments
-DEFAULT_CLOUDFOUNDRY_SPACE = env('DEFAULT_CLOUDFOUNDRY_SPACE')
-DEFAULT_CLOUDFOUNDRY_SPACE_FINAL = env('DEFAULT_CLOUDFOUNDRY_SPACE_FINAL')
-DEFAULT_CLOUDFOUNDRY_SPACE_UAT = env('DEFAULT_CLOUDFOUNDRY_SPACE_UAT')
 CLOUDFOUNDRY_SPACE = os.getenv('space_name',  'localhost')
 # if os.getenv('VCAP_APPLICATION'):
 #     # CLOUDFOUNDRY_SPACE = os.getenv('space_name',  'localhost')

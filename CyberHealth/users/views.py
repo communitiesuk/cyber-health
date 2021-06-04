@@ -10,14 +10,13 @@ import uuid
 
 
 def send_user_notification(user_details, user_token, template_id='63d94931-3b5a-42dc-ba0d-06b40902298b'):
-    print(f'{settings.CLOUDFOUNDRY_SPACE} is the current environment value.')
-
-    if settings.CLOUDFOUNDRY_SPACE in [settings.DEFAULT_CLOUDFOUNDRY_SPACE, settings.DEFAULT_CLOUDFOUNDRY_SPACE_UAT]:
-        account_verification_link = f'https://cyberhealth-{settings.CLOUDFOUNDRY_SPACE}.london.cloudapps.digital/account/account_verification/{user_token}'
-    elif settings.CLOUDFOUNDRY_SPACE == settings.DEFAULT_CLOUDFOUNDRY_SPACE_FINAL:
+    cloudfoundry_space = settings.CLOUDFOUNDRY_SPACE.lower()
+    if cloudfoundry_space in ['sandbox', 'staging']:
+        account_verification_link = f'https://cyberhealth-{cloudfoundry_space}.london.cloudapps.digital/account/account_verification/{user_token}'
+    elif cloudfoundry_space == 'production':
         account_verification_link = f'https://cyberhealth.london.cloudapps.digital/account/account_verification/{user_token}'
     else:
-        account_verification_link = f'http://{settings.CLOUDFOUNDRY_SPACE}:8000/account/account_verification/{user_token}'
+        account_verification_link = f'http://{cloudfoundry_space}:8000/account/account_verification/{user_token}'
     return settings.NOTIFICATIONS_CLIENT.send_email_notification(
         email_address=user_details.email,
         template_id=template_id,
