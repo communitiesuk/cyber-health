@@ -19,7 +19,7 @@ class UploadEvidenceTestCase(TestCase):
             pass
 
         self.test_user = User.objects.create(
-            username='testuser', password='12345')
+            username='testuser', password=settings.SECRET_KEY)
         self.test_evidence = UploadEvidence.objects.create(
             user=self.test_user,
             upload=SimpleUploadedFile('cool_file.txt', b'this is some sample file content')
