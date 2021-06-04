@@ -1,3 +1,4 @@
+from botocore.exceptions import ClientError
 from django import forms
 from django.forms import ModelForm
 
@@ -30,5 +31,10 @@ class UploadEvidenceForm(ModelForm):
 
     def save(self):
         self.instance.user = self.user
-        upload = super(UploadEvidenceForm, self).save()
-        return upload
+        try:
+            upload = super(UploadEvidenceForm, self).save()
+            return upload
+        except ClientError as err:
+            print(err)
+            print("Were tests run before launching this application instance?")
+            return
