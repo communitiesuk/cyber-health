@@ -11,11 +11,14 @@ import uuid
 
 def send_user_notification(user_details, user_token, template_id='63d94931-3b5a-42dc-ba0d-06b40902298b'):
     print(f'{settings.CLOUDFOUNDRY_SPACE} is the current json object')
-    cloudfoundry_space = settings.CLOUDFOUNDRY_SPACE.get('space_name', 'localhost')
+    cloudfoundry_space = settings.CLOUDFOUNDRY_SPACE.get('space_name', 'INVALID_SPACE') \
+        if settings.CLOUDFOUNDRY_SPACE else 'localhost'
     if cloudfoundry_space in ['sandbox', 'staging']:
-        account_verification_link = f'https://cyberhealth-{cloudfoundry_space}.london.cloudapps.digital/account/account_verification/{user_token}'
+        account_verification_link = \
+            f'https://cyberhealth-{cloudfoundry_space}.london.cloudapps.digital/account/account_verification/{user_token}'
     elif cloudfoundry_space == 'production':
-        account_verification_link = f'https://cyberhealth.london.cloudapps.digital/account/account_verification/{user_token}'
+        account_verification_link = \
+            f'https://cyberhealth.london.cloudapps.digital/account/account_verification/{user_token}'
     else:
         account_verification_link = f'http://{cloudfoundry_space}:8000/account/account_verification/{user_token}'
     return settings.NOTIFICATIONS_CLIENT.send_email_notification(
