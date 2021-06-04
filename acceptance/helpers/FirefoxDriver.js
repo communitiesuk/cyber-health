@@ -89,6 +89,10 @@ class FirefoxDriver {
         await this.driver.findElement(WebDriver.By.xpath("//button[contains(.,'" + link_text + "')]")).click();
     }
 
+    async pressKey(key) {
+        await this.driver.
+    }
+
     quit() {
         return this.driver.quit();
     }

@@ -34,6 +34,10 @@ JestCucumber.defineFeature(feature, test => {
             await driver.visitPage('');
         });
 
+        and('I hit the tab key', async(link_text) => {
+            await driver.sendKeys(driver.keys.tab)
+        });
+
         and(/^I click the "(.*)" link$/, async(link_text) => {
             await driver.clickLinkWithText(link_text)
         });
