@@ -81,17 +81,11 @@ class FirefoxDriver {
     }
 
     async clickLinkWithText(link_text) {
-        // const currentURL = await this.driver.getCurrentUrl();
         await this.driver.findElement(WebDriver.By.xpath("//a[contains(.,'" + link_text + "')]")).click();
-        this.driver.sleep(9000);
-        // this.driver.wait(WebDriver.until.urlIs);
-        // await this.driver.manage().Time
-        // driver.manage().timeouts().implicitlyWait(10);
 
     }
 
     async clickButtonWithText(link_text) {
-
         await this.driver.findElement(WebDriver.By.xpath("//button[contains(.,'" + link_text + "')]")).click();
     }
 
