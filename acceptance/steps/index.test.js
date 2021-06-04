@@ -22,4 +22,30 @@ JestCucumber.defineFeature(feature, test => {
             driver.quit();
         });
     });
+
+    test('Index page contains skip to main content link', ({ given, when, and, then }) => {
+        let driver;
+
+        given('I am a Cyber Capable Person', () => {
+            driver = new FirefoxDriver();
+        });
+
+        when('I visit the Cyber Health Framework site', async() => {
+            await driver.visitPage('');
+        });
+
+        and(/^I click the "(.*)" link$/, async(link_text) => {
+            await driver.clickLinkWithText(link_text)
+        });
+
+        then(/I see a page with the heading \"(.*)\"/, async(expected) => {
+            const pageTitle = await driver.findElement('#main-content');
+            const actual = await pageTitle.getText()
+            expect(actual).toContain(expected)
+            driver.quit();
+        });
+    });
 });
+
+
+
