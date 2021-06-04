@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # shellcheck disable=SC1091
+# backing services
 source scripts/setup-postgres.sh 
+source scripts/setup-moto.sh
 
 APPLICATIONS=("CyberHealth")
 
