@@ -27,18 +27,6 @@ def send_user_notification(user_details, user_token, template_id='63d94931-3b5a-
     )
 
 
-# def send_user_notification(user_details, user_token, template_id='63d94931-3b5a-42dc-ba0d-06b40902298b'):
-#     return settings.NOTIFICATIONS_CLIENT.send_email_notification(
-#         email_address=user_details.email,
-#         template_id=template_id,
-#         personalisation={
-#             'first_name': user_details.first_name,
-#             'account_verification':
-#             f'http://127.0.0.1:8000/account_verification/{user_token}',
-#         }
-#     )
-
-
 def get_message_status(notification_id):
     message_status = ''
     while message_status.lower() != 'delivered':
