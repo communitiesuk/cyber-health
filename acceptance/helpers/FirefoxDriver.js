@@ -65,6 +65,10 @@ class FirefoxDriver {
     async findElementByXPath(xPathSelector) {
         return await this.driver.findElement(WebDriver.By.xpath(xPathSelector));
     }
+    
+    async findElementsByXPath(xPathSelector) {
+        return await this.driver.findElements(WebDriver.By.xpath(xPathSelector));
+    }
 
     async findElementById(idSelector) {
         return await this.driver.findElement(WebDriver.By.id(idSelector));
