@@ -11,7 +11,7 @@ class UploadEvidenceTestCase(TestCase):
         self.s3 = boto3.resource('s3',
                                  endpoint_url=settings.AWS_S3_ENDPOINT_URL,
                                  aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-                                 aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+                                 aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
 
         try:
             self.s3.create_bucket(
