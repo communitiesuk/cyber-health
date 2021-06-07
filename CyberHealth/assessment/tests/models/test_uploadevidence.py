@@ -8,12 +8,15 @@ from assessment.models import UploadEvidence
 
 class UploadEvidenceTestCase(TestCase):
     def setUp(self):
-        self.s3 = boto3.resource('s3', endpoint_url=settings.AWS_S3_ENDPOINT_URL)
-        
+        self.s3 = boto3.resource('s3',
+                                 endpoint_url=settings.AWS_S3_ENDPOINT_URL,
+                                 aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+                                 aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+
         try:
             self.s3.create_bucket(
-                Bucket=settings.AWS_STORAGE_BUCKET_NAME, 
-                CreateBucketConfiguration={ 'LocationConstraint': settings.AWS_S3_REGION_NAME })
+                Bucket=settings.AWS_STORAGE_BUCKET_NAME,
+                CreateBucketConfiguration={'LocationConstraint': settings.AWS_S3_REGION_NAME})
         except self.s3.meta.client.exceptions.BucketAlreadyExists:
             # don't try to create the bucket if it's already there
             pass
