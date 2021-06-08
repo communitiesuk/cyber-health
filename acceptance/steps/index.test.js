@@ -4,8 +4,13 @@ const FirefoxDriver = require('../helpers/FirefoxDriver.js');
 const feature = JestCucumber.loadFeature('features/index.feature');
 
 JestCucumber.defineFeature(feature, test => {
+    let driver;
+
+    beforeEach(() => {
+        driver = new FirefoxDriver();
+    });
+    
     test('Index page contains expected heading', ({ given, when, then }) => {
-        let driver;
 
         given('I am a Cyber Capable Person', () => {
             driver = new FirefoxDriver();
@@ -19,12 +24,10 @@ JestCucumber.defineFeature(feature, test => {
             const pageTitle = await driver.findElement('#main-content');
             const actual = await pageTitle.getText()
             expect(actual).toContain(expected)
-            driver.quit();
         });
     });
 
     test('Index page contains skip to main content link', ({ given, when, and, then }) => {
-        let driver;
 
         given('I am a Cyber Capable Person', () => {
             driver = new FirefoxDriver();
@@ -47,6 +50,10 @@ JestCucumber.defineFeature(feature, test => {
             const urlBarContent = `${pathname}${hash}`
             expect(urlBarContent).toEqual("/#main-content");
         });
+    });
+
+    afterEach(() => {
+        driver.quit();
     });
 });
 
