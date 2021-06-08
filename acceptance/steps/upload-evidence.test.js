@@ -61,7 +61,7 @@ defineFeature(feature, test => {
 
         then('I can see my file in the list of uploaded files', async () => {
             const tableRows = await driver.findElementsByXPath("//table/tbody/tr");
-            const numRows = tableRows.length
+            const numRows = tableRows.length;
             expect(numRows).toBe(rowsAtStart + 1);
             
         });
