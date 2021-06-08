@@ -36,7 +36,7 @@ class UserRegisterForm(UserCreationForm):
     password1 = forms.CharField(
         help_text='<ul>'
                   '<li>Your password must contain at least 8 characters</li>'
-                  '<li>Your password must not be too similiar to your other'
+                  '<li>Your password must not be too similar to your other '
                   'personal information</li>'
                   '<li>Your password must not be a commonly used password</li>'
                   '<li>Your password must not be entirely numeric </li>'
