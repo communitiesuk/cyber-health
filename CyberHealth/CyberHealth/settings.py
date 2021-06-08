@@ -169,23 +169,16 @@ AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME')
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
+AWS_USE_CUSTOM_URL = env('AWS_USE_CUSTOM_URL', default=True)
 
 # in dev + travis:
 ######## AWS_S3_CUSTOM_DOMAIN = http:localhost:5000/nialls-cool-bucket
-AWS_S3_ENDPOINT_URL = env('AWS_S3_ENDPOINT_URL')  # http://localhost:5000
-AWS_S3_CUSTOM_DOMAIN = '%s/%s' % (AWS_S3_ENDPOINT_URL, AWS_STORAGE_BUCKET_NAME)
-MEDIA_URL = "%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-
-# in deployed instance:
-### this is the default pattern, so we can disregard this 
-###      using a boolean in 'CyberHealth.storage_backends.UploadStorage'
-######## AWS_S3_CUSTOM_DOMAIN = nialls-cool-bucket.s3.amazonaws.com
-# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-# MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-### we don't need to specify the endpoint
-
-# AWS_S3_SIGNATURE_VERSION = 's3v4'
-# AWS_S3_VERIFY = True
+AWS_S3_ENDPOINT_URL = "https://%s" % env('AWS_S3_ENDPOINT_URL')  # http://localhost:5000
+if AWS_USE_CUSTOM_URL:
+    AWS_S3_CUSTOM_DOMAIN = '%s/%s' % (AWS_S3_ENDPOINT_URL, AWS_STORAGE_BUCKET_NAME)
+    MEDIA_URL = "%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+else:
+    MEDIA_URL = "https://%s/%s/" % (env('AWS_S3_ENDPOINT_URL'), MEDIAFILES_LOCATION)
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
