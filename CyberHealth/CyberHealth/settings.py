@@ -35,6 +35,9 @@ environ.Env.read_env()
 # This application requires a secret key to be set in the environment to be run
 SECRET_KEY = env('SECRET_KEY')
 
+# Application environments
+CLOUDFOUNDRY_SPACE = os.getenv('VCAP_APPLICATION')
+
 # This application requires a debug flag to be set
 
 DEBUG = env('DJANGO_DEBUG', default=False)
