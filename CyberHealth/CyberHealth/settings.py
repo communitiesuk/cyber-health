@@ -171,13 +171,14 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_USE_CUSTOM_URL = env('AWS_USE_CUSTOM_URL', default=True)
 
-# in dev + travis:
-######## AWS_S3_CUSTOM_DOMAIN = http:localhost:5000/nialls-cool-bucket
-AWS_S3_ENDPOINT_URL = "https://%s" % env('AWS_S3_ENDPOINT_URL')  # http://localhost:5000
 if AWS_USE_CUSTOM_URL:
+    # in dev + travis:
+    AWS_S3_ENDPOINT_URL = env('AWS_S3_ENDPOINT_URL')
     AWS_S3_CUSTOM_DOMAIN = '%s/%s' % (AWS_S3_ENDPOINT_URL, AWS_STORAGE_BUCKET_NAME)
     MEDIA_URL = "%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 else:
+    # in deployed instance:
+    AWS_S3_ENDPOINT_URL = "https://%s" % env('AWS_S3_ENDPOINT_URL')
     MEDIA_URL = "https://%s/%s/" % (env('AWS_S3_ENDPOINT_URL'), MEDIAFILES_LOCATION)
 
 
