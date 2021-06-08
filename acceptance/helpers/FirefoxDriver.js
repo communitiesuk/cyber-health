@@ -19,6 +19,7 @@ class FirefoxDriver {
         const driver = new WebDriver.Builder()
             .withCapabilities(WebDriver.Capabilities.firefox())
             .setFirefoxOptions(new firefox.Options()
+            .setPreference('accessibility.tabfocus', 7)
                 .headless()
                 .windowSize(screen)
             )
@@ -80,13 +81,16 @@ class FirefoxDriver {
     }
 
     async clickLinkWithText(link_text) {
-
         await this.driver.findElement(WebDriver.By.xpath("//a[contains(.,'" + link_text + "')]")).click();
+
     }
 
     async clickButtonWithText(link_text) {
-
         await this.driver.findElement(WebDriver.By.xpath("//button[contains(.,'" + link_text + "')]")).click();
+    }
+
+    async pressKey(element, key) {
+        await this.driver.findElement(WebDriver.By.css(element)).sendKeys(WebDriver.Key[key]);
     }
 
     quit() {
