@@ -80,7 +80,8 @@ def success_page(request):
 
 
 def send_token_page(request):
-    return render(request, 'users/send_token.html')
+    user_info = User.objects.get(id=request.session['user'])
+    return render(request, 'users/send_token.html', {'user_info': user_info})
 
 
 def user_registration(request):
@@ -98,6 +99,7 @@ def user_registration(request):
                     send_user_notification(user_info, auth_token)
                     user_info.username = user_info.email
                     user_info.save()
+                    request.session['user'] = user_info.id
                     deactivate_user(user_info)
                     organisation.organisation_users_info.add(user_info)
                     user_profile = UserProfile.objects.create(
