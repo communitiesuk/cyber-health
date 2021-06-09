@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block title %}{% if form.errors %}Error: {% endif %}Create an account{% endblock %}
 {% block content %}
 <div class="govuk-width-container">
@@ -48,7 +48,7 @@
                <fieldset class="govuk-fieldset">
                {% for field in form %}
                <div class="govuk-form-group {% if field.errors %} govuk-form-group--error {% endif %}">
-                  <label for="{{field.id_for_label}}" class="govuk-label">{{field.label}}</label> 
+                  <label for="{{field.id_for_label}}" class="govuk-label">{{field.label}}</label>
                   <div id=" {{field.name}}-hint" class="govuk-hint govuk-!-width-three-quarters">
                      {{field.help_text | safe}}
                   </div>
@@ -59,10 +59,10 @@
                   {{error}}</span>
                   {% endfor %}
                   {% endif %}
-                  <input type="{{field.field.widget.attrs.field_type}}" 
-                     name="{{field.name}}" value="{% if field.value %}{{field.value | escape}}{% endif %}" id="{{field.id_for_label}}" 
+                  <input type="{{field.field.widget.attrs.field_type}}"
+                     name="{{field.name}}" value="{% if field.value %}{{field.value | escape}}{% endif %}" id="{{field.id_for_label}}"
                      class="govuk-input govuk-!-width-three-quarters {% if field.errors or form.non_field_errors %} govuk-input--error {% endif %}"
-                     maxlength="48" autocomplete="{{field.field.widget.attrs.autocomplete}}"> 
+                     maxlength="48" autocomplete="{{field.field.widget.attrs.autocomplete}}">
                </div>
                {% endfor %}
                <button
@@ -76,8 +76,6 @@
                <div class="govuk-body">
                   <a class="govuk-link govuk-!-margin-bottom-5 " href="{% url 'login' %}">Log in to assess your cyber health</a>
                </div>
-         </div>
-      </div>
       </fieldset>
       </form>
 </div>
