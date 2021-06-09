@@ -210,7 +210,7 @@ JestCucumber.defineFeature(feature, test => {
         });
 
         and('I use an email address using a domain that is a first user related to a council in the CyberHealth framework', async() => {
-
+            await driver.setIdtoValue("id_email", "test@endtest-mail.io");
         });
 
         and('I fill in the other details with valid information', async() => {
