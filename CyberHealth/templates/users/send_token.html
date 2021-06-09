@@ -6,8 +6,11 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">Check your email</h1>
+        <p class="govuk-body-l">
+          We have sent a confirmation to<br>
+            <strong>{{ user_info.email }}</strong>
+        </p>
         <p class="govuk-body">
-          We have sent a confirmation to your email address.
           Please check your email for further instructions
         </p>
         <a href="{% url 'login' %}" class="govuk-link">Login to your account</a>

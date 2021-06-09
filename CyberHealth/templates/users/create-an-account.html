@@ -1,31 +1,26 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block title %}{% if form.errors %}Error: {% endif %}Create an account{% endblock %}
 {% block content %}
-
 <div class="govuk-width-container">
    <main class="govuk-main-wrapper govuk-!-padding-top-0" id="main-content" role="main">
-   <a href="/" class="govuk-back-link govuk-!-margin-bottom-8">Back</a>
+      <a href="/" class="govuk-back-link govuk-!-margin-bottom-8">Back</a>
       <div class="govuk-grid-row">
          <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-xl">Create an account</h1>
-
             {% if form.errors or messages %}
             <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
                <h2 class="govuk-error-summary__title" id="error-summary-title">
                   There is a problem
                </h2>
-
                <div class="govuk-error-summary__body">
                   <ul class="govuk-list govuk-error-summary__list">
                      {% if messages %}
                      {% for message in messages %}
                      <li class="text-red govuk-!-font-weight-bold">
-                             {{ message }}
+                        {{ message }}
                      </li>
                      {% endfor %}
-                 {% endif %}
-
-
+                     {% endif %}
                      {% if form.non_field_errors %}
                      {% for error in form.non_field_errors %}
                      <li>
@@ -33,7 +28,6 @@
                      </li>
                      {% endfor %}
                      {% endif %}
-
                      {% for field in form %}
                      {% if field.errors %}
                      {% for error in field.errors %}
@@ -52,49 +46,40 @@
             <form method="post" novalidate>
                {% csrf_token %}
                <fieldset class="govuk-fieldset">
-
-                {% for field in form %}
-                <div class="govuk-form-group {% if field.errors %} govuk-form-group--error {% endif %}">
-                <label for="{{field.id_for_label}}" class="govuk-label">{{field.label}}</label> 
-                
-                <div id=" {{field.name}}-hint" class="govuk-hint govuk-!-width-three-quarters">
-                    {{field.help_text | safe}}
-                 </div>
-
-                {% if field.errors %}
-                {% for error in field.errors %}
-                <span id="{{field.name}}-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> 
-                {{error}}</span>
-                {% endfor %}
-                {% endif %}
-                <input type="{{field.field.widget.attrs.field_type}}" 
-                       name="{{field.name}}" value="{% if field.value %}{{field.value | escape}}{% endif %}" id="{{field.id_for_label}}" 
-                       class="govuk-input govuk-!-width-three-quarters {% if field.errors or form.non_field_errors %} govuk-input--error {% endif %}"
-                       maxlength="48" autocomplete="{{field.field.widget.attrs.autocomplete}}"> 
-             
-                     </div>
-                {% endfor %}
-
+               {% for field in form %}
+               <div class="govuk-form-group {% if field.errors %} govuk-form-group--error {% endif %}">
+                  <label for="{{field.id_for_label}}" class="govuk-label">{{field.label}}</label>
+                  <div id=" {{field.name}}-hint" class="govuk-hint govuk-!-width-three-quarters">
+                     {{field.help_text | safe}}
+                  </div>
+                  {% if field.errors %}
+                  {% for error in field.errors %}
+                  <span id="{{field.name}}-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> 
+                  {{error}}</span>
+                  {% endfor %}
+                  {% endif %}
+                  <input type="{{field.field.widget.attrs.field_type}}"
+                     name="{{field.name}}" value="{% if field.value %}{{field.value | escape}}{% endif %}" id="{{field.id_for_label}}"
+                     class="govuk-input govuk-!-width-three-quarters {% if field.errors or form.non_field_errors %} govuk-input--error {% endif %}"
+                     maxlength="48" autocomplete="{{field.field.widget.attrs.autocomplete}}">
+               </div>
+               {% endfor %}
                <button
                   class="govuk-button"
                   data-module="govuk-button"
                   type="submit"
                   value="Submit"
-                  >
-               Continue
-               </button>
+                  >Continue</button>
                <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-6">
                <h2 class="govuk-heading-s govuk-!-margin-top-6">Already got an account</h2>
                <div class="govuk-body">
                   <a class="govuk-link govuk-!-margin-bottom-5 " href="{% url 'login' %}">Log in to assess your cyber health</a>
                </div>
-         </div>
-      </div>
+      </fieldset>
       </form>
 </div>
 </div>
 </main>
 </div>
-
 {% endblock content %}

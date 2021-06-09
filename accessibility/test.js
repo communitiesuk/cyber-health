@@ -9,13 +9,14 @@ const baseUrl = `${process.env.FRONTEND_PROTO}://${process.env.FRONTEND_HOST}:${
 const pagesToAnalyze = [
     '/',
     'accessibility-statement',
-    'cookie-policy',
-    'privacy-policy',
-    'assessment',
-    'assessment/psn',
+    'account/account_activated/',
+    'account/create-an-account',
     'account/login',
     'account/logout',
-    'account/create-an-account'
+    'assessment',
+    'assessment/psn',
+    'cookie-policy',
+    'privacy-policy'
 ]
 
 const pagesRequireLogin = [

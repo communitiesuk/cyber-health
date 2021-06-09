@@ -1,12 +1,14 @@
+{% extends 'base.html' %} {% block title %}Check your email{% endblock %} 
 {% block content %}
-    <div class="global-container">
-        <div class="card login-form">
-            <div class="card-body">
-                <h3 class="card-title text-center">Your account is now ready for use.</h3>
-                <div class="card-text text-center">
-                    <a class="ml-2" href="{% url 'login' %}">login</a>
-                </div>
-            </div>
-        </div>
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Your account is now ready for use</h1>
+        <a href="{% url 'login' %}" class="govuk-button">Login to your account</a>
+      </div>
     </div>
+  </main>
+</div>
 {% endblock content %}
+
