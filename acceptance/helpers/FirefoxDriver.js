@@ -1,8 +1,6 @@
 const WebDriver = require('selenium-webdriver');
 const firefox = require('selenium-webdriver/firefox');
-const MailSlurp = require('mailslurp-client').default;
 
-const mailSlurp = new MailSlurp({ apiKey: "d27d9531dfabf6141eda7727c1f501998bc2497bd09813be5f74962dd6a77d2f" });
 
 class FirefoxDriver {
     constructor() {
@@ -14,7 +12,6 @@ class FirefoxDriver {
 
         this.username = `${process.env.TEST_USERNAME}`
         this.password = `${process.env.TEST_PASSWORD}`
-        this.inbox = this.generateNewEmailAddress()
     }
 
     buildFirefoxDriver(screen) {
@@ -90,22 +87,6 @@ class FirefoxDriver {
     async clickButtonWithText(link_text) {
 
         await this.driver.findElement(WebDriver.By.xpath("//button[contains(.,'" + link_text + "')]")).click();
-    }
-
-    async generateNewEmailAddress(){
-        return await mailSlurp.createInbox();
-    }
-
-    getInbox() {
-        return this.inbox;
-    }
-
-    async sendEmailToAddress(inboxId, emailBody){
-        return await mailSlurp.sendEmail(inboxId, emailBody);
-    }
-
-    async deleteInbox(inboxId){
-        return await mailSlurp.deleteInbox(inboxId);
     }
 
     quit() {
