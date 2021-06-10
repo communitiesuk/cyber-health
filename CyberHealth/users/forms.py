@@ -10,18 +10,10 @@ from .models import Organisation
 class UserRegisterForm(UserCreationForm):
     first_name = forms.CharField(
         required=True,
-        label="First name",
+        label="Name",
         widget=forms.TextInput(
             attrs={
-                'autocomplete': 'given-name',
-                'field_type': 'text'
-                }))
-    last_name = forms.CharField(
-        required=True,
-        label="Last name",
-        widget=forms.TextInput(
-            attrs={
-                'autocomplete': 'family-name',
+                'autocomplete': 'name',
                 'field_type': 'text'
                 }))
     email = forms.EmailField(
@@ -59,7 +51,7 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'password1', 'password2']
+        fields = ['first_name', 'email', 'password1', 'password2']
 
     def __init__(self, *args, **kwargs):
         super(UserRegisterForm, self).__init__(*args, **kwargs)
