@@ -37,11 +37,6 @@ class CustomUserAdmin(UserAdmin):
         form.base_fields["email"].widget = forms.HiddenInput()
         return form
 
-            # fieldsets = (
-    #     ('Personal info', {'fields': ('first_name', 'email', 'password')}),
-    #     ('Important dates', {'fields': ('last_login', 'date_joined')}),
-    #     ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
-    # )
 
 admin.site.register(Organisation)
 admin.site.register(OrganisationRegion)
