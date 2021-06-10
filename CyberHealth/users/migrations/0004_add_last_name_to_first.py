@@ -3,8 +3,7 @@ from django.contrib.auth import get_user_model
 
 
 def add_last_name_to_first(apps, schema_editor):
-    User = get_user_model()
-    users = User.objects.all()
+    users = get_user_model().objects.all()
     for user in users:
         name = str(user.first_name)
         if user.last_name:
