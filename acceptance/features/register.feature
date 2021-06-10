@@ -45,4 +45,4 @@ And I use an email address using a domain that is a first user related to a coun
 And I provide a commonly used password
 And I fill in the other details with valid information
 And I click on the "Continue" button
-Then I see a warning that I cannot register "This password is too common."
+Then I see a warning that I cannot register "This is a commonly used password. Please create a more unique password."

@@ -1,0 +1,5 @@
+msgid "This password is too common."
+msgstr "This is a commonly used password. Please create a more unique password."
+
+msgid "This password is entirely numeric."
+msgstr "This password is entirely numeric. It must contain non-numeric characters."
