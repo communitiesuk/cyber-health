@@ -27,8 +27,7 @@ JestCucumber.defineFeature(feature, test => {
         });
 
         and('I fill in the other details with valid information', async() => {
-            await driver.setIdtoValue("id_last_name", "test");
-            await driver.setIdtoValue("id_first_name", "test");
+            await driver.setIdtoValue("id_name", "test");
             await driver.setIdtoValue("id_password1", "125345gdfgDFEWEgdfg4345dfsfsf");
             await driver.setIdtoValue("id_password2", "125345gdfgDFEWEgdfg4345dfsfsf");
 
@@ -71,8 +70,7 @@ JestCucumber.defineFeature(feature, test => {
         });
 
         and('I fill in the other details with valid information', async() => {
-            await driver.setIdtoValue("id_last_name", "test");
-            await driver.setIdtoValue("id_first_name", "test");
+            await driver.setIdtoValue("id_name", "test");
         });
 
         and(/^I click on the "(.*)" button$/, async(link_text) => {
@@ -105,8 +103,7 @@ JestCucumber.defineFeature(feature, test => {
         });
 
         and('I fill in the other details with valid information', async() => {
-            await driver.setIdtoValue("id_last_name", "test");
-            await driver.setIdtoValue("id_first_name", "test");
+            await driver.setIdtoValue("id_name", "test");
             await driver.setIdtoValue("id_password1", "125345gdfgDFEWEgdfg4345dfsfsf");
             await driver.setIdtoValue("id_password2", "125345gdfgDFEWEgdfg4345dfsfsf");
         });
@@ -141,8 +138,7 @@ JestCucumber.defineFeature(feature, test => {
         });
 
         and('I fill in the other details with valid information', async() => {
-            await driver.setIdtoValue("id_last_name", "test");
-            await driver.setIdtoValue("id_first_name", "test");
+            await driver.setIdtoValue("id_name", "test");
             await driver.setIdtoValue("id_password1", "125345gdfgDFEWEgdfg4345dfsfsf");
             await driver.setIdtoValue("id_password2", "125345gdfgDFEWEgdfg4345dfsfsf");
         });
@@ -182,8 +178,7 @@ JestCucumber.defineFeature(feature, test => {
         });
 
         and('I fill in the other details with valid information', async() => {
-            await driver.setIdtoValue("id_last_name", "test");
-            await driver.setIdtoValue("id_first_name", "test");
+            await driver.setIdtoValue("id_name", "test");
         });
 
         and(/^I click on the "(.*)" button$/, async(link_text) => {
