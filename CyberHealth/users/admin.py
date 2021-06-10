@@ -2,22 +2,13 @@ from django.contrib import admin
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
-from .models import Organisation, OrganisationRegion, OrganisationType, OrganisationUser, UserProfile
+from .models import Organisation, OrganisationRegion, OrganisationType, 
+OrganisationUser, UserProfile
 
-
-def admin_method_attributes(**outer_kwargs):
-    """ Wrap an admin method with passed arguments as attributes and values.
-    DRY way of extremely common admin manipulation such as setting short_description, allow_tags, etc.
-    """
-    def method_decorator(func):
-        for kw, arg in outer_kwargs.items():
-            setattr(func, kw, arg)
-        return func
-    return method_decorator
 
 class CustomUserAdmin(UserAdmin):
     list_display = ("_email", "_name", "is_staff")
-    readonly_fields = ('_email', )     
+    readonly_fields = ('_email', )
 
     def _email(self, obj):
         return obj.get_username()

@@ -15,7 +15,7 @@ class UserRegisterForm(UserCreationForm):
             attrs={
                 'autocomplete': 'name',
                 'field_type': 'text',
-                'id':'id_name',
+                'id': 'id_name',
                 'name': 'name',
                 }))
     email = forms.EmailField(

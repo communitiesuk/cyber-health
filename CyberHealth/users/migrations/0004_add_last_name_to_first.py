@@ -1,6 +1,7 @@
 from django.db import migrations
 from django.contrib.auth import get_user_model
 
+
 def add_last_name_to_first(apps, schema_editor):
     User = get_user_model()
     users = User.objects.all()
@@ -11,6 +12,7 @@ def add_last_name_to_first(apps, schema_editor):
             user.first_name = name
             user.last_name = ""
         user.save()
+
 
 class Migration(migrations.Migration):
     initial = True
