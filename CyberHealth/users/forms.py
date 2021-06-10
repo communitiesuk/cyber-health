@@ -14,7 +14,9 @@ class UserRegisterForm(UserCreationForm):
         widget=forms.TextInput(
             attrs={
                 'autocomplete': 'name',
-                'field_type': 'text'
+                'field_type': 'text',
+                'id':'id_name',
+                'name': 'name',
                 }))
     email = forms.EmailField(
             help_text='Must be a .gov.uk local authority email address',
