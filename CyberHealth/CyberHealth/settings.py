@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'assessment.apps.AssessmentConfig',
     'tinymce',
     'users.apps.UsersConfig',
-    'crispy_forms',
     'admin_interface',
     'colorfield',
     'django.contrib.admin',
@@ -154,7 +153,6 @@ STATICFILES_DIRS = [
     os.path.join(STATIC_URL, 'dist'),
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 NOTIFICATIONS_CLIENT = NotificationsAPIClient(env('GOVUK_NOTIFY_KEY'))
 LOGIN_REDIRECT_URL = 'assessment-overview'
 LOGIN_URL = 'login'
