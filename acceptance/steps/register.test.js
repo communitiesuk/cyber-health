@@ -230,7 +230,9 @@ JestCucumber.defineFeature(feature, test => {
         });
 
         and('On the same browser I use that confirmation link and click login', async() => {
-            await driver.GotoUrl(String(url));
+            token = String(url).split('/').slice(-1).pop();
+            url = driver.getBaseUrl('account/account_verification/' + token);
+            await driver.GotoUrl(url);
             expect(new URL(await driver.getUrl()).pathname).toEqual(expect.stringContaining("/account/login"));
             await driver.performLogin(username, password);
         });
