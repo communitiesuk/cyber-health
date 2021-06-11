@@ -214,8 +214,7 @@ JestCucumber.defineFeature(feature, test => {
         });
 
         and('I fill in the other details with valid information', async() => {
-            await driver.setIdtoValue("id_last_name", "test");
-            await driver.setIdtoValue("id_first_name", "test");
+            await driver.setIdtoValue("id_name", "test");
             await driver.setIdtoValue("id_password1", password);
             await driver.setIdtoValue("id_password2", password);
         });

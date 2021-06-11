@@ -16,10 +16,10 @@ from pathlib import Path
 import logging
 import sys
 from django.contrib.staticfiles import finders
-
-logger = logging.getLogger(__name__)
 from notifications_python_client.notifications import NotificationsAPIClient
 
+
+logger = logging.getLogger(__name__)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 

@@ -1,5 +1,6 @@
 const WebDriver = require('selenium-webdriver');
 const firefox = require('selenium-webdriver/firefox');
+var fs = require('fs');
 
 
 class FirefoxDriver {
