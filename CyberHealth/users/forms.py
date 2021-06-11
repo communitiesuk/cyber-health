@@ -3,26 +3,19 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import password_validation
-from django.forms import widgets
 from .models import Organisation
 
 
 class UserRegisterForm(UserCreationForm):
     first_name = forms.CharField(
         required=True,
-        label="First name",
+        label="Name",
         widget=forms.TextInput(
             attrs={
-                'autocomplete': 'given-name',
-                'field_type': 'text'
-                }))
-    last_name = forms.CharField(
-        required=True,
-        label="Last name",
-        widget=forms.TextInput(
-            attrs={
-                'autocomplete': 'family-name',
-                'field_type': 'text'
+                'autocomplete': 'name',
+                'field_type': 'text',
+                'id': 'id_name',
+                'name': 'name',
                 }))
     email = forms.EmailField(
             help_text='Must be a .gov.uk local authority email address',
@@ -59,7 +52,7 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'password1', 'password2']
+        fields = ['first_name', 'email', 'password1', 'password2']
 
     def __init__(self, *args, **kwargs):
         super(UserRegisterForm, self).__init__(*args, **kwargs)

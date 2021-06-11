@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'assessment.apps.AssessmentConfig',
     'tinymce',
     'users.apps.UsersConfig',
-    'crispy_forms',
     'admin_interface',
     'colorfield',
     'django.contrib.admin',
@@ -154,7 +153,6 @@ STATICFILES_DIRS = [
     os.path.join(STATIC_URL, 'dist'),
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 NOTIFICATIONS_CLIENT = NotificationsAPIClient(env('GOVUK_NOTIFY_KEY'))
 LOGIN_REDIRECT_URL = 'assessment-overview'
 LOGIN_URL = 'login'
@@ -462,4 +460,8 @@ TINYMCE_DEFAULT_CONFIG = {
 TINYMCE_SPELLCHECKER = True
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 SILENCED_SYSTEM_CHECKS = ['security.W019']
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+LANGUAGE_CODE = 'en-gb'
 
