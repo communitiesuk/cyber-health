@@ -80,6 +80,10 @@ class FirefoxDriver {
         return await this.driver.getCurrentUrl();
     }
 
+    async getBaseUrl(resource) {
+        return `${this.baseUrl}/${resource}`;
+    }
+
     async clickLinkWithText(link_text) {
         await this.driver.findElement(WebDriver.By.xpath("//a[contains(.,'" + link_text + "')]")).click();
 
@@ -92,6 +96,14 @@ class FirefoxDriver {
     async pressKey(element, key) {
         await this.driver.findElement(WebDriver.By.css(element)).sendKeys(WebDriver.Key[key]);
     }
+
+    async readTextFile(filePath) {
+        return fs.readFileSync(filePath)
+     }
+
+     async GotoUrl(url){
+        return await this.driver.get(url)
+     }
 
     quit() {
         return this.driver.quit();

@@ -1,5 +1,6 @@
 const JestCucumber = require('jest-cucumber')
 const FirefoxDriver = require('../helpers/FirefoxDriver.js');
+const path = require('path');
 
 const feature = JestCucumber.loadFeature('features/register.feature');
 
@@ -199,6 +200,10 @@ JestCucumber.defineFeature(feature, test => {
     });
 
     test('Happy path - Success within one session', ({ given, when, and, then }) => {
+        let url;
+        const username = "test@gov.org.uk";
+        const password = "125345gdfgDFEWEgdfg4345dfsfsf";
+
         given('I am a Cyber Capable Person', () => {});
 
         when('I visit the Cyber Health Framework site', async() => {
@@ -210,35 +215,38 @@ JestCucumber.defineFeature(feature, test => {
         });
 
         and('I use an email address using a domain that is a first user related to a council in the CyberHealth framework', async() => {
-            await driver.setIdtoValue("id_email", "test@endtest-mail.io");
+            await driver.setIdtoValue("id_email", username);
         });
 
         and('I fill in the other details with valid information', async() => {
             await driver.setIdtoValue("id_last_name", "test");
             await driver.setIdtoValue("id_first_name", "test");
-            await driver.setIdtoValue("id_password1", "125345gdfgDFEWEgdfg4345dfsfsf");
-            await driver.setIdtoValue("id_password2", "125345gdfgDFEWEgdfg4345dfsfsf");
+            await driver.setIdtoValue("id_password1", password);
+            await driver.setIdtoValue("id_password2", password);
         });
 
         and(/^I click on the "(.*)" button$/, async(link_text) => {
+            process.env['GOVUK_NOTIFY_DISABLE'] = true;
             await driver.clickButtonWithText(link_text);
-//            expect(new URL(await driver.getUrl()).pathname).toEqual("/account/verify_account/");
-//            const pageTitle = await driver.findElement('h1');
-//            const actual = await pageTitle.getText()
-//            const expected = "Check your email"
-//            expect(actual).toEqual(expected)
         });
 
         and('I am asked to use my email to show that I am a user with access to the council email account', async() => {
-
+            const filePath = path.join(__dirname, "../../CyberHealth/Spooler/url.txt");
+            url = await driver.readTextFile(filePath);
         });
 
-        and('On the same browser I use that confirmation link', async() => {
-
+        and('On the same browser I use that confirmation link and click login', async() => {
+            await driver.GotoUrl(String(url));
+            expect(new URL(await driver.getUrl()).pathname).toEqual(expect.stringContaining("/account/login"));
+            await driver.performLogin(username, password);
         });
 
         then('I can login and see the assessment council overview screen', async() => {
-
+            expect(new URL(await driver.getUrl()).pathname).toEqual("/assessment/");
+            const pageTitle = await driver.findElement('h1');
+            const actual = await pageTitle.getText()
+            const expected = "Your Council Cyber Health Overview"
+            expect(actual).toEqual(expected)
         });
     });
 

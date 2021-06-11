@@ -1,0 +1,1 @@
+http://localhost:8000/account/account_verification/4cffb636-afd1-4620-8d67-ee7d074bacd0
