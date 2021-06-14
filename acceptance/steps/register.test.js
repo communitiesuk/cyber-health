@@ -229,13 +229,17 @@ JestCucumber.defineFeature(feature, test => {
             url = await driver.readTextFile(filePath);
         });
 
-        and('On the same browser I use that confirmation link and click login', async() => {
-            token = String(url).split('/').slice(-1).pop();
-            url = driver.getBaseUrl(`account/account_verification/${token}`);
-            console.log("****************" + url)
-            await driver.GotoUrl(url);
-            console.log("****************" + driver.getUrl())
-            expect(new URL(await driver.getUrl()).pathname).toEqual(expect.stringContaining("/account/login"));
+        and('On the same browser I use that confirmation link and account is activated', async() => {
+            await driver.GotoUrl(String(url));
+            expect(new URL(await driver.getUrl()).pathname).toEqual(expect.stringContaining("/account/account_activated/"));
+            const pageTitle = await driver.findElement('h1');
+            const actual = await pageTitle.getText()
+            const expected = "Your account is now ready for use"
+            expect(actual).toEqual(expected)
+        });
+
+        and(/^I click the "(.*)" link$/, async(link_text) => {
+            await driver.clickLinkWithText(link_text);
             await driver.performLogin(username, password);
         });
 
