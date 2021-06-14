@@ -231,7 +231,6 @@ JestCucumber.defineFeature(feature, test => {
 
         and('On the same browser I use that confirmation link and account is activated', async() => {
             token = String(url).split('/').slice(-1).pop();
-            console.log(token);
             url = await driver.getBaseUrl(`account/account_verification/${token}`);
             console.log(url);
             await driver.GotoUrl(url);
