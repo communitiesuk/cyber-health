@@ -90,6 +90,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'CyberHealth.context_processors.organisation_in_base_context',
             ],
             'loaders': [
                 'apptemplates.Loader',
