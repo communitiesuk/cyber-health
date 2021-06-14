@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}PDF tests - Cyber health assessment{% endblock %}
+{% block content %}
+  <div class="govuk-width-container ">
+    <main class="govuk-main-wrapper govuk-body" id="main-content" role="main">
+      <h1 class="govuk-heading-xl">PDF tests</h1>
+
+      <h2 class="govuk-heading-m">PDF of existing pages</h2>
+      <br>
+      <h3 class="govuk-heading-s">xhtml2pdf</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a class="btn btn-info" href="{% url 'pdf_view_privacy' %}" target="_blank">View PDF of privacy page</a></li>
+        <li><a class="btn btn-info"  href="{% url 'pdf_download_privacy' %}">Download PDF of privacy page</a></li>
+      </ul>
+      <br>
+      <br>
+
+      <h2 class="govuk-heading-m">Generating PDFs using a custom template</h2>
+      <br>
+      <h3 class="govuk-heading-s">xhtml2pdf</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a class="btn btn-info" href="{% url 'pdf_view_psn' %}" target="_blank">View PDF of PSN controls</a></li>
+        <!-- <li><a class="btn btn-info"  href="{% url 'pdf_download_privacy' %}">Download PDF of privacy page</a></li> -->
+      </ul>
+
+    </main>
+  </div>
+
+{% endblock %}
+
+
+

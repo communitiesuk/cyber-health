@@ -7,4 +7,8 @@ urlpatterns = [
     path('privacy-policy/', views.privacy_policy, name="privacy-policy"),
     path('cookie-policy/', views.cookie_policy, name="cookie-policy"),
     path('accessibility-statement/', views.accessibility_statement, name="accessibility-statement"),
+	path('pdf-tests/', views.pdf_tests),
+    path('pdf-tests/privacy_view/', views.ViewPrivacyPDF.as_view(), name="pdf_view_privacy"),
+    path('pdf-tests/privacy_download/', views.DownloadPrivacyPDF.as_view(), name="pdf_download_privacy"),
+    path('pdf-tests/psn/', views.ViewPSNPDF.as_view(), name="pdf_view_psn"),
 ]
