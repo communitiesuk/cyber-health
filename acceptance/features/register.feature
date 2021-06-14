@@ -46,3 +46,15 @@ And I provide a commonly used password
 And I fill in the other details with valid information
 And I click on the "Continue" button
 Then I see a warning that I cannot register "This is a commonly used password. Please create a more unique password."
+
+Scenario: Happy path - Success within one session
+Given I am a Cyber Capable Person
+When I visit the Cyber Health Framework site
+And I click the "Create an account" link
+And I use an email address using a domain that is a first user related to a council in the CyberHealth framework
+And I fill in the other details with valid information
+And I click on the "Continue" button
+And I am asked to use my email to show that I am a user with access to the council email account
+And On the same browser I use that confirmation link and account is activated
+And I click the "Login to your account" link
+Then I can login and see the assessment council overview screen

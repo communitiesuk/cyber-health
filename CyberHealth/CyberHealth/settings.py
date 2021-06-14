@@ -16,10 +16,10 @@ from pathlib import Path
 import logging
 import sys
 from django.contrib.staticfiles import finders
-
-logger = logging.getLogger(__name__)
 from notifications_python_client.notifications import NotificationsAPIClient
 
+
+logger = logging.getLogger(__name__)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
@@ -159,6 +159,7 @@ LOGIN_URL = 'login'
 EMAIL_BACKEND = 'django_gov_notify.backends.NotifyEmailBackend'
 GOVUK_NOTIFY_API_KEY = env('GOVUK_NOTIFY_KEY')
 GOVUK_NOTIFY_PLAIN_EMAIL_TEMPLATE_ID = 'b5d742c9-39a3-4c9e-82a9-5e79554cbf99'
+GOVUK_NOTIFY_DISABLE = env('GOVUK_NOTIFY_DISABLE', default=False)
 
 # Adding in logging
 # If you're following the Twelve-Factor App methodology for your application,
