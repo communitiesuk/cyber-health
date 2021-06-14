@@ -10,6 +10,16 @@
         }
     },
     {
+        "model": "users.organisation",
+        "pk": 345,
+        "fields": {
+            "name": "Test Council account",
+            "domain_name": "gov.org.uk",
+            "organisation_type": 3,
+            "organisation_region": 9
+        }
+    },
+    {
         "model": "auth.user",
         "pk": 2,
         "fields": {
@@ -33,6 +43,14 @@
         "fields": {
             "user_info": 2,
             "user_organisation": 344
+        }
+    },
+    {
+        "model": "users.organisationuser",
+        "pk": 2,
+        "fields": {
+            "user_info": 3,
+            "user_organisation": 345
         }
     }
 ]
