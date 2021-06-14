@@ -44,13 +44,5 @@
             "user_info": 2,
             "user_organisation": 344
         }
-    },
-    {
-        "model": "users.organisationuser",
-        "pk": 2,
-        "fields": {
-            "user_info": 3,
-            "user_organisation": 345
-        }
     }
 ]
