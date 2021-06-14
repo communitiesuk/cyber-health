@@ -34,7 +34,7 @@ def send_user_notification(user_details, user_token, template_id='63d94931-3b5a-
     else:
         dir_name = os.path.dirname(__file__)
         filename = os.path.join(dir_name, '../Spooler/url.txt')
-        with open(filename, 'w+') as file:
+        with open(filename, 'w') as file:
             file.write(f'http://{cloudfoundry_space}:8000/account/account_verification/{user_token}')
 
 

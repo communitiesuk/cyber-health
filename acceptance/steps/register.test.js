@@ -230,7 +230,9 @@ JestCucumber.defineFeature(feature, test => {
         });
 
         and('On the same browser I use that confirmation link and account is activated', async() => {
-            await driver.GotoUrl(String(url));
+            console.log(new URL(String(url)));
+            await driver.GotoUrl(new URL(String(url)));
+            console.log(await driver.getUrl());
             expect(new URL(await driver.getUrl()).pathname).toEqual(expect.stringContaining("/account/account_activated/"));
             const pageTitle = await driver.findElement('h1');
             const actual = await pageTitle.getText()
