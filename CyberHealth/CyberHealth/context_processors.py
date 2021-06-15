@@ -1,4 +1,4 @@
-from assessment.models import OrganisationRegion, OrganisationType
+from users.models import OrganisationRegion, OrganisationType
 
 def organisation_in_base_context(request):
     if (request.user.is_authenticated):
