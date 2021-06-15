@@ -102,7 +102,7 @@ def pathway_view(request, pathway_slug):
 
 
 @login_required
-def placeholder_function_for_organisation():
+def placeholder_function_for_organisation_models():
     organisations = Organisation.objects.filter()
     organisation_region = OrganisationRegion.objects.filter()
     organisation_type = OrganisationType.objects.filter()
