@@ -39,14 +39,14 @@ e.g., for acceptance or accessibility tests.
 
 Run `python manage.py loaddata */fixtures/testdata*.json`
 
-## Set environments variables
+## Set environments variables on the terminal
 ```
 PYTHONUNBUFFERED=1;
 DJANGO_SETTINGS_MODULE=CyberHealth.settings;
 SECRET_KEY=THIS_IS_A_SECRET_CHANGE_ME;
 DJANGO_DEBUG=True;
-DATABASE_URL=psql://database_user:database_pass@127.0.0.1:5432/database_name;
-BASICAUTH_DISABLE=true
+DATABASE_URL=psql://database_user:database_pass@127.0.0.1:5432/database_name; 
+GOVUK_NOTIFY_DISABLE=True (only to run acceptance tests)  
 ```
 
 ## Licence

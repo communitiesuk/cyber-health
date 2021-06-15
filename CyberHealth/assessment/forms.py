@@ -1,7 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-
-from assessment.models import Answer
+from .models import Answer
 
 
 class AnswerForm(ModelForm):
