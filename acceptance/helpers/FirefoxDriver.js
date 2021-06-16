@@ -20,7 +20,7 @@ class FirefoxDriver {
         const driver = new WebDriver.Builder()
             .withCapabilities(WebDriver.Capabilities.firefox())
             .setFirefoxOptions(new firefox.Options()
-            .setPreference('accessibility.tabfocus', 7)
+                .setPreference('accessibility.tabfocus', 7)
                 .headless()
                 .windowSize(screen)
             )
@@ -81,6 +81,10 @@ class FirefoxDriver {
         return await this.driver.getCurrentUrl();
     }
 
+    async getPageSource() {
+        return await this.driver.getPageSource();
+    }
+
     async getBaseUrl(resource) {
         return `${this.baseUrl}/${resource}`;
     }
@@ -100,11 +104,11 @@ class FirefoxDriver {
 
     async readTextFile(filePath) {
         return fs.readFileSync(filePath)
-     }
+    }
 
-     async GotoUrl(url){
+    async GotoUrl(url) {
         return await this.driver.get(url)
-     }
+    }
 
     quit() {
         return this.driver.quit();
