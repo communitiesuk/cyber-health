@@ -223,8 +223,6 @@ JestCucumber.defineFeature(feature, test => {
             await driver.clickButtonWithText(link_text);
         });
         and('I see my email address appears in the page', async() => {
-            console.log(await driver.getUrl());
-            console.log(await driver.getPageSource());
             const pageTitle = await driver.findElement('p.govuk-body-l > strong');
             const actual = await pageTitle.getText();
             expect(actual).toEqual(username);
