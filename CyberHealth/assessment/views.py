@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from assessment.models import Question, Answer, Pathway, PathwayGroup
+from users.models import Organisation, OrganisationRegion, OrganisationType
 from django.shortcuts import render
 from .forms import AnswerForm
 import logging
@@ -56,7 +57,7 @@ def question_view(request, pathway_slug, question_id):
                 selected_response = Choice.objects.get(pk=request.POST['choice'])
                 logger.info("Retrieved object from form")
             except Exception as e:
-                logger.warn("Can't retrieve choice object from form",
+                logger.warning("Can't retrieve choice object from form",
                             Exception)
 
             # Create a new answer using retrieved question and choice
@@ -66,7 +67,7 @@ def question_view(request, pathway_slug, question_id):
                 new_answer.save()
                 logger.info("Saved answer to database")
             except Exception as e:
-                logger.warn("Can't create new answer instance", Exception)
+                logger.warning("Can't create new answer instance", Exception)
 
         return redirect('/assessment/')
 
@@ -98,3 +99,13 @@ def pathway_view(request, pathway_slug):
     }
 
     return render(request, 'assessment/pathway.html', context)
+
+
+@login_required
+def placeholder_function_for_organisation_models():
+    organisations = Organisation.objects.filter()
+    organisation_region = OrganisationRegion.objects.filter()
+    organisation_type = OrganisationType.objects.filter()
+    if organisations or organisation_type or organisation_region:
+        pass
+
