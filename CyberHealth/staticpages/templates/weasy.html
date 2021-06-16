@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF output</title>
+    <style>
+        @page {
+            size: "A4";
+            margin: 2.5cm 2.5cm 2.5cm 2.5cm;
+
+            @top-center {
+                content: "COMPANY NAME"
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            font-family: Arial, sans-serif;
+            color:#005ABB;
+            font-size: 12pt;
+            font-weight: 600;
+        }
+        p {
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+            font-weight: 400;
+        }
+
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h2>Organisation details</h2>
+
+    <h2>Overview</h2>
+    <p>The PSN (Public Services Network) is a network operated by several suppliers for government that provides a trusted, reliable, cost-effective solution to departments, agencies, local authorities and other bodies that work in the public sector, which need to share information between themselves.</p>
+       
+    <p>
+        This document is completed by any organisation wishing to connect to the PSN. It outlines conditions that you need to meet and the information that you need to provide. This information will be used to assess whether you may connect/continue to connect to PSN. The PSN team may also need to conduct an on-site assessment. 
+        You must be in possession of a PSN connection compliance certificate before you can connect to the PSN.</p>
+    </p>
+
+    <table style="width:100%">
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Age</th>
+        </tr>
+        <tr>
+          <td>Jill</td>
+          <td>Smith</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>Eve</td>
+          <td>Jackson</td>
+          <td>94</td>
+        </tr>
+      </table>
+</body>
+</html>

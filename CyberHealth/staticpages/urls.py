@@ -11,4 +11,6 @@ urlpatterns = [
     path('pdf-tests/privacy_view/', views.ViewPrivacyPDF.as_view(), name="pdf_view_privacy"),
     path('pdf-tests/privacy_download/', views.DownloadPrivacyPDF.as_view(), name="pdf_download_privacy"),
     path('pdf-tests/psn/', views.ViewPSNPDF.as_view(), name="pdf_view_psn"),
+    path('pdf-tests/new/', views.render_pdf_view, name="test-view"),
+    path('pdf-tests/weasy/', views.export_weasy_pdf, name="export_weasy"),
 ]

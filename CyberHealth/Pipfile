@@ -36,6 +36,7 @@ reportlab = "*"
 xhtml2pdf = "*"
 html5lib = "*"
 pypdf = "*"
+weasyprint = "*"
 
 [dev-packages]
 
