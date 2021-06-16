@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% block title %}{% if form.errors %}Error: {% endif %}Log in to Assess Your Cyberhealth{% endblock %}
 {% block content %}
-<div class="govuk-width-container">
+<div class="govuk-width-container" xmlns="http://www.w3.org/1999/xhtml">
    <main class="govuk-main-wrapper govuk-!-padding-top-0" id="main-content" role="main">
       <a href="/" class="govuk-back-link govuk-!-margin-bottom-8">Back</a>
       <div class="govuk-grid-row">
@@ -55,7 +55,7 @@
                      {{error}}</span>
                      {% endfor %}
                      {% endif %}
-                     <input type="text" name="{{form.username.name}}" value="{% if form.username.value %}{{form.username.value}}{% endif %}" id="{{form.username.id_for_label}}" class="govuk-input govuk-!-width-three-quarters {% if form.username.errors or form.non_field_errors %} govuk-input--error {% endif %}" value="" maxlength="48" aria-describedby="user_id-hint" autocomplete="username" type="email"> 
+                     <input name="{{form.username.name}}" value="{% if form.username.value %}{{form.username.value}}{% endif %}" id="{{form.username.id_for_label}}" class="govuk-input govuk-!-width-three-quarters {% if form.username.errors or form.non_field_errors %} govuk-input--error {% endif %}" maxlength="48" aria-describedby="email-hint" autocomplete="username" type="email">
                   </div>
                   <div class="govuk-form-group {% if form.password.errors%} govuk-form-group--error {% endif %}">
                      <label for="{{form.password.id_for_label}}" class="govuk-label">Password</label> 
@@ -84,10 +84,9 @@
                <div class="govuk-body">
                   <a class="govuk-link govuk-!-margin-bottom-5 " href="{% url 'create-an-account' %}">Create an account</a>
                </div>
-         </div>
+            </form>
+          </div>
       </div>
-      </form>
-</div>
-</main>
+   </main>
 </div>
 {% endblock content %}

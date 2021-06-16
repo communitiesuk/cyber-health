@@ -49,7 +49,7 @@
                {% for field in form %}
                <div class="govuk-form-group {% if field.errors %} govuk-form-group--error {% endif %}">
                   <label for="{{field.id_for_label}}" class="govuk-label">{{field.label}}</label>
-                  <div id=" {{field.name}}-hint" class="govuk-hint govuk-!-width-three-quarters">
+                  <div id="{{field.name}}-hint" class="govuk-hint govuk-!-width-three-quarters">
                      {{field.help_text | safe}}
                   </div>
                   {% if field.errors %}
