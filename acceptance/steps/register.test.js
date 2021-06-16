@@ -80,7 +80,6 @@ JestCucumber.defineFeature(feature, test => {
 
         then(/^I see a warning that I cannot register "(.*)"$/, async(message) => {
             expect(new URL(await driver.getUrl()).pathname).toEqual("/account/create-an-account/");
-            // const pageTitle = await driver.findElement('.invalid-feedback');
             const errorMessage = await driver.findElement(".govuk-error-summary");
             const actual = await errorMessage.getText();
             expect(actual).toContain(message)
@@ -222,6 +221,13 @@ JestCucumber.defineFeature(feature, test => {
         and(/^I click on the "(.*)" button$/, async(link_text) => {
             process.env['GOVUK_NOTIFY_DISABLE'] = true;
             await driver.clickButtonWithText(link_text);
+        });
+        and('I see my email address appears in the page', async() => {
+            console.log(await driver.getUrl());
+            console.log(await driver.getPageSource());
+            const pageTitle = await driver.findElement('p.govuk-body-l > strong');
+            const actual = await pageTitle.getText();
+            expect(actual).toEqual(username);
         });
 
         and('I am asked to use my email to show that I am a user with access to the council email account', async() => {

@@ -54,6 +54,7 @@ And I click the "Create an account" link
 And I use an email address using a domain that is a first user related to a council in the CyberHealth framework
 And I fill in the other details with valid information
 And I click on the "Continue" button
+And I see my email address appears in the page
 And I am asked to use my email to show that I am a user with access to the council email account
 And On the same browser I use that confirmation link and account is activated
 And I click the "Login to your account" link
