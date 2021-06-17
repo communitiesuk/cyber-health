@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth import password_validation
 from .models import Organisation
 
@@ -93,4 +94,21 @@ class LoginForm(AuthenticationForm):
 
         for field in self.fields.values():
             field.error_messages = {'required': 'Enter {fieldname}'.format(
+                fieldname=field.label).capitalize()}
+
+
+class ForgotPasswordForm(PasswordResetForm):
+    error_messages = {}
+
+    email = forms.CharField(
+        required=True,
+        label="Email address",
+        help_text="Enter the email address you used for create an account for Assess your Cyber Health")
+
+    def __init__(self, *args, **kwargs):
+        super(ForgotPasswordForm, self).__init__(*args, **kwargs)
+        self.error_messages['invalid_login'] = "Enter an email address."
+
+        for field in self.fields.values():
+            field.error_messages = {'required': 'Enter an email address'.format(
                 fieldname=field.label).capitalize()}
