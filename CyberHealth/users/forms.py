@@ -103,7 +103,7 @@ class ForgotPasswordForm(PasswordResetForm):
     email = forms.CharField(
         required=True,
         label="Email address",
-        help_text="Enter the email address you used for create an account for Assess your Cyber Health")
+        help_text="Enter the email address you used to create an account for Assess your Cyber Health")
 
     def __init__(self, *args, **kwargs):
         super(ForgotPasswordForm, self).__init__(*args, **kwargs)
