@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
+from users.models import Organisation
 from django.contrib.auth.models import User
 from django.test import Client
 
@@ -10,6 +11,10 @@ class AllQuestionsViewTest(TestCase):
         self.password = 'TestUser321'
         self.test_user = User.objects.create_user(username=self.username)
         self.test_user.set_password(self.password)
+
+        self.any_organisation = Organisation.objects.get(pk=1)
+        self.test_user.organisation_set.add(self.any_organisation)
+
         self.test_user.save()
         self.client = Client()
         self.client.login(username=self.username, password=self.password)
