@@ -16,7 +16,9 @@ const pagesToAnalyze = [
     'assessment',
     'assessment/psn',
     'cookie-policy',
-    'privacy-policy'
+    'privacy-policy',
+    'account/password_reset',
+    'account/password_reset_confirm_email'
 ]
 
 const pagesRequireLogin = [
@@ -51,6 +53,8 @@ function runAccessibilityAnalysis(pages) {
             }
         }).catch(err => {
             console.error(err);
+        }).finally(function() {
+            driver.quit();
         });
     });
 }

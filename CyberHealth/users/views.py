@@ -1,7 +1,9 @@
+import logging
+
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import render, redirect
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, ForgotPasswordForm
 from django.contrib.auth.models import User
 from .models import Organisation, OrganisationUser, UserProfile
 from django.contrib import messages
@@ -91,6 +93,27 @@ def send_token_page(request):
     return render(request, 'users/send_token.html', {'user_info': user_info})
 
 
+def forgotten_password_page(request):
+    logging.warning("forgotten_password_page: here")
+    if request.method == 'POST':
+        form = ForgotPasswordForm(request.POST)
+        if form.is_valid():
+            redirect_url = reverse('password_reset_done')
+            request.session['forgotten_password_email'] = request.POST['email']
+            return HttpResponseRedirect(redirect_url)
+    else:
+        form = ForgotPasswordForm()
+    return render(request, 'users/password_reset.html', {'form': form})
+
+
+def forgotten_password_confirm_email(request):
+    if request.session.exists('forgotten_password_email'):
+        email = request.session['forgotten_password_email']
+    else:
+        email = "not known"
+    return render(request, 'users/password_reset_token.html', {'email': email})
+
+
 def user_registration(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -116,7 +139,7 @@ def user_registration(request):
                     return HttpResponseRedirect(redirect_url)
                 else:
                     messages.info(request, 'There is already a user for '
-                                  'your local council.')
+                                           'your local council.')
             except Exception as e:
                 print(e)
                 messages.error(request, 'There was an error in the sign up'
@@ -126,4 +149,3 @@ def user_registration(request):
     else:
         form = UserRegisterForm()
     return render(request, 'users/create-an-account.html', {'form': form})
-
