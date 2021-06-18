@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -47,6 +48,7 @@ class UserProfile(models.Model):
     auth_token = models.CharField(max_length=100)
     is_verified = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    analytics_user_id = models.UUIDField(editable=False, default=uuid.uuid4)
 
     def __str__(self):
         return self.user.username

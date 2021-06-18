@@ -44,5 +44,16 @@
             "user_info": 2,
             "user_organisation": 344
         }
+    },
+    {
+        "model": "users.userprofile",
+        "pk": 1,
+        "fields": {
+            "auth_token": "b0ebd739-f51f-4078-bb04-57b137a9671f",
+            "is_verified": "t",
+            "created_at": "2021-06-17T15:39:33Z",
+            "user_id": 2,
+            "analytics_user_id": "1955d908-f5a4-487a-88fe-1d5e59569b19"
+        }
     }
 ]
