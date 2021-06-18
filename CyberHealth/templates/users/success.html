@@ -1,4 +1,7 @@
-{% extends 'base.html' %} {% block title %}Check your email{% endblock %} 
+{% extends 'base.html' %}
+
+{% block title %}{% if form.errors %}Error: {% endif %}Check your email – Assess Your Cyberhealth – GOV.UK{% endblock %}
+
 {% block content %}
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper" id="main-content" role="main">
