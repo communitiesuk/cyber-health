@@ -53,6 +53,8 @@ function runAccessibilityAnalysis(pages) {
             }
         }).catch(err => {
             console.error(err);
+        }).finally(function() {
+            driver.quit();
         });
     });
 }
