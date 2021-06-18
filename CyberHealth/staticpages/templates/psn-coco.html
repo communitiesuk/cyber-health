@@ -1,0 +1,408 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF output</title>
+    <style>
+        @page {
+            size: A4;
+            margin: .8cm 2cm 2.2cm 2cm;
+
+            @bottom-right {
+            content: counter(page);
+            font-family: Arial, sans-serif;
+            font-size: 10pt;
+            }
+
+        }
+        @page :first {
+            @bottom-right{
+                content: none;
+            }
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        img {
+            margin:0;
+        }
+
+        
+        h1 {
+            font-family: Arial, sans-serif;
+            font-size: 38pt;
+            font-weight: 400;
+            letter-spacing: -1px;
+            text-align: right;
+            margin-top: 180px;
+        }
+
+        .doc-details {
+            text-align: right;
+            line-height: 1;
+            margin-top: 400px;
+        }
+
+        h2 {
+            font-family: Arial, sans-serif;
+            color:#005ABB;
+            font-size: 12pt;
+            font-weight: 600;
+            margin-top: 48px;
+        }
+
+        h3 {
+            font-family: Arial, sans-serif;
+            color:black;
+            font-size: 12pt;
+            font-weight: 600;
+            margin-bottom: 0px;
+            margin-top: 24px;
+        }
+
+        p {
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-top:0px;
+        }
+
+        a {
+            color: darkblue;
+        }
+
+        table {
+            width:100%;
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-bottom: 32px;
+        }
+        
+
+         td {
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+            vertical-align:bottom;
+            padding-top: 12px;
+            padding-left: 6px;
+            min-height:16px;
+            
+        }
+
+        .table-key {
+            width: 30%;
+        }
+        .table-key ul {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        .bb-grey {
+            border-bottom:1px solid lightgray;
+        }
+
+        .blank-box {
+            height:400px;
+        }
+
+        ul, ol {
+    padding-left: 16px;
+    }
+
+    li {
+        line-height: 1.4;
+    }
+
+    li span {
+    position: relative;
+    left: 11px;
+    }
+
+    </style>
+</head>
+<body>
+    <img src="{% static 'images/cabinet_office_logo.svg' %}" width="160" height="60" alt="">
+    <h1>PSN Code of Connection</h1>
+    <p class="doc-details">Version 1.31<br>March 2017</p>
+    <p style="page-break-before: always" ></p>
+    <h2>Organisation details</h2>
+    <table>
+        <tr>
+          <td class="table-key">Date:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="table-key">Organisation name:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="table-key bb-grey">Full postal address:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="table-key bb-grey"></td>
+          <td></td>
+        </tr>
+        <tr>
+        <td class="table-key bb-grey"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="table-key "></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="table-key">Company/Charity/other registration number (if applicable):</td>
+          <td></td>
+        </tr>
+      </table>
+
+      <h2>Point of contact details</h2>
+      <table>
+          <tr>
+            <td class="table-key">Name:</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-key">Position:</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-key">Telephone no:</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-key">Email:</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-key bb-grey">Address:</td>
+            <td></td>
+          </tr>
+            <td class="table-key bb-grey"></td>
+            <td></td>
+          </tr>
+          <tr>
+          <td class="table-key bb-grey"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-key"></td>
+            <td></td>
+          </tr>
+        </table>
+      
+
+    <h2>Overview</h2>
+    <p>The PSN (Public Services Network) is a network operated by several suppliers for government that provides a trusted, reliable, cost-effective solution to departments, agencies, local authorities and other bodies that work in the public sector, which need to share information between themselves.</p>
+    <p>This document is completed by any organisation wishing to connect to the PSN. It outlines conditions that you need to meet and the information that you need to provide. This information will be used to assess whether you may connect/continue to connect to PSN. The PSN team may also need to conduct an on-site assessment. You must be in possession of a PSN connection compliance certificate before you can connect to the PSN.</p>
+    <br>
+    <p>You need to submit the following material as your application (and re-submission):</p>
+   
+    <ul>
+        <li><span>This document with all fields completed, including the signature of an authorised signatory for your organisation. Who signs the commitments will differ depending on the type of organisation. If you are a central government organisation with a Senior Information Risk Owner (SIRO), your SIRO should sign the CoCo. If you are a local authority or other public sector organisation, you should have your chief executive sign the CoCo. If you are a supplier, the signatory should be a board-level individual who is empowered to make legal commitments on behalf of your organisation.</span></li>
+        <li><span>An up-to-date network diagram.</span></li>
+        <li><span>The Remediation Action Plan (RAP) from your most recent PSN compliance assessment, if applicable, and evidence that the remedial work was carried out as planned.</span></li>
+        <li><span>A recent (within the last 12 months) IT Health Check (ITHC) report, plus a new RAP to address issues found. We’ve published <a href="https://www.gov.uk/government/publications/it-health-check-ithc-supporting-guidance">IT Health Check (ITHC): supporting guidance</a> to help organisations establish the scope and requirements for preparing an ITHC as part of a PSN compliance submission. It provides a minimum set of requirements that should be included.</span></li>
+    </ul>
+    
+    <p>PSN compliance applications, re-submissions and general compliance enquiries should be sent via email to <a href="mailto:public-services-network@digital.cabinet-office.gov.uk">public-services-network@digital.cabinet-office.gov.uk</a> .</p>
+    <p>You are required to use <a href="https://www.gov.uk/government/publications/psn-standard-terms-and-conditions/psn-standard-terms-and-conditions">PSN Standard Terms and Conditions</a> in all supply agreements between supplier and customer.</p>
+    <p>Please note that this document requires you to provide the unique identifying code (formatted as SRV_xxxx) of any PSN services that are delivered from/hosted in your environment. This code will be in the subject line of any emails you have received from the PSN team relating to that service. If your environment hosts any services belonging to another organisation you must find out the service code from them and provide us with that information.</p>
+    <ul>
+        <li><span>Traffic shall flow from a PSNSP (either a Network Provider or a Service Provider) to/from a DNSP but not directly to the GCN.</span></li>
+        <li><span>Traffic shall flow from a DNSP to any other DNSP via the GCN.</span></li>
+        <li><span>Traffic shall NOT flow from a DNSP to another DNSP other than via the GCN. eg traffic shall not flow via a PSNSP connected to 2 DNSPs.</span></li>
+        <li><span>Traffic shall not flow via a private connection between 2 DNSPs.</span></li>
+        <li><span>Traffic shall NOT flow from a PSNSP to another PSNSP other than via a DNSP or DNSPs and GCN(s).</span></li>
+    </ul>
+    <p>Under no circumstance should traffic be directed by any other route across the PSN.</p>
+
+    <h2>Your PSN environment</h2>
+    <table>
+        <tr>
+          <td class="table-key">Environment name:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="table-key">Size estimates:
+              <ul>
+                  <li><span>number of users</span></li>
+                  <li><span>number of sites</span></li>
+                  <li><span>number of internal IP addresses in scope</span></li>
+            </ul>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="table-key">Unique identifying codes (formatted as SRV_xxxx) of any PSN services hosted within this environment:</td>
+          <td></td>
+        </tr>
+      </table>
+      <p>Please supply a network diagram detailing the infrastructure. Consult the <a href="https://www.gov.uk/guidance/apply-for-a-public-services-network-psn-connection-compliance-certificate#Network-diagram">supporting guidance</a> on what information should be included in this diagram. </p>
+
+      <h2>IA conditions</h2>
+      <p>These outline the minimum IA (Information Assurance) standard expected of organisations connected to the PSN. If you cannot meet these, please get in touch with the PSN team.</p>
+      <p>Where you are consuming cloud services from your PSN-connected infrastructure, we expect that you will have conducted security assessments of these services against the Cloud Security Principles. You should be confident that your use of any particular cloud service does not reduce your overall security state below that required in the IA conditions below. Where use of a cloud service imposes a specific security requirement, more detail has been provided below.</p>
+      <p>It is essential, where cloud services are employed (particularly with respect to IaaS and PaaS), that you are absolutely clear (whether through contractual agreement or other arrangements) whether the responsibility to carry out certain actions (ie patching) lies with you or your cloud supplier. Note that in the case of an audit or site visit you can expect PSN team assessors to check this.</p>
+      <p>We expect that the security of your End User Devices (EUDs) meets the relevant standards below. Where a specific requirement applies to EUDs, more detail has been provided below. CESG has published guidance on <a href="https://www.gov.uk/government/publications/end-user-devices-security-principles">End User Devices Security Principles</a>. Best practice information is also published on <a href="https://www.gov.uk/government/publications/byod-guidance-device-security-considerations/byod-guidance-device-security-considerations">BYOD Guidance: Device Security Considerations</a>.</p>
+
+      <h3>1. Operational security</h3>
+      <p>You will have appropriate policies, processes and procedures in place to ensure the operational security of your infrastructure. </p>
+
+      <h3>a. Vulnerability management (patch management)</h3>
+      <p>You must ensure that any exploitable vulnerability is managed. You must have a defined policy and supporting process to identify vulnerabilities, prioritise and mitigate those vulnerabilities. Your policy will specify specific patch application periods and a process for auditing compliance.</p>
+      <p>This typically will be of the order of: Critical vulnerabilities patched within 14 days, important vulnerabilities patched within 30 days and all others patched within 60 days. 
+        Where you know that a vulnerability is being actively exploited then mitigating action (eg patch applied) should be taken immediately.</p>
+      <p>Where a patch is not deployed (or available) within the timescales above then there must be alternative mitigating action, such as disabling or reducing access to the vulnerable service.</p>
+      
+      <h3>b. Secure configuration</h3>
+      <p>You must ensure that all IT systems, software and services are appropriately configured to reduce the level of inherent vulnerability. In particular, you will have ensured that applications, services, processes and ports not required are disabled by default. Default passwords will be changed, especially for any administrative functions.</p>
+      <p>You will keep configuration control of applications installed and technology that you use. All changes and new applications will be recorded and managed (including a formal approval and documentation process) by the enterprise. </p>
+      <p>You will ensure that devices, systems and services have the capability to detect, isolate and respond to malicious software.</p>
+
+      <h3>c. Physical security</h3>
+      <p>You will ensure that appropriately secure accommodation and appropriate policies and practices governing its use are in place to protect personnel, hardware, programs, networks and data from loss, damage or compromise.</p>
+
+      <h3>d. Protective monitoring and intrusion detection</h3>
+      <p>You will collect and retain event data and undertake activities that will help you detect actual or potential security incidents. You must have a protective monitoring policy that describes the use cases you are aiming to detect, which can be used to define event data collection.</p>
+      <p>Your policy must include both detection of technical attacks as well as important abuses of business processes. These conditions do not describe any specific events to collect or incidents to detect. The requirement is that the business has thought about and documented its collection and analysis requirements and that this has led to your approach to protective monitoring and intrusion detection.</p>
+      <p><b>If you are using cloud services:</b> Cloud Security Principle 5.3 <i>Protective Monitoring</i> should be factored into your overall monitoring strategy. Note that a cloud service will only provide monitoring with respect to the service provisioned. If you consume Infrastructure as a Service (IaaS) or Platform as a Service (PaaS), you are responsible for monitoring of capability deployed onto the infrastructure. If you are consuming Software as a Service (SaaS), you should consider how you will be able to monitor for any potential abuse of business process or privilege. </p>
+      <p><b>End user devices:</b> The capability associated with EUD Security Principle 11 <i>Event Collection for Enterprise Analysis</i> should form part of your overall monitoring strategy.</p>
+
+      <h3>e. Security incident response</h3>
+      <p>Even within well-secured and well-managed IT services, incidents will happen. You must be prepared for incidents so that when they do occur you act quickly to contain the incident, limit harm, ensure appropriate escalation and learn lessons for the future.</p>
+      <p>You must have a security incident management plan, which you should test periodically. This will include named responsible owners and pre-defined processes to respond to common forms of attack.</p>
+      <p>For incidents that impact on the PSN, you must report them to the PSN team and other entities (GovCertUK, for example) as required.</p>
+      <p>In the event of an incident, and where it is appropriate to do so, you will provide the PSN team with audit logs holding user activities, exceptions and information security events to assist in investigations.</p>
+      <p><b>End user devices:</b> EUDs must form part of the incident response plan. Mobile devices especially will get lost or stolen and your response plans should include how to manage (eg remotely wipe) such devices. Refer to EUD Security Principle 12 <i>Incident Response</i>.</p>
+      
+      <h3>2. Authentication and access control</h3>
+      <p>Accounts must be provisioned with privileges appropriate for the user need. Administrator (or other high privilege) accounts should only be provisioned to users who need those privileges. Administrators must not conduct ‘normal’ day-to-day business from their high privilege account. Privileges should be periodically reviewed and removed where no longer required. </p>
+
+      <p>Users must identify and authenticate to devices and services. For passwords, you must:</p>
+
+      <ol>
+          <li><span>ensure that ALL passwords are changed from defaults</span></li>
+          <li><span>not allow password/account sharing</span></li>
+          <li><span>ensure that high-privilege users (ie administrators) use different passwords for their high-privilege and low-privilege accounts</span></li>
+          <li><span>combine passwords with some other form of strengthening authentication, such as lockouts, throttling or two-factor authentication</span></li>
+          <li><span>ensure that passwords are never stored as plain text, but are (as a minimum) hashed using a cryptographic function capable of multiple iterations and/or a variable work factor. It is advisable to add a salt before hashing passwords.</span></li>
+      </ol>
+
+      <p>CESG has published best practice in its <a href="https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/458857/Password_guidance_-_simplifying_your_approach.pdf">Password Guidance: Simplifying Your Approach document</a>.</p>
+      <p><b>End user devices:</b> Users will identify and authenticate to devices and services. Additionally only appropriately authorised devices will be provided with access to services. See EUD Security Principle 3 <i>Authentication</i>.</p>
+      <p><b>If you are using cloud services:</b> Users, administrators and service providers must identify and authenticate to all services. See Principle 9, <i>Secure Consumer Management</i>, and Principle 10 <i>Identity and Access Control</i>.</p>
+
+      <h3>3. Boundary protection and interfaces</h3>
+      <p>You will ensure that your network has appropriately configured boundary protection between your network/services and the internet or any other network.</p>
+      <p>Network traffic, services and content should be limited to that required to support your business need (for example, by setting effective firewall rule sets).</p>
+      <p>Services presented outside of the protected enterprise (online services for staff, mobile working etc), should be delivered from an appropriate architecture, with access to any core information or services constrained. </p>
+      <p>The architecture will include services to identify malware at the gateway. Where encryption prevents this, the organisation shall implement an equivalent level of protection at the end point. </p>
+      <p><b>If you are using cloud services:</b> You may consider procurement of services which respond to different business needs and therefore have different security attributes. It is important that any interfaces between services are within scope.</p>
+      <p><b>Unmanaged devices:</b> must not have access to the PSN. Where a corporate service contains information that has been sent over the PSN, you should have the data owner’s permission before allowing unmanaged devices to access that data. Additionally, you must ensure that an unmanaged device:</p>
+
+      <ul>
+          <li><span>Is not able to use the corporate service to access the PSN in an unmediated fashion</span></li>
+          <li><span>Accesses the corporate service through an appropriately secured connection</span></li>
+          <li><span>For example, at the network layer via a VPN, or at the application layer via a protocol that implements TLS.</span></li>
+          <li><span>Is authenticated prior to the information being accessed with a mechanism that does not solely rely on a username and password.</span></li>
+      </ul>
+
+      <h3>4. Protecting data at rest and in transit</h3>
+      <p>Data will be protected by default whilst at rest and in transit. Protection can take many forms ranging from physical protection (eg when hosted within a secure data centre) to encryption (eg when data is vulnerable at rest or in transit). </p>
+
+      <p>Where data is released via vulnerable channels (eg unprotected email, or removable media) the user must make an active decision and pay due regard to any applicable handling instructions for that information.</p>
+
+      <h3>5. User and Administrator separation of data </h3>
+      <p>Appropriate separation should exist between multiple users of corporate IT services. There should be capability to mediate user access to data and limit access to sensitive data (such as personal data) to the minimal amount necessary to support the business. There should be separation (however it is achieved) between users who have access to information sent over the PSN and users with no access to that information.</p>
+      <p><b>If you are using cloud (or shared) services:</b> Separation should exist between consumers of the service to prevent a malicious or compromised user from affecting another. See Principle 3 <i>Separation between consumers</i>. Users must be separately authenticated to more privileged access services (ie management interfaces). See Cloud Security Principle 9 <i>Secure Consumer Management.</i></p>
+
+      <h3>6. Users</h3>
+      <p>For users who have administrative privileges (for example, users who are able to reconfigure your network or system administrators) you should implement pre-employment checks which are aligned with the Baseline Personnel Security Standard (BPSS). 
+        Your users should be trained to understand their obligations with regards to system security, data handling, and acceptable use.</p>
+      
+      <h3>7. Testing your security</h3>
+      <p>You must implement regular IT Health Checks (ITHCs) to seek evidence that any security mechanisms put in place are ongoing and effective and identify any current vulnerability. ITHCs should normally be conducted annually, but the PSN team may specify a different frequency of ITHCs where appropriate.</p>
+      <p>It is important that issues identified in the ITHC (including systemic issues) are addressed. Critical and High risks should either be resolved immediately or else a viable plan for resolution must be agreed with the PSN team. Medium and Low risks may be accepted or subject to remedial action plans.</p>
+
+
+      <h2>Security gaps</h2>
+      <p>If you are not meeting any of the conditions above, please provide details below. Please also provide details where you are not meeting one of the IA conditions but are mitigating the associated risk with an alternate arrangement.</p>
+      <table>
+          <tr><td class='blank-box'></td></tr>
+      </table>
+
+      <h2>Commitment statement</h2>
+      <p>By signing this, you agree to the obligations spelled out in this document in order to be connected to the PSN. If you are unable or unwilling to meet any of these, you should inform the PSN team immediately. </p>
+      <p>You agree to meet the IA conditions outlined in the Code of Connection (CoCo), subject only to those exceptions specifically identified in your <b>Security Gaps</b> (above), and will submit the CoCo to the PSN team for a compliance assessment annually, or less frequently as required by the PSN team. If you have a concern that the IA conditions are not being met by other customers or suppliers, you have a responsibility to notify the PSN team.</p>
+      <p>Upon receipt of a compliance warning notice, you must respond within five working days. You’ll undertake suitable remedial action as directed by and agreed with the PSN team. If the PSN team rescinds your compliance certificate, you’ll disconnect from the PSN in the timeframe specified.</p>
+      <p>Should the PSN team initiate a compliance review, you’ll allow reasonable access to your site(s) and personnel within 25 working days of receiving notice of the review. </p>
+
+      <p>In the event of an incident, you must: </p>
+
+      <ul>
+          <li><span>conduct initial diagnosis of the incident to determine which service is the cause (or most likely cause of the incident)</span></li>
+          <li><span>raise the incident to the service provider/customers with whom you have a PSN supply agreement for the affected service</span></li>
+          <li><span>if required, inform the PSN team and complete actions assigned by the PSN team in an agreed timeframe to support resolution of the incident</span></li>
+          <li><span>if the PSN team contacts you to help resolve an incident or problem, you must respond as you would for one of your own customers or users </span></li>
+          <li><span>depending on the nature of the incident, provide audit logs holding user activities, exceptions and information security events to assist in investigations. </span></li>
+          <li><span>where your organisation holds the supply agreement for PSN services on behalf of other PSN customers you should manage incidents received from those customers on their behalf</span></li>
+          <li><span>notify other PSN customers with whom you share a PSN service of any incident that has been communicated to you by the provider</span></li>
+      </ul>
+
+      <h2>Authorised signatory</h2>
+
+      <table>
+        <tr>
+          <td class="table-key">Name:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="table-key">Position:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="table-key">Telephone no:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="table-key">Email:</td>
+          <td></td>
+          </tr>
+        <tr>
+        <tr>
+          <td class="table-key bb-grey">Address:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="table-key bb-grey"></td>
+          <td></td>
+        </tr>
+        <tr>
+        <td class="table-key bb-grey"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="table-key"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="table-key">Date:</td>
+          <td></td>
+        </tr>
+        <tr>
+            <td class="table-key">
+            <br>
+            <br>
+                Signed:
+            </td>
+            <td></td>
+          </tr>
+      </table>
+    </body>
+</html>
