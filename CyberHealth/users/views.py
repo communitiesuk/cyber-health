@@ -1,5 +1,4 @@
 import logging
-
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import render, redirect
@@ -14,6 +13,7 @@ import os
 
 
 def send_user_notification(user_details, user_token, template_id='63d94931-3b5a-42dc-ba0d-06b40902298b'):
+    """ Manages environments and sends the email notification to the registered user """
     cloudfoundry_space = ast.literal_eval(settings.CLOUDFOUNDRY_SPACE).get('space_name', 'INVALID_SPACE') \
         if settings.CLOUDFOUNDRY_SPACE else 'localhost'
     if not settings.GOVUK_NOTIFY_DISABLE:
@@ -60,7 +60,20 @@ def activate_user(user_details):
     activated_user.save()
 
 
+def user_session_info(request, user_details):
+    request.session['user'] = user_details.id
+    request.session.set_expiry(900)
+    request.session.SESSION_EXPIRE_AT_BROWSER_CLOSE(True)
+    request.session.SESSION_COOKIE_SECURE(True)
+    print(f'{user_details.is_authenticated()} : is authenticated value')
+    print(f'{user_details.is_anonymous()} : is anonymous value')
+    print(f'{user_details.is_active()} : is active value')
+    print(f'{dict(request.session)} : session data')
+    # auth.login(request, user) - could use this to log in the user automatically
+
+
 def account_activation(request, auth_token):
+    """ This function activates the user account setting it to active if not already set """
     try:
         user_profile_details = UserProfile.objects.filter(
             auth_token=auth_token).first()
@@ -115,6 +128,7 @@ def forgotten_password_confirm_email(request):
 
 
 def user_registration(request):
+    """ Takes in a request, checks the form is valid then proceeds to create a user account """
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
@@ -129,12 +143,10 @@ def user_registration(request):
                     send_user_notification(user_info, auth_token)
                     user_info.username = user_info.email
                     user_info.save()
-                    request.session['user'] = user_info.id
+                    user_session_info(request, user_info)
                     deactivate_user(user_info)
                     organisation.organisation_users_info.add(user_info)
-                    user_profile = UserProfile.objects.create(
-                        user=user_info, auth_token=auth_token)
-                    user_profile.save()
+                    UserProfile.objects.create(user=user_info, auth_token=auth_token)
                     redirect_url = reverse('send-token-page')
                     return HttpResponseRedirect(redirect_url)
                 else:
