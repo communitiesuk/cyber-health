@@ -47,6 +47,7 @@ const distTinyMCELangFolder = path.join(distFolder, "tinymce", "langs");
 // Src folders
 const srcFolder = path.join(repoRoot, "static", "src");
 const srcScssFolder = path.join(srcFolder, "scss");
+const srcImagesFolder = path.join(srcFolder, "images");
 const srcTypographyScssFolder = path.join(srcFolder, "typography_scss");
 const srcScripts = path.join(srcFolder, "scripts");
 const srcAdminScssFolder = path.join(srcFolder, "admin-scss");
@@ -158,6 +159,15 @@ gulp.task(
 
 
 gulp.task(
+  "copy:src_images",
+  copyFactory(
+    "images from source folder",
+    srcImagesFolder,
+    distImagesFolder
+  )
+);
+
+gulp.task(
   "copy:govuk_frontend_assets:images",
   copyFactory(
     "fonts from the GOVUK frontend assets",
@@ -218,6 +228,7 @@ gulp.task(
 gulp.task(
   "copyAssets",
   gulp.parallel(
+      "copy:src_images",
       "copy:govuk_frontend_assets:fonts",
       "copy:govuk_frontend_assets:images",
       "copy:govuk_frontend_assets:scripts",
