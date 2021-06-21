@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
-{% block title %}Signed out of Assess Your Cyberhealth{% endblock %}
+
+{% block title %}{% if form.errors %}Error: {% endif %}Signed out – Assess Your Cyberhealth – GOV.UK{% endblock %}
+
 {% block content %}
     <div class="govuk-width-container">
         <main class="govuk-main-wrapper" id="main-content" role="main">

@@ -107,7 +107,7 @@ def forgotten_password_page(request):
 
 
 def forgotten_password_confirm_email(request):
-    if request.session.exists('forgotten_password_email'):
+    if 'forgotten_password_email' in request.session:
         email = request.session['forgotten_password_email']
     else:
         email = "not known"
