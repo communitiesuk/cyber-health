@@ -1,12 +1,20 @@
+import hashlib
+import logging
+
+from django.conf import settings
+
 from users.models import OrganisationRegion, OrganisationType
 
+
 def organisation_in_base_context(request):
-    if (request.user.is_authenticated):
+    if request.user.is_authenticated:
         # user is logged in, get organisation details
         # re-use from session if possible
         session = request.session
-                
+        user_secret_string = ""
         if session.get('organisation') is None:
+            user_secret_string = request.user.get_username() + ' a*&!hh ' + settings.SECRET_KEY
+            session_secret_string = session.session_key + ' a*&!hh ' + settings.SECRET_KEY
             if len(request.user.organisation_set.values()) == 1:
                 session['organisation'] = {}
                 # for users who are associated with one organisation
@@ -27,8 +35,9 @@ def organisation_in_base_context(request):
             'organisation_name': session['organisation']['org_name'],
             'organisation_type': session['organisation']['org_type'],
             'organisation_region': session['organisation']['org_region'],
+            'unique_user_key': hashlib.md5(user_secret_string.encode()).hexdigest(),
+            'unique_session_key': hashlib.md5(session_secret_string.encode()).hexdigest(),
         }
-
 
     # no org details: return empty dict
     return {}
