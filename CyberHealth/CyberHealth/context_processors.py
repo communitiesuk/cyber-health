@@ -12,6 +12,7 @@ def organisation_in_base_context(request):
         # re-use from session if possible
         session = request.session
         user_secret_string = ""
+        session_secret_string = ""
         if session.get('organisation') is None:
             user_secret_string = request.user.get_username() + ' a*&!hh ' + settings.SECRET_KEY
             session_secret_string = session.session_key + ' a*&!hh ' + settings.SECRET_KEY
