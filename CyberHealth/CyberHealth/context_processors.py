@@ -36,7 +36,10 @@ def organisation_in_base_context(request):
             else:
                 # once a user can be associated with multiple organisations, 
                 # work out which org user is logged in with
-                pass
+                return {
+                    'unique_user_key': hashlib.md5(user_string.encode()).hexdigest(),
+                    'unique_session_key': hashlib.md5(session_string.encode()).hexdigest(),
+                }
 
-        # no org details: return empty dict
-        return {}
+    # no org details: return empty dict
+    return {}
