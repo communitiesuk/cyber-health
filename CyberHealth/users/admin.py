@@ -17,7 +17,7 @@ class CustomUserAdmin(UserAdmin):
     def _name(self, obj):
         return obj.get_short_name()
     _name.short_description = 'Name'
-    _name.admin_order_field = 'name'
+    _name.admin_order_field = 'first_name'
     
     def get_form(self, request, obj, **kwargs):
         form = super(CustomUserAdmin, self).get_form(request, obj, **kwargs)
