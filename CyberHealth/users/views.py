@@ -7,7 +7,7 @@ from .forms import UserRegisterForm, ForgotPasswordForm, LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LoginView
-from .models import Organisation, OrganisationUser, UserProfile
+from .models import Organisation, OrganisationUser, UserProfile, AuditException
 from django.contrib import messages
 from django.conf import settings
 import uuid
@@ -193,6 +193,15 @@ class UserLogin(LoginView):
         return super().form_valid(form)
     
     def form_invalid(self, form):
-        print("🍎🍎🍎🍎form is invalid! audit event here")
-        unsuccessful_user = User.objects.create(username="something")
+        username = self.get_form().data['username']
+        form_errors = self.get_form().errors['__all__']
+        audit_object = AuditException.objects.create(reasons=form_errors,)
+
+        # Audit event for unsuccessful login
+        self.request.audit_context.create_event(
+            audit_object,
+            action="login",
+            success=False,
+            attempted_username=username
+        )
         return super().form_invalid(form)
