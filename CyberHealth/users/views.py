@@ -136,11 +136,35 @@ def user_registration(request):
                         user=user_info, auth_token=auth_token)
                     user_profile.save()
                     redirect_url = reverse('send-token-page')
+
+                    # Add audit event
+                    request.audit_context.create_event(
+                        user_profile,
+                        action="register",
+                        success=True
+                    )
+
                     return HttpResponseRedirect(redirect_url)
                 else:
+                    # Add audit event
+                    request.audit_context.create_event(
+                        organisation_user,
+                        action="register",
+                        success=False,
+                        detail="User already exists for organisation"
+                    )
+
                     messages.info(request, 'There is already a user for '
                                            'your local council.')
             except Exception as e:
+                # Add audit event
+                request.audit_context.create_event(
+                    form,
+                    action="register",
+                    success=False,
+                    detail="Exception thrown"
+                )
+
                 print(e)
                 messages.error(request, 'There was an error in the sign up'
                                         ' process. Please check the details '
