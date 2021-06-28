@@ -3,8 +3,10 @@ import logging
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import render, redirect
-from .forms import UserRegisterForm, ForgotPasswordForm
+from .forms import UserRegisterForm, ForgotPasswordForm, LoginForm
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.views import LoginView
 from .models import Organisation, OrganisationUser, UserProfile
 from django.contrib import messages
 from django.conf import settings
@@ -173,3 +175,24 @@ def user_registration(request):
     else:
         form = UserRegisterForm()
     return render(request, 'users/create-an-account.html', {'form': form})
+
+
+class UserLogin(LoginView):
+    template_name = 'users/login.html'
+    authentication_form=LoginForm
+    
+    def form_valid(self, form):        
+        success_user = User.objects.get(username=self.get_form().data['username'])
+
+        # Audit event for successful login
+        self.request.audit_context.create_event(
+            success_user,
+            action="login",
+            success=True
+        )
+        return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        print("🍎🍎🍎🍎form is invalid! audit event here")
+        unsuccessful_user = User.objects.create(username="something")
+        return super().form_invalid(form)
