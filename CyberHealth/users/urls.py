@@ -26,9 +26,7 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(
              template_name='users/success.html'),
          name='password_reset_complete'),
-    path('login', auth_views.LoginView.as_view(
-        template_name='users/login.html',
-        authentication_form=LoginForm), name='login'),
+    path('login', views.UserLogin.as_view(), name='login'),
     path('create-an-account/', views.user_registration,
          name='create-an-account'),
 ]

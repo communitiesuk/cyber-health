@@ -3,9 +3,11 @@ import logging
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import render, redirect
-from .forms import UserRegisterForm, ForgotPasswordForm
+from .forms import UserRegisterForm, ForgotPasswordForm, LoginForm
 from django.contrib.auth.models import User
-from .models import Organisation, OrganisationUser, UserProfile
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.views import LoginView
+from .models import Organisation, OrganisationUser, UserProfile, AuditException
 from django.contrib import messages
 from django.conf import settings
 import uuid
@@ -136,11 +138,36 @@ def user_registration(request):
                         user=user_info, auth_token=auth_token)
                     user_profile.save()
                     redirect_url = reverse('send-token-page')
+
+                    # Add audit event
+                    request.audit_context.create_event(
+                        user_profile,
+                        action="register",
+                        success=True
+                    )
+
                     return HttpResponseRedirect(redirect_url)
                 else:
+                    # Add audit event
+                    request.audit_context.create_event(
+                        organisation_user,
+                        action="register",
+                        success=False,
+                        detail="User already exists for organisation"
+                    )
+
                     messages.info(request, 'There is already a user for '
                                            'your local council.')
             except Exception as e:
+                # Add audit event
+                audit_object = AuditException.objects.create(exception=e,)
+                request.audit_context.create_event(
+                    audit_object,
+                    action="register",
+                    success=False,
+                    detail="Exception thrown"
+                )
+
                 print(e)
                 messages.error(request, 'There was an error in the sign up'
                                         ' process. Please check the details '
@@ -149,3 +176,33 @@ def user_registration(request):
     else:
         form = UserRegisterForm()
     return render(request, 'users/create-an-account.html', {'form': form})
+
+
+class UserLogin(LoginView):
+    template_name = 'users/login.html'
+    authentication_form=LoginForm
+    
+    def form_valid(self, form):        
+        success_user = User.objects.get(username=self.get_form().data['username'])
+
+        # Audit event for successful login
+        self.request.audit_context.create_event(
+            success_user,
+            action="login",
+            success=True
+        )
+        return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        username = self.get_form().data['username']
+        form_errors = self.get_form().errors['__all__']
+        audit_object = AuditException.objects.create(reasons=form_errors,)
+
+        # Audit event for unsuccessful login
+        self.request.audit_context.create_event(
+            audit_object,
+            action="login",
+            success=False,
+            attempted_username=username
+        )
+        return super().form_invalid(form)

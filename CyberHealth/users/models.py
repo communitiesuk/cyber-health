@@ -53,3 +53,6 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+class AuditException(models.Model):
+    exception = models.CharField(max_length=120)
+    reasons = models.JSONField()
