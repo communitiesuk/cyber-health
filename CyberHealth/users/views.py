@@ -160,8 +160,9 @@ def user_registration(request):
                                            'your local council.')
             except Exception as e:
                 # Add audit event
+                audit_object = AuditException.objects.create(exception=e,)
                 request.audit_context.create_event(
-                    form,
+                    audit_object,
                     action="register",
                     success=False,
                     detail="Exception thrown"
