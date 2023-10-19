@@ -25,7 +25,7 @@
     "gulp-debug": "^4.0.0",
     "gulp-rename": "^2.0.0",
     "postcss": "^8.3.0",
-    "tinymce": "^5.8.0"
+    "tinymce": "^5.10.8"
   },
   "browserslist": [
     ">0.1%",
